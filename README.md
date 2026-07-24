@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Corevia Web
 
-## Getting Started
+Public website foundation for the Corevia brand.
 
-First, run the development server:
+## Stack
+
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- Lucide Icons
+- next-intl (EN / ES)
+- next-themes
+- Vercel-ready
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Local-only (this machine)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev:local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3002](http://localhost:3002).
 
-## Learn More
+### Remote over Tailscale (MacBook → Mac mini)
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev:remote
+# or: ./scripts/dev-remote.sh
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then from your MacBook open:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[http://100.114.151.46:3002](http://100.114.151.46:3002)
 
-## Deploy on Vercel
+(Replace the IP with `tailscale ip -4` on the Mac mini if it changes.)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Middleware redirects to `/en` or `/es` based on browser language (or the saved `NEXT_LOCALE` cookie).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Multi-project ports (Mac mini)
+
+| App | Port | Bind | Start |
+| --- | --- | --- | --- |
+| Daniel Command Station | **3000** | `0.0.0.0` | `npm run dev:remote` in that repo |
+| Corevia | **3002** | `0.0.0.0` | `npm run dev:remote` |
+
+Both must use different ports. Do not run two apps on 3000.
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` / `dev:remote` | Turbopack on `0.0.0.0:3002` (Tailscale-ready) |
+| `npm run dev:local` | Turbopack on `127.0.0.1:3002` only |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build on `0.0.0.0:3002` |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript (`tsc --noEmit`) |
+
+## Remote development architecture (Tailscale)
+
+```text
+MacBook Safari/Chrome
+        │
+        │  http://100.114.151.46:3002
+        ▼
+   Tailscale mesh
+        │
+        ▼
+Mac mini  next dev --hostname 0.0.0.0 --port 3002
+```
+
+- **Why `0.0.0.0`:** Binding only to `localhost` accepts loopback traffic. Remote devices need the process listening on all interfaces (including the Tailscale `utun` address).
+- **Why `allowedDevOrigins`:** Next.js 15+ guards `/_next/*` in development. This repo auto-allowlists detected LAN/Tailscale IPv4 addresses (override with `ALLOWED_DEV_ORIGINS=host1,host2`).
+- **Avoid port conflicts:** Keep Corevia on **3002** and Daniel Command Station on **3000**. Check with `lsof -nP -iTCP:3000,3002 -sTCP:LISTEN`.
+- **Best practices:** Use `dev:remote` for Tailscale work; use `dev:local` when you only need this machine; prefer MagicDNS (`http://daniels-mac-mini-1:3002`) if your Tailscale DNS is enabled; never commit secrets in `.env.local`.
+
+## Project structure
+
+```text
+app/[locale]/     Locale-aware routes
+components/       layout / sections / shared / ui
+hooks/            Client hooks
+i18n/             Routing, navigation, request config
+lib/              Shared helpers (site config, cn)
+messages/         Translation JSON (en, es)
+public/           images / logos / icons
+styles/           Global CSS
+types/            Shared TypeScript types
+utils/            Small pure helpers (as needed)
+```
+
+## Internationalization
+
+- Locales are defined in `i18n/routing.ts`
+- Messages live in `messages/{locale}.json`
+- To add a language: append the locale code and add a matching messages file
+
+## Deployment (Vercel)
+
+1. Import this repository in Vercel
+2. Set `NEXT_PUBLIC_SITE_URL` to the production domain
+3. Deploy (framework preset: Next.js)
+
+No custom `vercel.json` is required for the current setup.

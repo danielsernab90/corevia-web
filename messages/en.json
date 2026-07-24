@@ -1,0 +1,360 @@
+{
+  "Metadata": {
+    "title": "Corevia",
+    "titleTemplate": "%s | Corevia",
+    "description": "Corevia builds modern digital products and technology solutions for forward-thinking businesses.",
+    "keywords": "Corevia, technology, software, digital products, innovation"
+  },
+  "Common": {
+    "brand": "Corevia",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "skipToContent": "Skip to content"
+  },
+  "Locale": {
+    "en": "English",
+    "es": "Spanish",
+    "enShort": "EN",
+    "esShort": "ES"
+  },
+  "Navigation": {
+    "main": "Main navigation",
+    "home": "Home",
+    "services": "Services",
+    "work": "Our Work",
+    "company": "Company",
+    "contact": "Contact",
+    "primaryCta": "Book a Free Consultation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileNav": "Mobile navigation"
+  },
+  "Footer": {
+    "tagline": "Digital products and technology systems built for clarity, speed, and lasting quality.",
+    "company": "Company",
+    "services": "Services",
+    "resources": "Resources",
+    "contact": "Contact",
+    "socials": "Social",
+    "home": "Home",
+    "servicesOverview": "Overview",
+    "productEngineering": "Product engineering",
+    "designSystems": "Design systems",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "copyright": "© {year} Corevia. All rights reserved."
+  },
+  "Social": {
+    "linkedin": "Corevia on LinkedIn",
+    "x": "Corevia on X",
+    "github": "Corevia on GitHub"
+  },
+  "Hero": {
+    "badge": "CUSTOM SOFTWARE • AI • AUTOMATION",
+    "title": "Custom Software & AI Solutions That Help Your Business Grow.",
+    "description": "Corevia builds custom software, AI solutions, automations, and digital platforms that streamline operations, improve efficiency, and support long-term growth.",
+    "primaryCta": "Book a Free Consultation",
+    "secondaryCta": "Explore Our Work",
+    "trust": {
+      "customSoftware": "Custom Software",
+      "aiSolutions": "AI Solutions",
+      "webMobile": "Web & Mobile Apps",
+      "automation": "Business Automation",
+      "integrations": "System Integrations",
+      "growth": "Built for Growth"
+    },
+    "visual": {
+      "label": "Abstract visualization of Corevia software, AI, and automation systems",
+      "signal": "Live systems",
+      "metricLabel": "Efficiency",
+      "metricValue": "+38%",
+      "flowLabel": "Automation",
+      "flowStatus": "Running",
+      "platformLabel": "Platform health",
+      "platformValue": "99.9%"
+    }
+  },
+  "Shell": {
+    "heading": "Foundation ready",
+    "body": "Internationalization, theming, and SEO are configured. The homepage will be built next."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist.",
+    "backHome": "Back to home"
+  },
+  "BookConsultation": {
+    "meta": {
+      "title": "Book a Free Consultation",
+      "description": "Meet one-on-one with a Corevia consultant to discover how AI, automation, and custom software can help your business grow."
+    },
+    "hero": {
+      "title": "Book Your Free AI & Software Strategy Session",
+      "description": "Meet one-on-one with a Corevia consultant to discover how AI, automation, and custom software can help your business become more efficient, reduce manual work, and scale with confidence.",
+      "primaryCta": "Book My Free Consultation",
+      "secondaryCta": "Explore Our Services",
+      "highlights": {
+        "free": "Free Consultation",
+        "duration": "15–30 Minute Strategy Session",
+        "noObligation": "No Obligation",
+        "personalized": "Personalized Recommendations"
+      },
+      "visualLabel": "Premium illustration of a Corevia strategy consultation",
+      "visual": {
+        "badge": "Free",
+        "card1": {
+          "title": "Strategy Session",
+          "subtitle": "15–30 min • One-on-One"
+        },
+        "card2": {
+          "title": "AI & Business Assessment",
+          "description": "Identify opportunities for AI, automation, and custom software."
+        },
+        "card3": {
+          "title": "Personalized Solution Plan",
+          "description": "Receive tailored recommendations and practical next steps."
+        }
+      }
+    },
+    "expect": {
+      "title": "What to Expect",
+      "intro": "Your strategy session is designed to understand your business—not to pressure you into buying anything.",
+      "during": "During the session we'll:",
+      "items": {
+        "learn": "Learn about your business and goals.",
+        "identify": "Identify opportunities where AI, automation, or custom software could create the biggest impact.",
+        "answer": "Answer your questions.",
+        "share": "Share practical recommendations tailored specifically to your business."
+      },
+      "closing": "Whether you decide to work with Corevia afterward or not, you'll leave with a clearer understanding of your options."
+    },
+    "outcomes": {
+      "title": "What You'll Walk Away With",
+      "items": {
+        "assessment": {
+          "title": "Personalized Business Assessment",
+          "description": "We learn how your business operates today."
+        },
+        "aiAnalysis": {
+          "title": "AI Opportunity Analysis",
+          "description": "We'll identify opportunities where AI and automation can save time and improve efficiency."
+        },
+        "roadmap": {
+          "title": "Technology Roadmap",
+          "description": "Receive recommendations tailored to your goals."
+        },
+        "estimate": {
+          "title": "Preliminary Project Estimate",
+          "description": "If appropriate, we'll discuss implementation timelines and estimated investment ranges."
+        }
+      }
+    },
+    "audience": {
+      "title": "Who This Is For",
+      "description": "We partner with growing businesses across industries that want clarity before they invest in technology.",
+      "items": {
+        "healthcare": "Healthcare & Medical",
+        "dental": "Dental Practices",
+        "accounting": "Accounting Firms",
+        "legal": "Law Firms",
+        "construction": "Construction",
+        "realEstate": "Real Estate",
+        "restaurants": "Restaurants",
+        "retail": "Retail",
+        "professional": "Professional Services",
+        "manufacturing": "Manufacturing",
+        "software": "Software & Technology",
+        "smb": "Growing Small Businesses"
+      }
+    },
+    "process": {
+      "title": "How the Consultation Works",
+      "durationLabel": "Typical consultation:",
+      "duration": "15–30 minutes",
+      "stepLabel": "Step {number}",
+      "steps": {
+        "learn": "Learn About Your Business",
+        "identify": "Identify Opportunities",
+        "recommend": "Recommend Solutions",
+        "nextSteps": "Answer Questions & Discuss Next Steps"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": {
+        "free": {
+          "question": "Is the consultation really free?",
+          "answer": "Yes. Your strategy session is completely free, with no obligation to move forward afterward."
+        },
+        "duration": {
+          "question": "How long does the consultation take?",
+          "answer": "Most consultations take between 15 and 30 minutes."
+        },
+        "technical": {
+          "question": "Do I need technical knowledge?",
+          "answer": "Not at all. We translate technical opportunities into plain language so you can make confident decisions."
+        },
+        "after": {
+          "question": "What happens after the consultation?",
+          "answer": "You'll leave with clear recommendations. If there's a fit, we can outline next steps—always at your pace, with no pressure."
+        },
+        "industries": {
+          "question": "What industries do you work with?",
+          "answer": "We work with healthcare, dental, accounting, legal, construction, real estate, restaurants, retail, professional services, manufacturing, software companies, and growing small businesses."
+        },
+        "integrate": {
+          "question": "Can you integrate with my existing software?",
+          "answer": "Yes. We regularly design solutions that connect with the tools your team already uses, so you don't have to start from scratch."
+        }
+      }
+    },
+    "trust": {
+      "title": "Why Book With Corevia",
+      "items": {
+        "personalized": {
+          "title": "100% Personalized Recommendations",
+          "description": "Every consultation is tailored specifically to your business."
+        },
+        "noObligation": {
+          "title": "No Obligation",
+          "description": "Explore your options with absolutely no pressure to move forward."
+        },
+        "actionable": {
+          "title": "Actionable Next Steps",
+          "description": "Leave the consultation with practical recommendations you can begin using immediately."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Book your free strategy session and take the first step toward clearer technology decisions for your business.",
+      "button": "Book My Free Consultation"
+    },
+    "modal": {
+      "close": "Close",
+      "back": "Back",
+      "continue": "Continue",
+      "stepOf": "Step {current} of {total}",
+      "steps": {
+        "contact": {
+          "title": "Contact Information",
+          "description": "Tell us how to reach you so we can prepare for your session."
+        },
+        "business": {
+          "title": "Business Information",
+          "description": "A few details help us tailor the conversation to your company."
+        },
+        "services": {
+          "title": "What services are you interested in?",
+          "description": "Select all that apply. You can choose more than one."
+        },
+        "challenge": {
+          "title": "Your Biggest Challenge",
+          "description": "What is the biggest challenge your business is currently facing that you'd like us to help solve?"
+        },
+        "schedule": {
+          "title": "Schedule Your Consultation",
+          "description": "Choose a time that works for you. You'll stay on this page—no redirects.",
+          "continue": "Continue to Schedule My Consultation"
+        }
+      },
+      "fields": {
+        "fullName": "Full Name",
+        "businessName": "Business Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "phoneOptional": "Optional",
+        "industry": "Industry",
+        "role": "What Best Describes Your Role?",
+        "companySize": "Company Size",
+        "otherService": "Please tell us what you're looking for.",
+        "challenge": "Describe your challenge",
+        "selectPlaceholder": "Select an option"
+      },
+      "industries": {
+        "accounting": "Accounting & Finance",
+        "architecture": "Architecture & Engineering",
+        "construction": "Construction",
+        "dental": "Dental",
+        "ecommerce": "E-Commerce",
+        "education": "Education",
+        "healthcare": "Healthcare & Medical",
+        "hospitality": "Hospitality",
+        "hr": "Human Resources",
+        "insurance": "Insurance",
+        "legal": "Law Firm / Legal Services",
+        "logistics": "Logistics & Transportation",
+        "manufacturing": "Manufacturing",
+        "marketing": "Marketing & Advertising",
+        "nonprofit": "Nonprofit",
+        "professional": "Professional Services",
+        "realEstate": "Real Estate",
+        "restaurant": "Restaurant & Food Service",
+        "retail": "Retail",
+        "software": "Software & Technology",
+        "wholesale": "Wholesale & Distribution",
+        "other": "Other"
+      },
+      "roles": {
+        "owner": "Business Owner",
+        "founder": "Founder / Co-Founder",
+        "ceo": "CEO / President",
+        "executive": "Executive / Director",
+        "operations": "Operations Manager",
+        "it": "IT Manager",
+        "office": "Office Manager",
+        "department": "Department Manager",
+        "consultant": "Consultant",
+        "other": "Other"
+      },
+      "companySizes": {
+        "solo": "Just Me",
+        "small": "2–10 Employees",
+        "medium": "11–50 Employees",
+        "large": "51–200 Employees",
+        "enterprise": "200+ Employees"
+      },
+      "services": {
+        "aiSolutions": "AI Solutions",
+        "aiAssistants": "AI Assistants",
+        "workflowAutomation": "Workflow Automation",
+        "customSoftware": "Custom Software Development",
+        "webApps": "Web Applications",
+        "mobileApps": "Mobile App Development",
+        "crmErp": "CRM / ERP Systems",
+        "dashboards": "Business Dashboards",
+        "analytics": "Data Analytics & Reporting",
+        "integrations": "System Integrations",
+        "cloudMigration": "Cloud Migration",
+        "processConsulting": "Business Process Consulting",
+        "digitalTransformation": "Digital Transformation",
+        "websiteDesign": "Website Design & Development",
+        "techSupport": "Ongoing Technical Support",
+        "other": "Other"
+      },
+      "errors": {
+        "required": "This field is required.",
+        "email": "Please enter a valid email address.",
+        "services": "Please select at least one service.",
+        "otherService": "Please tell us what you're looking for."
+      },
+      "calendlyUnavailable": "Scheduling is temporarily unavailable. Please try again shortly, or email us to book your session."
+    },
+    "confirmation": {
+      "title": "You're All Set!",
+      "description": "A confirmation email has been sent with your session details. We look forward to speaking with you.",
+      "prepTitle": "Before we meet, consider preparing:",
+      "checklist": {
+        "challenges": "Think about your biggest business challenges.",
+        "software": "Current software or workflows.",
+        "tasks": "Repetitive tasks you'd like to automate.",
+        "goals": "Goals for the next 6–12 months."
+      },
+      "close": "Done",
+      "home": "Back to Home"
+    }
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "Metadata": {
+    "title": "Corevia",
+    "titleTemplate": "%s | Corevia",
+    "description": "Corevia crea productos digitales modernos y soluciones tecnológicas para empresas con visión de futuro.",
+    "keywords": "Corevia, tecnología, software, productos digitales, innovación"
+  },
+  "Common": {
+    "brand": "Corevia",
+    "language": "Idioma",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "skipToContent": "Saltar al contenido"
+  },
+  "Locale": {
+    "en": "Inglés",
+    "es": "Español",
+    "enShort": "EN",
+    "esShort": "ES"
+  },
+  "Navigation": {
+    "main": "Navegación principal",
+    "home": "Inicio",
+    "services": "Servicios",
+    "work": "Nuestro Trabajo",
+    "company": "Compañía",
+    "contact": "Contacto",
+    "primaryCta": "Agenda una Consulta",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mobileNav": "Navegación móvil"
+  },
+  "Footer": {
+    "tagline": "Productos digitales y sistemas tecnológicos diseñados para claridad, velocidad y calidad duradera.",
+    "company": "Compañía",
+    "services": "Servicios",
+    "resources": "Recursos",
+    "contact": "Contacto",
+    "socials": "Redes",
+    "home": "Inicio",
+    "servicesOverview": "Resumen",
+    "productEngineering": "Ingeniería de producto",
+    "designSystems": "Sistemas de diseño",
+    "privacy": "Política de privacidad",
+    "terms": "Términos",
+    "copyright": "© {year} Corevia. Todos los derechos reservados."
+  },
+  "Social": {
+    "linkedin": "Corevia en LinkedIn",
+    "x": "Corevia en X",
+    "github": "Corevia en GitHub"
+  },
+  "Hero": {
+    "badge": "SOFTWARE A MEDIDA • IA • AUTOMATIZACIÓN",
+    "title": "Software a Medida y Soluciones de IA para Impulsar el Crecimiento de tu Empresa.",
+    "description": "Corevia crea software a medida, soluciones de IA, automatizaciones y plataformas digitales que agilizan operaciones, mejoran la eficiencia y respaldan el crecimiento a largo plazo.",
+    "primaryCta": "Agenda una Consulta",
+    "secondaryCta": "Ver Nuestro Trabajo",
+    "trust": {
+      "customSoftware": "Software a Medida",
+      "aiSolutions": "Soluciones de IA",
+      "webMobile": "Apps Web y Móviles",
+      "automation": "Automatización",
+      "integrations": "Integraciones de Sistemas",
+      "growth": "Hecho para Crecer"
+    },
+    "visual": {
+      "label": "Visualización abstracta de los sistemas de software, IA y automatización de Corevia",
+      "signal": "Sistemas activos",
+      "metricLabel": "Eficiencia",
+      "metricValue": "+38%",
+      "flowLabel": "Automatización",
+      "flowStatus": "En curso",
+      "platformLabel": "Salud de plataforma",
+      "platformValue": "99.9%"
+    }
+  },
+  "Shell": {
+    "heading": "Base lista",
+    "body": "La internacionalización, el tema y el SEO están configurados. La página de inicio se construirá a continuación."
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe.",
+    "backHome": "Volver al inicio"
+  },
+  "BookConsultation": {
+    "meta": {
+      "title": "Agenda una Consulta Gratis",
+      "description": "Reúnete uno a uno con un consultor de Corevia para descubrir cómo la IA, la automatización y el software a medida pueden impulsar tu negocio."
+    },
+    "hero": {
+      "title": "Agenda tu Sesión Gratis de Estrategia en IA y Software",
+      "description": "Reúnete uno a uno con un consultor de Corevia para descubrir cómo la IA, la automatización y el software a medida pueden hacer tu negocio más eficiente, reducir el trabajo manual y escalar con confianza.",
+      "primaryCta": "Agendar Mi Consulta Gratis",
+      "secondaryCta": "Explorar Nuestros Servicios",
+      "highlights": {
+        "free": "Consulta Gratis",
+        "duration": "Sesión Estratégica de 15–30 Minutos",
+        "noObligation": "Sin Compromiso",
+        "personalized": "Recomendaciones Personalizadas"
+      },
+      "visualLabel": "Ilustración premium de una consulta estratégica con Corevia",
+      "visual": {
+        "badge": "Gratis",
+        "card1": {
+          "title": "Sesión Estratégica",
+          "subtitle": "15–30 min • Uno a uno"
+        },
+        "card2": {
+          "title": "Evaluación de IA y Negocio",
+          "description": "Identifica oportunidades para IA, automatización y software a medida."
+        },
+        "card3": {
+          "title": "Plan de Solución Personalizado",
+          "description": "Recibe recomendaciones a medida y próximos pasos prácticos."
+        }
+      }
+    },
+    "expect": {
+      "title": "Qué Esperar",
+      "intro": "Tu sesión estratégica está diseñada para entender tu negocio—no para presionarte a comprar nada.",
+      "during": "Durante la sesión vamos a:",
+      "items": {
+        "learn": "Conocer tu negocio y tus objetivos.",
+        "identify": "Identificar oportunidades donde la IA, la automatización o el software a medida puedan generar el mayor impacto.",
+        "answer": "Responder tus preguntas.",
+        "share": "Compartir recomendaciones prácticas adaptadas específicamente a tu negocio."
+      },
+      "closing": "Decidas o no trabajar con Corevia después, saldrás con una comprensión más clara de tus opciones."
+    },
+    "outcomes": {
+      "title": "Con Qué Te Irás",
+      "items": {
+        "assessment": {
+          "title": "Evaluación Personalizada del Negocio",
+          "description": "Aprendemos cómo opera tu negocio hoy."
+        },
+        "aiAnalysis": {
+          "title": "Análisis de Oportunidades con IA",
+          "description": "Identificaremos oportunidades donde la IA y la automatización puedan ahorrar tiempo y mejorar la eficiencia."
+        },
+        "roadmap": {
+          "title": "Hoja de Ruta Tecnológica",
+          "description": "Recibe recomendaciones alineadas con tus objetivos."
+        },
+        "estimate": {
+          "title": "Estimación Preliminar del Proyecto",
+          "description": "Si corresponde, hablaremos de plazos de implementación y rangos de inversión estimados."
+        }
+      }
+    },
+    "audience": {
+      "title": "Para Quién Es",
+      "description": "Trabajamos con empresas en crecimiento de distintas industrias que quieren claridad antes de invertir en tecnología.",
+      "items": {
+        "healthcare": "Salud y Medicina",
+        "dental": "Consultorios Dentales",
+        "accounting": "Firmas Contables",
+        "legal": "Bufetes de Abogados",
+        "construction": "Construcción",
+        "realEstate": "Bienes Raíces",
+        "restaurants": "Restaurantes",
+        "retail": "Retail",
+        "professional": "Servicios Profesionales",
+        "manufacturing": "Manufactura",
+        "software": "Software y Tecnología",
+        "smb": "Pequeñas Empresas en Crecimiento"
+      }
+    },
+    "process": {
+      "title": "Cómo Funciona la Consulta",
+      "durationLabel": "Consulta típica:",
+      "duration": "15–30 minutos",
+      "stepLabel": "Paso {number}",
+      "steps": {
+        "learn": "Conocer Tu Negocio",
+        "identify": "Identificar Oportunidades",
+        "recommend": "Recomendar Soluciones",
+        "nextSteps": "Responder Preguntas y Hablar de Siguientes Pasos"
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "items": {
+        "free": {
+          "question": "¿La consulta es realmente gratis?",
+          "answer": "Sí. Tu sesión estratégica es completamente gratis, sin obligación de continuar después."
+        },
+        "duration": {
+          "question": "¿Cuánto dura la consulta?",
+          "answer": "La mayoría de las consultas duran entre 15 y 30 minutos."
+        },
+        "technical": {
+          "question": "¿Necesito conocimientos técnicos?",
+          "answer": "Para nada. Traducimos las oportunidades técnicas a un lenguaje claro para que tomes decisiones con confianza."
+        },
+        "after": {
+          "question": "¿Qué pasa después de la consulta?",
+          "answer": "Te irás con recomendaciones claras. Si hay encaje, podemos definir los siguientes pasos—siempre a tu ritmo y sin presión."
+        },
+        "industries": {
+          "question": "¿Con qué industrias trabajan?",
+          "answer": "Trabajamos con salud, odontología, contabilidad, legal, construcción, bienes raíces, restaurantes, retail, servicios profesionales, manufactura, empresas de software y pequeñas empresas en crecimiento."
+        },
+        "integrate": {
+          "question": "¿Pueden integrarse con mi software actual?",
+          "answer": "Sí. Diseñamos soluciones que se conectan con las herramientas que tu equipo ya usa, para que no tengas que empezar desde cero."
+        }
+      }
+    },
+    "trust": {
+      "title": "Por Qué Agendar con Corevia",
+      "items": {
+        "personalized": {
+          "title": "Recomendaciones 100% Personalizadas",
+          "description": "Cada consulta está diseñada específicamente para tu negocio."
+        },
+        "noObligation": {
+          "title": "Sin Compromiso",
+          "description": "Explora tus opciones sin ninguna presión para avanzar."
+        },
+        "actionable": {
+          "title": "Próximos Pasos Accionables",
+          "description": "Sal de la consulta con recomendaciones prácticas que puedes empezar a usar de inmediato."
+        }
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Empezar?",
+      "description": "Agenda tu sesión estratégica gratis y da el primer paso hacia decisiones tecnológicas más claras para tu negocio.",
+      "button": "Agendar Mi Consulta Gratis"
+    },
+    "modal": {
+      "close": "Cerrar",
+      "back": "Atrás",
+      "continue": "Continuar",
+      "stepOf": "Paso {current} de {total}",
+      "steps": {
+        "contact": {
+          "title": "Información de Contacto",
+          "description": "Cuéntanos cómo contactarte para preparar tu sesión."
+        },
+        "business": {
+          "title": "Información del Negocio",
+          "description": "Algunos detalles nos ayudan a adaptar la conversación a tu empresa."
+        },
+        "services": {
+          "title": "¿En qué servicios estás interesado?",
+          "description": "Selecciona todos los que apliquen. Puedes elegir más de uno."
+        },
+        "challenge": {
+          "title": "Tu Mayor Desafío",
+          "description": "¿Cuál es el mayor desafío que enfrenta tu negocio actualmente y en el que te gustaría que te ayudemos?"
+        },
+        "schedule": {
+          "title": "Agenda Tu Consulta",
+          "description": "Elige un horario que te funcione. Te quedas en esta página—sin redirecciones.",
+          "continue": "Continuar para Agendar Mi Consulta"
+        }
+      },
+      "fields": {
+        "fullName": "Nombre Completo",
+        "businessName": "Nombre del Negocio",
+        "email": "Correo Electrónico",
+        "phone": "Número de Teléfono",
+        "phoneOptional": "Opcional",
+        "industry": "Industria",
+        "role": "¿Qué Describe Mejor Tu Rol?",
+        "companySize": "Tamaño de la Empresa",
+        "otherService": "Cuéntanos qué estás buscando.",
+        "challenge": "Describe tu desafío",
+        "selectPlaceholder": "Selecciona una opción"
+      },
+      "industries": {
+        "accounting": "Contabilidad y Finanzas",
+        "architecture": "Arquitectura e Ingeniería",
+        "construction": "Construcción",
+        "dental": "Dental",
+        "ecommerce": "Comercio Electrónico",
+        "education": "Educación",
+        "healthcare": "Salud y Medicina",
+        "hospitality": "Hospitalidad",
+        "hr": "Recursos Humanos",
+        "insurance": "Seguros",
+        "legal": "Bufete / Servicios Legales",
+        "logistics": "Logística y Transporte",
+        "manufacturing": "Manufactura",
+        "marketing": "Marketing y Publicidad",
+        "nonprofit": "Organización Sin Fines de Lucro",
+        "professional": "Servicios Profesionales",
+        "realEstate": "Bienes Raíces",
+        "restaurant": "Restaurantes y Comida",
+        "retail": "Retail",
+        "software": "Software y Tecnología",
+        "wholesale": "Mayoristas y Distribución",
+        "other": "Otro"
+      },
+      "roles": {
+        "owner": "Dueño del Negocio",
+        "founder": "Fundador / Cofundador",
+        "ceo": "CEO / Presidente",
+        "executive": "Ejecutivo / Director",
+        "operations": "Gerente de Operaciones",
+        "it": "Gerente de TI",
+        "office": "Gerente de Oficina",
+        "department": "Gerente de Departamento",
+        "consultant": "Consultor",
+        "other": "Otro"
+      },
+      "companySizes": {
+        "solo": "Solo Yo",
+        "small": "2–10 Empleados",
+        "medium": "11–50 Empleados",
+        "large": "51–200 Empleados",
+        "enterprise": "200+ Empleados"
+      },
+      "services": {
+        "aiSolutions": "Soluciones de IA",
+        "aiAssistants": "Asistentes de IA",
+        "workflowAutomation": "Automatización de Flujos",
+        "customSoftware": "Desarrollo de Software a Medida",
+        "webApps": "Aplicaciones Web",
+        "mobileApps": "Desarrollo de Apps Móviles",
+        "crmErp": "Sistemas CRM / ERP",
+        "dashboards": "Dashboards Empresariales",
+        "analytics": "Analítica de Datos y Reportes",
+        "integrations": "Integraciones de Sistemas",
+        "cloudMigration": "Migración a la Nube",
+        "processConsulting": "Consultoría de Procesos",
+        "digitalTransformation": "Transformación Digital",
+        "websiteDesign": "Diseño y Desarrollo Web",
+        "techSupport": "Soporte Técnico Continuo",
+        "other": "Otro"
+      },
+      "errors": {
+        "required": "Este campo es obligatorio.",
+        "email": "Ingresa un correo electrónico válido.",
+        "services": "Selecciona al menos un servicio.",
+        "otherService": "Cuéntanos qué estás buscando."
+      },
+      "calendlyUnavailable": "La agenda no está disponible por ahora. Inténtalo de nuevo pronto o escríbenos para reservar tu sesión."
+    },
+    "confirmation": {
+      "title": "¡Todo Listo!",
+      "description": "Te enviamos un correo de confirmación con los detalles de tu sesión. Estamos emocionados de hablar contigo.",
+      "prepTitle": "Antes de la reunión, considera preparar:",
+      "checklist": {
+        "challenges": "Piensa en tus mayores desafíos de negocio.",
+        "software": "Software o flujos de trabajo actuales.",
+        "tasks": "Tareas repetitivas que te gustaría automatizar.",
+        "goals": "Metas para los próximos 6–12 meses."
+      },
+      "close": "Listo",
+      "home": "Volver al Inicio"
+    }
+  }
+}
