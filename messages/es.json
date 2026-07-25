@@ -522,6 +522,20 @@
       }
     }
   },
+  "Referral": {
+    "meta": {
+      "title": "Consulta por referido",
+      "description": "Envía una consulta a Corevia a través de un socio de referidos."
+    },
+    "hero": {
+      "title": "Te refirieron a Corevia",
+      "description": "Un socio de confianza te presentó. Comparte algunos detalles y te responderemos con pasos claros."
+    },
+    "form": {
+      "title": "Cuéntanos qué necesitas",
+      "description": "Usa el campo opcional “Referido por” para indicar quién te presentó — luego completa la misma consulta breve que el resto de clientes."
+    }
+  },
   "Company": {
     "meta": {
       "title": "Empresa",

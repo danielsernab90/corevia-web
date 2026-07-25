@@ -522,6 +522,20 @@
       }
     }
   },
+  "Referral": {
+    "meta": {
+      "title": "Referral Inquiry",
+      "description": "Submit a referral-partner inquiry to Corevia."
+    },
+    "hero": {
+      "title": "Referred to Corevia",
+      "description": "You’ve been introduced by a trusted partner. Share a few details and we’ll follow up with clear next steps."
+    },
+    "form": {
+      "title": "Tell Us What You Need",
+      "description": "Use the optional “Referred by” field to note who introduced you — then walk through the same short inquiry as our other clients."
+    }
+  },
   "Company": {
     "meta": {
       "title": "Company",
