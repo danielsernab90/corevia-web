@@ -330,6 +330,13 @@
   box-shadow: 0 0 24px rgb(22 82 240 / 0.42);
 }
 
+/* Layered brand-blue glow for media/mockups — mirrors glow-text-brand-soft */
+@utility glow-brand-media {
+  box-shadow:
+    0 0 24px rgb(22 82 240 / 0.35),
+    0 0 48px rgb(22 82 240 / 0.2);
+}
+
 /*
  * Heading text glow — do NOT name this text-* (tailwind-merge strips text-h2).
  * Exact brand blue #1652F0.
