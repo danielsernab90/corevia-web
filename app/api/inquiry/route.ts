@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import os from "node:os";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -20,6 +21,13 @@ import {
 import { buildInquiryEmail } from "@/lib/inquiry-email";
 
 export const runtime = "nodejs";
+
+/** Keeps the local macOS username out of any publicly returned error text. */
+function redactHome(value: string | undefined): string | null {
+  if (!value) return null;
+  const home = os.homedir();
+  return home ? value.split(home).join("~") : value;
+}
 
 type InquiryBody = ConsultationFormData & {
   source?: string;
@@ -220,6 +228,16 @@ export async function POST(request: Request) {
       {
         error:
           "Could not save your inquiry. Please try again or contact us another way.",
+        // TEMPORARY: surfaces why each capture path failed so the Resend
+        // delivery issue can be diagnosed without Vercel log access.
+        // Remove once email delivery is confirmed working in production.
+        diagnostics: {
+          dbSaved,
+          dbError: redactHome(dbError),
+          emailSent: email.sent,
+          emailError: redactHome(email.skippedReason),
+          resendKeyPresent: Boolean(process.env.RESEND_API_KEY?.trim()),
+        },
       },
       { status: 500 }
     );
