@@ -363,8 +363,6 @@
     "confirmation": {
       "title": "¡Todo Listo!",
       "description": "Gracias por contactarnos — recibimos tu consulta.",
-      "unscheduledReachOut": "¿Aún no agendaste? Pronto recibirás una llamada o mensaje de texto de uno de nuestros asesores dedicados.",
-      "scheduledReachOut": "Tu consulta ya está en el calendario. Uno de nuestros asesores dedicados se pondrá en contacto contigo — te esperamos a la hora acordada, y te escribiremos por texto o WhatsApp si algo cambia.",
       "prepTitle": "Antes de conectar, considera preparar:",
       "checklist": {
         "challenges": "Piensa en tus mayores desafíos de negocio.",
@@ -534,11 +532,10 @@
       "title": "Software construido por quien te habla.",
       "description": "Cuando escribes, trabajas con el fundador — la misma persona que escribe el código. Sin colas de tickets. Sin gerentes de cuenta en el medio."
     },
-    "founder": {
-      "eyebrow": "Quién Está Detrás de Corevia",
-      "name": "Daniel Serna",
-      "dayToDay": "Atiende clientes y desarrolla aplicaciones de software.",
-      "background": "Experiencia práctica construyendo con Next.js, Supabase y Vercel."
+    "whatWeDo": {
+      "headline": "Lo Que Hacemos",
+      "body1": "Diseñamos y desarrollamos plataformas web y herramientas para tu negocio adaptadas a la forma en que tu empresa realmente opera — no plantillas genéricas.",
+      "body2": "Desde la primera conversación hasta el lanzamiento, trabajas con un equipo dedicado y enfocado en hacer las cosas bien."
     },
     "howWeWork": {
       "title": "Cómo Trabajamos",

@@ -105,12 +105,6 @@ export function ConsultationFormFlow({
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  /**
-   * True only when Calendly posts `calendly.event_scheduled`.
-   * Distinguishes confirmation copy: scheduled vs. "we'll call/text you".
-   */
-  const [scheduledViaCalendly, setScheduledViaCalendly] = useState(false);
-
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() ?? "";
   const hasCalendly = Boolean(calendlyUrl);
   const isModal = variant === "modal";
@@ -129,22 +123,6 @@ export function ConsultationFormFlow({
   useEffect(() => {
     onStepChange?.(step);
   }, [step, onStepChange]);
-
-  // Optional Calendly: listen for a successful booking so confirmation copy can differ.
-  // Never gates submission — Done/Finish still submits to /api/inquiry.
-  useEffect(() => {
-    if (!hasCalendly || !isSchedule) return;
-
-    const onMessage = (event: MessageEvent) => {
-      const data = event.data as { event?: string } | undefined;
-      if (data?.event === "calendly.event_scheduled") {
-        setScheduledViaCalendly(true);
-      }
-    };
-
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, [hasCalendly, isSchedule]);
 
   const updateField = <K extends keyof ConsultationFormData>(
     key: K,
@@ -591,12 +569,7 @@ export function ConsultationFormFlow({
               iconClassName="size-7"
               strokeWidth={2.25}
             />
-            <p className="text-center text-sm leading-relaxed text-muted-foreground">
-              {scheduledViaCalendly
-                ? tConfirm("scheduledReachOut")
-                : tConfirm("unscheduledReachOut")}
-            </p>
-            <p className="mt-6 font-medium text-foreground">
+            <p className="font-medium text-foreground">
               {tConfirm("prepTitle")}
             </p>
             <ul className="mt-4 space-y-3">

@@ -363,8 +363,6 @@
     "confirmation": {
       "title": "You're All Set!",
       "description": "Thanks for reaching out — we received your inquiry.",
-      "unscheduledReachOut": "Appointment not scheduled yet? You'll be receiving a call or text message from one of our dedicated consultants soon.",
-      "scheduledReachOut": "Your consultation is on the calendar. One of our dedicated consultants will be reaching out to you — we'll see you at the scheduled time, and we'll text or WhatsApp if anything changes.",
       "prepTitle": "Before we connect, consider preparing:",
       "checklist": {
         "challenges": "Think about your biggest business challenges.",
@@ -534,11 +532,10 @@
       "title": "Software built by the person who talks to you.",
       "description": "When you reach out, you work with the founder — the same person writing the code. No ticket queues. No account managers in between."
     },
-    "founder": {
-      "eyebrow": "Who's Behind Corevia",
-      "name": "Daniel Serna",
-      "dayToDay": "Services clients and develops software applications.",
-      "background": "Hands-on experience building with Next.js, Supabase, and Vercel."
+    "whatWeDo": {
+      "headline": "What We Do",
+      "body1": "We design and build web platforms and business tools tailored to how your company actually operates — not generic templates.",
+      "body2": "From first conversation to launch, you're working with a dedicated team focused on getting it right."
     },
     "howWeWork": {
       "title": "How We Work",
