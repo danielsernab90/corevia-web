@@ -13,6 +13,8 @@ const sectionVariants = cva("relative w-full", {
       none: "py-0",
       sm: "py-section-sm",
       md: "py-section",
+      /** ~20% tighter than md — used on book-consultation page */
+      tight: "py-section-tight",
       lg: "py-section-lg",
     },
     tone: {

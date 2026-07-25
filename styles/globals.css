@@ -22,6 +22,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -111,6 +112,8 @@
    */
   --spacing-section-sm: 4rem;
   --spacing-section: 6rem;
+  /* Book-consultation page rhythm — third pass: 25% under prior 4.8rem */
+  --spacing-section-tight: 3.6rem;
   --spacing-section-lg: 8rem;
   --spacing-gutter: 1.5rem;
   --spacing-gutter-lg: 2rem;
@@ -158,6 +161,8 @@
 
   --primary: #1652f0;
   --primary-foreground: #ffffff;
+  /* Opaque soft tint — prefer over primary/10 (OKLCH alpha can read lavender) */
+  --primary-soft: #e6f1fb;
 
   --secondary: #0b2f91;
   --secondary-foreground: #ffffff;
@@ -226,6 +231,7 @@
 
   --primary: #1652f0;
   --primary-foreground: #ffffff;
+  --primary-soft: color-mix(in srgb, #1652f0 22%, #121826);
 
   --secondary: #0b2f91;
   --secondary-foreground: #ffffff;
@@ -313,6 +319,55 @@
 
 @utility elevation-hover {
   box-shadow: var(--elevation-hover);
+}
+
+/* Soft ambient brand-blue glow — pills, cards, soft emphasis (#1652F0) */
+@utility glow-brand-soft {
+  box-shadow: 0 0 20px rgb(22 82 240 / 0.35);
+}
+
+@utility glow-brand-soft-strong {
+  box-shadow: 0 0 24px rgb(22 82 240 / 0.42);
+}
+
+/*
+ * Heading text glow — do NOT name this text-* (tailwind-merge strips text-h2).
+ * Exact brand blue #1652F0.
+ */
+@utility glow-text-brand-soft {
+  text-shadow:
+    0 0 24px rgb(22 82 240 / 0.35),
+    0 0 48px rgb(22 82 240 / 0.2);
+}
+
+/* Soft white heading glow for dark (#0B2F91) section backgrounds */
+@utility glow-text-white-soft {
+  text-shadow:
+    0 0 20px rgb(255 255 255 / 0.4),
+    0 0 40px rgb(255 255 255 / 0.2);
+}
+
+/* Soft breathing glow for the hero badge — brand blue, both themes */
+@keyframes hero-badge-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 14px rgb(22 82 240 / 0.28);
+  }
+  50% {
+    box-shadow: 0 0 24px rgb(22 82 240 / 0.45);
+  }
+}
+
+@utility animate-hero-badge-glow {
+  box-shadow: 0 0 14px rgb(22 82 240 / 0.28);
+  animation: hero-badge-glow 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-badge-glow {
+    animation: none;
+    box-shadow: 0 0 14px rgb(22 82 240 / 0.28);
+  }
 }
 
 @layer base {

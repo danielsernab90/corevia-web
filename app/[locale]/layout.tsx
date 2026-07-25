@@ -109,7 +109,10 @@ export default async function LocaleLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-dvh font-sans antialiased">
+      <body
+        className="min-h-dvh font-sans antialiased"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

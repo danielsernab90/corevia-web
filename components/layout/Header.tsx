@@ -11,7 +11,8 @@ import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { requestOpenBooking } from "@/lib/booking-events";
 import { cn } from "@/lib/utils";
 
 /** Full top-nav from this width up — collapses earlier under browser zoom. */
@@ -20,9 +21,11 @@ const DESKTOP_NAV_MQ = "(min-width: 1200px)";
 export function Header() {
   const t = useTranslations("Navigation");
   const tCommon = useTranslations("Common");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuId = useId();
+  const onBookConsultationPage = pathname === "/book-consultation";
 
   useEffect(() => {
     const onScroll = () => {
@@ -74,16 +77,28 @@ export function Header() {
               <ThemeToggle />
             </div>
 
-            {/* CTA only with full desktop nav — avoids crowding beside hamburger */}
-            <Link
-              href="/book-consultation"
-              className={cn(
-                buttonVariants({ size: "sm" }),
-                "hidden min-[1200px]:inline-flex"
-              )}
-            >
-              {t("primaryCta")}
-            </Link>
+            {/* CTA only with full desktop nav — avoids crowding beside hamburger.
+                On /book-consultation, open the shared booking modal instead of re-navigating. */}
+            {onBookConsultationPage ? (
+              <Button
+                type="button"
+                size="sm"
+                className="hidden min-[1200px]:inline-flex"
+                onClick={requestOpenBooking}
+              >
+                {t("primaryCta")}
+              </Button>
+            ) : (
+              <Link
+                href="/book-consultation"
+                className={cn(
+                  buttonVariants({ size: "sm" }),
+                  "hidden min-[1200px]:inline-flex"
+                )}
+              >
+                {t("primaryCta")}
+              </Link>
+            )}
 
             <Button
               type="button"

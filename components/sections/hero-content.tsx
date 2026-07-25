@@ -1,6 +1,5 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { HeroVisual } from "@/components/sections/hero-visual";
@@ -15,7 +14,6 @@ export type HeroContentProps = {
   description: string;
   primaryCta: string;
   secondaryCta: string;
-  trustItems: string[];
 };
 
 /**
@@ -30,7 +28,6 @@ export function HeroContent({
   description,
   primaryCta,
   secondaryCta,
-  trustItems,
 }: HeroContentProps) {
   const reduceMotion = useReducedMotion();
 
@@ -52,7 +49,7 @@ export function HeroContent({
         variants={reduceMotion ? undefined : staggerContainer}
       >
         <motion.div variants={reduceMotion ? undefined : staggerItem}>
-          <p className="mb-5 inline-flex w-fit items-center rounded-md border border-border bg-background px-2.5 py-1 text-label font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+          <p className="mb-5 inline-flex w-fit items-center rounded-md bg-surface px-2.5 py-1 text-label font-semibold tracking-[0.14em] text-secondary uppercase animate-hero-badge-glow dark:bg-surface dark:text-[#F5F7FB]">
             {badge}
           </p>
         </motion.div>
@@ -95,23 +92,6 @@ export function HeroContent({
             {secondaryCta}
           </Link>
         </motion.div>
-
-        <motion.ul
-          variants={reduceMotion ? undefined : staggerItem}
-          className="mt-8 grid w-full min-w-0 grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2 xl:grid-cols-3"
-        >
-          {trustItems.map((item) => (
-            <li
-              key={item}
-              className="flex min-w-0 items-center gap-2.5 text-sm text-muted-foreground"
-            >
-              <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-md bg-success/10 text-success">
-                <Check className="size-3.5" aria-hidden />
-              </span>
-              <span className="min-w-0 leading-snug">{item}</span>
-            </li>
-          ))}
-        </motion.ul>
       </motion.div>
 
       <div className="relative z-0 w-full min-w-0 self-center">

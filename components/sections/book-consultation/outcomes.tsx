@@ -39,7 +39,7 @@ export function Outcomes() {
   const t = useTranslations("BookConsultation.outcomes");
 
   return (
-    <Section tone="surface" spacing="md" aria-labelledby="outcomes-heading">
+    <Section tone="surface" spacing="tight" aria-labelledby="outcomes-heading">
       <Container size="xl">
         <SectionReveal>
           <Heading
@@ -60,7 +60,7 @@ export function Outcomes() {
                 <CardHover className="h-full">
                   <Card variant="feature" className="h-full">
                     <CardHeader>
-                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
                         <Icon className="size-5" {...coreviaIconProps} />
                       </span>
                       <CardTitle className="text-base font-semibold">

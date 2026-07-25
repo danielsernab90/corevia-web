@@ -26,7 +26,6 @@ export const footerNav = {
     { href: "/privacy", key: "privacy" },
     { href: "/terms", key: "terms" },
   ],
-  contact: [{ href: "/contact", key: "contact" }],
 } as const;
 
 export const socialLinks = [

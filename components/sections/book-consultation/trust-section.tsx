@@ -39,7 +39,7 @@ export function TrustSection() {
   return (
     <Section
       tone="gradient"
-      spacing="md"
+      spacing="tight"
       aria-labelledby="trust-heading"
       className="relative overflow-hidden"
     >
@@ -68,7 +68,7 @@ export function TrustSection() {
                 <CardHover className="h-full">
                   <Card variant="glass" className="h-full elevation-md">
                     <CardHeader>
-                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <span className="mb-3 inline-flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
                         <Icon className="size-5" {...coreviaIconProps} />
                       </span>
                       <CardTitle className="text-base font-semibold">

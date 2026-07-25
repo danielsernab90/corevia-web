@@ -6,6 +6,7 @@
 
 export const brandColors = {
   primary: "#1652F0",
+  primarySoft: "#E6F1FB",
   secondary: "#0B2F91",
   accent: "#1652F0",
   background: "#FFFFFF",

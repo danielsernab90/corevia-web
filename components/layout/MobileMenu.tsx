@@ -17,7 +17,8 @@ import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { requestOpenBooking } from "@/lib/booking-events";
 import { cn } from "@/lib/utils";
 
 type MobileMenuProps = {
@@ -39,6 +40,8 @@ export function MobileMenu({ open, onClose, brandLabel }: MobileMenuProps) {
   const t = useTranslations("Navigation");
   const tCommon = useTranslations("Common");
   const tFooter = useTranslations("Footer");
+  const pathname = usePathname();
+  const onBookConsultationPage = pathname === "/book-consultation";
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -167,16 +170,30 @@ export function MobileMenu({ open, onClose, brandLabel }: MobileMenuProps) {
                 className="w-full"
               />
 
-              <Link
-                href="/book-consultation"
-                onClick={onClose}
-                className={cn(
-                  buttonVariants({ size: "cta" }),
-                  "mt-2 w-full justify-center whitespace-normal text-center"
-                )}
-              >
-                {t("primaryCta")}
-              </Link>
+              {onBookConsultationPage ? (
+                <Button
+                  type="button"
+                  size="cta"
+                  className="mt-2 w-full justify-center whitespace-normal text-center"
+                  onClick={() => {
+                    onClose();
+                    requestOpenBooking();
+                  }}
+                >
+                  {t("primaryCta")}
+                </Button>
+              ) : (
+                <Link
+                  href="/book-consultation"
+                  onClick={onClose}
+                  className={cn(
+                    buttonVariants({ size: "cta" }),
+                    "mt-2 w-full justify-center whitespace-normal text-center"
+                  )}
+                >
+                  {t("primaryCta")}
+                </Link>
+              )}
             </div>
 
             <div className="mt-auto shrink-0 space-y-4 border-t border-border px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">

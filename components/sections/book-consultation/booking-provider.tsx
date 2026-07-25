@@ -4,10 +4,13 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
+
+import { OPEN_BOOKING_EVENT } from "@/lib/booking-events";
 
 type BookingContextValue = {
   open: boolean;
@@ -23,6 +26,12 @@ export function BookingProvider({ children }: { children: ReactNode }) {
 
   const openBooking = useCallback(() => setOpen(true), []);
   const closeBooking = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    const onOpenRequest = () => setOpen(true);
+    window.addEventListener(OPEN_BOOKING_EVENT, onOpenRequest);
+    return () => window.removeEventListener(OPEN_BOOKING_EVENT, onOpenRequest);
+  }, []);
 
   const value = useMemo(
     () => ({ open, openBooking, closeBooking, setOpen }),

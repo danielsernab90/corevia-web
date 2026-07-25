@@ -142,6 +142,10 @@ export const glowPulse = {
  * Consultation illustration — viewport entrance.
  * Opacity + transform only (GPU-friendly). Once via whileInView.
  */
+/**
+ * Illustration fades in first, then the card stack enters.
+ * `delayChildren` holds the cards back so the artwork reads on its own.
+ */
 export const consultationVisualFrame: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -150,8 +154,8 @@ export const consultationVisualFrame: Variants = {
       duration: 0.5,
       ease: motionEasing,
       when: "beforeChildren",
-      delayChildren: 0.12,
-      staggerChildren: 0.26,
+      delayChildren: 1.4,
+      staggerChildren: 0.36,
     },
   },
 };

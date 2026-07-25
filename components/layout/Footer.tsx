@@ -36,13 +36,6 @@ export async function Footer() {
         label: t(item.key),
       })),
     },
-    {
-      title: t("contact"),
-      links: footerNav.contact.map((item) => ({
-        href: item.href,
-        label: t(item.key),
-      })),
-    },
   ] as const;
 
   return (
@@ -56,7 +49,7 @@ export async function Footer() {
             </Text>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {columns.map((column) => (
               <div key={column.title} className="space-y-3">
                 <p className="text-caption font-semibold tracking-wide text-foreground uppercase">

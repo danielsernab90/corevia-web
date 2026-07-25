@@ -16,7 +16,7 @@ export function BookingCta() {
   return (
     <Section
       tone="dark"
-      spacing="md"
+      spacing="tight"
       aria-labelledby="booking-cta-heading"
       className="relative overflow-hidden"
     >

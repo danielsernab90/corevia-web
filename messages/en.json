@@ -59,12 +59,11 @@
     "primaryCta": "Book a Free Consultation",
     "secondaryCta": "Explore Our Work",
     "trust": {
-      "customSoftware": "Custom Software",
-      "aiSolutions": "AI Solutions",
-      "webMobile": "Web & Mobile Apps",
-      "automation": "Business Automation",
-      "integrations": "System Integrations",
-      "growth": "Built for Growth"
+      "automate": "Automate the busywork",
+      "organize": "Organize your operations",
+      "revenue": "Increase your revenue",
+      "saveTime": "Save hours weekly",
+      "visibility": "See everything in one place"
     },
     "visual": {
       "label": "Abstract visualization of Corevia software, AI, and automation systems",
@@ -99,8 +98,10 @@
       "highlights": {
         "free": "Free Consultation",
         "duration": "15–30 Minute Strategy Session",
+        "personalized": "Personalized Recommendations",
         "noObligation": "No Obligation",
-        "personalized": "Personalized Recommendations"
+        "assessment": "AI & Business Assessment",
+        "actionable": "Actionable Next Steps"
       },
       "visualLabel": "Premium illustration of a Corevia strategy consultation",
       "visual": {
@@ -174,6 +175,7 @@
       "title": "How the Consultation Works",
       "durationLabel": "Typical consultation:",
       "duration": "15–30 minutes",
+      "whatsappNote": "Prefer to text? We get it — busy schedules happen. Reach out via WhatsApp instead.",
       "stepLabel": "Step {number}",
       "steps": {
         "learn": "Learn About Your Business",
@@ -266,7 +268,7 @@
         "businessName": "Business Name",
         "email": "Email Address",
         "phone": "Phone Number",
-        "phoneOptional": "Optional",
+        "businessNameOptional": "Optional",
         "industry": "Industry",
         "role": "What Best Describes Your Role?",
         "companySize": "Company Size",
@@ -338,6 +340,8 @@
       "errors": {
         "required": "This field is required.",
         "email": "Please enter a valid email address.",
+        "phoneRequired": "Phone number is required",
+        "phone": "Please enter a valid phone number.",
         "services": "Please select at least one service.",
         "otherService": "Please tell us what you're looking for."
       },
@@ -355,6 +359,268 @@
       },
       "close": "Done",
       "home": "Back to Home"
+    }
+  },
+  "Services": {
+    "meta": {
+      "title": "Services",
+      "description": "Custom software, AI, automation, and digital platforms — reach out, get a fixed-price quote tailored to your needs, and we build it."
+    },
+    "hero": {
+      "title": "Build Software That Moves Your Business Forward.",
+      "description": "Automate busywork, organize operations, and launch custom platforms built around how you work — not generic off-the-shelf tools.",
+      "pricingNote": "Tell us what you need. We’ll review your goals and send a clear fixed-price quote — no public pricing tiers, no surprises.",
+      "primaryCta": "Start Your Inquiry"
+    },
+    "categories": {
+      "title": "What We Build",
+      "description": "From custom platforms to AI automation — choose the capability that fits, or combine several into one system.",
+      "items": {
+        "software": {
+          "title": "Custom Software Platforms",
+          "description": "Purpose-built systems that match your workflows, data, and growth — designed to replace spreadsheets and fragmented tools."
+        },
+        "ai": {
+          "title": "AI Solutions & Automation",
+          "description": "Automate repetitive work, surface insights, and add AI where it creates real leverage for your team."
+        },
+        "apps": {
+          "title": "Web & Mobile Apps",
+          "description": "Modern apps your customers and staff actually want to use — fast, clear, and built for lasting quality."
+        },
+        "integrations": {
+          "title": "System Integrations",
+          "description": "Connect the tools you already rely on so data flows cleanly and teams stop double-entering everything."
+        },
+        "dashboards": {
+          "title": "Dashboards & Reporting",
+          "description": "See the metrics that matter in one place — live visibility for decisions, not buried spreadsheet exports."
+        },
+        "cloud": {
+          "title": "Cloud Infrastructure",
+          "description": "Reliable, scalable foundations for your product — secure hosting, environments, and operational readiness."
+        }
+      }
+    },
+    "process": {
+      "title": "How It Works",
+      "description": "A simple path from first message to delivered software.",
+      "stepLabel": "Step {number}",
+      "steps": {
+        "reachOut": {
+          "title": "Reach out",
+          "description": "Tell us about your business and what you need help with."
+        },
+        "fixedPrice": {
+          "title": "Get a fixed price",
+          "description": "We review your needs and send a clear quote — no surprises."
+        },
+        "build": {
+          "title": "We build it",
+          "description": "Your custom platform, built and delivered to move your business forward."
+        }
+      }
+    },
+    "inquiry": {
+      "title": "Tell Us What You Need",
+      "description": "Share a few details and we’ll follow up with next steps and a fixed-price quote tailored to your project."
+    }
+  },
+  "Work": {
+    "meta": {
+      "title": "Our Work",
+      "description": "Real software built for real businesses — finance, operations, and portfolio platforms designed around how teams actually work."
+    },
+    "hero": {
+      "title": "Real Software. Real Businesses.",
+      "description": "See what we've built for businesses like yours."
+    },
+    "cases": {
+      "title": "Selected Work",
+      "description": "Product screenshots from platforms we've designed and delivered — shown by industry, not by client name.",
+      "items": {
+        "financial": {
+          "category": "Real Estate Finance & Reporting",
+          "title": "Automated P&L reporting",
+          "outcome": "Manual spreadsheet tracking → automated P&L reports with exportable financials.",
+          "imageAlt": "Screenshot of an automated profit and loss reporting dashboard with income, expenses, and export options",
+          "tags": {
+            "0": "Income & expense tracking",
+            "1": "CSV/Excel/PDF export",
+            "2": "Visual breakdowns"
+          }
+        },
+        "vidaGreen": {
+          "category": "Food & Beverage Delivery Operations",
+          "title": "Live operations dashboard",
+          "outcome": "Manual order tracking → real-time dashboard with sales, cash flow, and delivery status.",
+          "imageAlt": "Screenshot of a food and beverage operations dashboard showing revenue, orders, and delivery status",
+          "tags": {
+            "0": "Order management",
+            "1": "Revenue tracking",
+            "2": "Delivery coordination"
+          }
+        },
+        "portfolio": {
+          "category": "Property Portfolio Management",
+          "title": "Consolidated portfolio view",
+          "outcome": "Manual Excel tracking → consolidated real estate portfolio with automated equity calculations.",
+          "imageAlt": "Screenshot of a property portfolio management dashboard with total equity, rental income, and quick actions",
+          "tags": {
+            "0": "Multi-property tracking",
+            "1": "Automated equity/net worth calculation",
+            "2": "Rental income monitoring"
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "Want something built for your business?",
+      "description": "Tell us what you need — we’ll review your goals and send a clear fixed-price quote.",
+      "button": "Start Your Inquiry",
+      "textNote": "Prefer to text? We get it — WhatsApp works too."
+    }
+  },
+  "Contact": {
+    "meta": {
+      "title": "Contact",
+      "description": "Get in touch with Corevia — talk directly with the person building your software. Based in Colombia, serving businesses across Colombia and the US."
+    },
+    "hero": {
+      "title": "Contact Corevia",
+      "description": "Reach out through the form — we’ll follow up with clear next steps."
+    },
+    "details": {
+      "eyebrow": "Contact",
+      "title": "Get in Touch",
+      "framing": "You’ll be talking directly with the person building your software — not a support queue.",
+      "items": {
+        "location": {
+          "label": "Service area",
+          "value": "Based in Colombia, serving businesses across Colombia and the US."
+        },
+        "response": {
+          "label": "Response time",
+          "value": "We typically respond within 24 hours."
+        },
+        "hours": {
+          "label": "Business hours",
+          "value": "Monday–Friday, 9:00 AM – 6:00 PM (Colombia Time)."
+        }
+      }
+    }
+  },
+  "Company": {
+    "meta": {
+      "title": "Company",
+      "description": "Corevia is founder-led software — you talk directly with the person building your platforms and applications."
+    },
+    "hero": {
+      "title": "Software built by the person who talks to you.",
+      "description": "When you reach out, you work with the founder — the same person writing the code. No ticket queues. No account managers in between."
+    },
+    "founder": {
+      "eyebrow": "Who's Behind Corevia",
+      "name": "Daniel Serna",
+      "dayToDay": "Services clients and develops software applications.",
+      "background": "Hands-on experience building with Next.js, Supabase, and Vercel."
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "description": "Every project gets direct attention from start to finish. No handoffs. No account management layer. You stay in touch with the person building your software — the same commitment from first conversation through delivery."
+    },
+    "stack": {
+      "title": "What I Build With",
+      "builds": "Web platforms and applications tailored to each business.",
+      "benefit": "This stack delivers fast performance, reliable infrastructure, and room to scale as your business grows.",
+      "items": {
+        "nextjs": "Next.js",
+        "supabase": "Supabase",
+        "vercel": "Vercel",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS"
+      }
+    },
+    "cta": {
+      "title": "Ready to talk about your business?",
+      "description": "Tell us what you need — we’ll review your goals and follow up with clear next steps.",
+      "button": "Start Your Inquiry",
+      "textNote": "Prefer to text? We get it — WhatsApp works too."
+    }
+  },
+  "Privacy": {
+    "meta": {
+      "title": "Privacy Policy",
+      "description": "How Corevia collects and uses information submitted through this website."
+    },
+    "title": "Privacy Policy",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdated": "July 24, 2026",
+    "intro": "CoreVia (“we,” “us,” “our”) respects your privacy. This policy explains what information we collect through this website and how we use it.",
+    "sections": {
+      "collect": {
+        "heading": "Information We Collect",
+        "body": "When you submit an inquiry through our contact form, we collect: your name, phone number, email address, business name (if provided), and any details you share about your project needs."
+      },
+      "use": {
+        "heading": "How We Use Your Information",
+        "body": "We use this information solely to respond to your inquiry, discuss your project, and provide a quote. We do not sell, rent, or share your information with third parties for marketing purposes."
+      },
+      "retention": {
+        "heading": "Data Retention",
+        "body": "We retain inquiry information for as long as needed to respond to your request and maintain a record of our business communications. If you’d like your information removed, contact us directly."
+      },
+      "clientPlatforms": {
+        "heading": "Client Software Platforms",
+        "body": "This policy covers information collected through this website only. If you become a client, the software platform we build for your business (including any data stored within it) is governed by a separate service agreement established directly with you, not by this policy."
+      },
+      "contact": {
+        "heading": "Contact",
+        "body": "Questions about this policy can be directed to us via the contact form on this site or through WhatsApp."
+      }
+    }
+  },
+  "Terms": {
+    "meta": {
+      "title": "Terms of Service",
+      "description": "Terms governing use of the Corevia website, including warranty and liability information."
+    },
+    "title": "Terms of Service",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdated": "July 24, 2026",
+    "sections": {
+      "use": {
+        "heading": "Use of This Website",
+        "body": "This website provides information about CoreVia’s software development services. By using this site, you agree not to misuse it, attempt unauthorized access, or use its content for purposes other than evaluating our services."
+      },
+      "pricing": {
+        "heading": "No Public Pricing",
+        "body": "Pricing, project scope, and engagement terms are determined individually per client based on submitted requirements. Nothing on this website constitutes a binding quote or offer — pricing is provided only after direct communication and is documented in a separate agreement."
+      },
+      "warranty": {
+        "heading": "30-Day Warranty",
+        "body": "Once a project is delivered, CoreVia provides a 30-day warranty period during which we will address and resolve issues, bugs, or requested adjustments that fall within the original agreed scope of work, at no additional cost. Requests outside the original scope may be treated as new work and quoted separately."
+      },
+      "ownership": {
+        "heading": "Content Ownership",
+        "body": "All content on this website (text, images, branding) is the property of CoreVia unless otherwise noted, and may not be reproduced without permission."
+      },
+      "noWarranty": {
+        "heading": "No Warranty",
+        "body": "This website is provided “as is.” While we strive for accuracy, we make no guarantees regarding the completeness or timeliness of information presented here."
+      },
+      "liability": {
+        "heading": "Limitation of Liability",
+        "body": "CoreVia is not liable for any indirect, incidental, or consequential damages arising from use of this website. Services rendered to clients are governed by separately executed agreements, not by these terms."
+      },
+      "changes": {
+        "heading": "Changes to These Terms",
+        "body": "We may update these terms from time to time. Continued use of the site after changes constitutes acceptance of the updated terms."
+      },
+      "contact": {
+        "heading": "Contact",
+        "body": "Questions about these terms can be directed to us via the contact form on this site or through WhatsApp."
+      }
     }
   }
 }

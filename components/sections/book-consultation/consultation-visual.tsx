@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 import { coreviaIconProps } from "@/lib/icons";
 import {
@@ -35,19 +36,19 @@ const cards: VisualCardConfig[] = [
   {
     key: "card1",
     Icon: CalendarClock,
-    iconTone: "bg-primary/10 text-primary",
+    iconTone: "bg-primary-soft text-primary",
     kind: "session",
   },
   {
     key: "card2",
     Icon: Sparkles,
-    iconTone: "bg-secondary/10 text-secondary",
+    iconTone: "bg-primary-soft text-primary",
     kind: "detail",
   },
   {
     key: "card3",
     Icon: Map,
-    iconTone: "bg-primary/10 text-primary",
+    iconTone: "bg-primary-soft text-primary",
     kind: "detail",
   },
 ];
@@ -76,10 +77,23 @@ export function ConsultationVisual({ className }: ConsultationVisualProps) {
         aria-label={t("visualLabel")}
         className="relative min-h-[24rem] w-full overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-surface via-background to-muted elevation-md sm:aspect-[4/3] sm:min-h-0"
       >
+        {/* Illustration backdrop — renders first, full/consistent opacity, no fade */}
+        <Image
+          src="/images/hero-illustration.png"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 32rem, 42vw"
+          className="absolute inset-0 z-0 object-cover"
+        />
+        {/* Subtle dark overlay so the white cards read clearly over the artwork */}
+        <div aria-hidden className="absolute inset-0 z-0 bg-black/20" />
+
         {/* Living background — glow + drifting grid + faint particles */}
         <LivingBackground reduceMotion={Boolean(reduceMotion)} />
 
-        <div className="absolute inset-0 flex items-center justify-center p-5 sm:p-7">
+        <div className="absolute inset-0 z-10 flex items-center justify-center p-5 sm:p-7">
           <div className="relative w-full max-w-sm space-y-2.5 sm:space-y-3">
             {cards.map((card) => {
               const Icon = card.Icon;
@@ -91,7 +105,7 @@ export function ConsultationVisual({ className }: ConsultationVisualProps) {
                       ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
                       : consultationVisualCard
                   }
-                  className="rounded-xl border border-border/80 bg-background/80 p-3.5 shadow-md backdrop-blur-md sm:rounded-2xl sm:p-4"
+                  className="rounded-xl border border-border/80 bg-background/92 p-3.5 shadow-[0_10px_30px_rgb(0_0_0/0.08),0_0_24px_rgb(22_82_240/0.25)] backdrop-blur-md sm:rounded-2xl sm:p-4"
                 >
                   <div className="flex items-start gap-3">
                     <motion.span

@@ -1,10 +1,10 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { BrandCheckBadge } from "@/components/shared/brand-check-badge";
 import { Heading } from "@/components/shared/heading";
 import { FadeUp, SectionReveal } from "@/components/shared/motion";
 
@@ -14,7 +14,7 @@ export function WhatToExpect() {
   const t = useTranslations("BookConsultation.expect");
 
   return (
-    <Section tone="white" spacing="md" aria-labelledby="expect-heading">
+    <Section tone="white" spacing="tight" aria-labelledby="expect-heading">
       <Container size="md">
         <SectionReveal>
           <Heading id="expect-heading" size="h2" align="center" className="tracking-tight">
@@ -30,9 +30,7 @@ export function WhatToExpect() {
           <ul className="mt-5 space-y-4">
             {expectKeys.map((key) => (
               <li key={key} className="flex gap-3 text-muted-foreground">
-                <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-                  <Check className="size-3.5" aria-hidden />
-                </span>
+                <BrandCheckBadge className="mt-0.5" />
                 <span className="leading-relaxed">{t(`items.${key}`)}</span>
               </li>
             ))}

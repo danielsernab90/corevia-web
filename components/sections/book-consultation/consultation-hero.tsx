@@ -1,6 +1,5 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -8,6 +7,7 @@ import { useBooking } from "@/components/sections/book-consultation/booking-prov
 import { ConsultationVisual } from "@/components/sections/book-consultation/consultation-visual";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { BrandCheckBadge } from "@/components/shared/brand-check-badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { staggerContainer, staggerItem } from "@/lib/motion";
@@ -16,8 +16,10 @@ import { cn } from "@/lib/utils";
 const highlightKeys = [
   "free",
   "duration",
-  "noObligation",
   "personalized",
+  "noObligation",
+  "assessment",
+  "actionable",
 ] as const;
 
 export function ConsultationHero() {
@@ -54,7 +56,7 @@ export function ConsultationHero() {
             <motion.h1
               id="consultation-hero-heading"
               variants={staggerItem}
-              className="w-full max-w-3xl font-sans text-hero font-semibold tracking-tight text-foreground"
+              className="w-full max-w-3xl font-sans text-hero font-semibold tracking-tight text-foreground glow-text-brand-soft"
             >
               {t("title")}
             </motion.h1>
@@ -68,37 +70,36 @@ export function ConsultationHero() {
 
             <motion.div
               variants={staggerItem}
-              className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+              className="mx-auto mt-8 flex w-full max-w-2xl flex-col items-stretch lg:mx-0"
             >
-              <Button type="button" size="cta" onClick={openBooking}>
-                {t("primaryCta")}
-              </Button>
-              <Link
-                href="/services"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "cta" })
-                )}
-              >
-                {t("secondaryCta")}
-              </Link>
-            </motion.div>
-
-            <motion.ul
-              variants={staggerItem}
-              className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2"
-            >
-              {highlightKeys.map((key) => (
-                <li
-                  key={key}
-                  className="flex items-center gap-2.5 text-sm text-muted-foreground"
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button type="button" size="cta" onClick={openBooking}>
+                  {t("primaryCta")}
+                </Button>
+                <Link
+                  href="/services"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "cta" })
+                  )}
                 >
-                  <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-md bg-success/10 text-success">
-                    <Check className="size-3.5" aria-hidden />
-                  </span>
-                  <span>{t(`highlights.${key}`)}</span>
-                </li>
-              ))}
-            </motion.ul>
+                  {t("secondaryCta")}
+                </Link>
+              </div>
+
+              <ul className="mt-10 grid w-full min-w-0 grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+                {highlightKeys.map((key) => (
+                  <li
+                    key={key}
+                    className="flex min-w-0 items-center gap-2.5 text-sm text-muted-foreground"
+                  >
+                    <BrandCheckBadge className="mt-0.5" />
+                    <span className="min-w-0 leading-snug">
+                      {t(`highlights.${key}`)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </motion.div>
 
           <ConsultationVisual />

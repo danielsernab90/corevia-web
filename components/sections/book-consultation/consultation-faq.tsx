@@ -18,7 +18,7 @@ export function ConsultationFaq() {
   const t = useTranslations("BookConsultation.faq");
 
   return (
-    <Section tone="white" spacing="md" aria-labelledby="faq-heading">
+    <Section tone="white" spacing="tight" aria-labelledby="faq-heading">
       <Container size="md">
         <SectionReveal>
           <Heading
