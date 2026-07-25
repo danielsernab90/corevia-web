@@ -157,7 +157,7 @@ export function insertCoreviaInquiry(data: CoreviaInquiryInsert): void {
     companySize: data.companySize || null,
     services: JSON.stringify(data.services),
     otherService: data.otherService.trim() ? data.otherService.trim() : null,
-    challenge: data.challenge,
+    challenge: data.challenge.trim() ? data.challenge.trim() : null,
     source: data.source ?? "website",
   });
 }

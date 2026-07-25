@@ -63,7 +63,8 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
     ? servicesRaw.map((item) => String(item))
     : [];
 
-  if (!fullName || !email || !phone || !challenge) {
+  // challenge is optional — only contact essentials are required.
+  if (!fullName || !email || !phone) {
     return { ok: false, error: "Missing required fields." };
   }
   if (!isValidEmail(email)) {
@@ -150,7 +151,7 @@ async function sendInquiryEmailNotification(
         data.otherService ? `Other service: ${data.otherService}` : null,
         "",
         "Challenge:",
-        data.challenge,
+        data.challenge.trim() ? data.challenge : "(not provided)",
         "",
         `Source: ${data.source ?? "website"}`,
         `DB: ${getCommandStationDbPath()}`,

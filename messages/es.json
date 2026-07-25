@@ -266,10 +266,10 @@
         },
         "schedule": {
           "title": "Agenda Tu Consulta",
-          "description": "Ya casi terminas. Haz clic en Finalizar y Daniel te contactará directamente para coordinar un horario.",
+          "description": "Ya casi terminas. Haz clic en Finalizar y uno de nuestros asesores dedicados se pondrá en contacto contigo para coordinar un horario.",
           "descriptionWithCalendly": "Opcional: elige un horario abajo, o haz clic en Finalizar y te contactaremos para coordinar.",
           "optionalHint": "¿Quieres elegir un horario ahora? Agenda abajo, o haz clic en Finalizar y te contactaremos para coordinar.",
-          "doneHint": "No hace falta reservar un horario aquí — haz clic en Finalizar y Daniel te escribirá por texto o WhatsApp para encontrar un momento que te funcione.",
+          "doneHint": "No hace falta reservar un horario aquí — haz clic en Finalizar y uno de nuestros asesores dedicados te escribirá por texto o WhatsApp para encontrar un momento que te funcione.",
           "continue": "Continuar para Agendar Mi Consulta"
         }
       },
@@ -363,8 +363,8 @@
     "confirmation": {
       "title": "¡Todo Listo!",
       "description": "Gracias por contactarnos — recibimos tu consulta.",
-      "unscheduledReachOut": "¿Aún no agendaste? Pronto recibirás una llamada o mensaje de texto de uno de nuestros representantes.",
-      "scheduledReachOut": "Tu consulta ya está en el calendario. Te esperamos a la hora acordada — y te escribiremos por texto o WhatsApp si algo cambia.",
+      "unscheduledReachOut": "¿Aún no agendaste? Pronto recibirás una llamada o mensaje de texto de uno de nuestros asesores dedicados.",
+      "scheduledReachOut": "Tu consulta ya está en el calendario. Uno de nuestros asesores dedicados se pondrá en contacto contigo — te esperamos a la hora acordada, y te escribiremos por texto o WhatsApp si algo cambia.",
       "prepTitle": "Antes de conectar, considera preparar:",
       "checklist": {
         "challenges": "Piensa en tus mayores desafíos de negocio.",
@@ -545,7 +545,7 @@
       "description": "Cada proyecto recibe atención directa de principio a fin. Sin traspasos. Sin capa de gestión de cuentas. Te mantienes en contacto con quien construye tu software — el mismo compromiso desde la primera conversación hasta la entrega."
     },
     "stack": {
-      "title": "Con Qué Construyo",
+      "title": "Con Qué Construimos",
       "builds": "Plataformas web y aplicaciones hechas a la medida de cada negocio.",
       "benefit": "Este stack ofrece rendimiento rápido, infraestructura confiable y espacio para escalar a medida que crece tu negocio.",
       "items": {

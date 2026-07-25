@@ -266,10 +266,10 @@
         },
         "schedule": {
           "title": "Schedule Your Consultation",
-          "description": "You're almost done. Click Finish and Daniel will reach out directly to coordinate a time.",
+          "description": "You're almost done. Click Finish and one of our dedicated consultants will be reaching out to you to coordinate a time.",
           "descriptionWithCalendly": "Optional: pick a time below, or just click Finish and we'll reach out to coordinate.",
           "optionalHint": "Want to pick a specific time now? Schedule below, or just click Finish and we'll reach out to coordinate.",
-          "doneHint": "No need to book a slot here — click Finish and Daniel will text or WhatsApp you to find a time that works.",
+          "doneHint": "No need to book a slot here — click Finish and one of our dedicated consultants will text or WhatsApp you to find a time that works.",
           "continue": "Continue to Schedule My Consultation"
         }
       },
@@ -363,8 +363,8 @@
     "confirmation": {
       "title": "You're All Set!",
       "description": "Thanks for reaching out — we received your inquiry.",
-      "unscheduledReachOut": "Appointment not scheduled yet? You'll be receiving a call or text message from one of our representatives soon.",
-      "scheduledReachOut": "Your consultation is on the calendar. We'll see you at the scheduled time — and we'll text or WhatsApp if anything changes.",
+      "unscheduledReachOut": "Appointment not scheduled yet? You'll be receiving a call or text message from one of our dedicated consultants soon.",
+      "scheduledReachOut": "Your consultation is on the calendar. One of our dedicated consultants will be reaching out to you — we'll see you at the scheduled time, and we'll text or WhatsApp if anything changes.",
       "prepTitle": "Before we connect, consider preparing:",
       "checklist": {
         "challenges": "Think about your biggest business challenges.",
@@ -545,7 +545,7 @@
       "description": "Every project gets direct attention from start to finish. No handoffs. No account management layer. You stay in touch with the person building your software — the same commitment from first conversation through delivery."
     },
     "stack": {
-      "title": "What I Build With",
+      "title": "What We Build With",
       "builds": "Web platforms and applications tailored to each business.",
       "benefit": "This stack delivers fast performance, reliable infrastructure, and room to scale as your business grows.",
       "items": {

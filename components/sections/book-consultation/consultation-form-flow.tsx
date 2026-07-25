@@ -207,9 +207,7 @@ export function ConsultationFormFlow({
       }
     }
 
-    if (current === 3) {
-      if (!form.challenge.trim()) nextErrors.challenge = t("errors.required");
-    }
+    // Step 3 (challenge) is optional — no validation.
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
