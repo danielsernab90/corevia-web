@@ -45,3 +45,4 @@ next-env.d.ts
 
 # Local visual verification artifacts
 tmp-verify/
+test-results/
