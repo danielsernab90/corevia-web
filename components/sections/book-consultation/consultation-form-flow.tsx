@@ -105,6 +105,12 @@ export function ConsultationFormFlow({
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  /**
+   * Records whether Calendly confirmed a real booking, so the notification
+   * email can say which path the client took. This never gates submission —
+   * Finish always works, scheduled or not.
+   */
+  const [scheduledViaCalendly, setScheduledViaCalendly] = useState(false);
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() ?? "";
   const hasCalendly = Boolean(calendlyUrl);
   const isModal = variant === "modal";
@@ -123,6 +129,24 @@ export function ConsultationFormFlow({
   useEffect(() => {
     onStepChange?.(step);
   }, [step, onStepChange]);
+
+  // Listen for Calendly's booking confirmation only to record the path taken.
+  useEffect(() => {
+    if (!hasCalendly) return;
+
+    const onMessage = (event: MessageEvent) => {
+      if (typeof event.origin === "string" && !event.origin.includes("calendly.com")) {
+        return;
+      }
+      const eventName = (event.data as { event?: unknown } | null)?.event;
+      if (eventName === "calendly.event_scheduled") {
+        setScheduledViaCalendly(true);
+      }
+    };
+
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [hasCalendly]);
 
   const updateField = <K extends keyof ConsultationFormData>(
     key: K,
@@ -199,7 +223,7 @@ export function ConsultationFormFlow({
       const response = await fetch("/api/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, scheduledViaCalendly }),
       });
 
       const payload = (await response.json().catch(() => null)) as {
@@ -247,11 +271,7 @@ export function ConsultationFormFlow({
     onRequestClose?.();
   }, [onRequestClose]);
 
-  const progressLabel = isConfirmation
-    ? tConfirm("title")
-    : isSchedule
-      ? t("steps.schedule.title")
-      : t("stepOf", { current: step + 1, total: FORM_STEPS });
+  const progressLabel = t("stepOf", { current: step + 1, total: FORM_STEPS });
 
   const stepTitle =
     step === 0
@@ -292,12 +312,14 @@ export function ConsultationFormFlow({
     >
       <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
         <div className="min-w-0">
-          <p className="text-caption font-medium tracking-wide text-muted-foreground uppercase">
-            {progressLabel}
-          </p>
+          {!isSchedule && !isConfirmation ? (
+            <p className="text-caption font-medium tracking-wide text-muted-foreground uppercase">
+              {progressLabel}
+            </p>
+          ) : null}
           {isConfirmation ? (
             <>
-              <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
+              <Title className="font-sans text-h3 font-semibold tracking-tight text-foreground">
                 {tConfirm("title")}
               </Title>
               <Description className="mt-1 text-sm text-muted-foreground">
@@ -306,12 +328,12 @@ export function ConsultationFormFlow({
             </>
           ) : isSchedule ? (
             <>
-              <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
+              <Title className="font-sans text-h3 font-semibold tracking-tight text-foreground">
                 {t("steps.schedule.title")}
               </Title>
               <Description className="mt-1 text-sm text-muted-foreground">
                 {hasCalendly
-                  ? t("steps.schedule.descriptionWithCalendly")
+                  ? t("steps.schedule.optionalHint")
                   : t("steps.schedule.description")}
               </Description>
             </>
@@ -516,16 +538,11 @@ export function ConsultationFormFlow({
             {isSchedule ? (
               <div className="space-y-4">
                 {hasCalendly && calendlySrc ? (
-                  <>
-                    <p className="text-sm text-muted-foreground">
-                      {t("steps.schedule.optionalHint")}
-                    </p>
-                    <iframe
-                      title={t("steps.schedule.title")}
-                      src={calendlySrc}
-                      className="h-[min(52dvh,480px)] w-full rounded-xl border border-border bg-background"
-                    />
-                  </>
+                  <iframe
+                    title={t("steps.schedule.title")}
+                    src={calendlySrc}
+                    className="h-[min(52dvh,480px)] w-full rounded-xl border border-border bg-background"
+                  />
                 ) : (
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     {t("steps.schedule.doneHint")}

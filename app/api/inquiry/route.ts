@@ -17,11 +17,14 @@ import {
   isValidEmail,
   isValidPhone,
 } from "@/lib/consultation-validation";
+import { buildInquiryEmail } from "@/lib/inquiry-email";
 
 export const runtime = "nodejs";
 
 type InquiryBody = ConsultationFormData & {
   source?: string;
+  /** True only when Calendly confirmed a real booking on the schedule step. */
+  scheduledViaCalendly?: boolean;
 };
 
 function isIndustry(value: string): value is ConsultationFormData["industry"] {
@@ -57,6 +60,7 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
   const otherService = String(body.otherService ?? "").trim();
   const challenge = String(body.challenge ?? "").trim();
   const source = String(body.source ?? "website").trim() || "website";
+  const scheduledViaCalendly = body.scheduledViaCalendly === true;
 
   const servicesRaw = body.services;
   const services = Array.isArray(servicesRaw)
@@ -109,13 +113,15 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
       otherService,
       challenge,
       source,
+      scheduledViaCalendly,
     },
   };
 }
 
 async function sendInquiryEmailNotification(
   id: string,
-  data: InquiryBody
+  data: InquiryBody,
+  meta: { dbSaved: boolean }
 ): Promise<{ sent: boolean; skippedReason?: string }> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const to = process.env.INQUIRY_NOTIFY_EMAIL?.trim() || "danielsernab90@gmail.com";
@@ -129,35 +135,26 @@ async function sendInquiryEmailNotification(
     return { sent: false, skippedReason: "RESEND_API_KEY not configured" };
   }
 
+  const maskedKey =
+    apiKey.length > 8
+      ? `${apiKey.slice(0, 5)}…${apiKey.slice(-4)} (len ${apiKey.length})`
+      : `<len ${apiKey.length}>`;
+  console.log(
+    `[inquiry] Attempting to send email via Resend — key ${maskedKey}, from="${from}", to="${to}"`
+  );
+
   try {
     const resend = new Resend(apiKey);
-    const servicesList = data.services.join(", ");
+    const { subject, text, html } = buildInquiryEmail(id, data, {
+      dbSaved: meta.dbSaved,
+      dbPath: getCommandStationDbPath(),
+    });
     const { error } = await resend.emails.send({
       from,
       to: [to],
-      subject: `New Corevia inquiry from ${data.fullName}`,
-      text: [
-        `New website inquiry (${id})`,
-        "",
-        `Name: ${data.fullName}`,
-        `Business: ${data.businessName || "(not provided)"}`,
-        `Email: ${data.email}`,
-        `Phone: ${data.phone}`,
-        `Referred by: ${data.referredBy || "(not provided)"}`,
-        `Industry: ${data.industry}`,
-        `Role: ${data.role}`,
-        `Company size: ${data.companySize}`,
-        `Services: ${servicesList}`,
-        data.otherService ? `Other service: ${data.otherService}` : null,
-        "",
-        "Challenge:",
-        data.challenge.trim() ? data.challenge : "(not provided)",
-        "",
-        `Source: ${data.source ?? "website"}`,
-        `DB: ${getCommandStationDbPath()}`,
-      ]
-        .filter((line) => line !== null)
-        .join("\n"),
+      subject,
+      text,
+      html,
     });
 
     if (error) {
@@ -190,13 +187,35 @@ export async function POST(request: Request) {
 
   const id = randomUUID();
 
+  // Attempt the local SQLite write, but do NOT let its failure short-circuit
+  // the email safety net. On serverless hosts (e.g. Vercel) the Command Station
+  // DB file does not exist, so this insert throws every time — the email below
+  // is the whole reason it exists as a fallback capture path.
+  let dbSaved = false;
+  let dbError: string | undefined;
   try {
     insertCoreviaInquiry({
       id,
       ...parsed.data,
     });
+    dbSaved = true;
   } catch (error) {
-    console.error("[inquiry] SQLite insert failed:", error);
+    dbError = error instanceof Error ? error.message : String(error);
+    console.error(
+      `[inquiry] SQLite insert failed (db=${getCommandStationDbPath()}):`,
+      error
+    );
+  }
+
+  // Email is a redundant safety net — it must run even when the DB write fails.
+  const email = await sendInquiryEmailNotification(id, parsed.data, { dbSaved });
+
+  // Only fail the request if BOTH capture paths failed — otherwise the inquiry
+  // is safely recorded somewhere (DB and/or Daniel's inbox).
+  if (!dbSaved && !email.sent) {
+    console.error(
+      `[inquiry] BOTH capture paths failed — db="${dbError}", email="${email.skippedReason}"`
+    );
     return NextResponse.json(
       {
         error:
@@ -206,12 +225,10 @@ export async function POST(request: Request) {
     );
   }
 
-  // Email is a redundant safety net — failure must not fail the inquiry.
-  const email = await sendInquiryEmailNotification(id, parsed.data);
-
   return NextResponse.json({
     ok: true,
     id,
+    dbSaved,
     emailNotification: email,
   });
 }

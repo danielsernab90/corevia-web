@@ -267,7 +267,6 @@
         "schedule": {
           "title": "Agenda Tu Consulta",
           "description": "Ya casi terminas. Haz clic en Finalizar y uno de nuestros asesores dedicados se pondrá en contacto contigo para coordinar un horario.",
-          "descriptionWithCalendly": "Opcional: elige un horario abajo, o haz clic en Finalizar y te contactaremos para coordinar.",
           "optionalHint": "¿Quieres elegir un horario ahora? Agenda abajo, o haz clic en Finalizar y te contactaremos para coordinar.",
           "doneHint": "No hace falta reservar un horario aquí — haz clic en Finalizar y uno de nuestros asesores dedicados te escribirá por texto o WhatsApp para encontrar un momento que te funcione.",
           "continue": "Continuar para Agendar Mi Consulta"
@@ -362,7 +361,7 @@
     },
     "confirmation": {
       "title": "¡Todo Listo!",
-      "description": "Gracias por contactarnos — recibimos tu consulta.",
+      "description": "Gracias por contactarnos. Recibimos tu consulta. Nos pondremos en contacto contigo pronto con más información.",
       "prepTitle": "Antes de conectar, considera preparar:",
       "checklist": {
         "challenges": "Piensa en tus mayores desafíos de negocio.",

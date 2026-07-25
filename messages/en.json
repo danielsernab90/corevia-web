@@ -267,7 +267,6 @@
         "schedule": {
           "title": "Schedule Your Consultation",
           "description": "You're almost done. Click Finish and one of our dedicated consultants will be reaching out to you to coordinate a time.",
-          "descriptionWithCalendly": "Optional: pick a time below, or just click Finish and we'll reach out to coordinate.",
           "optionalHint": "Want to pick a specific time now? Schedule below, or just click Finish and we'll reach out to coordinate.",
           "doneHint": "No need to book a slot here — click Finish and one of our dedicated consultants will text or WhatsApp you to find a time that works.",
           "continue": "Continue to Schedule My Consultation"
@@ -362,7 +361,7 @@
     },
     "confirmation": {
       "title": "You're All Set!",
-      "description": "Thanks for reaching out — we received your inquiry.",
+      "description": "Thanks for reaching out. We received your inquiry. We will be contacting you soon with more information.",
       "prepTitle": "Before we connect, consider preparing:",
       "checklist": {
         "challenges": "Think about your biggest business challenges.",
