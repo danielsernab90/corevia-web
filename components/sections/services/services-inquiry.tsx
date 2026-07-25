@@ -41,7 +41,11 @@ export function ServicesInquiry() {
         </SectionReveal>
 
         <FadeUp className="mx-auto mt-10 max-w-xl">
-          <ConsultationFormFlow idPrefix="services-" variant="inline" />
+          <ConsultationFormFlow
+            idPrefix="services-"
+            variant="inline"
+            actionsAlign="center"
+          />
         </FadeUp>
       </Container>
     </Section>

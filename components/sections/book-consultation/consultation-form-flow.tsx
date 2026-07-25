@@ -78,6 +78,12 @@ export type ConsultationFormFlowProps = {
   variant?: "modal" | "inline";
   /** Unique id prefix so multiple embeds never collide. */
   idPrefix?: string;
+  /**
+   * Footer action alignment for the Continue/Finish button.
+   * `spread` (default) — Back left, Continue right (modal + Contact).
+   * `center` — Continue horizontally centered; Back stays left (Services only).
+   */
+  actionsAlign?: "spread" | "center";
   active?: boolean;
   onRequestClose?: () => void;
   onStepChange?: (step: number) => void;
@@ -93,6 +99,7 @@ export type ConsultationFormFlowProps = {
 export function ConsultationFormFlow({
   variant = "inline",
   idPrefix = "",
+  actionsAlign = "spread",
   onRequestClose,
   onStepChange,
   className,
@@ -558,12 +565,20 @@ export function ConsultationFormFlow({
             ) : null}
           </div>
 
-          <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-4 sm:px-6">
+          <div
+            className={cn(
+              "relative flex items-center gap-3 border-t border-border px-5 py-4 sm:px-6",
+              actionsAlign === "center" ? "justify-center" : "justify-between"
+            )}
+          >
             <Button
               type="button"
               variant="ghost"
               onClick={goBack}
               disabled={step === 0 || isSubmitting}
+              className={
+                actionsAlign === "center" ? "absolute left-5 sm:left-6" : undefined
+              }
             >
               {t("back")}
             </Button>
