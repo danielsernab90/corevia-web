@@ -59,16 +59,18 @@ export function WorkCases() {
                       reverse ? "lg:[&>*:first-child]:order-2" : ""
                     }`}
                   >
-                    <div className="overflow-hidden rounded-2xl border border-border bg-card elevation-md">
-                      <Image
-                        src={workCaseImages[key]}
-                        alt={t(`items.${key}.imageAlt`)}
-                        width={1672}
-                        height={941}
-                        className="h-auto w-full object-cover object-top"
-                        sizes="(max-width: 1023px) 100vw, 50vw"
-                        priority={index === 0}
-                      />
+                    <div className="rounded-2xl glow-brand-soft">
+                      <div className="overflow-hidden rounded-2xl border border-border bg-card">
+                        <Image
+                          src={workCaseImages[key]}
+                          alt={t(`items.${key}.imageAlt`)}
+                          width={1672}
+                          height={941}
+                          className="h-auto w-full object-cover object-top"
+                          sizes="(max-width: 1023px) 100vw, 50vw"
+                          priority={index === 0}
+                        />
+                      </div>
                     </div>
 
                     <div className="min-w-0">
