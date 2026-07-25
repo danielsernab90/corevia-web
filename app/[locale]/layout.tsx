@@ -12,7 +12,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { routing, type AppLocale } from "@/i18n/routing";
-import { getSiteUrl, siteConfig } from "@/lib/site";
+import { getSiteUrl, ogImage, siteConfig } from "@/lib/site";
 
 import "@/styles/globals.css";
 
@@ -68,11 +68,13 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       title,
       description,
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [ogImage.url],
     },
     alternates: {
       canonical: getSiteUrl(`/${locale}`),

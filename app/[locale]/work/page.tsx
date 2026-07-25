@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { WorkExperience } from "@/components/sections/work/work-experience";
 import { routing } from "@/i18n/routing";
-import { getSiteUrl } from "@/lib/site";
+import { getSiteUrl, ogImage } from "@/lib/site";
 
 type WorkPageProps = {
   params: Promise<{ locale: string }>;
@@ -32,6 +32,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [ogImage],
       url: getSiteUrl(`/${locale}/work`),
     },
     alternates: {

@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { LegalDocument } from "@/components/sections/legal/legal-document";
 import { routing } from "@/i18n/routing";
 import { termsSectionKeys } from "@/lib/legal";
-import { getSiteUrl } from "@/lib/site";
+import { getSiteUrl, ogImage } from "@/lib/site";
 
 type TermsPageProps = {
   params: Promise<{ locale: string }>;
@@ -30,6 +30,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [ogImage],
       url: getSiteUrl(`/${locale}/terms`),
     },
     alternates: {
