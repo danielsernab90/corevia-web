@@ -59,28 +59,13 @@ export function WorkCases() {
                       reverse ? "lg:[&>*:first-child]:order-2" : ""
                     }`}
                   >
-                    <div
-                      className={
-                        key === "portfolio"
-                          ? "rounded-2xl border border-border bg-card elevation-md"
-                          : "overflow-hidden rounded-2xl border border-border bg-card elevation-md"
-                      }
-                    >
+                    <div className="overflow-hidden rounded-2xl border border-border bg-card elevation-md">
                       <Image
                         src={workCaseImages[key]}
                         alt={t(`items.${key}.imageAlt`)}
                         width={1672}
                         height={941}
-                        className={
-                          key === "portfolio"
-                            ? "block h-auto w-full max-w-full rounded-2xl object-contain object-center"
-                            : "h-auto w-full object-cover object-top"
-                        }
-                        style={
-                          key === "portfolio"
-                            ? { width: "100%", height: "auto" }
-                            : undefined
-                        }
+                        className="h-auto w-full object-cover object-top"
                         sizes="(max-width: 1023px) 100vw, 50vw"
                         priority={index === 0}
                       />

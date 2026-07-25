@@ -250,9 +250,19 @@ export function ConsultationFormFlow({
       className={cn(
         "flex min-h-0 flex-1 flex-col overflow-hidden bg-background",
         variant === "inline" &&
-          "rounded-2xl border border-border elevation-sm",
+          "rounded-2xl border border-border",
         className
       )}
+      style={
+        variant === "inline"
+          ? {
+              // Soft brand-blue ambient glow — matches Services/consultation cards.
+              // Combined with a light elevation so glow doesn't replace depth.
+              boxShadow:
+                "0 1px 2px rgb(11 15 25 / 0.04), 0 0 24px rgba(22, 82, 240, 0.25)",
+            }
+          : undefined
+      }
     >
       <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
         <div className="min-w-0">
