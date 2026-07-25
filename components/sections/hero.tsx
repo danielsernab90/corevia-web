@@ -29,6 +29,7 @@ export async function Hero() {
           badge={t("badge")}
           title={t("title")}
           description={t("description")}
+          dedicatedGuidance={t("dedicatedGuidance")}
           primaryCta={t("primaryCta")}
           secondaryCta={t("secondaryCta")}
         />
@@ -41,6 +42,7 @@ export async function Hero() {
           t("trust.revenue"),
           t("trust.saveTime"),
           t("trust.visibility"),
+          t("trust.neverMiss"),
         ]}
       />
     </Section>

@@ -36,14 +36,19 @@ import {
 } from "@/lib/consultation";
 import { cn } from "@/lib/utils";
 
+/** Four data-collection steps (contact → challenge). */
 const FORM_STEPS = 4;
-const TOTAL_FLOW_STEPS = 5;
+/** Schedule step index (optional Calendly + Done submit). */
+const SCHEDULE_STEP = 4;
+/** Confirmation after successful /api/inquiry. */
+const CONFIRMATION_STEP = 5;
 
 const initialForm: ConsultationFormData = {
   fullName: "",
   businessName: "",
   email: "",
   phone: "",
+  referredBy: "",
   industry: "",
   role: "",
   companySize: "",
@@ -73,7 +78,6 @@ export type ConsultationFormFlowProps = {
   variant?: "modal" | "inline";
   /** Unique id prefix so multiple embeds never collide. */
   idPrefix?: string;
-  /** When false, Calendly postMessage listener is idle (modal closed). */
   active?: boolean;
   onRequestClose?: () => void;
   onStepChange?: (step: number) => void;
@@ -81,13 +85,14 @@ export type ConsultationFormFlowProps = {
 };
 
 /**
- * Canonical 4-step consultation form (+ schedule + confirmation).
- * Single shared source for /book-consultation modal, Services, and Contact.
+ * Canonical consultation flow:
+ * steps 0–3 collect data → step 4 optional Calendly + Done submits
+ * /api/inquiry → step 5 confirmation only after a successful persist.
+ * Calendly postMessage never gates success.
  */
 export function ConsultationFormFlow({
   variant = "inline",
   idPrefix = "",
-  active = true,
   onRequestClose,
   onStepChange,
   className,
@@ -98,27 +103,48 @@ export function ConsultationFormFlow({
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<ConsultationFormData>(initialForm);
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  /**
+   * True only when Calendly posts `calendly.event_scheduled`.
+   * Distinguishes confirmation copy: scheduled vs. "we'll call/text you".
+   */
+  const [scheduledViaCalendly, setScheduledViaCalendly] = useState(false);
 
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() ?? "";
+  const hasCalendly = Boolean(calendlyUrl);
   const isModal = variant === "modal";
+  const isSchedule = step === SCHEDULE_STEP;
+  const isConfirmation = step === CONFIRMATION_STEP;
+
+  const calendlySrc = useMemo(() => {
+    if (!calendlyUrl) return "";
+    try {
+      return buildCalendlySrc(calendlyUrl, form);
+    } catch {
+      return calendlyUrl;
+    }
+  }, [calendlyUrl, form]);
 
   useEffect(() => {
     onStepChange?.(step);
   }, [step, onStepChange]);
 
+  // Optional Calendly: listen for a successful booking so confirmation copy can differ.
+  // Never gates submission — Done/Finish still submits to /api/inquiry.
   useEffect(() => {
-    if (!active || step !== 4) return;
+    if (!hasCalendly || !isSchedule) return;
 
     const onMessage = (event: MessageEvent) => {
       const data = event.data as { event?: string } | undefined;
       if (data?.event === "calendly.event_scheduled") {
-        setStep(5);
+        setScheduledViaCalendly(true);
       }
     };
 
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, [active, step]);
+  }, [hasCalendly, isSchedule]);
 
   const updateField = <K extends keyof ConsultationFormData>(
     key: K,
@@ -189,18 +215,55 @@ export function ConsultationFormFlow({
     return Object.keys(nextErrors).length === 0;
   };
 
+  const submitInquiry = async () => {
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const payload = (await response.json().catch(() => null)) as {
+        error?: string;
+      } | null;
+
+      if (!response.ok) {
+        console.error("[inquiry] API error:", response.status, payload);
+        setSubmitError(payload?.error ?? t("submitError"));
+        return;
+      }
+
+      setStep(CONFIRMATION_STEP);
+    } catch (error) {
+      console.error("[inquiry] Network error:", error);
+      setSubmitError(t("submitError"));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const goNext = () => {
     if (!validateStep(step)) return;
-    setStep((prev) => Math.min(prev + 1, TOTAL_FLOW_STEPS));
+    setSubmitError(null);
+    // After challenge (step 3) → schedule; otherwise stay within 0–3.
+    setStep((prev) => Math.min(prev + 1, SCHEDULE_STEP));
   };
 
   const goBack = () => {
     setErrors({});
+    setSubmitError(null);
     setStep((prev) => Math.max(prev - 1, 0));
   };
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
+    if (isSchedule) {
+      void submitInquiry();
+      return;
+    }
     goNext();
   };
 
@@ -208,21 +271,11 @@ export function ConsultationFormFlow({
     onRequestClose?.();
   }, [onRequestClose]);
 
-  const calendlySrc = useMemo(() => {
-    if (!calendlyUrl) return "";
-    try {
-      return buildCalendlySrc(calendlyUrl, form);
-    } catch {
-      return calendlyUrl;
-    }
-  }, [calendlyUrl, form]);
-
-  const progressLabel =
-    step <= 3
-      ? t("stepOf", { current: step + 1, total: FORM_STEPS })
-      : step === 4
-        ? t("steps.schedule.title")
-        : tConfirm("title");
+  const progressLabel = isConfirmation
+    ? tConfirm("title")
+    : isSchedule
+      ? t("steps.schedule.title")
+      : t("stepOf", { current: step + 1, total: FORM_STEPS });
 
   const stepTitle =
     step === 0
@@ -249,15 +302,12 @@ export function ConsultationFormFlow({
     <div
       className={cn(
         "flex min-h-0 flex-1 flex-col overflow-hidden bg-background",
-        variant === "inline" &&
-          "rounded-2xl border border-border",
+        variant === "inline" && "rounded-2xl border border-border",
         className
       )}
       style={
         variant === "inline"
           ? {
-              // Soft brand-blue ambient glow — matches Services/consultation cards.
-              // Combined with a light elevation so glow doesn't replace depth.
               boxShadow:
                 "0 1px 2px rgb(11 15 25 / 0.04), 0 0 24px rgba(22, 82, 240, 0.25)",
             }
@@ -269,31 +319,33 @@ export function ConsultationFormFlow({
           <p className="text-caption font-medium tracking-wide text-muted-foreground uppercase">
             {progressLabel}
           </p>
-          {step <= 3 ? (
-            <>
-              <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
-                {stepTitle}
-              </Title>
-              <Description className="mt-1 text-sm text-muted-foreground">
-                {stepDescription}
-              </Description>
-            </>
-          ) : step === 4 ? (
-            <>
-              <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
-                {t("steps.schedule.title")}
-              </Title>
-              <Description className="mt-1 text-sm text-muted-foreground">
-                {t("steps.schedule.description")}
-              </Description>
-            </>
-          ) : (
+          {isConfirmation ? (
             <>
               <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
                 {tConfirm("title")}
               </Title>
               <Description className="mt-1 text-sm text-muted-foreground">
                 {tConfirm("description")}
+              </Description>
+            </>
+          ) : isSchedule ? (
+            <>
+              <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
+                {t("steps.schedule.title")}
+              </Title>
+              <Description className="mt-1 text-sm text-muted-foreground">
+                {hasCalendly
+                  ? t("steps.schedule.descriptionWithCalendly")
+                  : t("steps.schedule.description")}
+              </Description>
+            </>
+          ) : (
+            <>
+              <Title className="mt-1 font-sans text-h3 font-semibold tracking-tight text-foreground">
+                {stepTitle}
+              </Title>
+              <Description className="mt-1 text-sm text-muted-foreground">
+                {stepDescription}
               </Description>
             </>
           )}
@@ -309,7 +361,7 @@ export function ConsultationFormFlow({
         ) : null}
       </div>
 
-      {step <= 3 ? (
+      {!isConfirmation ? (
         <form
           onSubmit={onSubmit}
           className="flex min-h-0 flex-1 flex-col"
@@ -328,6 +380,9 @@ export function ConsultationFormFlow({
                   businessNameOptional: t("fields.businessNameOptional"),
                   email: t("fields.email"),
                   phone: t("fields.phone"),
+                  referredBy: t("fields.referredBy"),
+                  referredByOptional: t("fields.referredByOptional"),
+                  referredByPlaceholder: t("fields.referredByPlaceholder"),
                 }}
               />
             ) : null}
@@ -481,6 +536,33 @@ export function ConsultationFormFlow({
                 />
               </Field>
             ) : null}
+
+            {isSchedule ? (
+              <div className="space-y-4">
+                {hasCalendly && calendlySrc ? (
+                  <>
+                    <p className="text-sm text-muted-foreground">
+                      {t("steps.schedule.optionalHint")}
+                    </p>
+                    <iframe
+                      title={t("steps.schedule.title")}
+                      src={calendlySrc}
+                      className="h-[min(52dvh,480px)] w-full rounded-xl border border-border bg-background"
+                    />
+                  </>
+                ) : (
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {t("steps.schedule.doneHint")}
+                  </p>
+                )}
+              </div>
+            ) : null}
+
+            {submitError ? (
+              <p className="mt-4 text-sm text-error" role="alert">
+                {submitError}
+              </p>
+            ) : null}
           </div>
 
           <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-4 sm:px-6">
@@ -488,41 +570,22 @@ export function ConsultationFormFlow({
               type="button"
               variant="ghost"
               onClick={goBack}
-              disabled={step === 0}
+              disabled={step === 0 || isSubmitting}
             >
               {t("back")}
             </Button>
-            <Button type="submit" size="lg">
-              {step === 3 ? t("steps.schedule.continue") : t("continue")}
+            <Button type="submit" size="lg" disabled={isSubmitting}>
+              {isSchedule
+                ? isSubmitting
+                  ? t("submitting")
+                  : t("finish")
+                : step === 3
+                  ? t("steps.schedule.continue")
+                  : t("continue")}
             </Button>
           </div>
         </form>
-      ) : null}
-
-      {step === 4 ? (
-        <div className="flex min-h-0 flex-1 flex-col">
-          <div className="min-h-0 flex-1 overflow-hidden px-2 pb-2 sm:px-3 sm:pb-3">
-            {calendlySrc ? (
-              <iframe
-                title={t("steps.schedule.title")}
-                src={calendlySrc}
-                className="h-[min(62dvh,560px)] w-full rounded-xl border border-border bg-background"
-              />
-            ) : (
-              <div className="flex h-[min(40dvh,320px)] items-center justify-center rounded-xl border border-dashed border-border bg-muted/40 px-6 text-center text-sm text-muted-foreground">
-                {t("calendlyUnavailable")}
-              </div>
-            )}
-          </div>
-          <div className="flex items-center justify-between gap-3 border-t border-border px-5 py-4 sm:px-6">
-            <Button type="button" variant="ghost" onClick={goBack}>
-              {t("back")}
-            </Button>
-          </div>
-        </div>
-      ) : null}
-
-      {step === 5 ? (
+      ) : (
         <div className="flex min-h-0 flex-1 flex-col">
           <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-6">
             <BrandCheckBadge
@@ -530,7 +593,12 @@ export function ConsultationFormFlow({
               iconClassName="size-7"
               strokeWidth={2.25}
             />
-            <p className="font-medium text-foreground">
+            <p className="text-center text-sm leading-relaxed text-muted-foreground">
+              {scheduledViaCalendly
+                ? tConfirm("scheduledReachOut")
+                : tConfirm("unscheduledReachOut")}
+            </p>
+            <p className="mt-6 font-medium text-foreground">
               {tConfirm("prepTitle")}
             </p>
             <ul className="mt-4 space-y-3">
@@ -562,7 +630,7 @@ export function ConsultationFormFlow({
             ) : null}
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

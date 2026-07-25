@@ -56,6 +56,7 @@
     "badge": "CUSTOM SOFTWARE • AI • AUTOMATION",
     "title": "Custom Software & AI Solutions That Help Your Business Grow.",
     "description": "Corevia builds custom software, AI solutions, automations, and digital platforms that streamline operations, improve efficiency, and support long-term growth.",
+    "dedicatedGuidance": "You'll have a dedicated person guiding you from first call to launch.",
     "primaryCta": "Book a Free Consultation",
     "secondaryCta": "Explore Our Work",
     "trust": {
@@ -63,7 +64,8 @@
       "organize": "Organize your operations",
       "revenue": "Increase your revenue",
       "saveTime": "Save hours weekly",
-      "visibility": "See everything in one place"
+      "visibility": "See everything in one place",
+      "neverMiss": "Never miss a deadline or payment"
     },
     "visual": {
       "label": "Abstract visualization of Corevia software, AI, and automation systems",
@@ -239,6 +241,11 @@
       "close": "Close",
       "back": "Back",
       "continue": "Continue",
+      "done": "Done",
+      "finish": "Finish",
+      "submit": "Submit Inquiry",
+      "submitting": "Submitting…",
+      "submitError": "Something went wrong saving your inquiry. Please try again.",
       "stepOf": "Step {current} of {total}",
       "steps": {
         "contact": {
@@ -259,7 +266,10 @@
         },
         "schedule": {
           "title": "Schedule Your Consultation",
-          "description": "Choose a time that works for you. You'll stay on this page—no redirects.",
+          "description": "You're almost done. Click Finish and Daniel will reach out directly to coordinate a time.",
+          "descriptionWithCalendly": "Optional: pick a time below, or just click Finish and we'll reach out to coordinate.",
+          "optionalHint": "Want to pick a specific time now? Schedule below, or just click Finish and we'll reach out to coordinate.",
+          "doneHint": "No need to book a slot here — click Finish and Daniel will text or WhatsApp you to find a time that works.",
           "continue": "Continue to Schedule My Consultation"
         }
       },
@@ -268,6 +278,9 @@
         "businessName": "Business Name",
         "email": "Email Address",
         "phone": "Phone Number",
+        "referredBy": "Referred by",
+        "referredByOptional": "Optional",
+        "referredByPlaceholder": "If someone referred you, enter their name",
         "businessNameOptional": "Optional",
         "industry": "Industry",
         "role": "What Best Describes Your Role?",
@@ -349,8 +362,10 @@
     },
     "confirmation": {
       "title": "You're All Set!",
-      "description": "A confirmation email has been sent with your session details. We look forward to speaking with you.",
-      "prepTitle": "Before we meet, consider preparing:",
+      "description": "Thanks for reaching out — we received your inquiry.",
+      "unscheduledReachOut": "Appointment not scheduled yet? You'll be receiving a call or text message from one of our representatives soon.",
+      "scheduledReachOut": "Your consultation is on the calendar. We'll see you at the scheduled time — and we'll text or WhatsApp if anything changes.",
+      "prepTitle": "Before we connect, consider preparing:",
       "checklist": {
         "challenges": "Think about your biggest business challenges.",
         "software": "Current software or workflows.",

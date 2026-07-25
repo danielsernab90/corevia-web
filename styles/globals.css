@@ -370,6 +370,31 @@
   }
 }
 
+/* Hero checklist — continuous right-to-left marquee */
+@keyframes hero-checklist-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@utility animate-hero-checklist-marquee {
+  animation: hero-checklist-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.hero-checklist-marquee:hover .hero-checklist-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-checklist-marquee {
+    animation: none;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

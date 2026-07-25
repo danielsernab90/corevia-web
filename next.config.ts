@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   allowedDevOrigins: lanAndTailscaleDevOrigins(),
+  serverExternalPackages: ["better-sqlite3"],
 };
 
 export default withNextIntl(nextConfig);

@@ -5,24 +5,21 @@ import type { ReactNode } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { ConsultationFormData } from "@/lib/consultation";
+import {
+  isValidEmail,
+  isValidPhone,
+} from "@/lib/consultation-validation";
 
 export type ContactFormValues = Pick<
   ConsultationFormData,
-  "fullName" | "businessName" | "email" | "phone"
+  "fullName" | "businessName" | "email" | "phone" | "referredBy"
 >;
 
 export type ContactFieldErrors = Partial<
   Record<keyof ContactFormValues, string>
 >;
 
-export function isValidEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
-
-export function isValidPhone(value: string) {
-  const digits = value.replace(/\D/g, "");
-  return digits.length >= 7 && digits.length <= 15;
-}
+export { isValidEmail, isValidPhone };
 
 /** Shared contact-step validation — phone required, business name optional. */
 export function validateContactFields(
@@ -89,6 +86,9 @@ type BookingContactFieldsProps = {
     businessNameOptional: string;
     email: string;
     phone: string;
+    referredBy: string;
+    referredByOptional: string;
+    referredByPlaceholder: string;
   };
   /** Prefix ids when embedding beside other forms on the same page. */
   idPrefix?: string;
@@ -154,6 +154,20 @@ export function BookingContactFields({
           value={form.phone}
           aria-invalid={Boolean(errors.phone)}
           onChange={(e) => updateField("phone", e.target.value)}
+          className="h-10"
+        />
+      </Field>
+      <Field
+        id={id("referredBy")}
+        label={labels.referredBy}
+        hint={labels.referredByOptional}
+      >
+        <Input
+          id={id("referredBy")}
+          autoComplete="off"
+          value={form.referredBy}
+          placeholder={labels.referredByPlaceholder}
+          onChange={(e) => updateField("referredBy", e.target.value)}
           className="h-10"
         />
       </Field>

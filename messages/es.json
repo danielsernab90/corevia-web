@@ -56,6 +56,7 @@
     "badge": "SOFTWARE A MEDIDA • IA • AUTOMATIZACIÓN",
     "title": "Software a Medida y Soluciones de IA para Impulsar el Crecimiento de tu Empresa.",
     "description": "Corevia crea software a medida, soluciones de IA, automatizaciones y plataformas digitales que agilizan operaciones, mejoran la eficiencia y respaldan el crecimiento a largo plazo.",
+    "dedicatedGuidance": "Tendrás una persona dedicada guiándote desde la primera llamada hasta el lanzamiento.",
     "primaryCta": "Agenda una Consulta",
     "secondaryCta": "Ver Nuestro Trabajo",
     "trust": {
@@ -63,7 +64,8 @@
       "organize": "Organiza tus operaciones",
       "revenue": "Aumenta tus ingresos",
       "saveTime": "Ahorra horas cada semana",
-      "visibility": "Visualiza todo en un solo lugar"
+      "visibility": "Visualiza todo en un solo lugar",
+      "neverMiss": "Nunca pierdas una fecha límite o un pago"
     },
     "visual": {
       "label": "Visualización abstracta de los sistemas de software, IA y automatización de Corevia",
@@ -239,6 +241,11 @@
       "close": "Cerrar",
       "back": "Atrás",
       "continue": "Continuar",
+      "done": "Listo",
+      "finish": "Finalizar",
+      "submit": "Enviar consulta",
+      "submitting": "Enviando…",
+      "submitError": "No pudimos guardar tu consulta. Inténtalo de nuevo.",
       "stepOf": "Paso {current} de {total}",
       "steps": {
         "contact": {
@@ -259,7 +266,10 @@
         },
         "schedule": {
           "title": "Agenda Tu Consulta",
-          "description": "Elige un horario que te funcione. Te quedas en esta página—sin redirecciones.",
+          "description": "Ya casi terminas. Haz clic en Finalizar y Daniel te contactará directamente para coordinar un horario.",
+          "descriptionWithCalendly": "Opcional: elige un horario abajo, o haz clic en Finalizar y te contactaremos para coordinar.",
+          "optionalHint": "¿Quieres elegir un horario ahora? Agenda abajo, o haz clic en Finalizar y te contactaremos para coordinar.",
+          "doneHint": "No hace falta reservar un horario aquí — haz clic en Finalizar y Daniel te escribirá por texto o WhatsApp para encontrar un momento que te funcione.",
           "continue": "Continuar para Agendar Mi Consulta"
         }
       },
@@ -268,6 +278,9 @@
         "businessName": "Nombre del Negocio",
         "email": "Correo Electrónico",
         "phone": "Número de Teléfono",
+        "referredBy": "Referido por",
+        "referredByOptional": "Opcional",
+        "referredByPlaceholder": "Si alguien te refirió, escribe su nombre",
         "businessNameOptional": "Opcional",
         "industry": "Industria",
         "role": "¿Qué Describe Mejor Tu Rol?",
@@ -349,8 +362,10 @@
     },
     "confirmation": {
       "title": "¡Todo Listo!",
-      "description": "Te enviamos un correo de confirmación con los detalles de tu sesión. Estamos emocionados de hablar contigo.",
-      "prepTitle": "Antes de la reunión, considera preparar:",
+      "description": "Gracias por contactarnos — recibimos tu consulta.",
+      "unscheduledReachOut": "¿Aún no agendaste? Pronto recibirás una llamada o mensaje de texto de uno de nuestros representantes.",
+      "scheduledReachOut": "Tu consulta ya está en el calendario. Te esperamos a la hora acordada — y te escribiremos por texto o WhatsApp si algo cambia.",
+      "prepTitle": "Antes de conectar, considera preparar:",
       "checklist": {
         "challenges": "Piensa en tus mayores desafíos de negocio.",
         "software": "Software o flujos de trabajo actuales.",

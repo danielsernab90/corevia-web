@@ -12,11 +12,16 @@ export function BookingModal() {
   const [flowKey, setFlowKey] = useState(0);
   const [step, setStep] = useState(0);
 
+  const calendlyConfigured = Boolean(
+    process.env.NEXT_PUBLIC_CALENDLY_URL?.trim()
+  );
+  /** Widen only when optional Calendly iframe is actually shown (schedule step). */
+  const wideSchedule = calendlyConfigured && step === 4;
+
   const handleOpenChange = useCallback(
     (next: boolean) => {
       setOpen(next);
       if (!next) {
-        // Delay remount so close animation finishes cleanly
         window.setTimeout(() => {
           setFlowKey((prev) => prev + 1);
           setStep(0);
@@ -30,8 +35,7 @@ export function BookingModal() {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogPopup
         className={cn(
-          step >= 4 && step < 5 ? "max-w-3xl" : "max-w-xl",
-          // Soft brand-blue ambient glow around the modal card shell
+          wideSchedule ? "max-w-3xl" : "max-w-xl",
           "shadow-[0_1px_2px_rgb(11_15_25/0.04),0_0_24px_rgba(22,82,240,0.25)]"
         )}
       >

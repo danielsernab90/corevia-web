@@ -12,6 +12,7 @@ export type HeroContentProps = {
   badge: string;
   title: string;
   description: string;
+  dedicatedGuidance: string;
   primaryCta: string;
   secondaryCta: string;
 };
@@ -26,6 +27,7 @@ export function HeroContent({
   badge,
   title,
   description,
+  dedicatedGuidance,
   primaryCta,
   secondaryCta,
 }: HeroContentProps) {
@@ -62,12 +64,17 @@ export function HeroContent({
           {title}
         </motion.h1>
 
-        <motion.p
+        <motion.div
           variants={reduceMotion ? undefined : staggerItem}
-          className="mt-5 w-full max-w-xl font-sans text-body-lg text-muted-foreground"
+          className="mt-5 w-full max-w-xl space-y-3"
         >
-          {description}
-        </motion.p>
+          <p className="font-sans text-body-lg text-muted-foreground">
+            {description}
+          </p>
+          <p className="font-sans text-body font-medium text-foreground/90">
+            {dedicatedGuidance}
+          </p>
+        </motion.div>
 
         <motion.div
           variants={reduceMotion ? undefined : staggerItem}

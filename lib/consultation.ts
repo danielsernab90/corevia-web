@@ -122,6 +122,8 @@ export type ConsultationFormData = {
   businessName: string;
   email: string;
   phone: string;
+  /** Optional — name of the person who referred the lead. */
+  referredBy: string;
   industry: IndustryOption | "";
   role: RoleOption | "";
   companySize: CompanySizeOption | "";
