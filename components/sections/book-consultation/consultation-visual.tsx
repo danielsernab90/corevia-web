@@ -72,6 +72,7 @@ export function ConsultationVisual({ className }: ConsultationVisualProps) {
           : consultationVisualFrame
       }
     >
+      <div className="rounded-2xl glow-consultation-visual">
       <div
         role="img"
         aria-label={t("visualLabel")}
@@ -165,6 +166,7 @@ export function ConsultationVisual({ className }: ConsultationVisualProps) {
             })}
           </div>
         </div>
+      </div>
       </div>
     </motion.div>
   );

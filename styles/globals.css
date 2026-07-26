@@ -362,6 +362,11 @@
     0 0 44px rgb(19 42 130 / 0.42);
 }
 
+/* Book-consultation visual block — light #132A82 edge glow (subtler than headline) */
+@utility glow-consultation-visual {
+  box-shadow: 0 0 28px rgb(19 42 130 / 0.18);
+}
+
 /* Soft white heading glow for dark (#0B2F91) section backgrounds */
 @utility glow-text-white-soft {
   text-shadow:
