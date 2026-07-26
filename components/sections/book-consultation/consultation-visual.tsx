@@ -76,7 +76,7 @@ export function ConsultationVisual({ className }: ConsultationVisualProps) {
       <div
         role="img"
         aria-label={t("visualLabel")}
-        className="relative min-h-[24rem] w-full overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-surface via-background to-muted elevation-md sm:aspect-[4/3] sm:min-h-0"
+        className="relative min-h-[24rem] w-full overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-surface via-background to-muted sm:aspect-[4/3] sm:min-h-0"
       >
         {/* Illustration backdrop — renders first, full/consistent opacity, no fade */}
         <Image
