@@ -338,6 +338,13 @@
     0 0 96px rgb(22 82 240 / 0.22);
 }
 
+/* Our Work case studies — deep navy #132A82 (reads on light surface) */
+@utility glow-work-case {
+  box-shadow:
+    0 0 40px rgb(19 42 130 / 0.4),
+    0 0 60px rgb(19 42 130 / 0.35);
+}
+
 /*
  * Heading text glow — do NOT name this text-* (tailwind-merge strips text-h2).
  * Exact brand blue #1652F0.

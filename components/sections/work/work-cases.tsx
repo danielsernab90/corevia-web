@@ -59,7 +59,7 @@ export function WorkCases() {
                       reverse ? "lg:[&>*:first-child]:order-2" : ""
                     }`}
                   >
-                    <div className="rounded-2xl glow-brand-media">
+                    <div className="rounded-2xl glow-work-case">
                       <div className="overflow-hidden rounded-2xl border border-border bg-card">
                         <Image
                           src={workCaseImages[key]}
