@@ -59,7 +59,12 @@ export function WorkCases() {
                       reverse ? "lg:[&>*:first-child]:order-2" : ""
                     }`}
                   >
-                    <div className="rounded-2xl glow-brand-media">
+                    <div className="relative rounded-2xl glow-work-case">
+                      {/* Dense navy bloom behind the plate — reads clearly on dark surface */}
+                      <div
+                        aria-hidden
+                        className="work-case-glow-bloom pointer-events-none absolute -inset-4 -z-10 rounded-[1.35rem] blur-2xl sm:-inset-5"
+                      />
                       <div className="overflow-hidden rounded-2xl border border-border bg-card">
                         <Image
                           src={workCaseImages[key]}

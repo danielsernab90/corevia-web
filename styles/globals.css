@@ -339,6 +339,21 @@
 }
 
 /*
+ * Our Work case-study mockups — deep navy glow (#132A82).
+ * Box-shadow alone washed out on dark surface; pair with .work-case-glow-bloom.
+ */
+@utility glow-work-case {
+  box-shadow:
+    0 0 40px rgb(19 42 130 / 0.4),
+    0 0 60px rgb(19 42 130 / 0.35),
+    0 0 90px rgb(19 42 130 / 0.28);
+}
+
+@utility work-case-glow-bloom {
+  background-color: rgb(19 42 130 / 0.45);
+}
+
+/*
  * Heading text glow — do NOT name this text-* (tailwind-merge strips text-h2).
  * Exact brand blue #1652F0.
  */
