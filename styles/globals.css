@@ -330,11 +330,12 @@
   box-shadow: 0 0 24px rgb(22 82 240 / 0.42);
 }
 
-/* Layered brand-blue glow for media/mockups — mirrors glow-text-brand-soft */
+/* Layered brand-blue glow for media/mockups — stronger ambient halo, no hard edge */
 @utility glow-brand-media {
   box-shadow:
-    0 0 24px rgb(22 82 240 / 0.35),
-    0 0 48px rgb(22 82 240 / 0.2);
+    0 0 28px rgb(22 82 240 / 0.55),
+    0 0 56px rgb(22 82 240 / 0.38),
+    0 0 96px rgb(22 82 240 / 0.22);
 }
 
 /*
