@@ -355,6 +355,13 @@
     0 0 48px rgb(22 82 240 / 0.2);
 }
 
+/* Book-consultation H1 only — deep navy #132A82 on the light hero surface */
+@utility glow-text-consultation-navy {
+  text-shadow:
+    0 0 20px rgb(19 42 130 / 0.58),
+    0 0 44px rgb(19 42 130 / 0.42);
+}
+
 /* Soft white heading glow for dark (#0B2F91) section backgrounds */
 @utility glow-text-white-soft {
   text-shadow:

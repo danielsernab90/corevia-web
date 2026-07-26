@@ -56,7 +56,7 @@ export function ConsultationHero() {
             <motion.h1
               id="consultation-hero-heading"
               variants={staggerItem}
-              className="w-full max-w-3xl font-sans text-hero font-semibold tracking-tight text-foreground glow-text-brand-soft"
+              className="w-full max-w-3xl font-sans text-hero font-semibold tracking-tight text-foreground glow-text-consultation-navy"
             >
               {t("title")}
             </motion.h1>
