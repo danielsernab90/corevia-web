@@ -369,6 +369,13 @@
     0 0 44px rgb(19 42 130 / 0.14);
 }
 
+/* Book-consultation "Walk Away With" cards — light #132A82 edge glow */
+@utility glow-outcome-card {
+  box-shadow:
+    0 0 26px rgb(19 42 130 / 0.22),
+    0 0 44px rgb(19 42 130 / 0.14);
+}
+
 /* Soft white heading glow for dark (#0B2F91) section backgrounds */
 @utility glow-text-white-soft {
   text-shadow:

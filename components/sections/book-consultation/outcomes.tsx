@@ -57,7 +57,7 @@ export function Outcomes() {
             const Icon = outcomeIcons[key];
             return (
               <StaggerItem key={key}>
-                <CardHover className="h-full">
+                <CardHover className="h-full rounded-xl glow-outcome-card">
                   <Card variant="feature" className="h-full">
                     <CardHeader>
                       <span className="mb-3 inline-flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
