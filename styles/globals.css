@@ -358,8 +358,8 @@
 /* Book-consultation H1 only — deep navy #132A82 on the light hero surface (softened) */
 @utility glow-text-consultation-navy {
   text-shadow:
-    0 0 14px rgb(19 42 130 / 0.24),
-    0 0 28px rgb(19 42 130 / 0.14);
+    0 0 12px rgb(19 42 130 / 0.2),
+    0 0 26px rgb(19 42 130 / 0.12);
 }
 
 /* Book-consultation visual block — light #132A82 edge glow (subtler than headline) */
