@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { HeroVisual } from "@/components/sections/hero-visual";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { staggerContainer, staggerItem } from "@/lib/motion";
+import { heroVisualEnter, staggerContainer, staggerItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 export type HeroContentProps = {
@@ -101,9 +101,14 @@ export function HeroContent({
         </motion.div>
       </motion.div>
 
-      <div className="relative z-0 w-full min-w-0 self-center">
+      <motion.div
+        className="relative z-0 w-full min-w-0 self-center"
+        initial={reduceMotion ? false : "hidden"}
+        animate="visible"
+        variants={reduceMotion ? undefined : heroVisualEnter}
+      >
         <HeroVisual />
-      </div>
+      </motion.div>
     </div>
   );
 }

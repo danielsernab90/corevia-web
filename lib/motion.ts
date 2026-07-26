@@ -25,6 +25,23 @@ export const heroFade: Variants = {
   },
 };
 
+/**
+ * Homepage hero device mockup — one-shot page-load entrance from the right.
+ * Opacity + transform only. Not for whileInView / loops.
+ */
+export const heroVisualEnter: Variants = {
+  hidden: { opacity: 0, x: "28%" },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.7,
+      ease: motionEasing,
+      delay: 0.12,
+    },
+  },
+};
+
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
