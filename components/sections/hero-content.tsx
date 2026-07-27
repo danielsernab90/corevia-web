@@ -1,12 +1,16 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useLocale } from "next-intl";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { HeroVisual } from "@/components/sections/hero-visual";
 import { buttonVariants } from "@/components/ui/button";
+import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { heroVisualEnter, staggerContainer, staggerItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export type HeroContentProps = {
   badge: string;
@@ -15,6 +19,7 @@ export type HeroContentProps = {
   dedicatedGuidance: string;
   primaryCta: string;
   secondaryCta: string;
+  whatsappCta: string;
 };
 
 /**
@@ -30,8 +35,11 @@ export function HeroContent({
   dedicatedGuidance,
   primaryCta,
   secondaryCta,
+  whatsappCta,
 }: HeroContentProps) {
   const reduceMotion = useReducedMotion();
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale);
 
   return (
     <div
@@ -98,6 +106,18 @@ export function HeroContent({
           >
             {secondaryCta}
           </Link>
+        </motion.div>
+
+        <motion.div variants={reduceMotion ? undefined : staggerItem}>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-caption leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+          >
+            <WhatsAppIcon className="size-4" />
+            {whatsappCta}
+          </a>
         </motion.div>
       </motion.div>
 

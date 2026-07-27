@@ -1,7 +1,7 @@
 "use client";
 
 import { Clock3, MapPin, MessageSquare } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Container } from "@/components/layout/container";
@@ -9,16 +9,13 @@ import { Section } from "@/components/layout/section";
 import { ConsultationFormFlow } from "@/components/sections/book-consultation/consultation-form-flow";
 import { Heading } from "@/components/shared/heading";
 import { FadeUp, SectionReveal } from "@/components/shared/motion";
+import type { AppLocale } from "@/i18n/routing";
 import { brandColors } from "@/lib/design-tokens";
 import { coreviaIconProps } from "@/lib/icons";
-
-/**
- * PLACEHOLDER WhatsApp Business number — swap when Daniel provides the real one.
- * Display: +57 XXX XXX XXXX
- * wa.me digits-only target (also placeholder): 57XXXXXXXXXX
- */
-const WHATSAPP_DISPLAY_NUMBER = "+57 XXX XXX XXXX";
-const WHATSAPP_HREF = "https://wa.me/57XXXXXXXXXX";
+import {
+  WHATSAPP_DISPLAY_NUMBER,
+  buildWhatsAppLink,
+} from "@/lib/whatsapp";
 
 const textDetailItems = [
   { key: "location", Icon: MapPin },
@@ -28,6 +25,8 @@ const textDetailItems = [
 
 export function ContactExperience() {
   const t = useTranslations("Contact");
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale);
 
   return (
     <main>
@@ -122,7 +121,7 @@ export function ContactExperience() {
                       {t("details.items.whatsapp.label")}
                     </p>
                     <a
-                      href={WHATSAPP_HREF}
+                      href={whatsappHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-1 inline-block text-sm leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"

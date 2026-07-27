@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { useBooking } from "@/components/sections/book-consultation/booking-provider";
 import { Container } from "@/components/layout/container";
@@ -8,9 +8,13 @@ import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
 import { SectionReveal } from "@/components/shared/motion";
 import { Button } from "@/components/ui/button";
+import type { AppLocale } from "@/i18n/routing";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function WorkCta() {
   const t = useTranslations("Work.cta");
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale);
   const { openBooking } = useBooking();
 
   return (
@@ -47,9 +51,14 @@ export function WorkCta() {
           >
             {t("button")}
           </Button>
-          <p className="mx-auto mt-4 max-w-md text-caption leading-relaxed text-secondary-foreground/60">
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto mt-4 block max-w-md text-caption leading-relaxed text-secondary-foreground/60 underline-offset-4 transition-colors hover:text-secondary-foreground/80 hover:underline"
+          >
             {t("textNote")}
-          </p>
+          </a>
         </SectionReveal>
       </Container>
     </Section>

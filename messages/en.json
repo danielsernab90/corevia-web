@@ -59,6 +59,7 @@
     "dedicatedGuidance": "You'll have a dedicated person guiding you from first call to launch.",
     "primaryCta": "Book a Free Consultation",
     "secondaryCta": "Explore Our Work",
+    "whatsappCta": "Chat on WhatsApp",
     "trust": {
       "automate": "Automate the busywork",
       "organize": "Organize your operations",
@@ -382,7 +383,8 @@
       "title": "Build Software That Moves Your Business Forward.",
       "description": "Automate busywork, organize operations, and launch custom platforms built around how you work — not generic off-the-shelf tools.",
       "pricingNote": "Tell us what you need. We’ll review your goals and send a clear fixed-price quote — no public pricing tiers, no surprises.",
-      "primaryCta": "Start Your Inquiry"
+      "primaryCta": "Start Your Inquiry",
+      "whatsappCta": "Chat on WhatsApp"
     },
     "categories": {
       "title": "What We Build",

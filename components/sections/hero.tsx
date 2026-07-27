@@ -32,6 +32,7 @@ export async function Hero() {
           dedicatedGuidance={t("dedicatedGuidance")}
           primaryCta={t("primaryCta")}
           secondaryCta={t("secondaryCta")}
+          whatsappCta={t("whatsappCta")}
         />
       </Container>
 

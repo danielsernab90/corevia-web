@@ -1,15 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import type { AppLocale } from "@/i18n/routing";
 import { staggerContainer, staggerItem } from "@/lib/motion";
+import { cn } from "@/lib/utils";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function ServicesHero() {
   const t = useTranslations("Services.hero");
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale);
 
   const scrollToInquiry = () => {
     document
@@ -65,10 +71,30 @@ export function ServicesHero() {
             {t("pricingNote")}
           </motion.p>
 
-          <motion.div variants={staggerItem} className="mt-8">
-            <Button type="button" size="cta" onClick={scrollToInquiry}>
+          <motion.div
+            variants={staggerItem}
+            className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"
+          >
+            <Button
+              type="button"
+              size="cta"
+              className="w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+              onClick={scrollToInquiry}
+            >
               {t("primaryCta")}
             </Button>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "cta" }),
+                "w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+              )}
+            >
+              <WhatsAppIcon className="size-5" />
+              {t("whatsappCta")}
+            </a>
           </motion.div>
         </motion.div>
       </Container>

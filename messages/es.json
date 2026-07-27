@@ -59,6 +59,7 @@
     "dedicatedGuidance": "Tendrás una persona dedicada guiándote desde la primera llamada hasta el lanzamiento.",
     "primaryCta": "Agenda una Consulta",
     "secondaryCta": "Ver Nuestro Trabajo",
+    "whatsappCta": "Chatear por WhatsApp",
     "trust": {
       "automate": "Automatiza el trabajo repetitivo",
       "organize": "Organiza tus operaciones",
@@ -382,7 +383,8 @@
       "title": "Construye Software Que Impulse Tu Negocio.",
       "description": "Automatiza el trabajo repetitivo, organiza operaciones y lanza plataformas a medida alrededor de cómo trabajas — no herramientas genéricas de estantería.",
       "pricingNote": "Cuéntanos qué necesitas. Revisamos tus objetivos y te enviamos una cotización clara a precio fijo — sin tarifas públicas genéricas ni sorpresas.",
-      "primaryCta": "Iniciar Tu Consulta"
+      "primaryCta": "Iniciar Tu Consulta",
+      "whatsappCta": "Chatear por WhatsApp"
     },
     "categories": {
       "title": "Qué Construimos",
