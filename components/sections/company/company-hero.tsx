@@ -1,14 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
+import { useBooking } from "@/components/sections/book-consultation/booking-provider";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { Button, buttonVariants } from "@/components/ui/button";
+import type { AppLocale } from "@/i18n/routing";
 import { staggerContainer, staggerItem } from "@/lib/motion";
+import { cn } from "@/lib/utils";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function CompanyHero() {
   const t = useTranslations("Company.hero");
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale);
+  const { openBooking } = useBooking();
 
   return (
     <Section
@@ -46,6 +55,32 @@ export function CompanyHero() {
           >
             {t("description")}
           </motion.p>
+
+          <motion.div
+            variants={staggerItem}
+            className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"
+          >
+            <Button
+              type="button"
+              size="cta"
+              className="w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+              onClick={openBooking}
+            >
+              {t("primaryCta")}
+            </Button>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "cta" }),
+                "w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+              )}
+            >
+              <WhatsAppIcon className="size-5" />
+              {t("whatsappCta")}
+            </a>
+          </motion.div>
         </motion.div>
       </Container>
     </Section>

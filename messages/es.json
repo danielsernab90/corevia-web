@@ -548,7 +548,9 @@
     },
     "hero": {
       "title": "Software construido por quien te habla.",
-      "description": "Cuando escribes, trabajas directamente con nuestro desarrollador principal — la misma persona que escribe el código. Sin colas de tickets. Sin gerentes de cuenta en el medio."
+      "description": "Cuando escribes, trabajas directamente con nuestro desarrollador principal — la misma persona que escribe el código. Sin colas de tickets. Sin gerentes de cuenta en el medio.",
+      "primaryCta": "Hablemos",
+      "whatsappCta": "Chatear por WhatsApp"
     },
     "whatWeDo": {
       "headline": "Lo Que Hacemos",
