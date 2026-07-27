@@ -539,7 +539,8 @@
     "form": {
       "title": "Tell Us What You Need",
       "description": "Use the optional “Referred by” field to note who introduced you — then walk through the same short inquiry as our other clients."
-    }
+    },
+    "whatsappLink": "Connect with us on WhatsApp"
   },
   "Company": {
     "meta": {

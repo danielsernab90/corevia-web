@@ -539,7 +539,8 @@
     "form": {
       "title": "Cuéntanos qué necesitas",
       "description": "Usa el campo opcional “Referido por” para indicar quién te presentó — luego completa la misma consulta breve que el resto de clientes."
-    }
+    },
+    "whatsappLink": "Contáctanos por WhatsApp"
   },
   "Company": {
     "meta": {

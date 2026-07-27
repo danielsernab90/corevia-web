@@ -1,15 +1,19 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { ConsultationFormFlow } from "@/components/sections/book-consultation/consultation-form-flow";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
 import { FadeUp, SectionReveal } from "@/components/shared/motion";
+import type { AppLocale } from "@/i18n/routing";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function ReferralExperience() {
   const t = useTranslations("Referral");
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale, { intent: "referral" });
 
   return (
     <main>
@@ -70,6 +74,16 @@ export function ReferralExperience() {
               variant="inline"
               actionsAlign="center"
             />
+            <p className="mt-6 text-center font-sans text-sm text-muted-foreground">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 transition-colors hover:text-primary hover:underline"
+              >
+                {t("whatsappLink")}
+              </a>
+            </p>
           </FadeUp>
         </Container>
       </Section>
