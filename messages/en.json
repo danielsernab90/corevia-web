@@ -518,6 +518,9 @@
         "hours": {
           "label": "Business hours",
           "value": "Monday–Friday, 9:00 AM – 6:00 PM (Colombia Time)."
+        },
+        "whatsapp": {
+          "label": "WhatsApp"
         }
       }
     }

@@ -518,6 +518,9 @@
         "hours": {
           "label": "Horario",
           "value": "Lunes a viernes, 9:00 a. m. – 6:00 p. m. (hora de Colombia)."
+        },
+        "whatsapp": {
+          "label": "WhatsApp"
         }
       }
     }

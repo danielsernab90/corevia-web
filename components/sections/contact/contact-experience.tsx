@@ -3,6 +3,7 @@
 import { Clock3, MapPin, MessageSquare } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { ConsultationFormFlow } from "@/components/sections/book-consultation/consultation-form-flow";
@@ -11,7 +12,15 @@ import { FadeUp, SectionReveal } from "@/components/shared/motion";
 import { brandColors } from "@/lib/design-tokens";
 import { coreviaIconProps } from "@/lib/icons";
 
-const detailItems = [
+/**
+ * PLACEHOLDER WhatsApp Business number — swap when Daniel provides the real one.
+ * Display: +57 XXX XXX XXXX
+ * wa.me digits-only target (also placeholder): 57XXXXXXXXXX
+ */
+const WHATSAPP_DISPLAY_NUMBER = "+57 XXX XXX XXXX";
+const WHATSAPP_HREF = "https://wa.me/57XXXXXXXXXX";
+
+const textDetailItems = [
   { key: "location", Icon: MapPin },
   { key: "response", Icon: MessageSquare },
   { key: "hours", Icon: Clock3 },
@@ -76,7 +85,7 @@ export function ContactExperience() {
               </p>
 
               <ul className="mt-8 space-y-5">
-                {detailItems.map(({ key, Icon }) => (
+                {textDetailItems.map(({ key, Icon }) => (
                   <li key={key} className="flex gap-3">
                     <span
                       className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
@@ -97,6 +106,31 @@ export function ContactExperience() {
                     </div>
                   </li>
                 ))}
+
+                <li className="flex gap-3">
+                  <span
+                    className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
+                    style={{
+                      backgroundColor: brandColors.primarySoft,
+                      color: brandColors.primary,
+                    }}
+                  >
+                    <WhatsAppIcon className="size-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-foreground">
+                      {t("details.items.whatsapp.label")}
+                    </p>
+                    <a
+                      href={WHATSAPP_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-block text-sm leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                    >
+                      {WHATSAPP_DISPLAY_NUMBER}
+                    </a>
+                  </div>
+                </li>
               </ul>
             </SectionReveal>
 
