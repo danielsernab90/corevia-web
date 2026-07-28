@@ -11,7 +11,7 @@ import { CompanyStack } from "@/components/sections/company/company-stack";
 export function CompanyExperience() {
   return (
     <BookingProvider>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <CompanyHero />
         <CompanyFounder />
         <CompanyHowWeWork />

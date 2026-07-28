@@ -48,7 +48,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             type="button"
             role="radio"
             aria-checked={selected}
-            aria-label={tLocale(code)}
+            aria-label={`${tLocale(localeShortKey[code])} — ${tLocale(code)}`}
             tabIndex={selected ? 0 : -1}
             onClick={() => onLocaleChange(code)}
             onKeyDown={(event) => {

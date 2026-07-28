@@ -100,7 +100,7 @@
       "secondaryCta": "Explore Our Services",
       "highlights": {
         "free": "Free Consultation",
-        "duration": "15–30 Minute Strategy Session",
+        "duration": "10–15 Minute Strategy Session",
         "personalized": "Personalized Recommendations",
         "noObligation": "No Obligation",
         "assessment": "AI & Business Assessment",
@@ -111,7 +111,7 @@
         "badge": "Free",
         "card1": {
           "title": "Strategy Session",
-          "subtitle": "15–30 min • One-on-One"
+          "subtitle": "10–15 min • One-on-One"
         },
         "card2": {
           "title": "AI & Business Assessment",
@@ -177,7 +177,7 @@
     "process": {
       "title": "How the Consultation Works",
       "durationLabel": "Typical consultation:",
-      "duration": "15–30 minutes",
+      "duration": "10–15 minutes",
       "whatsappNote": "Prefer to text? We get it — busy schedules happen. Reach out via WhatsApp instead.",
       "stepLabel": "Step {number}",
       "steps": {
@@ -196,7 +196,7 @@
         },
         "duration": {
           "question": "How long does the consultation take?",
-          "answer": "Most consultations take between 15 and 30 minutes."
+          "answer": "Most consultations take between 10 and 15 minutes."
         },
         "technical": {
           "question": "Do I need technical knowledge?",

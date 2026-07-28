@@ -9,7 +9,7 @@ import { WorkHero } from "@/components/sections/work/work-hero";
 export function WorkExperience() {
   return (
     <BookingProvider>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <WorkHero />
         <WorkCases />
         <WorkCta />

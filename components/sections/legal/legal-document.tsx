@@ -29,7 +29,7 @@ export function LegalDocument({
   sections,
 }: LegalDocumentProps) {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Section tone="white" spacing="tight" aria-labelledby="legal-title">
         <Container size="sm">
           <Heading id="legal-title" as="h1" size="h1" className="tracking-tight">

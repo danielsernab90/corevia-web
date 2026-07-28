@@ -29,7 +29,7 @@ export function ContactExperience() {
   const whatsappHref = buildWhatsAppLink(locale);
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Section
         tone="dark"
         spacing="none"

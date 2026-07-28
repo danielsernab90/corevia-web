@@ -100,7 +100,7 @@
       "secondaryCta": "Explorar Nuestros Servicios",
       "highlights": {
         "free": "Consulta Gratis",
-        "duration": "Sesión Estratégica de 15–30 Minutos",
+        "duration": "Sesión Estratégica de 10–15 Minutos",
         "personalized": "Recomendaciones Personalizadas",
         "noObligation": "Sin Compromiso",
         "assessment": "Evaluación de IA y Negocio",
@@ -111,7 +111,7 @@
         "badge": "Gratis",
         "card1": {
           "title": "Sesión Estratégica",
-          "subtitle": "15–30 min • Uno a uno"
+          "subtitle": "10–15 min • Uno a uno"
         },
         "card2": {
           "title": "Evaluación de IA y Negocio",
@@ -177,7 +177,7 @@
     "process": {
       "title": "Cómo Funciona la Consulta",
       "durationLabel": "Consulta típica:",
-      "duration": "15–30 minutos",
+      "duration": "10–15 minutos",
       "whatsappNote": "¿Prefieres escribir? Lo entendemos — a veces el horario no da. Contáctanos por WhatsApp.",
       "stepLabel": "Paso {number}",
       "steps": {
@@ -196,7 +196,7 @@
         },
         "duration": {
           "question": "¿Cuánto dura la consulta?",
-          "answer": "La mayoría de las consultas duran entre 15 y 30 minutos."
+          "answer": "La mayoría de las consultas duran entre 10 y 15 minutos."
         },
         "technical": {
           "question": "¿Necesito conocimientos técnicos?",

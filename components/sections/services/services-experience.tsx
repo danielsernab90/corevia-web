@@ -7,7 +7,7 @@ import { ServicesInquiry } from "@/components/sections/services/services-inquiry
 
 export function ServicesExperience() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <ServicesHero />
       <ServicesCategories />
       <ServicesHowItWorks />

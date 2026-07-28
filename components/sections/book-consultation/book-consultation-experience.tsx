@@ -14,7 +14,7 @@ import { WhoThisIsFor } from "@/components/sections/book-consultation/who-this-i
 export function BookConsultationExperience() {
   return (
     <BookingProvider>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <ConsultationHero />
         <WhatToExpect />
         <Outcomes />

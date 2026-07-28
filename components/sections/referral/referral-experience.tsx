@@ -16,7 +16,7 @@ export function ReferralExperience() {
   const whatsappHref = buildWhatsAppLink(locale, { intent: "referral" });
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Section
         tone="dark"
         spacing="none"

@@ -9,7 +9,7 @@ export default async function NotFound() {
   const t = await getTranslations("NotFound");
 
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Container size="md" className="flex flex-col justify-center gap-4 py-section">
         <Heading size="h2">{t("title")}</Heading>
         <Text tone="muted">{t("description")}</Text>
