@@ -452,6 +452,10 @@
     "cases": {
       "title": "Selected Work",
       "description": "Product screenshots from platforms we've designed and delivered — shown by industry, not by client name.",
+      "carousel": {
+        "previous": "Previous image",
+        "next": "Next image"
+      },
       "items": {
         "financial": {
           "category": "Real Estate Finance & Reporting",
@@ -469,6 +473,7 @@
           "title": "Live operations dashboard",
           "outcome": "Manual order tracking → real-time dashboard with sales, cash flow, and delivery status.",
           "imageAlt": "Screenshot of a food and beverage operations dashboard showing revenue, orders, and delivery status",
+          "imageAltSecondary": "Screenshot of a juice delivery operations dashboard with live order and delivery metrics",
           "tags": {
             "0": "Order management",
             "1": "Revenue tracking",

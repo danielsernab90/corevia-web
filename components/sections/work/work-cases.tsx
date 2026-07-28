@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
+import { WorkCaseCarousel } from "@/components/sections/work/work-case-carousel";
 import { Heading } from "@/components/shared/heading";
 import {
   FadeUp,
@@ -14,6 +15,7 @@ import {
 } from "@/components/shared/motion";
 import { brandColors } from "@/lib/design-tokens";
 import {
+  workCaseCarouselImages,
   workCaseImages,
   workCaseKeys,
 } from "@/lib/work";
@@ -50,6 +52,14 @@ export function WorkCases() {
             const tags = tagKeys.map((tagKey) =>
               t(`items.${key}.tags.${tagKey}`)
             );
+            const carouselImages = workCaseCarouselImages[key];
+            const imageAlts =
+              key === "vidaGreen"
+                ? [
+                    t("items.vidaGreen.imageAlt"),
+                    t("items.vidaGreen.imageAltSecondary"),
+                  ]
+                : [t(`items.${key}.imageAlt`)];
 
             return (
               <StaggerItem key={key}>
@@ -60,17 +70,25 @@ export function WorkCases() {
                     }`}
                   >
                     <div className="rounded-2xl glow-work-case">
-                      <div className="overflow-hidden rounded-2xl border border-border bg-card">
-                        <Image
-                          src={workCaseImages[key]}
-                          alt={t(`items.${key}.imageAlt`)}
-                          width={1672}
-                          height={941}
-                          className="h-auto w-full object-cover object-top"
-                          sizes="(max-width: 1023px) 100vw, 50vw"
+                      {carouselImages ? (
+                        <WorkCaseCarousel
+                          images={carouselImages}
+                          alts={imageAlts}
                           priority={index === 0}
                         />
-                      </div>
+                      ) : (
+                        <div className="overflow-hidden rounded-2xl border border-border bg-card">
+                          <Image
+                            src={workCaseImages[key]}
+                            alt={t(`items.${key}.imageAlt`)}
+                            width={1672}
+                            height={941}
+                            className="h-auto w-full object-cover object-top"
+                            sizes="(max-width: 1023px) 100vw, 50vw"
+                            priority={index === 0}
+                          />
+                        </div>
+                      )}
                     </div>
 
                     <div className="min-w-0">

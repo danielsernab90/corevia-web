@@ -452,6 +452,10 @@
     "cases": {
       "title": "Trabajo Destacado",
       "description": "Capturas de plataformas que hemos diseñado y entregado — mostradas por industria, no por nombre de cliente.",
+      "carousel": {
+        "previous": "Imagen anterior",
+        "next": "Imagen siguiente"
+      },
       "items": {
         "financial": {
           "category": "Finanzas e Informes Inmobiliarios",
@@ -469,6 +473,7 @@
           "title": "Panel operativo en tiempo real",
           "outcome": "Seguimiento manual de pedidos → panel en tiempo real con ventas, flujo de caja y estado de entregas.",
           "imageAlt": "Captura de un panel de operaciones de alimentos y bebidas con ingresos, pedidos y estado de entregas",
+          "imageAltSecondary": "Captura de un panel de operaciones de entrega de jugos con métricas de pedidos y entregas en vivo",
           "tags": {
             "0": "Gestión de pedidos",
             "1": "Seguimiento de ingresos",
