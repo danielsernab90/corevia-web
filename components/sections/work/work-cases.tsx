@@ -59,7 +59,14 @@ export function WorkCases() {
                     t("items.vidaGreen.imageAlt"),
                     t("items.vidaGreen.imageAltSecondary"),
                   ]
-                : [t(`items.${key}.imageAlt`)];
+                : key === "alchones"
+                  ? [
+                      t("items.alchones.imageAlt"),
+                      t("items.alchones.imageAltSecondary"),
+                      t("items.alchones.imageAlt3"),
+                      t("items.alchones.imageAlt4"),
+                    ]
+                  : [t(`items.${key}.imageAlt`)];
 
             return (
               <StaggerItem key={key}>
