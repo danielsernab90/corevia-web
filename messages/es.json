@@ -98,6 +98,7 @@
       "description": "Reúnete uno a uno con un consultor de Corevia para descubrir cómo la IA, la automatización y el software a medida pueden hacer tu negocio más eficiente, reducir el trabajo manual y escalar con confianza.",
       "primaryCta": "Agendar Mi Consulta Gratis",
       "secondaryCta": "Explorar Nuestros Servicios",
+      "whatsappCta": "Chatear por WhatsApp",
       "highlights": {
         "free": "Consulta Gratis",
         "duration": "Sesión Estratégica de 10–15 Minutos",
@@ -178,7 +179,7 @@
       "title": "Cómo Funciona la Consulta",
       "durationLabel": "Consulta típica:",
       "duration": "10–15 minutos",
-      "whatsappNote": "¿Prefieres escribir? Lo entendemos — a veces el horario no da. Contáctanos por WhatsApp.",
+      "whatsappNote": "¿Prefieres escribir? Lo entendemos — a veces el horario no da. Contáctanos por <wa>WhatsApp</wa>.",
       "stepLabel": "Paso {number}",
       "steps": {
         "learn": "Conocer Tu Negocio",
@@ -236,7 +237,8 @@
     "cta": {
       "title": "¿Listo para Empezar?",
       "description": "Agenda tu sesión estratégica gratis y da el primer paso hacia decisiones tecnológicas más claras para tu negocio.",
-      "button": "Agendar Mi Consulta Gratis"
+      "button": "Agendar Mi Consulta Gratis",
+      "whatsappLabel": "WhatsApp"
     },
     "modal": {
       "close": "Cerrar",
@@ -489,6 +491,20 @@
             "0": "Seguimiento multipropiedad",
             "1": "Cálculo automatizado de patrimonio neto",
             "2": "Monitoreo de renta"
+          }
+        },
+        "alchones": {
+          "category": "Gestión de Club de Fútbol Juvenil",
+          "title": "Club Deportivo Alchones",
+          "outcome": "Plantillas por categoría de edad, asistencia y horarios de entrenamiento, seguimiento de pagos, estadísticas de salud/rendimiento y próximos partidos/eventos en un solo panel.",
+          "imageAlt": "Captura del panel de Club Deportivo Alchones con métricas generales y actividad próxima",
+          "imageAltSecondary": "Captura de plantillas de jugadores organizadas por categoría de edad",
+          "imageAlt3": "Captura del seguimiento de pagos y saldos pendientes de los miembros del club",
+          "imageAlt4": "Captura de reportes del club sobre asistencia, rendimiento y finanzas",
+          "tags": {
+            "0": "Plantillas por categoría",
+            "1": "Asistencia y seguimiento de pagos",
+            "2": "Partidos, eventos y rendimiento"
           }
         }
       }

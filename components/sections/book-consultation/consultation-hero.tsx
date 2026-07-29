@@ -1,17 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { useBooking } from "@/components/sections/book-consultation/booking-provider";
 import { ConsultationVisual } from "@/components/sections/book-consultation/consultation-visual";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { BrandCheckBadge } from "@/components/shared/brand-check-badge";
 import { Button, buttonVariants } from "@/components/ui/button";
+import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { staggerContainer, staggerItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 const highlightKeys = [
   "free",
@@ -24,6 +27,8 @@ const highlightKeys = [
 
 export function ConsultationHero() {
   const t = useTranslations("BookConsultation.hero");
+  const locale = useLocale() as AppLocale;
+  const whatsappHref = buildWhatsAppLink(locale);
   const { openBooking } = useBooking();
 
   return (
@@ -85,6 +90,16 @@ export function ConsultationHero() {
                   {t("secondaryCta")}
                 </Link>
               </div>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 self-start text-caption leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                <WhatsAppIcon className="size-4" />
+                {t("whatsappCta")}
+              </a>
 
               <ul className="mt-10 grid w-full min-w-0 grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
                 {highlightKeys.map((key) => (

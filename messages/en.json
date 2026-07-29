@@ -98,6 +98,7 @@
       "description": "Meet one-on-one with a Corevia consultant to discover how AI, automation, and custom software can help your business become more efficient, reduce manual work, and scale with confidence.",
       "primaryCta": "Book My Free Consultation",
       "secondaryCta": "Explore Our Services",
+      "whatsappCta": "Chat on WhatsApp",
       "highlights": {
         "free": "Free Consultation",
         "duration": "10–15 Minute Strategy Session",
@@ -178,7 +179,7 @@
       "title": "How the Consultation Works",
       "durationLabel": "Typical consultation:",
       "duration": "10–15 minutes",
-      "whatsappNote": "Prefer to text? We get it — busy schedules happen. Reach out via WhatsApp instead.",
+      "whatsappNote": "Prefer to text? We get it — busy schedules happen. Reach out via <wa>WhatsApp</wa> instead.",
       "stepLabel": "Step {number}",
       "steps": {
         "learn": "Learn About Your Business",
@@ -236,7 +237,8 @@
     "cta": {
       "title": "Ready to Get Started?",
       "description": "Book your free strategy session and take the first step toward clearer technology decisions for your business.",
-      "button": "Book My Free Consultation"
+      "button": "Book My Free Consultation",
+      "whatsappLabel": "WhatsApp"
     },
     "modal": {
       "close": "Close",
@@ -489,6 +491,20 @@
             "0": "Multi-property tracking",
             "1": "Automated equity/net worth calculation",
             "2": "Rental income monitoring"
+          }
+        },
+        "alchones": {
+          "category": "Youth Soccer Club Management",
+          "title": "Club Deportivo Alchones",
+          "outcome": "Player rosters by age group, attendance and training schedules, payment tracking, health/performance stats, and upcoming games/events in one dashboard.",
+          "imageAlt": "Screenshot of the Club Deportivo Alchones dashboard with overview metrics and upcoming activity",
+          "imageAltSecondary": "Screenshot of player rosters organized by age group",
+          "imageAlt3": "Screenshot of payment tracking and outstanding balances for club members",
+          "imageAlt4": "Screenshot of club reports covering attendance, performance, and finances",
+          "tags": {
+            "0": "Rosters by age group",
+            "1": "Attendance & payment tracking",
+            "2": "Games, events & performance"
           }
         }
       }
