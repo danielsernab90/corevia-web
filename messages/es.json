@@ -506,6 +506,19 @@
             "1": "Asistencia y seguimiento de pagos",
             "2": "Partidos, eventos y rendimiento"
           }
+        },
+        "cleaningOs": {
+          "category": "Gestión de Negocio de Limpieza",
+          "title": "Agendas, Equipos y Clientes — Todo en Uno",
+          "outcome": "Reemplaza hojas de cálculo y agendas en papel con un sistema que gestiona programación, equipos, clientes y gastos en tiempo real.",
+          "imageAlt": "Captura de la agenda de CleaningOS con trabajos y asignaciones de equipo",
+          "imageAltSecondary": "Captura de la gestión de clientes de CleaningOS con contactos y detalles del servicio",
+          "imageAlt3": "Captura del seguimiento de gastos de CleaningOS y desglose de costos",
+          "tags": {
+            "0": "Programación y gestión de equipos",
+            "1": "Gestión de clientes",
+            "2": "Seguimiento de gastos"
+          }
         }
       }
     },

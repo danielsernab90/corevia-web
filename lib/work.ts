@@ -7,6 +7,7 @@ export const workCaseKeys = [
   "vidaGreen",
   "portfolio",
   "alchones",
+  "cleaningOs",
 ] as const;
 
 export type WorkCaseKey = (typeof workCaseKeys)[number];
@@ -16,6 +17,7 @@ export const workCaseImages: Record<WorkCaseKey, string> = {
   vidaGreen: "/images/work-vida-green-market.png",
   portfolio: "/images/work-property-portfolio.png",
   alchones: "/images/work-alchones-dashboard.png",
+  cleaningOs: "/images/work-cleaningos-agenda.png",
 };
 
 /** Multi-image cases (carousel). */
@@ -31,5 +33,10 @@ export const workCaseCarouselImages: Partial<
     "/images/work-alchones-players.png",
     "/images/work-alchones-payments.png",
     "/images/work-alchones-reports.png",
+  ],
+  cleaningOs: [
+    "/images/work-cleaningos-agenda.png",
+    "/images/work-cleaningos-clients.png",
+    "/images/work-cleaningos-expenses.png",
   ],
 };

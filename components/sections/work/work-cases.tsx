@@ -66,7 +66,13 @@ export function WorkCases() {
                       t("items.alchones.imageAlt3"),
                       t("items.alchones.imageAlt4"),
                     ]
-                  : [t(`items.${key}.imageAlt`)];
+                  : key === "cleaningOs"
+                    ? [
+                        t("items.cleaningOs.imageAlt"),
+                        t("items.cleaningOs.imageAltSecondary"),
+                        t("items.cleaningOs.imageAlt3"),
+                      ]
+                    : [t(`items.${key}.imageAlt`)];
 
             return (
               <StaggerItem key={key}>

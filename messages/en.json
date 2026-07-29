@@ -506,6 +506,19 @@
             "1": "Attendance & payment tracking",
             "2": "Games, events & performance"
           }
+        },
+        "cleaningOs": {
+          "category": "Cleaning Business Management",
+          "title": "Scheduling, Crews & Clients — All in One",
+          "outcome": "Replace spreadsheets and paper schedules with one system that manages scheduling, crews, clients, and expenses in real time.",
+          "imageAlt": "Screenshot of CleaningOS scheduling agenda with jobs and crew assignments",
+          "imageAltSecondary": "Screenshot of CleaningOS client management with contact and service details",
+          "imageAlt3": "Screenshot of CleaningOS expense tracking and cost breakdowns",
+          "tags": {
+            "0": "Scheduling & crew management",
+            "1": "Client management",
+            "2": "Expense tracking"
+          }
         }
       }
     },
