@@ -43,23 +43,20 @@ export function BookingCta() {
           <p className="mx-auto mt-4 max-w-xl text-body-lg text-secondary-foreground/75">
             {t("description")}
           </p>
-          <Button
-            type="button"
-            size="cta"
-            className="mt-8"
-            onClick={openBooking}
-          >
-            {t("button")}
-          </Button>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-auto mt-4 inline-flex items-center gap-2 text-caption leading-relaxed text-secondary-foreground/60 underline-offset-4 transition-colors hover:text-secondary-foreground/80 hover:underline"
-          >
-            <WhatsAppIcon className="size-4" />
-            {t("whatsappLabel")}
-          </a>
+          <div className="mt-8 flex flex-col items-center gap-4">
+            <Button type="button" size="cta" onClick={openBooking}>
+              {t("button")}
+            </Button>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-caption leading-relaxed text-secondary-foreground/60 underline-offset-4 transition-colors hover:text-secondary-foreground/80 hover:underline"
+            >
+              <WhatsAppIcon className="size-4" />
+              {t("whatsappLabel")}
+            </a>
+          </div>
         </SectionReveal>
       </Container>
     </Section>
