@@ -36,7 +36,8 @@ export function BookingCta() {
             id="booking-cta-heading"
             size="h2"
             align="center"
-            className="tracking-tight text-secondary-foreground"
+            className="tracking-tight glow-text-white-soft"
+            style={{ color: "var(--secondary-foreground)" }}
           >
             {t("title")}
           </Heading>
