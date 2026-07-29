@@ -34,7 +34,7 @@ export function BookingCta() {
         <SectionReveal>
           <Heading
             id="booking-cta-heading"
-            size="h2"
+            size="h1"
             align="center"
             className="tracking-tight glow-text-white-soft"
             style={{ color: "var(--secondary-foreground)" }}
