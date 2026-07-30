@@ -20,7 +20,8 @@ import {
   workCaseKeys,
 } from "@/lib/work";
 
-const tagKeys = ["0", "1", "2"] as const;
+const defaultTagKeys = ["0", "1", "2"] as const;
+const fourTagKeys = ["0", "1", "2", "3"] as const;
 
 export function WorkCases() {
   const t = useTranslations("Work.cases");
@@ -49,30 +50,56 @@ export function WorkCases() {
         <Stagger className="mt-12 space-y-12 md:mt-14 md:space-y-16">
           {workCaseKeys.map((key, index) => {
             const reverse = index % 2 === 1;
-            const tags = tagKeys.map((tagKey) =>
-              t(`items.${key}.tags.${tagKey}`)
-            );
+            const tags =
+              key === "lending"
+                ? fourTagKeys.map((tagKey) =>
+                    t(`items.lending.tags.${tagKey}`)
+                  )
+                : key === "financial"
+                  ? fourTagKeys.map((tagKey) =>
+                      t(`items.financial.tags.${tagKey}`)
+                    )
+                  : defaultTagKeys.map((tagKey) =>
+                      t(`items.${key}.tags.${tagKey}`)
+                    );
             const carouselImages = workCaseCarouselImages[key];
-            const imageAlts =
-              key === "vidaGreen"
-                ? [
+            const imageAlts = (() => {
+              switch (key) {
+                case "financial":
+                  return [
+                    t("items.financial.imageAlt"),
+                    t("items.financial.imageAltSecondary"),
+                  ];
+                case "vidaGreen":
+                  return [
                     t("items.vidaGreen.imageAlt"),
                     t("items.vidaGreen.imageAltSecondary"),
-                  ]
-                : key === "alchones"
-                  ? [
-                      t("items.alchones.imageAlt"),
-                      t("items.alchones.imageAltSecondary"),
-                      t("items.alchones.imageAlt3"),
-                      t("items.alchones.imageAlt4"),
-                    ]
-                  : key === "cleaningOs"
-                    ? [
-                        t("items.cleaningOs.imageAlt"),
-                        t("items.cleaningOs.imageAltSecondary"),
-                        t("items.cleaningOs.imageAlt3"),
-                      ]
-                    : [t(`items.${key}.imageAlt`)];
+                  ];
+                case "alchones":
+                  return [
+                    t("items.alchones.imageAlt"),
+                    t("items.alchones.imageAltSecondary"),
+                    t("items.alchones.imageAlt3"),
+                    t("items.alchones.imageAlt4"),
+                  ];
+                case "cleaningOs":
+                  return [
+                    t("items.cleaningOs.imageAlt"),
+                    t("items.cleaningOs.imageAltSecondary"),
+                    t("items.cleaningOs.imageAlt3"),
+                  ];
+                case "lending":
+                  return [
+                    t("items.lending.imageAlt"),
+                    t("items.lending.imageAltSecondary"),
+                    t("items.lending.imageAlt3"),
+                    t("items.lending.imageAlt4"),
+                    t("items.lending.imageAlt5"),
+                    t("items.lending.imageAlt6"),
+                    t("items.lending.imageAlt7"),
+                  ];
+              }
+            })();
 
             return (
               <StaggerItem key={key}>

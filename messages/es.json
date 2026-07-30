@@ -460,14 +460,16 @@
       },
       "items": {
         "financial": {
-          "category": "Finanzas e Informes Inmobiliarios",
-          "title": "Reportes P&L automatizados",
-          "outcome": "Seguimiento manual en hojas de cálculo → reportes de pérdidas y ganancias automatizados con exportaciones financieras.",
+          "category": "Finanzas y Portafolio Inmobiliario",
+          "title": "Reportes Financieros y Seguimiento de Portafolio",
+          "outcome": "Hojas de cálculo manuales → reportes P&L automatizados y vistas consolidadas del portafolio con cálculos de patrimonio en tiempo real.",
           "imageAlt": "Captura de un panel de pérdidas y ganancias automatizado con ingresos, gastos y opciones de exportación",
+          "imageAltSecondary": "Captura de un panel de gestión de portafolio inmobiliario con patrimonio total, renta e acciones rápidas",
           "tags": {
             "0": "Seguimiento de ingresos y gastos",
-            "1": "Exportación CSV/Excel/PDF",
-            "2": "Desgloses visuales"
+            "1": "Cálculo automatizado de patrimonio",
+            "2": "Seguimiento multipropiedad",
+            "3": "Exportación CSV/Excel/PDF"
           }
         },
         "vidaGreen": {
@@ -480,17 +482,6 @@
             "0": "Gestión de pedidos",
             "1": "Seguimiento de ingresos",
             "2": "Coordinación de entregas"
-          }
-        },
-        "portfolio": {
-          "category": "Gestión de Portafolio Inmobiliario",
-          "title": "Vista consolidada del portafolio",
-          "outcome": "Seguimiento manual en Excel → portafolio inmobiliario consolidado con cálculos automatizados de patrimonio.",
-          "imageAlt": "Captura de un panel de gestión de portafolio inmobiliario con patrimonio total, renta e acciones rápidas",
-          "tags": {
-            "0": "Seguimiento multipropiedad",
-            "1": "Cálculo automatizado de patrimonio neto",
-            "2": "Monitoreo de renta"
           }
         },
         "alchones": {
@@ -518,6 +509,24 @@
             "0": "Programación y gestión de equipos",
             "1": "Gestión de clientes",
             "2": "Seguimiento de gastos"
+          }
+        },
+        "lending": {
+          "category": "Gestión de Préstamos y Crédito",
+          "title": "Plataforma Completa de Operaciones de Préstamo",
+          "outcome": "Administra todo tu portafolio de préstamos — registros de clientes, originación con calculadoras de pago en vivo, rutas de cobro y seguimiento de recuperación en tiempo real — en un solo sistema para prestamistas y negocios de microcrédito.",
+          "imageAlt": "Captura del centro de operaciones de préstamos con analítica del portafolio",
+          "imageAltSecondary": "Captura del centro de operaciones de préstamos con métricas de recuperación adicionales",
+          "imageAlt3": "Captura del perfil de un cliente en la plataforma de préstamos",
+          "imageAlt4": "Captura de originación de un nuevo préstamo con calculadora de pagos en vivo",
+          "imageAlt5": "Captura de la lista del portafolio de préstamos y sus estados",
+          "imageAlt6": "Captura del formulario para registrar un nuevo cliente",
+          "imageAlt7": "Captura del seguimiento de rutas de cobro en un mapa",
+          "tags": {
+            "0": "Portafolio y analítica de préstamos",
+            "1": "Gestión de clientes y préstamos",
+            "2": "Calculadora de préstamo en vivo",
+            "3": "Rutas y seguimiento de cobros"
           }
         }
       }

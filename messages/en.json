@@ -460,14 +460,16 @@
       },
       "items": {
         "financial": {
-          "category": "Real Estate Finance & Reporting",
-          "title": "Automated P&L reporting",
-          "outcome": "Manual spreadsheet tracking → automated P&L reports with exportable financials.",
+          "category": "Real Estate Finance & Portfolio",
+          "title": "Financial Reporting & Portfolio Tracking",
+          "outcome": "Manual spreadsheets → automated P&L reports and consolidated portfolio views with real-time equity calculations.",
           "imageAlt": "Screenshot of an automated profit and loss reporting dashboard with income, expenses, and export options",
+          "imageAltSecondary": "Screenshot of a property portfolio management dashboard with total equity, rental income, and quick actions",
           "tags": {
             "0": "Income & expense tracking",
-            "1": "CSV/Excel/PDF export",
-            "2": "Visual breakdowns"
+            "1": "Automated equity calculation",
+            "2": "Multi-property tracking",
+            "3": "CSV/Excel/PDF export"
           }
         },
         "vidaGreen": {
@@ -480,17 +482,6 @@
             "0": "Order management",
             "1": "Revenue tracking",
             "2": "Delivery coordination"
-          }
-        },
-        "portfolio": {
-          "category": "Property Portfolio Management",
-          "title": "Consolidated portfolio view",
-          "outcome": "Manual Excel tracking → consolidated real estate portfolio with automated equity calculations.",
-          "imageAlt": "Screenshot of a property portfolio management dashboard with total equity, rental income, and quick actions",
-          "tags": {
-            "0": "Multi-property tracking",
-            "1": "Automated equity/net worth calculation",
-            "2": "Rental income monitoring"
           }
         },
         "alchones": {
@@ -518,6 +509,24 @@
             "0": "Scheduling & crew management",
             "1": "Client management",
             "2": "Expense tracking"
+          }
+        },
+        "lending": {
+          "category": "Lending & Loan Management",
+          "title": "Complete Lending Operations Platform",
+          "outcome": "Manage your entire loan portfolio — client records, loan origination with live payment calculators, collection routes, and real-time recovery tracking — in one system built for lenders and microcredit businesses.",
+          "imageAlt": "Screenshot of the lending operations center dashboard with portfolio analytics",
+          "imageAltSecondary": "Screenshot of the lending operations center with additional recovery metrics",
+          "imageAlt3": "Screenshot of a client profile in the lending platform",
+          "imageAlt4": "Screenshot of new loan origination with a live payment calculator",
+          "imageAlt5": "Screenshot of the loans portfolio list and statuses",
+          "imageAlt6": "Screenshot of the register new client form",
+          "imageAlt7": "Screenshot of collection route tracking on a map",
+          "tags": {
+            "0": "Loan portfolio & analytics",
+            "1": "Client & loan management",
+            "2": "Live loan calculator",
+            "3": "Route & collections tracking"
           }
         }
       }
