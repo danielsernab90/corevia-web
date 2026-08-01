@@ -616,6 +616,10 @@
         "work": {
           "title": "Selected work",
           "description": "Explore real platforms we’ve designed and delivered."
+        },
+        "instagram": {
+          "title": "Follow us on Instagram",
+          "description": "Follow us to see new projects, company updates, and software development content."
         }
       }
     },

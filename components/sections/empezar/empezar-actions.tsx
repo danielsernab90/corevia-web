@@ -2,14 +2,16 @@
 
 import { BriefcaseBusiness, CalendarCheck2, LayoutGrid } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import type { ComponentType } from "react";
+import type { ComponentType, ReactNode } from "react";
 
+import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { useBooking } from "@/components/sections/book-consultation/booking-provider";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
 import {
+  FadeUp,
   SectionReveal,
   Stagger,
   StaggerItem,
@@ -20,6 +22,8 @@ import { brandColors } from "@/lib/design-tokens";
 import { coreviaIconProps } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+
+const INSTAGRAM_HREF = "https://www.instagram.com/corevia_software/";
 
 const actionKeys = ["book", "whatsapp", "services", "work"] as const;
 
@@ -34,6 +38,46 @@ const actionIcons: Record<
   services: LayoutGrid,
   work: BriefcaseBusiness,
 };
+
+function actionCardClassName(emphasized = false) {
+  return cn(
+    "group flex h-full flex-col rounded-2xl border p-6 text-left transition-[border-color,background-color,box-shadow,transform] duration-200 sm:p-7",
+    "focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+    emphasized
+      ? "border-primary/25 bg-card shadow-[0_0_28px_rgb(22_82_240/0.14)] hover:border-primary/40"
+      : "border-border bg-card hover:border-primary/25 hover:bg-background"
+  );
+}
+
+function ActionCardContent({
+  title,
+  description,
+  icon,
+}: {
+  title: string;
+  description: string;
+  icon: ReactNode;
+}) {
+  return (
+    <>
+      <span
+        className="inline-flex size-11 items-center justify-center rounded-xl"
+        style={{
+          backgroundColor: brandColors.primarySoft,
+          color: brandColors.primary,
+        }}
+      >
+        {icon}
+      </span>
+      <h3 className="mt-5 font-sans text-lg font-semibold tracking-tight text-foreground">
+        {title}
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        {description}
+      </p>
+    </>
+  );
+}
 
 export function EmpezarActions() {
   const t = useTranslations("Empezar.actions");
@@ -67,38 +111,19 @@ export function EmpezarActions() {
             const Icon = actionIcons[key];
             const title = t(`items.${key}.title`);
             const description = t(`items.${key}.description`);
-            const isPrimary = key === "book";
-
-            const className = cn(
-              "group flex h-full flex-col rounded-2xl border p-6 text-left transition-[border-color,background-color,box-shadow,transform] duration-200 sm:p-7",
-              "focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
-              isPrimary
-                ? "border-primary/25 bg-card shadow-[0_0_28px_rgb(22_82_240/0.14)] hover:border-primary/40"
-                : "border-border bg-card hover:border-primary/25 hover:bg-background"
-            );
-
+            const className = actionCardClassName(key === "book");
+            const icon =
+              key === "whatsapp" ? (
+                <WhatsAppIcon className="size-5" />
+              ) : (
+                <Icon className="size-5" {...coreviaIconProps} />
+              );
             const content = (
-              <>
-                <span
-                  className="inline-flex size-11 items-center justify-center rounded-xl"
-                  style={{
-                    backgroundColor: brandColors.primarySoft,
-                    color: brandColors.primary,
-                  }}
-                >
-                  {key === "whatsapp" ? (
-                    <WhatsAppIcon className="size-5" />
-                  ) : (
-                    <Icon className="size-5" {...coreviaIconProps} />
-                  )}
-                </span>
-                <h3 className="mt-5 font-sans text-lg font-semibold tracking-tight text-foreground">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {description}
-                </p>
-              </>
+              <ActionCardContent
+                title={title}
+                description={description}
+                icon={icon}
+              />
             );
 
             return (
@@ -132,6 +157,24 @@ export function EmpezarActions() {
             );
           })}
         </Stagger>
+
+        <FadeUp className="mt-8 flex justify-center sm:mt-10 lg:mt-12">
+          <a
+            href={INSTAGRAM_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              actionCardClassName(),
+              "w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(50%-1rem)]"
+            )}
+          >
+            <ActionCardContent
+              title={t("items.instagram.title")}
+              description={t("items.instagram.description")}
+              icon={<InstagramIcon className="size-5" />}
+            />
+          </a>
+        </FadeUp>
       </Container>
     </Section>
   );

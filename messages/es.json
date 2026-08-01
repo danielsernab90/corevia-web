@@ -616,6 +616,10 @@
         "work": {
           "title": "Proyectos realizados",
           "description": "Explora plataformas reales que hemos diseñado y entregado."
+        },
+        "instagram": {
+          "title": "Síguenos en Instagram",
+          "description": "Síguenos para conocer nuevos proyectos, actualizaciones y contenido sobre tecnología y desarrollo de software."
         }
       }
     },
