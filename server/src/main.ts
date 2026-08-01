@@ -5,6 +5,10 @@ import { AppModule } from "./app.module";
 import { HttpExceptionFilter } from "./common/filters/http-exception.filter";
 import { ResponseInterceptor } from "./common/interceptors/response.interceptor";
 import { createValidationPipe } from "./common/pipes/validation.pipe";
+import {
+  isSwaggerEnabled,
+  setupSwagger,
+} from "./common/swagger/setup-swagger";
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
@@ -29,10 +33,16 @@ async function bootstrap(): Promise<void> {
     allowedHeaders: ["Content-Type", "Authorization"],
   });
 
+  // OpenAPI UI — development by default; disable with SWAGGER_ENABLED=false.
+  setupSwagger(app);
+
   const port = Number(process.env.PORT ?? 4000);
   await app.listen(port);
   logger.log(`COREVIA API listening on http://localhost:${port}`);
   logger.log(`Leads: http://localhost:${port}/api/v1/leads`);
+  if (isSwaggerEnabled()) {
+    logger.log(`Swagger: http://localhost:${port}/api/docs`);
+  }
 }
 
 void bootstrap();

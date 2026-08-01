@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 
 import { CreateLeadDto } from "./dto/create-lead.dto";
 import type { LeadListResponse, LeadResponseDto } from "./dto/lead-response.dto";
@@ -19,7 +20,10 @@ import { LeadsService } from "./leads.service";
 /**
  * REST boundary for leads.
  * No business logic or SQL — delegates entirely to {@link LeadsService}.
+ *
+ * `@ApiTags` groups these routes in Swagger — it does not change HTTP behavior.
  */
+@ApiTags("Leads")
 @Controller("api/v1/leads")
 export class LeadsController {
   constructor(private readonly leadsService: LeadsService) {}

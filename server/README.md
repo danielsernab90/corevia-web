@@ -48,6 +48,23 @@ Optional env:
 |----------|---------|
 | `PORT` | HTTP port (default `4000`) |
 | `COREVIA_API_DB_PATH` | Absolute path to SQLite file (default `server/data/corevia-api.sqlite`) |
+| `SWAGGER_ENABLED` | `true` / `false` — force Swagger UI on/off. Default: on unless `NODE_ENV=production` |
+
+## Swagger / OpenAPI
+
+Interactive docs (development): [http://localhost:4000/api/docs](http://localhost:4000/api/docs)
+
+Swagger auto-discovers controllers and DTO `class-validator` metadata via the Nest CLI plugin (`nest-cli.json`).
+
+**How future modules appear in Swagger**
+
+1. Add a `@Controller` with concrete DTO classes on `@Body()` / `@Query()`.
+2. Prefer `@ApiTags('ModuleName')` on the controller for grouping.
+3. Keep validation decorators on DTOs — schemas and required fields are derived automatically.
+4. Optionally add `@ApiOkResponse({ type: ResponseDto })` for richer response docs.
+5. Restart `npm run start:dev` — no manual OpenAPI registration needed.
+
+Disable in production: `SWAGGER_ENABLED=false`.
 
 ## Leads API
 
