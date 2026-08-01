@@ -51,9 +51,12 @@ Middleware redirects to `/en` or `/es` based on browser language (or the saved `
 | App | Port | Bind | Start |
 | --- | --- | --- | --- |
 | Daniel Command Station | **3000** | `0.0.0.0` | `npm run dev:remote` in that repo |
-| Corevia | **3002** | `0.0.0.0` | `npm run dev:remote` |
+| Corevia Website | **3002** | `0.0.0.0` | `npm run dev:remote` |
+| Corevia API (`server/`) | **4000** | `0.0.0.0` | `cd server && npm run start:dev` |
 
-Both must use different ports. Do not run two apps on 3000.
+Website and Command Station must use different ports. Do not run two apps on 3000.
+
+Shared backend API docs: [`server/README.md`](server/README.md).
 
 ## Scripts
 
@@ -94,6 +97,7 @@ i18n/             Routing, navigation, request config
 lib/              Shared helpers (site config, cn)
 messages/         Translation JSON (en, es)
 public/           images / logos / icons
+server/           Shared NestJS REST API (Leads + future modules)
 styles/           Global CSS
 types/            Shared TypeScript types
 utils/            Small pure helpers (as needed)
