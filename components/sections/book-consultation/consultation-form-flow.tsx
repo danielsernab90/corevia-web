@@ -29,9 +29,12 @@ import { Link } from "@/i18n/navigation";
 import {
   companySizeOptions,
   industryOptions,
+  isBusinessCardLeadSource,
+  leadSourceOptions,
   roleOptions,
   serviceOptions,
   type ConsultationFormData,
+  type LeadSourceOption,
   type ServiceOption,
 } from "@/lib/consultation";
 import { cn } from "@/lib/utils";
@@ -49,6 +52,8 @@ const initialForm: ConsultationFormData = {
   email: "",
   phone: "",
   referredBy: "",
+  leadSource: "",
+  businessCardFrom: null,
   industry: "",
   role: "",
   companySize: "",
@@ -230,7 +235,14 @@ export function ConsultationFormFlow({
       const response = await fetch("/api/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, scheduledViaCalendly }),
+        body: JSON.stringify({
+          ...form,
+          // Hidden attribution follow-up must serialize as null for CRM.
+          businessCardFrom: isBusinessCardLeadSource(form.leadSource)
+            ? (form.businessCardFrom ?? "").trim()
+            : null,
+          scheduledViaCalendly,
+        }),
       });
 
       const payload = (await response.json().catch(() => null)) as {
@@ -388,6 +400,16 @@ export function ConsultationFormFlow({
                   referredBy: t("fields.referredBy"),
                   referredByOptional: t("fields.referredByOptional"),
                   referredByPlaceholder: t("fields.referredByPlaceholder"),
+                  leadSource: t("fields.leadSource"),
+                  businessCardFrom: t("fields.businessCardFrom"),
+                  businessCardFromOptional: t("fields.businessCardFromOptional"),
+                  selectPlaceholder: t("fields.selectPlaceholder"),
+                  leadSources: Object.fromEntries(
+                    leadSourceOptions.map((key) => [
+                      key,
+                      t(`leadSources.${key}`),
+                    ])
+                  ) as Record<LeadSourceOption, string>,
                 }}
               />
             ) : null}

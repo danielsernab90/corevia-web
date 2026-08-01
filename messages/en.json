@@ -283,6 +283,9 @@
         "referredBy": "Referred by",
         "referredByOptional": "Optional",
         "referredByPlaceholder": "If someone referred you, enter their name",
+        "leadSource": "How did you hear about us?",
+        "businessCardFrom": "Who gave you the business card?",
+        "businessCardFromOptional": "Optional",
         "businessNameOptional": "Optional",
         "industry": "Industry",
         "role": "What Best Describes Your Role?",
@@ -290,6 +293,14 @@
         "otherService": "Please tell us what you're looking for.",
         "challenge": "Describe your challenge",
         "selectPlaceholder": "Select an option"
+      },
+      "leadSources": {
+        "businessCard": "Business Card",
+        "website": "Website",
+        "google": "Google",
+        "socialMedia": "Social Media",
+        "referral": "Referral",
+        "other": "Other"
       },
       "industries": {
         "accounting": "Accounting & Finance",

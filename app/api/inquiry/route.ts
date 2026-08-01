@@ -10,9 +10,12 @@ import {
 import {
   companySizeOptions,
   industryOptions,
+  isBusinessCardLeadSource,
+  leadSourceOptions,
   roleOptions,
   serviceOptions,
   type ConsultationFormData,
+  type LeadSourceOption,
 } from "@/lib/consultation";
 import {
   isValidEmail,
@@ -51,6 +54,10 @@ function isCompanySize(
   );
 }
 
+function isLeadSource(value: string): value is LeadSourceOption {
+  return (leadSourceOptions as readonly string[]).includes(value);
+}
+
 function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false; error: string } {
   if (!raw || typeof raw !== "object") {
     return { ok: false, error: "Invalid JSON body." };
@@ -62,6 +69,7 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
   const email = String(body.email ?? "").trim();
   const phone = String(body.phone ?? "").trim();
   const referredBy = String(body.referredBy ?? "").trim();
+  const leadSource = String(body.leadSource ?? "").trim();
   const industry = String(body.industry ?? "").trim();
   const role = String(body.role ?? "").trim();
   const companySize = String(body.companySize ?? "").trim();
@@ -85,6 +93,13 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
   if (!isValidPhone(phone)) {
     return { ok: false, error: "Invalid phone number." };
   }
+  if (!leadSource || !isLeadSource(leadSource)) {
+    return { ok: false, error: "Invalid lead source." };
+  }
+  // Null when hidden; optional free text when business-card attribution applies.
+  const businessCardFrom = isBusinessCardLeadSource(leadSource)
+    ? String(body.businessCardFrom ?? "").trim()
+    : null;
   if (!industry || !isIndustry(industry) || industry === "") {
     return { ok: false, error: "Invalid industry." };
   }
@@ -114,6 +129,8 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
       email,
       phone,
       referredBy,
+      leadSource,
+      businessCardFrom,
       industry,
       role,
       companySize,

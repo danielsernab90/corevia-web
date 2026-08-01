@@ -1,10 +1,17 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { ConsultationFormData } from "@/lib/consultation";
+import { Select } from "@/components/ui/select";
+import {
+  isBusinessCardLeadSource,
+  leadSourceOptions,
+  type ConsultationFormData,
+  type LeadSourceOption,
+} from "@/lib/consultation";
 import {
   isValidEmail,
   isValidPhone,
@@ -12,7 +19,13 @@ import {
 
 export type ContactFormValues = Pick<
   ConsultationFormData,
-  "fullName" | "businessName" | "email" | "phone" | "referredBy"
+  | "fullName"
+  | "businessName"
+  | "email"
+  | "phone"
+  | "referredBy"
+  | "leadSource"
+  | "businessCardFrom"
 >;
 
 export type ContactFieldErrors = Partial<
@@ -38,6 +51,7 @@ export function validateContactFields(
   else if (!isValidEmail(form.email)) nextErrors.email = messages.email;
   if (!form.phone.trim()) nextErrors.phone = messages.phoneRequired;
   else if (!isValidPhone(form.phone)) nextErrors.phone = messages.phone;
+  if (!form.leadSource) nextErrors.leadSource = messages.required;
 
   return nextErrors;
 }
@@ -76,9 +90,9 @@ export function Field({
 type BookingContactFieldsProps = {
   form: ContactFormValues;
   errors: ContactFieldErrors;
-  updateField: <K extends keyof ContactFormValues>(
+  updateField: <K extends keyof ConsultationFormData>(
     key: K,
-    value: ContactFormValues[K]
+    value: ConsultationFormData[K]
   ) => void;
   labels: {
     fullName: string;
@@ -89,6 +103,11 @@ type BookingContactFieldsProps = {
     referredBy: string;
     referredByOptional: string;
     referredByPlaceholder: string;
+    leadSource: string;
+    businessCardFrom: string;
+    businessCardFromOptional: string;
+    selectPlaceholder: string;
+    leadSources: Record<LeadSourceOption, string>;
   };
   /** Prefix ids when embedding beside other forms on the same page. */
   idPrefix?: string;
@@ -106,6 +125,17 @@ export function BookingContactFields({
   idPrefix = "",
 }: BookingContactFieldsProps) {
   const id = (name: string) => `${idPrefix}${name}`;
+  const reduceMotion = useReducedMotion();
+  const showBusinessCardFrom = isBusinessCardLeadSource(form.leadSource);
+
+  const onLeadSourceChange = (value: string) => {
+    const leadSource = value as ConsultationFormData["leadSource"];
+    updateField("leadSource", leadSource);
+    updateField(
+      "businessCardFrom",
+      isBusinessCardLeadSource(leadSource) ? (form.businessCardFrom ?? "") : null
+    );
+  };
 
   return (
     <div className="space-y-4">
@@ -171,6 +201,62 @@ export function BookingContactFields({
           className="h-10"
         />
       </Field>
+      <Field
+        id={id("leadSource")}
+        label={labels.leadSource}
+        error={errors.leadSource}
+      >
+        <Select
+          id={id("leadSource")}
+          value={form.leadSource}
+          required
+          aria-invalid={Boolean(errors.leadSource)}
+          onChange={(e) => onLeadSourceChange(e.target.value)}
+        >
+          <option value="">{labels.selectPlaceholder}</option>
+          {leadSourceOptions.map((key) => (
+            <option key={key} value={key}>
+              {labels.leadSources[key]}
+            </option>
+          ))}
+        </Select>
+      </Field>
+      <AnimatePresence initial={false}>
+        {showBusinessCardFrom ? (
+          <motion.div
+            key="businessCardFrom"
+            initial={
+              reduceMotion
+                ? { opacity: 1, height: "auto" }
+                : { opacity: 0, height: 0 }
+            }
+            animate={{ opacity: 1, height: "auto" }}
+            exit={
+              reduceMotion
+                ? { opacity: 1, height: "auto" }
+                : { opacity: 0, height: 0 }
+            }
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="overflow-hidden"
+          >
+            <Field
+              id={id("businessCardFrom")}
+              label={labels.businessCardFrom}
+              hint={labels.businessCardFromOptional}
+            >
+              <Input
+                id={id("businessCardFrom")}
+                autoComplete="off"
+                value={form.businessCardFrom ?? ""}
+                onChange={(e) =>
+                  updateField("businessCardFrom", e.target.value)
+                }
+                className="h-10"
+              />
+            </Field>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

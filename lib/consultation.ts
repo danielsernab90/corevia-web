@@ -68,6 +68,19 @@ export const serviceOptions = [
   "other",
 ] as const;
 
+/**
+ * Marketing attribution — how the lead discovered Corevia.
+ * Stable option keys for CRM / analytics (labels live in next-intl).
+ */
+export const leadSourceOptions = [
+  "businessCard",
+  "website",
+  "google",
+  "socialMedia",
+  "referral",
+  "other",
+] as const;
+
 export const audienceKeys = [
   "healthcare",
   "dental",
@@ -116,6 +129,7 @@ export type IndustryOption = (typeof industryOptions)[number];
 export type RoleOption = (typeof roleOptions)[number];
 export type CompanySizeOption = (typeof companySizeOptions)[number];
 export type ServiceOption = (typeof serviceOptions)[number];
+export type LeadSourceOption = (typeof leadSourceOptions)[number];
 
 export type ConsultationFormData = {
   fullName: string;
@@ -124,6 +138,16 @@ export type ConsultationFormData = {
   phone: string;
   /** Optional — name of the person who referred the lead. */
   referredBy: string;
+  /**
+   * Required marketing attribution (CRM `lead_source`).
+   * Empty string only while the field is unanswered in the UI.
+   */
+  leadSource: LeadSourceOption | "";
+  /**
+   * Who handed the business card when `leadSource === "businessCard"`.
+   * `null` when that source is not selected (hidden field).
+   */
+  businessCardFrom: string | null;
   industry: IndustryOption | "";
   role: RoleOption | "";
   companySize: CompanySizeOption | "";
@@ -131,3 +155,10 @@ export type ConsultationFormData = {
   otherService: string;
   challenge: string;
 };
+
+/** True when the business-card attribution follow-up should be collected. */
+export function isBusinessCardLeadSource(
+  leadSource: ConsultationFormData["leadSource"]
+): boolean {
+  return leadSource === "businessCard";
+}

@@ -283,6 +283,9 @@
         "referredBy": "Referido por",
         "referredByOptional": "Opcional",
         "referredByPlaceholder": "Si alguien te refirió, escribe su nombre",
+        "leadSource": "¿Cómo supiste de nosotros?",
+        "businessCardFrom": "¿Quién te entregó la tarjeta?",
+        "businessCardFromOptional": "Opcional",
         "businessNameOptional": "Opcional",
         "industry": "Industria",
         "role": "¿Qué Describe Mejor Tu Rol?",
@@ -290,6 +293,14 @@
         "otherService": "Cuéntanos qué estás buscando.",
         "challenge": "Describe tu desafío",
         "selectPlaceholder": "Selecciona una opción"
+      },
+      "leadSources": {
+        "businessCard": "Tarjeta de presentación",
+        "website": "Sitio web",
+        "google": "Google",
+        "socialMedia": "Redes sociales",
+        "referral": "Referido",
+        "other": "Otro"
       },
       "industries": {
         "accounting": "Contabilidad y Finanzas",

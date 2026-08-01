@@ -32,6 +32,10 @@ export type CoreviaInquiryInsert = {
   email: string;
   phone: string;
   referredBy: string;
+  /** CRM-ready marketing attribution key (e.g. businessCard, google). */
+  leadSource: string;
+  /** Who handed the card — null when leadSource is not businessCard. */
+  businessCardFrom: string | null;
   industry: string;
   role: string;
   companySize: string;
@@ -58,6 +62,8 @@ CREATE TABLE IF NOT EXISTS corevia_inquiries (
   email TEXT NOT NULL,
   phone TEXT NOT NULL,
   referred_by TEXT,
+  lead_source TEXT,
+  business_card_from TEXT,
   industry TEXT,
   role TEXT,
   company_size TEXT,
@@ -72,13 +78,22 @@ CREATE INDEX IF NOT EXISTS idx_corevia_inquiries_created
   ON corevia_inquiries (created_at DESC);
 `;
 
-function ensureReferredByColumn(db: Database.Database): void {
+function ensureInquiryColumn(
+  db: Database.Database,
+  columnName: string
+): void {
   const columns = db
     .prepare(`PRAGMA table_info(corevia_inquiries)`)
     .all() as Array<{ name: string }>;
-  if (!columns.some((column) => column.name === "referred_by")) {
-    db.exec(`ALTER TABLE corevia_inquiries ADD COLUMN referred_by TEXT`);
+  if (!columns.some((column) => column.name === columnName)) {
+    db.exec(`ALTER TABLE corevia_inquiries ADD COLUMN ${columnName} TEXT`);
   }
+}
+
+function ensureInquirySchema(db: Database.Database): void {
+  ensureInquiryColumn(db, "referred_by");
+  ensureInquiryColumn(db, "lead_source");
+  ensureInquiryColumn(db, "business_card_from");
 }
 
 let dbInstance: Database.Database | null = null;
@@ -102,7 +117,7 @@ export function getCommandStationDb(): Database.Database {
   const db = new Database(dbPath);
   db.pragma("journal_mode = WAL");
   db.exec(ENSURE_COREVIA_INQUIRIES_SQL);
-  ensureReferredByColumn(db);
+  ensureInquirySchema(db);
   dbInstance = db;
   return db;
 }
@@ -119,6 +134,8 @@ export function insertCoreviaInquiry(data: CoreviaInquiryInsert): void {
       email,
       phone,
       referred_by,
+      lead_source,
+      business_card_from,
       industry,
       role,
       company_size,
@@ -135,6 +152,8 @@ export function insertCoreviaInquiry(data: CoreviaInquiryInsert): void {
       @email,
       @phone,
       @referredBy,
+      @leadSource,
+      @businessCardFrom,
       @industry,
       @role,
       @companySize,
@@ -152,6 +171,11 @@ export function insertCoreviaInquiry(data: CoreviaInquiryInsert): void {
     email: data.email,
     phone: data.phone,
     referredBy: data.referredBy.trim() ? data.referredBy.trim() : null,
+    leadSource: data.leadSource || null,
+    businessCardFrom:
+      data.businessCardFrom && data.businessCardFrom.trim()
+        ? data.businessCardFrom.trim()
+        : null,
     industry: data.industry || null,
     role: data.role || null,
     companySize: data.companySize || null,

@@ -36,6 +36,7 @@ const industryLabels = modal.industries as Record<string, string>;
 const roleLabels = modal.roles as Record<string, string>;
 const companySizeLabels = modal.companySizes as Record<string, string>;
 const serviceLabels = modal.services as Record<string, string>;
+const leadSourceLabels = modal.leadSources as Record<string, string>;
 
 /** Falls back to the raw key so an unmapped option is still visible. */
 function label(group: Record<string, string>, key: string): string {
@@ -43,7 +44,8 @@ function label(group: Record<string, string>, key: string): string {
   return group[key] ?? key;
 }
 
-function orNotProvided(value: string): string {
+function orNotProvided(value: string | null | undefined): string {
+  if (value == null) return NOT_PROVIDED;
   return value.trim() ? value.trim() : NOT_PROVIDED;
 }
 
@@ -94,6 +96,14 @@ export function buildInquiryEmail(
         { label: "Email", value: orNotProvided(data.email) },
         { label: "Phone", value: orNotProvided(data.phone) },
         { label: "Referred by", value: orNotProvided(data.referredBy) },
+        {
+          label: "How did you hear about us?",
+          value: label(leadSourceLabels, data.leadSource),
+        },
+        {
+          label: "Who gave you the business card?",
+          value: orNotProvided(data.businessCardFrom),
+        },
       ],
     },
     {
