@@ -22,8 +22,26 @@ import {
   isValidPhone,
 } from "@/lib/consultation-validation";
 import { buildInquiryEmail } from "@/lib/inquiry-email";
+import {
+  forwardLeadToCoreviaApi,
+  mapInquiryToCreateLeadDto,
+  normalizeLeadLanguage,
+} from "@/lib/inquiry-lead-adapter";
 
 export const runtime = "nodejs";
+
+/**
+ * Website inquiry adapter (NOT a second CRM).
+ *
+ * The consultation UI always posts here (`POST /api/inquiry`). It must never
+ * call NestJS (`/api/v1/leads`) from the browser — that keeps:
+ * - Calendly + modal + form contracts stable
+ * - Secrets / internal API URLs off the client
+ * - One place to dual-write, fall back, and later add Sheets/Drive via Nest
+ *
+ * Primary path: forward a mapped Lead to the shared NestJS API.
+ * Temporary fallback: local SQLite + Resend email (unchanged behavior).
+ */
 
 /** Keeps the local macOS username out of any publicly returned error text. */
 function redactHome(value: string | undefined): string | null {
@@ -36,6 +54,11 @@ type InquiryBody = ConsultationFormData & {
   source?: string;
   /** True only when Calendly confirmed a real booking on the schedule step. */
   scheduledViaCalendly?: boolean;
+  /**
+   * Optional — frontend does not send this today.
+   * Derived from NEXT_LOCALE cookie / Accept-Language when missing.
+   */
+  language?: "en" | "es";
 };
 
 function isIndustry(value: string): value is ConsultationFormData["industry"] {
@@ -77,6 +100,11 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
   const challenge = String(body.challenge ?? "").trim();
   const source = String(body.source ?? "website").trim() || "website";
   const scheduledViaCalendly = body.scheduledViaCalendly === true;
+  const languageRaw = body.language;
+  const language =
+    typeof languageRaw === "string" && languageRaw.trim()
+      ? normalizeLeadLanguage(languageRaw)
+      : undefined;
 
   const servicesRaw = body.services;
   const services = Array.isArray(servicesRaw)
@@ -139,8 +167,31 @@ function parseBody(raw: unknown): { ok: true; data: InquiryBody } | { ok: false;
       challenge,
       source,
       scheduledViaCalendly,
+      language,
     },
   };
+}
+
+/** Resolve UI language without requiring the consultation form to send it. */
+function resolveRequestLanguage(
+  request: Request,
+  bodyLanguage: "en" | "es" | undefined
+): "en" | "es" {
+  if (bodyLanguage) return bodyLanguage;
+
+  const cookieHeader = request.headers.get("cookie") ?? "";
+  const localeCookie = cookieHeader
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith("NEXT_LOCALE="))
+    ?.slice("NEXT_LOCALE=".length);
+
+  if (localeCookie) return normalizeLeadLanguage(localeCookie);
+
+  const accept = request.headers.get("accept-language");
+  if (accept) return normalizeLeadLanguage(accept.split(",")[0]);
+
+  return "en";
 }
 
 async function sendInquiryEmailNotification(
@@ -197,6 +248,36 @@ async function sendInquiryEmailNotification(
   }
 }
 
+async function persistInquiryFallback(
+  id: string,
+  data: InquiryBody
+): Promise<{
+  dbSaved: boolean;
+  dbError?: string;
+  email: { sent: boolean; skippedReason?: string };
+}> {
+  // Temporary fallback until NestJS Leads is fully validated in production.
+  // Do not remove until Command Center consumes Nest as the sole source of truth.
+  let dbSaved = false;
+  let dbError: string | undefined;
+  try {
+    insertCoreviaInquiry({
+      id,
+      ...data,
+    });
+    dbSaved = true;
+  } catch (error) {
+    dbError = error instanceof Error ? error.message : String(error);
+    console.error(
+      `[inquiry] SQLite insert failed (db=${getCommandStationDbPath()}):`,
+      error
+    );
+  }
+
+  const email = await sendInquiryEmailNotification(id, data, { dbSaved });
+  return { dbSaved, dbError, email };
+}
+
 export async function POST(request: Request) {
   let raw: unknown;
   try {
@@ -210,50 +291,51 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
-  const id = randomUUID();
+  const language = resolveRequestLanguage(request, parsed.data.language);
+  const inquiry: InquiryBody = { ...parsed.data, language };
 
-  // Attempt the local SQLite write, but do NOT let its failure short-circuit
-  // the email safety net. On serverless hosts (e.g. Vercel) the Command Station
-  // DB file does not exist, so this insert throws every time — the email below
-  // is the whole reason it exists as a fallback capture path.
-  let dbSaved = false;
-  let dbError: string | undefined;
-  try {
-    insertCoreviaInquiry({
-      id,
-      ...parsed.data,
-    });
-    dbSaved = true;
-  } catch (error) {
-    dbError = error instanceof Error ? error.message : String(error);
-    console.error(
-      `[inquiry] SQLite insert failed (db=${getCommandStationDbPath()}):`,
-      error
+  // 1) Primary path — shared NestJS Leads API (source of truth going forward).
+  const leadPayload = mapInquiryToCreateLeadDto(inquiry);
+  const nestResult = await forwardLeadToCoreviaApi(leadPayload);
+
+  if (nestResult.ok) {
+    console.log(
+      `[inquiry] Forwarded lead to NestJS Leads API — id=${nestResult.id}`
     );
+    return NextResponse.json({
+      ok: true,
+      id: nestResult.id,
+      persistedVia: "corevia-api",
+      dbSaved: false,
+      emailNotification: { sent: false, skippedReason: "Persisted via NestJS Leads API" },
+    });
   }
 
-  // Email is a redundant safety net — it must run even when the DB write fails.
-  const email = await sendInquiryEmailNotification(id, parsed.data, { dbSaved });
+  console.error(
+    `[inquiry] NestJS Leads API unavailable — falling back to SQLite/email:`,
+    nestResult.error
+  );
 
-  // Only fail the request if BOTH capture paths failed — otherwise the inquiry
-  // is safely recorded somewhere (DB and/or Daniel's inbox).
-  if (!dbSaved && !email.sent) {
+  // 2) Fallback — existing SQLite + Resend path (must not lose the lead).
+  const fallbackId = randomUUID();
+  const fallback = await persistInquiryFallback(fallbackId, inquiry);
+
+  if (!fallback.dbSaved && !fallback.email.sent) {
     console.error(
-      `[inquiry] BOTH capture paths failed — db="${dbError}", email="${email.skippedReason}"`
+      `[inquiry] NestJS + BOTH fallback paths failed — nest="${nestResult.error}", db="${fallback.dbError}", email="${fallback.email.skippedReason}"`
     );
     return NextResponse.json(
       {
         error:
           "Could not save your inquiry. Please try again or contact us another way.",
-        // TEMPORARY: surfaces why each capture path failed so the Resend
-        // delivery issue can be diagnosed without Vercel log access.
-        // Remove once email delivery is confirmed working in production.
         diagnostics: {
-          dbSaved,
-          dbError: redactHome(dbError),
-          emailSent: email.sent,
-          emailError: redactHome(email.skippedReason),
+          nestError: nestResult.error,
+          dbSaved: fallback.dbSaved,
+          dbError: redactHome(fallback.dbError),
+          emailSent: fallback.email.sent,
+          emailError: redactHome(fallback.email.skippedReason),
           resendKeyPresent: Boolean(process.env.RESEND_API_KEY?.trim()),
+          coreviaApiConfigured: Boolean(process.env.COREVIA_API_URL?.trim()),
         },
       },
       { status: 500 }
@@ -262,8 +344,9 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     ok: true,
-    id,
-    dbSaved,
-    emailNotification: email,
+    id: fallbackId,
+    persistedVia: "fallback",
+    dbSaved: fallback.dbSaved,
+    emailNotification: fallback.email,
   });
 }
