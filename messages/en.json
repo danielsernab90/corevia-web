@@ -585,6 +585,56 @@
     },
     "whatsappLink": "Connect with us on WhatsApp"
   },
+  "Empezar": {
+    "meta": {
+      "title": "Welcome to Corevia",
+      "description": "Thanks for scanning our card. Discover how custom technology can modernize and grow your business — and book a free consultation."
+    },
+    "hero": {
+      "title": "Welcome to COREVIA",
+      "subtitle": "Discover how technology can modernize and grow your business.",
+      "description": "Thanks for scanning our card. We’re ready to help you transform your business with custom technology solutions.",
+      "primaryCta": "Book a free consultation",
+      "whatsappCta": "Chat on WhatsApp"
+    },
+    "actions": {
+      "title": "Where would you like to start?",
+      "description": "Choose the next step that fits you best.",
+      "items": {
+        "book": {
+          "title": "Book a free consultation",
+          "description": "Tell us about your business and get clear next steps."
+        },
+        "whatsapp": {
+          "title": "Chat on WhatsApp",
+          "description": "Prefer to text? Reach us directly and we’ll reply soon."
+        },
+        "services": {
+          "title": "Our services",
+          "description": "See how we build software, AI, and automation for businesses."
+        },
+        "work": {
+          "title": "Selected work",
+          "description": "Explore real platforms we’ve designed and delivered."
+        }
+      }
+    },
+    "process": {
+      "title": "How we work",
+      "stepLabel": "Step {number}",
+      "steps": {
+        "learn": "We learn about your business",
+        "design": "We design the right solution",
+        "build": "We build technology that drives your growth"
+      }
+    },
+    "cta": {
+      "title": "Ready for the next step?",
+      "description": "Book a free consultation and we’ll help you see what’s possible for your business.",
+      "button": "Book a free consultation",
+      "whatsappLabel": "WhatsApp"
+    }
+  },
   "Company": {
     "meta": {
       "title": "Company",

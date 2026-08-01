@@ -585,6 +585,56 @@
     },
     "whatsappLink": "Contáctanos por WhatsApp"
   },
+  "Empezar": {
+    "meta": {
+      "title": "Bienvenido a Corevia",
+      "description": "Gracias por escanear nuestra tarjeta. Descubre cómo la tecnología a medida puede modernizar y hacer crecer tu negocio — y agenda una consulta gratuita."
+    },
+    "hero": {
+      "title": "Bienvenido a COREVIA",
+      "subtitle": "Descubre cómo la tecnología puede modernizar y hacer crecer tu negocio.",
+      "description": "Gracias por escanear nuestra tarjeta. Estamos listos para ayudarte a transformar tu negocio mediante soluciones tecnológicas personalizadas.",
+      "primaryCta": "Agendar una consulta gratuita",
+      "whatsappCta": "Hablar por WhatsApp"
+    },
+    "actions": {
+      "title": "¿Por dónde quieres empezar?",
+      "description": "Elige el siguiente paso que mejor te funcione.",
+      "items": {
+        "book": {
+          "title": "Agendar una consulta gratuita",
+          "description": "Cuéntanos sobre tu negocio y recibe pasos claros."
+        },
+        "whatsapp": {
+          "title": "Hablar por WhatsApp",
+          "description": "¿Prefieres escribir? Contáctanos directamente y te respondemos pronto."
+        },
+        "services": {
+          "title": "Nuestros servicios",
+          "description": "Conoce cómo construimos software, IA y automatización para empresas."
+        },
+        "work": {
+          "title": "Proyectos realizados",
+          "description": "Explora plataformas reales que hemos diseñado y entregado."
+        }
+      }
+    },
+    "process": {
+      "title": "Cómo trabajamos",
+      "stepLabel": "Paso {number}",
+      "steps": {
+        "learn": "Conocemos tu negocio",
+        "design": "Diseñamos la solución adecuada",
+        "build": "Construimos tecnología que impulsa tu crecimiento"
+      }
+    },
+    "cta": {
+      "title": "¿Listo para el siguiente paso?",
+      "description": "Agenda una consulta gratuita y te ayudamos a ver qué es posible para tu negocio.",
+      "button": "Agendar una consulta gratuita",
+      "whatsappLabel": "WhatsApp"
+    }
+  },
   "Company": {
     "meta": {
       "title": "Empresa",

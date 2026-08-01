@@ -7,7 +7,7 @@ export const WHATSAPP_DISPLAY_NUMBER = "+57 324 313-5964";
 /** Digits-only phone for wa.me (no spaces, plus, or dashes). */
 const WHATSAPP_PHONE = "573243135964";
 
-type WhatsAppIntent = "default" | "referral";
+type WhatsAppIntent = "default" | "referral" | "card";
 
 const WHATSAPP_PREFILL: Record<WhatsAppIntent, Record<AppLocale, string>> = {
   default: {
@@ -17,6 +17,10 @@ const WHATSAPP_PREFILL: Record<WhatsAppIntent, Record<AppLocale, string>> = {
   referral: {
     en: "Hi, I came from a referral and want to learn more",
     es: "Hola, vengo de una referencia y quiero saber más",
+  },
+  card: {
+    en: "Hi! I scanned your Corevia business card and want to learn more.",
+    es: "¡Hola! Escaneé su tarjeta de Corevia y quiero saber más.",
   },
 };
 
