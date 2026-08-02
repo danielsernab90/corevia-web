@@ -37,6 +37,7 @@ import {
   type LeadSourceOption,
   type ServiceOption,
 } from "@/lib/consultation";
+import { getCalendlyBookingUrl } from "@/lib/calendly";
 import { cn } from "@/lib/utils";
 
 /** Four data-collection steps (contact → challenge). */
@@ -123,7 +124,7 @@ export function ConsultationFormFlow({
    * Finish always works, scheduled or not.
    */
   const [scheduledViaCalendly, setScheduledViaCalendly] = useState(false);
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() ?? "";
+  const calendlyUrl = getCalendlyBookingUrl();
   const hasCalendly = Boolean(calendlyUrl);
   const isModal = variant === "modal";
   const isSchedule = step === SCHEDULE_STEP;

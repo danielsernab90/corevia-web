@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { ConsultationFormFlow } from "@/components/sections/book-consultation/consultation-form-flow";
 import { useBooking } from "@/components/sections/book-consultation/booking-provider";
 import { Dialog, DialogPopup } from "@/components/ui/dialog";
+import { getCalendlyBookingUrl } from "@/lib/calendly";
 import { cn } from "@/lib/utils";
 
 export function BookingModal() {
@@ -12,9 +13,7 @@ export function BookingModal() {
   const [flowKey, setFlowKey] = useState(0);
   const [step, setStep] = useState(0);
 
-  const calendlyConfigured = Boolean(
-    process.env.NEXT_PUBLIC_CALENDLY_URL?.trim()
-  );
+  const calendlyConfigured = Boolean(getCalendlyBookingUrl());
   /** Widen only when optional Calendly iframe is actually shown (schedule step). */
   const wideSchedule = calendlyConfigured && step === 4;
 
