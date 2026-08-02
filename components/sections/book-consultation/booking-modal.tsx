@@ -41,6 +41,7 @@ export function BookingModal() {
         <ConsultationFormFlow
           key={flowKey}
           variant="modal"
+          inquirySource="book-consultation-modal"
           active={open}
           onRequestClose={() => handleOpenChange(false)}
           onStepChange={setStep}

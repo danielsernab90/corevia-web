@@ -73,6 +73,7 @@ export function ReferralExperience() {
               idPrefix="referral-"
               variant="inline"
               actionsAlign="center"
+              inquirySource="referral-page"
             />
             <p className="mt-6 text-center font-sans text-sm text-muted-foreground">
               <a

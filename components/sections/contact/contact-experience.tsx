@@ -134,7 +134,11 @@ export function ContactExperience() {
             </SectionReveal>
 
             <FadeUp className="min-w-0">
-              <ConsultationFormFlow idPrefix="contact-" variant="inline" />
+              <ConsultationFormFlow
+                idPrefix="contact-"
+                variant="inline"
+                inquirySource="contact-page"
+              />
             </FadeUp>
           </div>
         </Container>

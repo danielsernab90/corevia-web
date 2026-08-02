@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import os from "node:os";
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 import {
@@ -23,12 +23,36 @@ import {
 } from "@/lib/consultation-validation";
 import { buildInquiryEmail } from "@/lib/inquiry-email";
 import {
+  forwardLeadToCommandStation,
+  mapInquiryToCommandStationLead,
+} from "@/lib/command-station-leads";
+import {
   forwardLeadToCoreviaApi,
   mapInquiryToCreateLeadDto,
   normalizeLeadLanguage,
 } from "@/lib/inquiry-lead-adapter";
 
 export const runtime = "nodejs";
+
+/** Schedule CS forward after the response; never affects visitor success. */
+function scheduleCommandStationLeadForward(
+  inquiry: Parameters<typeof mapInquiryToCommandStationLead>[0]
+): void {
+  after(async () => {
+    const result = await forwardLeadToCommandStation(
+      mapInquiryToCommandStationLead(inquiry)
+    );
+    if (result.ok) {
+      console.log(
+        `[inquiry] Forwarded lead to Command Station — id=${result.id}`
+      );
+      return;
+    }
+    console.warn(
+      `[inquiry] Command Station lead capture skipped/failed (non-blocking): ${result.error}`
+    );
+  });
+}
 
 /**
  * Website inquiry adapter (NOT a second CRM).
@@ -302,6 +326,7 @@ export async function POST(request: Request) {
     console.log(
       `[inquiry] Forwarded lead to NestJS Leads API — id=${nestResult.id}`
     );
+    scheduleCommandStationLeadForward(inquiry);
     return NextResponse.json({
       ok: true,
       id: nestResult.id,
@@ -341,6 +366,8 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+
+  scheduleCommandStationLeadForward(inquiry);
 
   return NextResponse.json({
     ok: true,

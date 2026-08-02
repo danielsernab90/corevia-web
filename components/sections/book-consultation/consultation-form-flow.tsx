@@ -85,6 +85,10 @@ export type ConsultationFormFlowProps = {
   /** Unique id prefix so multiple embeds never collide. */
   idPrefix?: string;
   /**
+   * Attribution for Command Station / CRM (e.g. contact-page, book-consultation-modal).
+   */
+  inquirySource?: string;
+  /**
    * Footer action alignment for the Continue/Finish button.
    * `spread` (default) — Back left, Continue right (modal + Contact).
    * `center` — Continue horizontally centered; Back stays left (Services only).
@@ -105,6 +109,7 @@ export type ConsultationFormFlowProps = {
 export function ConsultationFormFlow({
   variant = "inline",
   idPrefix = "",
+  inquirySource = "corevia-web",
   actionsAlign = "spread",
   onRequestClose,
   onStepChange,
@@ -243,6 +248,7 @@ export function ConsultationFormFlow({
             ? (form.businessCardFrom ?? "").trim()
             : null,
           scheduledViaCalendly,
+          source: inquirySource,
         }),
       });
 
