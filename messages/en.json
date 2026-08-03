@@ -569,7 +569,7 @@
         },
         "response": {
           "label": "Response time",
-          "value": "We typically respond within 24 hours."
+          "value": "We typically respond within 12 hours."
         },
         "hours": {
           "label": "Business hours",
@@ -577,6 +577,9 @@
         },
         "whatsapp": {
           "label": "WhatsApp"
+        },
+        "instagram": {
+          "label": "Instagram"
         }
       }
     }

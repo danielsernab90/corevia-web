@@ -3,6 +3,7 @@
 import { Clock3, MapPin, MessageSquare } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -16,6 +17,9 @@ import {
   WHATSAPP_DISPLAY_NUMBER,
   buildWhatsAppLink,
 } from "@/lib/whatsapp";
+
+const INSTAGRAM_HREF = "https://www.instagram.com/corevia_software/";
+const INSTAGRAM_HANDLE = "@corevia_software";
 
 const textDetailItems = [
   { key: "location", Icon: MapPin },
@@ -127,6 +131,31 @@ export function ContactExperience() {
                       className="mt-1 inline-block text-sm leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
                     >
                       {WHATSAPP_DISPLAY_NUMBER}
+                    </a>
+                  </div>
+                </li>
+
+                <li className="flex gap-3">
+                  <span
+                    className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
+                    style={{
+                      backgroundColor: brandColors.primarySoft,
+                      color: brandColors.primary,
+                    }}
+                  >
+                    <InstagramIcon className="size-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-foreground">
+                      {t("details.items.instagram.label")}
+                    </p>
+                    <a
+                      href={INSTAGRAM_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-block text-sm leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                    >
+                      {INSTAGRAM_HANDLE}
                     </a>
                   </div>
                 </li>
