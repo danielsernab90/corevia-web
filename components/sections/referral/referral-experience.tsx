@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 
 import { ConsultationFormFlow } from "@/components/sections/book-consultation/consultation-form-flow";
+import { ContactDetails } from "@/components/sections/contact/contact-details";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
@@ -75,17 +76,25 @@ export function ReferralExperience() {
               actionsAlign="center"
               inquirySource="referral-page"
             />
-            <p className="mt-6 text-center font-sans text-sm text-muted-foreground">
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline-offset-4 transition-colors hover:text-primary hover:underline"
-              >
-                {t("whatsappLink")}
-              </a>
-            </p>
           </FadeUp>
+
+          <SectionReveal className="mx-auto mt-14 max-w-xl">
+            <ContactDetails
+              headingId="referral-contact-details-heading"
+              align="center"
+            />
+          </SectionReveal>
+
+          <p className="mt-10 text-center font-sans text-sm text-muted-foreground">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 transition-colors hover:text-primary hover:underline"
+            >
+              {t("whatsappLink")}
+            </a>
+          </p>
         </Container>
       </Section>
     </main>
