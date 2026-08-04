@@ -3,6 +3,7 @@
 import { Clock3, MapPin, MessageSquare } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
+import { FacebookIcon } from "@/components/icons/facebook-icon";
 import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Container } from "@/components/layout/container";
@@ -20,12 +21,25 @@ import {
 
 const INSTAGRAM_HREF = "https://www.instagram.com/corevia_software/";
 const INSTAGRAM_HANDLE = "@corevia_software";
+const FACEBOOK_HREF = "https://www.facebook.com/coreviasoftware/";
+const FACEBOOK_LABEL = "CoreVia";
+
+const WHATSAPP_BRAND = "#25D366";
+const INSTAGRAM_BRAND = "#C13584";
+const FACEBOOK_BRAND = "#1877F2";
 
 const textDetailItems = [
   { key: "location", Icon: MapPin },
   { key: "response", Icon: MessageSquare },
   { key: "hours", Icon: Clock3 },
 ] as const;
+
+function socialBadgeStyle(brandHex: string) {
+  return {
+    backgroundColor: `color-mix(in srgb, ${brandHex} 14%, white)`,
+    color: brandHex,
+  } as const;
+}
 
 export function ContactExperience() {
   const t = useTranslations("Contact");
@@ -113,10 +127,7 @@ export function ContactExperience() {
                 <li className="flex gap-3">
                   <span
                     className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
-                    style={{
-                      backgroundColor: brandColors.primarySoft,
-                      color: brandColors.primary,
-                    }}
+                    style={socialBadgeStyle(WHATSAPP_BRAND)}
                   >
                     <WhatsAppIcon className="size-5" />
                   </span>
@@ -138,10 +149,7 @@ export function ContactExperience() {
                 <li className="flex gap-3">
                   <span
                     className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
-                    style={{
-                      backgroundColor: brandColors.primarySoft,
-                      color: brandColors.primary,
-                    }}
+                    style={socialBadgeStyle(INSTAGRAM_BRAND)}
                   >
                     <InstagramIcon className="size-5" />
                   </span>
@@ -156,6 +164,28 @@ export function ContactExperience() {
                       className="mt-1 inline-block text-sm leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
                     >
                       {INSTAGRAM_HANDLE}
+                    </a>
+                  </div>
+                </li>
+
+                <li className="flex gap-3">
+                  <span
+                    className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
+                    style={socialBadgeStyle(FACEBOOK_BRAND)}
+                  >
+                    <FacebookIcon className="size-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-foreground">
+                      {t("details.items.facebook.label")}
+                    </p>
+                    <a
+                      href={FACEBOOK_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-block text-sm leading-relaxed text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                    >
+                      {FACEBOOK_LABEL}
                     </a>
                   </div>
                 </li>

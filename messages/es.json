@@ -580,6 +580,9 @@
         },
         "instagram": {
           "label": "Instagram"
+        },
+        "facebook": {
+          "label": "Facebook"
         }
       }
     }
