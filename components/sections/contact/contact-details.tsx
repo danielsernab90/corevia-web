@@ -31,10 +31,32 @@ const textDetailItems = [
   { key: "hours", Icon: Clock3 },
 ] as const;
 
+function hexToRgbChannels(hex: string): string {
+  const raw = hex.replace("#", "");
+  const n = Number.parseInt(raw, 16);
+  return `${(n >> 16) & 255} ${(n >> 8) & 255} ${n & 255}`;
+}
+
+/** Soft ambient halo — same intensity for every badge (subtle polish, not neon). */
+function badgeGlow(brandHex: string): string {
+  const rgb = hexToRgbChannels(brandHex);
+  return `0 0 12px rgb(${rgb} / 0.28), 0 0 22px rgb(${rgb} / 0.14)`;
+}
+
+function infoBadgeStyle() {
+  return {
+    backgroundColor: brandColors.primarySoft,
+    color: brandColors.primary,
+    // Brand blue #1652F0 — same family as glow-brand-soft / hero glows
+    boxShadow: badgeGlow(brandColors.primary),
+  } as const;
+}
+
 function socialBadgeStyle(brandHex: string) {
   return {
     backgroundColor: `color-mix(in srgb, ${brandHex} 14%, white)`,
     color: brandHex,
+    boxShadow: badgeGlow(brandHex),
   } as const;
 }
 
@@ -99,10 +121,7 @@ export function ContactDetails({
           <li key={key} className="flex gap-3">
             <span
               className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
-              style={{
-                backgroundColor: brandColors.primarySoft,
-                color: brandColors.primary,
-              }}
+              style={infoBadgeStyle()}
             >
               <Icon className="size-5" {...coreviaIconProps} />
             </span>
