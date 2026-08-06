@@ -40,7 +40,8 @@ function hexToRgbChannels(hex: string): string {
 /** Soft ambient halo — same intensity for every badge (subtle polish, not neon). */
 function badgeGlow(brandHex: string): string {
   const rgb = hexToRgbChannels(brandHex);
-  return `0 0 12px rgb(${rgb} / 0.28), 0 0 22px rgb(${rgb} / 0.14)`;
+  // Tuned near glow-brand-soft / glow-consultation-visual, scaled for size-10 badges
+  return `0 0 14px rgb(${rgb} / 0.34), 0 0 28px rgb(${rgb} / 0.18)`;
 }
 
 function infoBadgeStyle() {
