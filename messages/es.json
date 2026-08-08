@@ -637,6 +637,10 @@
         "instagram": {
           "title": "Síguenos en Instagram",
           "description": "Síguenos para conocer nuevos proyectos, actualizaciones y contenido sobre tecnología y desarrollo de software."
+        },
+        "facebook": {
+          "title": "Síguenos en Facebook",
+          "description": "Síguenos para conocer nuestros proyectos y contenido sobre tecnología."
         }
       }
     },

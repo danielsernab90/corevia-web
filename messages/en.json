@@ -637,6 +637,10 @@
         "instagram": {
           "title": "Follow us on Instagram",
           "description": "Follow us to see new projects, company updates, and software development content."
+        },
+        "facebook": {
+          "title": "Follow us on Facebook",
+          "description": "Follow us to discover our projects and technology content."
         }
       }
     },

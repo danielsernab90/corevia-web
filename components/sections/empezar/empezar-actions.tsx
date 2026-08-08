@@ -2,8 +2,9 @@
 
 import { BriefcaseBusiness, CalendarCheck2, LayoutGrid } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import type { ComponentType, ReactNode } from "react";
+import type { ComponentType, CSSProperties, ReactNode } from "react";
 
+import { FacebookIcon } from "@/components/icons/facebook-icon";
 import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { useBooking } from "@/components/sections/book-consultation/booking-provider";
@@ -11,7 +12,6 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
 import {
-  FadeUp,
   SectionReveal,
   Stagger,
   StaggerItem,
@@ -24,6 +24,8 @@ import { cn } from "@/lib/utils";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 const INSTAGRAM_HREF = "https://www.instagram.com/corevia_software/";
+const FACEBOOK_HREF = "https://www.facebook.com/coreviasoftware/";
+const FACEBOOK_BRAND = "#1877F2";
 
 const actionKeys = ["book", "whatsapp", "services", "work"] as const;
 
@@ -53,19 +55,23 @@ function ActionCardContent({
   title,
   description,
   icon,
+  iconBadgeStyle,
 }: {
   title: string;
   description: string;
   icon: ReactNode;
+  iconBadgeStyle?: CSSProperties;
 }) {
   return (
     <>
       <span
         className="inline-flex size-11 items-center justify-center rounded-xl"
-        style={{
-          backgroundColor: brandColors.primarySoft,
-          color: brandColors.primary,
-        }}
+        style={
+          iconBadgeStyle ?? {
+            backgroundColor: brandColors.primarySoft,
+            color: brandColors.primary,
+          }
+        }
       >
         {icon}
       </span>
@@ -77,6 +83,13 @@ function ActionCardContent({
       </p>
     </>
   );
+}
+
+function socialBadgeStyle(brandHex: string): CSSProperties {
+  return {
+    backgroundColor: `color-mix(in srgb, ${brandHex} 14%, white)`,
+    color: brandHex,
+  };
 }
 
 export function EmpezarActions() {
@@ -156,25 +169,38 @@ export function EmpezarActions() {
               </StaggerItem>
             );
           })}
-        </Stagger>
 
-        <FadeUp className="mt-8 flex justify-center sm:mt-10 lg:mt-12">
-          <a
-            href={INSTAGRAM_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              actionCardClassName(),
-              "w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(50%-1rem)]"
-            )}
-          >
-            <ActionCardContent
-              title={t("items.instagram.title")}
-              description={t("items.instagram.description")}
-              icon={<InstagramIcon className="size-5" />}
-            />
-          </a>
-        </FadeUp>
+          <StaggerItem>
+            <a
+              href={INSTAGRAM_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={actionCardClassName()}
+            >
+              <ActionCardContent
+                title={t("items.instagram.title")}
+                description={t("items.instagram.description")}
+                icon={<InstagramIcon className="size-5" />}
+              />
+            </a>
+          </StaggerItem>
+
+          <StaggerItem>
+            <a
+              href={FACEBOOK_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={actionCardClassName()}
+            >
+              <ActionCardContent
+                title={t("items.facebook.title")}
+                description={t("items.facebook.description")}
+                icon={<FacebookIcon className="size-5" />}
+                iconBadgeStyle={socialBadgeStyle(FACEBOOK_BRAND)}
+              />
+            </a>
+          </StaggerItem>
+        </Stagger>
       </Container>
     </Section>
   );
