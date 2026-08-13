@@ -31,22 +31,22 @@ npm run dev:local
 
 Open [http://localhost:3002](http://localhost:3002).
 
-### Remote over Tailscale (MacBook → Mac mini)
+### Remote over Tailscale
 
 ```bash
 npm run dev:remote
 # or: ./scripts/dev-remote.sh
 ```
 
-Then from your MacBook open:
+Then from another device on your Tailscale network open:
 
-[http://100.114.151.46:3002](http://100.114.151.46:3002)
+`http://$(tailscale ip -4):3002`
 
-(Replace the IP with `tailscale ip -4` on the Mac mini if it changes.)
+(Run `tailscale ip -4` on the machine hosting the dev server.)
 
 Middleware redirects to `/en` or `/es` based on browser language (or the saved `NEXT_LOCALE` cookie).
 
-## Multi-project ports (Mac mini)
+## Multi-project ports
 
 | App | Port | Bind | Start |
 | --- | --- | --- | --- |
@@ -72,20 +72,21 @@ Shared backend API docs: [`server/README.md`](server/README.md).
 ## Remote development architecture (Tailscale)
 
 ```text
-MacBook Safari/Chrome
+Client (browser on any Tailscale device)
         │
-        │  http://100.114.151.46:3002
+        │  http://<host-tailscale-ip>:3002
         ▼
    Tailscale mesh
         │
         ▼
-Mac mini  next dev --hostname 0.0.0.0 --port 3002
+Dev host  next dev --hostname 0.0.0.0 --port 3002
 ```
 
 - **Why `0.0.0.0`:** Binding only to `localhost` accepts loopback traffic. Remote devices need the process listening on all interfaces (including the Tailscale `utun` address).
 - **Why `allowedDevOrigins`:** Next.js 15+ guards `/_next/*` in development. This repo auto-allowlists detected LAN/Tailscale IPv4 addresses (override with `ALLOWED_DEV_ORIGINS=host1,host2`).
+- **API CORS:** `corevia-api` auto-allowlists localhost plus this machine’s LAN/Tailscale IPv4 origins on ports 3000/3002. Add extras with `ALLOWED_ORIGINS=http://host:port,...` (see [`server/README.md`](server/README.md)).
 - **Avoid port conflicts:** Keep Corevia on **3002** and Daniel Command Station on **3000**. Check with `lsof -nP -iTCP:3000,3002 -sTCP:LISTEN`.
-- **Best practices:** Use `dev:remote` for Tailscale work; use `dev:local` when you only need this machine; prefer MagicDNS (`http://daniels-mac-mini-1:3002`) if your Tailscale DNS is enabled; never commit secrets in `.env.local`.
+- **Best practices:** Use `dev:remote` for Tailscale work; use `dev:local` when you only need this machine; prefer MagicDNS (`http://<your-machine-name>:3002`) if Tailscale DNS is enabled; never commit secrets in `.env.local`.
 
 ## Project structure
 
