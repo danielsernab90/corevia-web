@@ -40,14 +40,11 @@ export function AboutHero() {
             priority
             className="h-auto w-[min(11.5rem,55vw)] object-contain sm:w-[13.75rem]"
           />
-          <p className="mt-6 text-caption font-semibold tracking-[0.12em] text-primary uppercase">
-            {t("eyebrow")}
-          </p>
           <Heading
             id="about-hero-heading"
             size="h1"
             align="center"
-            className="mt-4 tracking-tight glow-text-white-soft"
+            className="mt-5 tracking-tight glow-text-white-soft sm:mt-6"
             style={{ color: "var(--secondary-foreground)" }}
           >
             {t.rich("title", {

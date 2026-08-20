@@ -37,7 +37,7 @@ export function AboutStory() {
 
           <SectionReveal>
             <h2 id="about-intro-heading" className="sr-only">
-              {t("hero.eyebrow")}
+              {t("meta.title")}
             </h2>
             <p className="font-sans text-body-lg text-muted-foreground">
               {t("intro.body")}
