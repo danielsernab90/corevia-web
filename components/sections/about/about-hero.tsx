@@ -50,7 +50,9 @@ export function AboutHero() {
             className="mt-4 tracking-tight glow-text-white-soft"
             style={{ color: "var(--secondary-foreground)" }}
           >
-            {t("title")}
+            {t.rich("title", {
+              break: () => <br />,
+            })}
           </Heading>
         </SectionReveal>
       </Container>

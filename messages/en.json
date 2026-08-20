@@ -708,7 +708,7 @@
     },
     "hero": {
       "eyebrow": "OUR STORY",
-      "title": "Not Our First Path — But Everything Led Here"
+      "title": "Not Our First Path<break></break>But Everything Led Here"
     },
     "intro": {
       "body": "CoreVia wasn't a straight line. Before writing a single line of code for a client, I spent years building things in very different worlds — and every one of them shaped how I build software today.",
