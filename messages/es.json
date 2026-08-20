@@ -26,6 +26,7 @@
     "services": "Servicios",
     "work": "Nuestro Trabajo",
     "company": "Compañía",
+    "about": "Nuestra Historia",
     "contact": "Contacto",
     "primaryCta": "Agenda una Consulta",
     "openMenu": "Abrir menú",
@@ -40,6 +41,7 @@
     "contact": "Contacto",
     "socials": "Redes",
     "home": "Inicio",
+    "about": "Nuestra Historia",
     "servicesOverview": "Resumen",
     "productEngineering": "Ingeniería de producto",
     "designSystems": "Sistemas de diseño",
@@ -697,6 +699,38 @@
       "description": "Cuéntanos qué necesitas — revisamos tus objetivos y te respondemos con pasos claros.",
       "button": "Iniciar Tu Consulta",
       "textNote": "¿Prefieres escribir? Lo entendemos — WhatsApp también sirve."
+    }
+  },
+  "About": {
+    "meta": {
+      "title": "Nuestra Historia",
+      "description": "La historia detrás de CoreVia — cómo el servicio militar, el cine y los bienes raíces formaron la manera en que construimos software para negocios."
+    },
+    "hero": {
+      "eyebrow": "NUESTRA HISTORIA",
+      "title": "No Fue Mi Primer Camino — Pero Todo Me Trajo Aquí"
+    },
+    "intro": {
+      "body": "CoreVia no fue un camino en línea recta. Antes de escribir una sola línea de código para un cliente, pasé años construyendo cosas en mundos muy distintos — y cada uno de ellos formó la manera en que hoy construyo software.",
+      "imageAlt": "Daniel Serna, fundador de CoreVia"
+    },
+    "chapters": {
+      "military": {
+        "title": "Militar",
+        "body": "Serví como Especialista en Sistemas de Soporte de Comunicaciones, Sargento y Líder de Escuadra — encargado de llevar soluciones técnicas a distintos usuarios y equipos, y asegurarme de que sus sistemas realmente funcionaran, bajo presión real. Ahí aprendí disciplina, y lo que significa ser responsable de que algo funcione bien, no solo se vea bien."
+      },
+      "filmmaking": {
+        "title": "Cine y Bienes Raíces",
+        "body": "Después de eso, me alejé de la tecnología por un tiempo — hacia el cine y la inversión en bienes raíces. El cine afinó mi ojo para cómo deben verse y sentirse las cosas, cuidadas e intencionales. Los bienes raíces me enseñaron cómo piensan realmente los pequeños negocios sobre el dinero, el riesgo y el crecimiento — los mismos instintos que hoy aplico en cada conversación con un cliente."
+      },
+      "return": {
+        "title": "El Regreso",
+        "body": "En 2026, volví a la tecnología — esta vez para construir CoreVia. Todo lo anterior no fue un desvío. Fue preparación: la disciplina para hacer que los sistemas funcionen, el ojo para que se vean bien, y el entendimiento de lo que los dueños de negocio realmente necesitan para crecer."
+      }
+    },
+    "closing": {
+      "label": "Cierre",
+      "body": "CoreVia es lo que pasa cuando todo eso se une — software construido específicamente para tu negocio, por alguien que pasó años aprendiendo lo que realmente significa que algo funcione."
     }
   },
   "Privacy": {

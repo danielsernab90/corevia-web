@@ -7,6 +7,7 @@ export const mainNavItems = [
   { href: "/services", key: "services" },
   { href: "/work", key: "work" },
   { href: "/company", key: "company" },
+  { href: "/about", key: "about" },
   { href: "/contact", key: "contact" },
 ] as const;
 
@@ -17,6 +18,7 @@ export const footerNav = {
   company: [
     { href: "/", key: "home" },
     { href: "/company", key: "company" },
+    { href: "/about", key: "about" },
     { href: "/contact", key: "contact" },
   ],
   services: [

@@ -26,6 +26,7 @@
     "services": "Services",
     "work": "Our Work",
     "company": "Company",
+    "about": "About Us",
     "contact": "Contact",
     "primaryCta": "Book a Free Consultation",
     "openMenu": "Open menu",
@@ -40,6 +41,7 @@
     "contact": "Contact",
     "socials": "Social",
     "home": "Home",
+    "about": "About Us",
     "servicesOverview": "Overview",
     "productEngineering": "Product engineering",
     "designSystems": "Design systems",
@@ -697,6 +699,38 @@
       "description": "Tell us what you need — we’ll review your goals and follow up with clear next steps.",
       "button": "Start Your Inquiry",
       "textNote": "Prefer to text? We get it — WhatsApp works too."
+    }
+  },
+  "About": {
+    "meta": {
+      "title": "About Us",
+      "description": "The story behind CoreVia — how military service, filmmaking, and real estate shaped the way we build software for businesses."
+    },
+    "hero": {
+      "eyebrow": "OUR STORY",
+      "title": "Not Our First Path — But Everything Led Here"
+    },
+    "intro": {
+      "body": "CoreVia wasn't a straight line. Before writing a single line of code for a client, I spent years building things in very different worlds — and every one of them shaped how I build software today.",
+      "imageAlt": "Daniel Serna, founder of CoreVia"
+    },
+    "chapters": {
+      "military": {
+        "title": "Military",
+        "body": "I served as a Communications Support System Specialist, Sergeant and Squad Leader — responsible for bringing technical solutions to different users and teams, and making sure their systems actually worked, under real pressure. That's where I learned discipline, and what it means to be accountable for something running right, not just looking right."
+      },
+      "filmmaking": {
+        "title": "Filmmaking & Real Estate",
+        "body": "After that, I stepped away from tech for a while — into filmmaking and real estate investing. Filmmaking sharpened my eye for how things should look and feel, polished and intentional. Real estate taught me how small businesses actually think about money, risk, and growth — the same instincts I bring to every client conversation now."
+      },
+      "return": {
+        "title": "The Return",
+        "body": "In 2026, I came back to technology — this time to build CoreVia. Everything before it wasn't a detour. It was preparation: the discipline to make systems work, the eye to make them look right, and the understanding of what business owners actually need to grow."
+      }
+    },
+    "closing": {
+      "label": "Closing",
+      "body": "CoreVia is what happens when all of that comes together — software built specifically for your business, by someone who's spent years learning what 'actually works' really means."
     }
   },
   "Privacy": {
