@@ -10,16 +10,15 @@ export const siteConfig = {
 } as const;
 
 /**
- * Open Graph / Twitter share image.
- * Filename contains spaces — always use this URL-encoded path in metadata
- * and absolute links. Actual pixels: 1731×909 (≈1.91:1 OG ratio).
+ * Open Graph / Twitter share image (1200×630).
+ * Brand navy canvas with centered 3D wordmark — separate from favicon assets.
  */
-export const ogImagePath = "/logos/COREVIA%20FLAVICON%201200X630.png";
+export const ogImagePath = "/logos/corevia-og-1200x630.png";
 
 export const ogImage = {
   url: ogImagePath,
-  width: 1731,
-  height: 909,
+  width: 1200,
+  height: 630,
   alt: "CoreVia — Custom Software for Your Business",
 } as const;
 
