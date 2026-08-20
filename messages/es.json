@@ -707,7 +707,7 @@
       "description": "La historia detrás de CoreVia — cómo el servicio militar, el cine y los bienes raíces formaron la manera en que construimos software para negocios."
     },
     "hero": {
-      "title": "No Fue Mi Primer Camino — Pero Todo Me Trajo Aquí"
+      "title": "No Fue Mi Primer Camino<break></break>Pero Todo Me Trajo Aquí"
     },
     "intro": {
       "body": "CoreVia no fue un camino en línea recta. Antes de escribir una sola línea de código para un cliente, pasé años construyendo cosas en mundos muy distintos — y cada uno de ellos formó la manera en que hoy construyo software.",
