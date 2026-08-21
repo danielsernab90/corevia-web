@@ -46,7 +46,8 @@ function BrandLockup({
         height={LOGO_HEIGHT}
         priority={priority}
         className="hidden h-8 w-auto object-contain dark:block"
-      />    </span>
+      />
+    </span>
   );
 }
 
