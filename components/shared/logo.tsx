@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 /**
  * Navbar/footer lockup footprint.
- * Previous mark was `size-8` (32×32); full 3D wordmark keeps the same height
- * (32px) with proportional width from the 1024×341 source (~96×32).
+ * Base was 32×96 (mark-height match); bumped ~15% for stronger presence
+ * while still fitting the h-16 header comfortably.
  */
-const LOGO_HEIGHT = 32;
-const LOGO_WIDTH = Math.round((1024 / 341) * LOGO_HEIGHT); // 96
+const LOGO_HEIGHT = Math.round(32 * 1.15); // 37
+const LOGO_WIDTH = Math.round((1024 / 341) * LOGO_HEIGHT); // 111
 
 type LogoProps = {
   label: string;
@@ -28,7 +28,10 @@ function BrandLockup({
   priority?: boolean;
 }) {
   return (
-    <span className="relative inline-flex h-8 w-24 shrink-0 items-center">
+    <span
+      className="relative inline-flex shrink-0 items-center"
+      style={{ height: LOGO_HEIGHT, width: LOGO_WIDTH }}
+    >
       {/* Light mode: black "CORE" */}
       <Image
         src="/logos/corevia-nav-logo-light.png"
@@ -36,7 +39,7 @@ function BrandLockup({
         width={LOGO_WIDTH}
         height={LOGO_HEIGHT}
         priority={priority}
-        className="h-8 w-auto object-contain dark:hidden"
+        className="h-full w-auto object-contain dark:hidden"
       />
       {/* Dark mode: white "CORE" — CSS swap follows next-themes `class` strategy */}
       <Image
@@ -45,7 +48,7 @@ function BrandLockup({
         width={LOGO_WIDTH}
         height={LOGO_HEIGHT}
         priority={priority}
-        className="hidden h-8 w-auto object-contain dark:block"
+        className="hidden h-full w-auto object-contain dark:block"
       />
     </span>
   );
