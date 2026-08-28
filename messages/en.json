@@ -428,6 +428,22 @@
         "cloud": {
           "title": "Cloud Infrastructure",
           "description": "Reliable, scalable foundations for your product — secure hosting, environments, and operational readiness."
+        },
+        "videoEditing": {
+          "title": "Video Editing",
+          "description": "Polished reels, demos, and promotional videos that make your business look as good as it runs."
+        },
+        "marketingStrategy": {
+          "title": "Marketing Strategy",
+          "description": "A clear plan for reaching the right customers — built around your business, not a generic playbook."
+        },
+        "adCampaigns": {
+          "title": "Ad Campaign Management",
+          "description": "Meta and Google ads, set up and managed to actually convert — not just spend budget."
+        },
+        "contentCreation": {
+          "title": "Content Creation",
+          "description": "Photos, posts, and marketing content for your business, made to match your brand."
         }
       }
     },
@@ -668,15 +684,16 @@
       "description": "Corevia is founder-led software — you talk directly with the person building your platforms and applications."
     },
     "hero": {
-      "title": "Software built by the person who talks to you.",
-      "description": "When you reach out, you work directly with our lead developer — the same person writing the code. No ticket queues. No account managers in between.",
+      "title": "Software built by a team that talks to you.",
+      "description": "When you reach out, you work directly with the person guiding your project — the same team building it. No ticket queues. No account managers in between.",
       "primaryCta": "Let's Talk",
       "whatsappCta": "Chat on WhatsApp"
     },
     "whatWeDo": {
       "headline": "What We Do",
       "body1": "We design and build web platforms and business tools tailored to how your company actually operates — not generic templates.",
-      "body2": "From first conversation to launch, you're working with a dedicated team focused on getting it right."
+      "body2": "From first conversation to launch, you're working with a dedicated team focused on getting it right.",
+      "body3": "Beyond software, we also handle the marketing and content that brings your business to life — from video editing to ad campaigns, built by the same team that builds your systems."
     },
     "howWeWork": {
       "title": "How We Work",
@@ -691,7 +708,10 @@
         "supabase": "Supabase",
         "vercel": "Vercel",
         "typescript": "TypeScript",
-        "tailwind": "Tailwind CSS"
+        "tailwind": "Tailwind CSS",
+        "premiere": "Adobe Premiere Pro",
+        "metaBusiness": "Meta Business Suite",
+        "googleAds": "Google Ads"
       }
     },
     "cta": {

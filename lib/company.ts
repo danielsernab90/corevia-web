@@ -8,6 +8,9 @@ export const companyStackKeys = [
   "vercel",
   "typescript",
   "tailwind",
+  "premiere",
+  "metaBusiness",
+  "googleAds",
 ] as const;
 
 export type CompanyStackKey = (typeof companyStackKeys)[number];

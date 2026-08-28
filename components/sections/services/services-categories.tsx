@@ -2,11 +2,15 @@
 
 import {
   AppWindow,
+  Camera,
   ChartColumn,
   Cloud,
   Combine,
+  Film,
   Layers,
+  LineChart,
   Sparkles,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -41,6 +45,10 @@ const categoryIcons: Record<ServiceCategoryKey, LucideIcon> = {
   integrations: Combine,
   dashboards: ChartColumn,
   cloud: Cloud,
+  videoEditing: Film,
+  marketingStrategy: Target,
+  adCampaigns: LineChart,
+  contentCreation: Camera,
 };
 
 export function ServicesCategories() {
@@ -75,7 +83,7 @@ export function ServicesCategories() {
         </SectionReveal>
 
         {/* Light cards on dark section — same contrast pattern as CTAs on Ready to Get Started */}
-        <StaggerGrid className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGrid className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {serviceCategoryKeys.map((key) => {
             const Icon = categoryIcons[key];
             return (

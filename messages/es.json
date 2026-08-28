@@ -428,6 +428,22 @@
         "cloud": {
           "title": "Infraestructura en la Nube",
           "description": "Bases confiables y escalables para tu producto — hosting seguro, entornos y preparación operativa."
+        },
+        "videoEditing": {
+          "title": "Edición de Video",
+          "description": "Reels, demos y videos promocionales pulidos que hacen que tu negocio se vea tan bien como funciona."
+        },
+        "marketingStrategy": {
+          "title": "Estrategia de Marketing",
+          "description": "Un plan claro para llegar a los clientes correctos — hecho para tu negocio, no una fórmula genérica."
+        },
+        "adCampaigns": {
+          "title": "Manejo de Campañas Publicitarias",
+          "description": "Anuncios en Meta y Google, configurados y administrados para realmente convertir — no solo gastar presupuesto."
+        },
+        "contentCreation": {
+          "title": "Creación de Contenido",
+          "description": "Fotos, publicaciones y contenido de marketing para tu negocio, hecho a la medida de tu marca."
         }
       }
     },
@@ -668,15 +684,16 @@
       "description": "Corevia es software dirigido por su fundador — hablas directamente con la persona que construye tus plataformas y aplicaciones."
     },
     "hero": {
-      "title": "Software construido por quien te habla.",
-      "description": "Cuando escribes, trabajas directamente con nuestro desarrollador principal — la misma persona que escribe el código. Sin colas de tickets. Sin gerentes de cuenta en el medio.",
+      "title": "Software construido por un equipo que te habla.",
+      "description": "Cuando escribes, trabajas directamente con quien guía tu proyecto — el mismo equipo que lo construye. Sin colas de tickets. Sin gerentes de cuenta en el medio.",
       "primaryCta": "Hablemos",
       "whatsappCta": "Chatear por WhatsApp"
     },
     "whatWeDo": {
       "headline": "Lo Que Hacemos",
       "body1": "Diseñamos y desarrollamos plataformas web y herramientas para tu negocio adaptadas a la forma en que tu empresa realmente opera — no plantillas genéricas.",
-      "body2": "Desde la primera conversación hasta el lanzamiento, trabajas con un equipo dedicado y enfocado en hacer las cosas bien."
+      "body2": "Desde la primera conversación hasta el lanzamiento, trabajas con un equipo dedicado y enfocado en hacer las cosas bien.",
+      "body3": "Además del software, también nos encargamos del marketing y contenido que le da vida a tu negocio — desde edición de video hasta campañas publicitarias, hecho por el mismo equipo que construye tus sistemas."
     },
     "howWeWork": {
       "title": "Cómo Trabajamos",
@@ -691,7 +708,10 @@
         "supabase": "Supabase",
         "vercel": "Vercel",
         "typescript": "TypeScript",
-        "tailwind": "Tailwind CSS"
+        "tailwind": "Tailwind CSS",
+        "premiere": "Adobe Premiere Pro",
+        "metaBusiness": "Meta Business Suite",
+        "googleAds": "Google Ads"
       }
     },
     "cta": {

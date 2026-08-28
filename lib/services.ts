@@ -9,6 +9,10 @@ export const serviceCategoryKeys = [
   "integrations",
   "dashboards",
   "cloud",
+  "videoEditing",
+  "marketingStrategy",
+  "adCampaigns",
+  "contentCreation",
 ] as const;
 
 export type ServiceCategoryKey = (typeof serviceCategoryKeys)[number];

@@ -32,6 +32,9 @@ export function CompanyFounder() {
           <p className="mt-4 font-sans text-body text-muted-foreground">
             {t("body2")}
           </p>
+          <p className="mt-4 font-sans text-body text-muted-foreground">
+            {t("body3")}
+          </p>
         </SectionReveal>
       </Container>
     </Section>
