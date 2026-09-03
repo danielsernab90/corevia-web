@@ -4,7 +4,7 @@
  */
 export const siteConfig = {
   name: "CoreVia",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://corevia-web-iota.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://coreviasoftware.vercel.app",
   localeDefault: "en",
   locales: ["en", "es"] as const,
 } as const;

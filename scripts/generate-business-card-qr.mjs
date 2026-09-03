@@ -1,7 +1,7 @@
 import QRCode from "qrcode";
 import fs from "fs";
 
-const url = "https://corevia-web-iota.vercel.app/es/empezar";
+const url = "https://coreviasoftware.vercel.app/es/empezar";
 
 fs.mkdirSync("./public/qr", { recursive: true });
 
