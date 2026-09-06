@@ -23,7 +23,7 @@ export async function Hero() {
       </div>
       <Container
         size="xl"
-        className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center py-14 md:py-16 lg:py-20 xl:py-24"
+        className="flex min-h-[calc(100dvh-4rem)] flex-col justify-start pt-6 pb-14 md:pt-6 md:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24"
       >
         <HeroContent
           badge={t("badge")}
