@@ -81,6 +81,30 @@
       "platformValue": "99.9%"
     }
   },
+  "Home": {
+    "builtAround": {
+      "eyebrow": "Built Around Your Business",
+      "title": "Technology built around the way your business actually works.",
+      "description": "Your business isn't a template. Your technology shouldn't be either. We learn how your business operates, identify where time and resources are being lost, and build digital systems around the way you actually work.",
+      "principles": {
+        "understand": {
+          "number": "01",
+          "title": "Understand",
+          "description": "We learn your workflows, challenges, and goals before we build."
+        },
+        "build": {
+          "number": "02",
+          "title": "Build",
+          "description": "We design and develop the software, automation, and digital systems your business actually needs."
+        },
+        "grow": {
+          "number": "03",
+          "title": "Grow",
+          "description": "Your technology evolves with your business, giving you the foundation to operate smarter and move forward."
+        }
+      }
+    }
+  },
   "Shell": {
     "heading": "Foundation ready",
     "body": "Internationalization, theming, and SEO are configured. The homepage will be built next."

@@ -81,6 +81,30 @@
       "platformValue": "99.9%"
     }
   },
+  "Home": {
+    "builtAround": {
+      "eyebrow": "Diseñado Alrededor de Tu Negocio",
+      "title": "Tecnología diseñada alrededor de la forma en que realmente funciona tu negocio.",
+      "description": "Tu negocio no es una plantilla. Tu tecnología tampoco debería serlo. Entendemos cómo funciona tu empresa, identificamos dónde se están perdiendo tiempo y recursos, y construimos sistemas digitales adaptados a tu manera de trabajar.",
+      "principles": {
+        "understand": {
+          "number": "01",
+          "title": "Entender",
+          "description": "Conocemos tus procesos, desafíos y objetivos antes de construir."
+        },
+        "build": {
+          "number": "02",
+          "title": "Construir",
+          "description": "Diseñamos y desarrollamos el software, la automatización y los sistemas digitales que tu negocio realmente necesita."
+        },
+        "grow": {
+          "number": "03",
+          "title": "Crecer",
+          "description": "Tu tecnología evoluciona junto con tu negocio, dándote una base sólida para operar mejor y avanzar."
+        }
+      }
+    }
+  },
   "Shell": {
     "heading": "Base lista",
     "body": "La internacionalización, el tema y el SEO están configurados. La página de inicio se construirá a continuación."
