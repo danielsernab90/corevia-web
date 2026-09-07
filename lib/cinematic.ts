@@ -1,19 +1,17 @@
 import type { AppLocale } from "@/i18n/routing";
 
 /**
- * Homepage cinematic intro — timing and asset paths.
+ * Homepage cinematic intro — timing, viewport breakpoints, and asset paths.
  * Adjust these constants without touching the overlay component.
  */
 
-/** Seconds of muted autoplay before scroll scrub begins. */
-export const CINEMATIC_AUTOPLAY_END = 5.0;
-
-/** Nominal total intro duration (matches exported MP4; runtime uses real duration when available). */
+/** Nominal total intro duration (runtime prefers the media element's real duration). */
 export const CINEMATIC_END = 10.0;
 
 /**
- * Opacity fade length at the end of the scroll range (~0.4s ≈ 10 frames @ 24fps).
- * Fade runs over the final [end - FADE, end] of currentTime.
+ * Opacity fade when leaving the cinematic into live HTML
+ * (~0.4s ≈ 10 frames @ 24fps). Applied near the end of the timeline
+ * and during the autoplay → website handoff.
  */
 export const CINEMATIC_FADE_DURATION = 0.4;
 
@@ -47,29 +45,125 @@ export const CINEMATIC_PLAYBACK_VERIFY_MS = 2500;
 /** Minimum currentTime delta that counts as real playback progress. */
 export const CINEMATIC_PLAYBACK_MIN_DELTA_SEC = 0.05;
 
-const INTRO_BY_LOCALE: Partial<
-  Record<AppLocale, { video: string; poster: string }>
-> = {
-  en: {
-    video: "/cinematic/en/intro.mp4",
-    poster: "/cinematic/en/intro-poster.jpg",
-  },
-  // Spanish cinematic asset lands later at /cinematic/es/intro.mp4 (+ matching poster)
+/**
+ * Viewport widths strictly below this use the phone/mobile cinematic asset.
+ * Matches Tailwind's `md` (768px): phones → mobile; tablet/iPad/desktop → landscape.
+ */
+export const CINEMATIC_MOBILE_MAX_WIDTH = 768;
+
+export type CinematicViewportClass = "mobile" | "desktop";
+
+export type CinematicMedia = {
+  video: string;
+  poster: string | null;
+  /** Portrait 9:16 asset designed for phone viewports. */
+  orientation: "landscape" | "portrait";
 };
 
-/** Whether this locale has a cinematic intro asset ready. */
-export function hasCinematicIntro(locale: AppLocale): boolean {
-  return Boolean(INTRO_BY_LOCALE[locale]);
+type LocaleCinematicAssets = {
+  /** Landscape cinematic for tablet + desktop (>= 768px). */
+  desktop?: { video: string; poster?: string };
+  /** Portrait cinematic for phones (< 768px). */
+  mobile?: { video: string; poster?: string };
+};
+
+/**
+ * Locale → viewport media map.
+ *
+ * EN: landscape intro ready; dedicated phone asset can land at
+ *     /cinematic/en/intro-mobile.mp4 later.
+ * ES: phone portrait ready; landscape /cinematic/es/intro.mp4 lands later
+ *     (larger /es viewports skip cinematic until then).
+ */
+const INTRO_BY_LOCALE: Partial<Record<AppLocale, LocaleCinematicAssets>> = {
+  en: {
+    desktop: {
+      video: "/cinematic/en/intro.mp4",
+      poster: "/cinematic/en/intro-poster.jpg",
+    },
+    // mobile: { video: "/cinematic/en/intro-mobile.mp4", poster: "..." },
+  },
+  es: {
+    mobile: {
+      video: "/cinematic/es/intro-mobile.mp4",
+      poster: "/cinematic/es/intro-mobile-poster.jpg",
+    },
+    // desktop: { video: "/cinematic/es/intro.mp4", poster: "..." },
+  },
+};
+
+/** Classify a viewport width into phone vs tablet/desktop cinematic buckets. */
+export function getCinematicViewportClass(
+  width: number
+): CinematicViewportClass {
+  return width < CINEMATIC_MOBILE_MAX_WIDTH ? "mobile" : "desktop";
 }
 
-/** Locale-aware cinematic intro video URL, or null when unavailable. */
-export function getCinematicIntroSrc(locale: AppLocale): string | null {
-  return INTRO_BY_LOCALE[locale]?.video ?? null;
+/**
+ * Resolve the cinematic media for a locale + viewport.
+ * Returns null when this combination should skip the cinematic entirely.
+ */
+export function resolveCinematicMedia(
+  locale: AppLocale,
+  viewportClass: CinematicViewportClass
+): CinematicMedia | null {
+  const assets = INTRO_BY_LOCALE[locale];
+  if (!assets) return null;
+
+  if (viewportClass === "mobile") {
+    if (assets.mobile) {
+      return {
+        video: assets.mobile.video,
+        poster: assets.mobile.poster ?? null,
+        orientation: "portrait",
+      };
+    }
+    // Temporary EN phone fallback: landscape asset until intro-mobile.mp4 exists.
+    if (assets.desktop) {
+      return {
+        video: assets.desktop.video,
+        poster: assets.desktop.poster ?? null,
+        orientation: "landscape",
+      };
+    }
+    return null;
+  }
+
+  // Tablet / desktop
+  if (assets.desktop) {
+    return {
+      video: assets.desktop.video,
+      poster: assets.desktop.poster ?? null,
+      orientation: "landscape",
+    };
+  }
+
+  // e.g. Spanish tablet/desktop until landscape intro.mp4 ships
+  return null;
 }
 
-/** First-frame poster matching the opening closed-laptop shot. */
-export function getCinematicIntroPoster(locale: AppLocale): string | null {
-  return INTRO_BY_LOCALE[locale]?.poster ?? null;
+/** Whether this locale + viewport should attempt a cinematic intro. */
+export function hasCinematicIntro(
+  locale: AppLocale,
+  viewportClass: CinematicViewportClass
+): boolean {
+  return resolveCinematicMedia(locale, viewportClass) != null;
+}
+
+/** @deprecated Prefer resolveCinematicMedia — kept for narrow call sites. */
+export function getCinematicIntroSrc(
+  locale: AppLocale,
+  viewportClass: CinematicViewportClass = "desktop"
+): string | null {
+  return resolveCinematicMedia(locale, viewportClass)?.video ?? null;
+}
+
+/** @deprecated Prefer resolveCinematicMedia */
+export function getCinematicIntroPoster(
+  locale: AppLocale,
+  viewportClass: CinematicViewportClass = "desktop"
+): string | null {
+  return resolveCinematicMedia(locale, viewportClass)?.poster ?? null;
 }
 
 /** Clamp helper for scrubbing within [min, max]. */

@@ -5,19 +5,20 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { AppLocale } from "@/i18n/routing";
 import {
-  CINEMATIC_AUTOPLAY_END,
   CINEMATIC_END,
   CINEMATIC_FADE_DURATION,
   CINEMATIC_INIT_TIMEOUT_MS,
+  CINEMATIC_MOBILE_MAX_WIDTH,
   CINEMATIC_PLAYBACK_MIN_DELTA_SEC,
   CINEMATIC_PLAYBACK_VERIFY_MS,
   CINEMATIC_SCROLL_SECONDS_PER_100PX,
   CINEMATIC_TOUCH_MAX_DELTA_PX,
   CINEMATIC_TOUCH_SECONDS_PER_100PX,
   clampCinematicTime,
-  getCinematicIntroPoster,
-  getCinematicIntroSrc,
-  hasCinematicIntro,
+  getCinematicViewportClass,
+  resolveCinematicMedia,
+  type CinematicMedia,
+  type CinematicViewportClass,
 } from "@/lib/cinematic";
 import { cn } from "@/lib/utils";
 
@@ -26,8 +27,9 @@ type CinematicIntroProps = {
 };
 
 /**
- * boot → initializing → autoplay → cinematic (bidirectional scrub)
- * → website ↔ cinematic | skipped (fallback / reduced motion)
+ * boot → initializing → autoplay (full video) → website
+ * website ↔ cinematic (bidirectional scrub, no autoplay on re-entry)
+ * | skipped
  */
 type IntroPhase =
   | "boot"
@@ -99,7 +101,7 @@ function isAbortError(error: unknown): boolean {
 
 function resolveVideoEnd(video: HTMLVideoElement): number {
   if (Number.isFinite(video.duration) && video.duration > 0) {
-    return Math.min(CINEMATIC_END, video.duration);
+    return video.duration;
   }
   return CINEMATIC_END;
 }
@@ -148,10 +150,6 @@ function waitForEvent(
   });
 }
 
-/**
- * Confirm the timeline is actually moving — iOS can resolve play() while
- * currentTime stays frozen on the first frame.
- */
 function waitForPlaybackProgress(
   video: HTMLVideoElement,
   timeoutMs: number
@@ -179,10 +177,17 @@ function waitForPlaybackProgress(
   });
 }
 
+function readViewportClass(): CinematicViewportClass {
+  if (typeof window === "undefined") return "desktop";
+  return getCinematicViewportClass(window.innerWidth);
+}
+
 /**
  * Full-viewport cinematic overlay for the homepage only.
- * Poster covers the opening closed-laptop frame until the video paints.
- * Timeline is fully reversible: website ↔ closed laptop via scroll/touch.
+ *
+ * Mode 1 (first load): muted autoplay of the full video → fade → live HTML.
+ * Mode 2 (afterward): at document top, upward scroll re-enters at duration
+ * and scrubs the same MP4 both directions. No second autoplay.
  */
 export function CinematicIntro({ locale }: CinematicIntroProps) {
   const reduceMotion = useReducedMotion();
@@ -193,16 +198,17 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   const rafRef = useRef<number | null>(null);
   const scrubRafRef = useRef<number | null>(null);
   const pendingScrubDeltaRef = useRef(0);
-  const autoplaySettledRef = useRef(false);
+  const introCompletedRef = useRef(false);
   const frameReadyRef = useRef(false);
-  const autoplayStartTimeRef = useRef(0);
+  const finishingRef = useRef(false);
+  const mediaRef = useRef<CinematicMedia | null>(null);
+
   const [phase, setPhase] = useState<IntroPhase>("boot");
   const [mounted, setMounted] = useState(false);
   const [frameReady, setFrameReady] = useState(false);
-
-  const src = getCinematicIntroSrc(locale);
-  const poster = getCinematicIntroPoster(locale);
-  const enabled = hasCinematicIntro(locale);
+  const [viewportClass, setViewportClass] =
+    useState<CinematicViewportClass | null>(null);
+  const [media, setMedia] = useState<CinematicMedia | null>(null);
 
   const setIntroPhase = useCallback((next: IntroPhase) => {
     phaseRef.current = next;
@@ -260,11 +266,49 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       overlay.style.pointerEvents = "none";
     }
     pendingScrubDeltaRef.current = 0;
+    introCompletedRef.current = true;
     setIntroPhase("website");
     lockedScrollY = 0;
     unlockDocumentScroll();
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
   }, [setIntroPhase]);
+
+  const finishAutoplayWithFade = useCallback(() => {
+    if (finishingRef.current || introCompletedRef.current) return;
+    if (
+      phaseRef.current === "website" ||
+      phaseRef.current === "skipped" ||
+      phaseRef.current === "cinematic"
+    ) {
+      return;
+    }
+
+    finishingRef.current = true;
+
+    const video = videoRef.current;
+    const overlay = overlayRef.current;
+    if (video) {
+      try {
+        video.pause();
+      } catch {
+        // ignore
+      }
+    }
+
+    // Soft opacity handoff into live HTML (no black interstitial).
+    if (overlay) {
+      overlay.style.transition = `opacity ${CINEMATIC_FADE_DURATION}s ease-out`;
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+    }
+
+    window.setTimeout(() => {
+      if (overlay) {
+        overlay.style.transition = "";
+      }
+      enterWebsiteMode();
+    }, Math.round(CINEMATIC_FADE_DURATION * 1000));
+  }, [enterWebsiteMode]);
 
   const enterCinematicMode = useCallback(
     (atTime?: number) => {
@@ -279,7 +323,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         // ignore
       }
       markFrameReady();
-      autoplaySettledRef.current = true;
       lockDocumentScroll();
       setIntroPhase("cinematic");
       syncOverlayVisuals(next, end);
@@ -308,6 +351,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       syncOverlayVisuals(clamped, end);
 
+      // At closed laptop (0): stay in cinematic until the user scrolls forward.
       if (movingForward && clamped >= end - END_EPSILON_SEC) {
         enterWebsiteMode();
       }
@@ -327,7 +371,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     [applyScrubTime]
   );
 
-  /** Take over from boot/init/autoplay into interactive scrub — never a dead end. */
+  /** Take over from init/autoplay into interactive scrub — never a dead end. */
   const recoverToInteractiveCinematic = useCallback(
     (deltaY: number, secondsPer100px: number) => {
       const video = videoRef.current;
@@ -345,7 +389,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       }
 
       markFrameReady();
-      autoplaySettledRef.current = true;
       lockDocumentScroll();
       setIntroPhase("cinematic");
       syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
@@ -359,11 +402,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     (deltaY: number, secondsPer100px: number) => {
       const phaseNow = phaseRef.current;
 
-      if (
-        phaseNow === "initializing" ||
-        phaseNow === "autoplay" ||
-        phaseNow === "boot"
-      ) {
+      if (phaseNow === "initializing" || phaseNow === "autoplay") {
         return recoverToInteractiveCinematic(deltaY, secondsPer100px);
       }
 
@@ -372,7 +411,13 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         return true;
       }
 
-      if (phaseNow === "website" && deltaY < 0 && isPageAtTop()) {
+      // Re-entry: only after the initial intro finished. Do NOT autoplay again.
+      if (
+        phaseNow === "website" &&
+        introCompletedRef.current &&
+        deltaY < 0 &&
+        isPageAtTop()
+      ) {
         const video = videoRef.current;
         if (!video) return false;
         const end = resolveVideoEnd(video);
@@ -408,21 +453,70 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    const applyViewport = (next: CinematicViewportClass) => {
+      setViewportClass(next);
+      const resolved = resolveCinematicMedia(locale, next);
+      mediaRef.current = resolved;
+      setMedia((prev) => {
+        if (
+          prev?.video === resolved?.video &&
+          prev?.poster === resolved?.poster &&
+          prev?.orientation === resolved?.orientation
+        ) {
+          return prev;
+        }
+        return resolved;
+      });
+    };
+    applyViewport(readViewportClass());
+
+    const onResize = () => {
+      const next = readViewportClass();
+      setViewportClass((prev) => (prev === next ? prev : next));
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [locale]);
+
+  // When viewport class changes after mount (e.g. rotate), refresh media binding
+  // only before the intro has completed — avoid swapping mid-experience.
+  useEffect(() => {
+    if (!mounted || viewportClass == null) return;
+    if (introCompletedRef.current) return;
+    if (
+      phaseRef.current === "autoplay" ||
+      phaseRef.current === "cinematic" ||
+      phaseRef.current === "website"
+    ) {
+      return;
+    }
+    const resolved = resolveCinematicMedia(locale, viewportClass);
+    mediaRef.current = resolved;
+    setMedia((prev) => {
+      if (
+        prev?.video === resolved?.video &&
+        prev?.poster === resolved?.poster &&
+        prev?.orientation === resolved?.orientation
+      ) {
+        return prev;
+      }
+      return resolved;
+    });
+  }, [mounted, viewportClass, locale]);
 
   // Reduced motion / missing asset → skip
   useEffect(() => {
-    if (!mounted) return;
-    if (!enabled || reduceMotion === true) {
+    if (!mounted || viewportClass == null) return;
+    if (reduceMotion === true || media == null) {
       skipIntro();
     }
-  }, [mounted, enabled, reduceMotion, skipIntro]);
+  }, [mounted, viewportClass, media, reduceMotion, skipIntro]);
 
-  // Media init → verify real playback → scrub handoff (never trap in autoplay)
+  // Media init → full muted autoplay → fade into live HTML
   useEffect(() => {
-    if (!mounted || !enabled || !src || reduceMotion !== false) return;
+    if (!mounted || !media || reduceMotion !== false) return;
     if (
-      autoplaySettledRef.current ||
+      introCompletedRef.current ||
       phaseRef.current === "skipped" ||
       phaseRef.current === "website" ||
       phaseRef.current === "cinematic"
@@ -435,11 +529,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
     let cancelled = false;
     setIntroPhase("initializing");
-    // Do NOT lock during init — overlay is recoverable via touch, page underneath
-    // remains unlockable if we skip.
     prepareVideoForMobileAutoplay(video);
 
-    const settleIntoCinematic = (atTime: number) => {
+    const settleInteractive = (atTime: number) => {
       if (cancelled) return;
       if (phaseRef.current === "skipped" || phaseRef.current === "website") {
         return;
@@ -453,33 +545,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         // ignore
       }
       markFrameReady();
-      autoplaySettledRef.current = true;
       lockDocumentScroll();
       setIntroPhase("cinematic");
       syncOverlayVisuals(pauseAt, end);
-    };
-
-    const onAutoplayTick = () => {
-      if (cancelled || phaseRef.current !== "autoplay") return;
-
-      // Frozen timeline after "successful" play() — recover to interactive scrub.
-      if (
-        performance.now() - autoplayStartTimeRef.current >
-          CINEMATIC_PLAYBACK_VERIFY_MS &&
-        video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC
-      ) {
-        settleIntoCinematic(video.currentTime || 0);
-        return;
-      }
-
-      if (
-        video.readyState >= 2 &&
-        video.currentTime >= CINEMATIC_AUTOPLAY_END - 0.02
-      ) {
-        settleIntoCinematic(CINEMATIC_AUTOPLAY_END);
-        return;
-      }
-      rafRef.current = requestAnimationFrame(onAutoplayTick);
     };
 
     const onPlaying = () => {
@@ -490,21 +558,37 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       if (video.videoWidth > 0) markFrameReady();
     };
 
+    const onEnded = () => {
+      if (cancelled) return;
+      if (phaseRef.current !== "autoplay") return;
+      finishAutoplayWithFade();
+    };
+
+    const onTimeUpdate = () => {
+      if (cancelled || phaseRef.current !== "autoplay") return;
+      const end = resolveVideoEnd(video);
+      if (end > 0 && video.currentTime >= end - 0.08) {
+        finishAutoplayWithFade();
+      }
+    };
+
     const initTimeout = window.setTimeout(() => {
-      if (cancelled || autoplaySettledRef.current) return;
+      if (cancelled || introCompletedRef.current) return;
 
       const phaseNow = phaseRef.current;
       if (phaseNow === "cinematic" || phaseNow === "website") return;
 
       if (phaseNow === "autoplay") {
-        // Never leave the user stuck waiting for a timeline that will not finish.
-        settleIntoCinematic(video.currentTime || 0);
+        // Still playing — do not abort a healthy long autoplay mid-flight.
+        // Only recover if the clock is frozen near the start.
+        if (video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC) {
+          settleInteractive(video.currentTime || 0);
+        }
         return;
       }
 
-      // Still initializing — prefer interactive cinematic if media looks usable.
-      if (video.readyState >= 1 || frameReadyRef.current || Boolean(poster)) {
-        settleIntoCinematic(video.currentTime || 0);
+      if (video.readyState >= 1 || frameReadyRef.current || Boolean(mediaRef.current?.poster)) {
+        settleInteractive(video.currentTime || 0);
         return;
       }
 
@@ -516,7 +600,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         if (video.readyState < 1) {
           await waitForEvent(video, "loadedmetadata", CINEMATIC_INIT_TIMEOUT_MS);
         }
-        if (cancelled || autoplaySettledRef.current) return;
+        if (cancelled || introCompletedRef.current) return;
 
         prepareVideoForMobileAutoplay(video);
 
@@ -527,17 +611,14 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
             // Continue — play() may still succeed with partial buffer.
           }
         }
-        if (cancelled || autoplaySettledRef.current) return;
+        if (cancelled || introCompletedRef.current) return;
 
-        // Avoid unnecessary seeks before first paint — they cause black frames
-        // on some iOS versions.
         if (video.currentTime > 0.05) {
           video.currentTime = 0;
         }
 
         const playAttempt = video.play();
         if (playAttempt !== undefined) {
-          // Prevent an unhandled rejection if play() settles after our timeout.
           void playAttempt.catch(() => undefined);
           await Promise.race([
             playAttempt,
@@ -549,15 +630,13 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
             }),
           ]);
         }
-        if (cancelled || autoplaySettledRef.current) return;
+        if (cancelled || introCompletedRef.current) return;
 
-        // play() resolved — confirm the clock actually moves before locking
-        // into autoplay. iOS Safari can resolve play() with a frozen timeline.
         const progressed = await waitForPlaybackProgress(
           video,
           CINEMATIC_PLAYBACK_VERIFY_MS
         );
-        if (cancelled || autoplaySettledRef.current) return;
+        if (cancelled || introCompletedRef.current) return;
 
         if (!progressed) {
           try {
@@ -565,33 +644,29 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           } catch {
             // ignore
           }
-          settleIntoCinematic(video.currentTime || 0);
+          settleInteractive(video.currentTime || 0);
           return;
         }
 
         markFrameReady();
         lockDocumentScroll();
-        autoplayStartTimeRef.current = performance.now();
         setIntroPhase("autoplay");
         syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
-        rafRef.current = requestAnimationFrame(onAutoplayTick);
       } catch (error) {
-        if (cancelled || autoplaySettledRef.current) return;
+        if (cancelled || introCompletedRef.current) return;
 
-        // AbortError / NotAllowedError / play timeout — never dead-end.
         try {
           video.pause();
         } catch {
           // ignore
         }
 
-        if (video.readyState >= 1 || frameReadyRef.current || Boolean(poster)) {
-          settleIntoCinematic(video.currentTime || 0);
+        if (video.readyState >= 1 || frameReadyRef.current || Boolean(mediaRef.current?.poster)) {
+          settleInteractive(video.currentTime || 0);
           return;
         }
 
         if (isAbortError(error)) {
-          // Remount/cleanup abort with no usable frame — fall through to homepage.
           skipIntro();
           return;
         }
@@ -610,6 +685,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
     video.addEventListener("playing", onPlaying);
     video.addEventListener("seeked", onSeeked);
+    video.addEventListener("ended", onEnded);
+    video.addEventListener("timeupdate", onTimeUpdate);
     video.addEventListener("error", onFatalError);
     video.addEventListener("webkitbeginfullscreen", onPreventFullscreen);
     void startPlayback();
@@ -619,6 +696,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       window.clearTimeout(initTimeout);
       video.removeEventListener("playing", onPlaying);
       video.removeEventListener("seeked", onSeeked);
+      video.removeEventListener("ended", onEnded);
+      video.removeEventListener("timeupdate", onTimeUpdate);
       video.removeEventListener("error", onFatalError);
       video.removeEventListener("webkitbeginfullscreen", onPreventFullscreen);
       try {
@@ -631,20 +710,23 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         rafRef.current = null;
       }
     };
+    // Intentionally keyed on media URL/poster strings so object identity churn
+    // does not cancel a healthy autoplay mid-flight.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- media object identity
   }, [
     mounted,
-    enabled,
-    src,
-    poster,
+    media?.video,
+    media?.poster,
     reduceMotion,
     setIntroPhase,
     syncOverlayVisuals,
     markFrameReady,
     skipIntro,
+    finishAutoplayWithFade,
   ]);
 
-  // Touch/wheel during init + autoplay + cinematic + website reverse re-entry.
-  // CRITICAL: initializing/autoplay must be recoverable — never a swipe dead-end.
+  // Touch/wheel: recoverable during init/autoplay; scrub in cinematic;
+  // reverse re-entry from website top after intro completed.
   useEffect(() => {
     if (
       phase !== "initializing" &&
@@ -688,7 +770,10 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         phaseRef.current === "cinematic" ||
         phaseRef.current === "autoplay" ||
         phaseRef.current === "initializing" ||
-        (phaseRef.current === "website" && deltaY < 0 && isPageAtTop());
+        (phaseRef.current === "website" &&
+          introCompletedRef.current &&
+          deltaY < 0 &&
+          isPageAtTop());
 
       if (!shouldConsume) return;
 
@@ -726,15 +811,16 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
   }, []);
 
-  if (!mounted || !enabled || !src || reduceMotion == null) {
+  if (!mounted || reduceMotion == null || viewportClass == null) {
     return null;
   }
 
-  if (reduceMotion || phase === "skipped") {
+  if (reduceMotion || phase === "skipped" || !media) {
     return null;
   }
 
-  const showPosterCover = Boolean(poster) && !frameReady;
+  const showPosterCover = Boolean(media.poster) && !frameReady;
+  const poster = media.poster;
 
   return (
     <div
@@ -753,14 +839,17 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
             }
           : undefined
       }
+      data-cinematic-orientation={media.orientation}
+      data-cinematic-viewport={viewportClass}
     >
       <video
         ref={videoRef}
+        key={media.video}
         className={cn(
           "absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-200",
           frameReady ? "opacity-100" : "opacity-0"
         )}
-        src={src}
+        src={media.video}
         poster={poster ?? undefined}
         muted
         playsInline
@@ -772,7 +861,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       {showPosterCover ? (
         // Explicit image layer: iOS often paints a black <video> over poster=
-        // until the first decoded frame, which looks like a broken black screen.
+        // until the first decoded frame.
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={poster ?? undefined}
@@ -784,3 +873,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     </div>
   );
 }
+
+// Re-export breakpoint for tests / docs
+export { CINEMATIC_MOBILE_MAX_WIDTH };
