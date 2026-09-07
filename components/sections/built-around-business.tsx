@@ -18,7 +18,7 @@ const BUILT_AROUND_VISUAL: Record<AppLocale, string> = {
   es: "/images/home/built-around-business-es.jpg",
 };
 
-/** Intrinsic size of the approved cropped workflow visuals (do not crop/distort). */
+/** Intrinsic size of the approved workflow visuals (do not crop/distort). */
 const VISUAL_WIDTH = 1024;
 const VISUAL_HEIGHT = 866;
 
@@ -41,7 +41,7 @@ export function BuiltAroundBusiness() {
     >
       <Container size="lg">
         <motion.div
-          className="grid items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16"
+          className="grid items-start gap-10 md:gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16"
           initial={reduceMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -75,14 +75,14 @@ export function BuiltAroundBusiness() {
 
           <motion.div
             variants={reduceMotion ? undefined : staggerItem}
-            className="w-full min-w-0"
+            className="w-full min-w-0 bg-transparent"
           >
             <Image
               src={visualSrc}
               alt={t("imageAlt")}
               width={VISUAL_WIDTH}
               height={VISUAL_HEIGHT}
-              className="h-auto w-full max-w-full object-contain"
+              className="h-auto w-full max-w-full bg-transparent object-contain"
               sizes="(max-width: 1023px) 100vw, (max-width: 1280px) 46vw, min(36rem, 46vw)"
               priority={false}
             />
