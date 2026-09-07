@@ -103,6 +103,63 @@
           "description": "Your technology evolves with your business, giving you the foundation to operate smarter and move forward."
         }
       }
+    },
+    "featuredWork": {
+      "eyebrow": "Featured Work",
+      "title": "Software built to solve real business problems.",
+      "description": "A look at some of the systems we've designed and built around the way businesses actually operate.",
+      "viewProject": "View Project",
+      "mediaPlaceholder": "Interface preview coming soon",
+      "projects": {
+        "financial": {
+          "category": "Real Estate Finance",
+          "title": "Financial Reporting & Portfolio Tracking",
+          "description": "A centralized financial system designed to make portfolio performance, income, expenses, equity, and reporting easier to manage.",
+          "features": {
+            "0": "Automated P&L reporting",
+            "1": "Portfolio views",
+            "2": "Equity calculations",
+            "3": "Income & expense tracking",
+            "4": "Report exports"
+          },
+          "mediaAlts": {
+            "0": "Screenshot of an automated profit and loss reporting dashboard with income, expenses, and export options",
+            "1": "Screenshot of a property portfolio management dashboard with equity and rental income views"
+          }
+        },
+        "operations": {
+          "category": "Food & Beverage Delivery",
+          "title": "Live Operations Dashboard",
+          "description": "A live operational dashboard built to bring orders, revenue, and delivery coordination into one place.",
+          "features": {
+            "0": "Order management",
+            "1": "Revenue tracking",
+            "2": "Delivery coordination",
+            "3": "Live operational visibility"
+          },
+          "mediaAlts": {
+            "0": "Screenshot of a food and beverage operations dashboard showing revenue, orders, and delivery status",
+            "1": "Screenshot of a juice delivery operations dashboard with live order and delivery metrics"
+          }
+        },
+        "automation": {
+          "category": "Business Automation",
+          "title": "Automated Scheduling & Ordering",
+          "description": "Automated customer-facing systems that make it easier for businesses to accept appointments, take orders, and manage incoming requests without relying entirely on manual coordination.",
+          "examples": {
+            "scheduling": {
+              "label": "A — Automated Scheduling",
+              "title": "Massage Therapist — Automated Scheduling",
+              "description": "An automated scheduling experience designed for a massage therapist, allowing customers to view available services and schedule appointments through a digital experience."
+            },
+            "ordering": {
+              "label": "B — Automated Ordering",
+              "title": "Restaurant — Automated Food Ordering",
+              "description": "A customer-facing ordering experience that allows restaurant customers to browse food options and place an order digitally."
+            }
+          }
+        }
+      }
     }
   },
   "Shell": {

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { CinematicIntro } from "@/components/cinematic/cinematic-intro";
 import { BuiltAroundBusiness } from "@/components/sections/built-around-business";
+import { FeaturedWork } from "@/components/sections/featured-work";
 import { Hero } from "@/components/sections/hero";
 import { routing, type AppLocale } from "@/i18n/routing";
 
@@ -27,6 +28,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <BuiltAroundBusiness />
+        <FeaturedWork />
       </main>
     </>
   );

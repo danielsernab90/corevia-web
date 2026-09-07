@@ -103,6 +103,63 @@
           "description": "Tu tecnología evoluciona junto con tu negocio, dándote una base sólida para operar mejor y avanzar."
         }
       }
+    },
+    "featuredWork": {
+      "eyebrow": "Trabajos Destacados",
+      "title": "Software creado para resolver problemas reales de negocio.",
+      "description": "Una mirada a algunos de los sistemas que hemos diseñado y construido alrededor de la forma en que realmente operan las empresas.",
+      "viewProject": "Ver Proyecto",
+      "mediaPlaceholder": "Vista previa de interfaz próximamente",
+      "projects": {
+        "financial": {
+          "category": "Finanzas Inmobiliarias",
+          "title": "Reportes Financieros y Seguimiento de Portafolio",
+          "description": "Un sistema financiero centralizado diseñado para facilitar la gestión del rendimiento del portafolio, ingresos, gastos, patrimonio y reportes.",
+          "features": {
+            "0": "Reportes automatizados de P&L",
+            "1": "Vistas del portafolio",
+            "2": "Cálculos de patrimonio",
+            "3": "Seguimiento de ingresos y gastos",
+            "4": "Exportación de reportes"
+          },
+          "mediaAlts": {
+            "0": "Captura de un dashboard de reportes de pérdidas y ganancias con ingresos, gastos y opciones de exportación",
+            "1": "Captura de un dashboard de portafolio inmobiliario con patrimonio e ingresos por alquiler"
+          }
+        },
+        "operations": {
+          "category": "Entrega de Alimentos y Bebidas",
+          "title": "Dashboard de Operaciones en Tiempo Real",
+          "description": "Un dashboard operativo en tiempo real creado para reunir pedidos, ingresos y coordinación de entregas en un solo lugar.",
+          "features": {
+            "0": "Gestión de pedidos",
+            "1": "Seguimiento de ingresos",
+            "2": "Coordinación de entregas",
+            "3": "Visibilidad operativa en tiempo real"
+          },
+          "mediaAlts": {
+            "0": "Captura de un dashboard de operaciones de alimentos y bebidas con ingresos, pedidos y estado de entregas",
+            "1": "Captura de un dashboard de entregas de jugos con métricas de pedidos y entregas en vivo"
+          }
+        },
+        "automation": {
+          "category": "Automatización de Negocios",
+          "title": "Agendamiento y Pedidos Automatizados",
+          "description": "Sistemas automatizados orientados al cliente que facilitan a los negocios recibir citas, tomar pedidos y gestionar solicitudes sin depender completamente de la coordinación manual.",
+          "examples": {
+            "scheduling": {
+              "label": "A — Agendamiento Automatizado",
+              "title": "Terapeuta de Masajes — Agendamiento Automatizado",
+              "description": "Una experiencia de agendamiento automatizada diseñada para una terapeuta de masajes, permitiendo a los clientes consultar los servicios disponibles y programar citas mediante una experiencia digital."
+            },
+            "ordering": {
+              "label": "B — Pedidos Automatizados",
+              "title": "Restaurante — Pedidos Automatizados de Comida",
+              "description": "Una experiencia de pedidos orientada al cliente que permite a los clientes de un restaurante consultar las opciones disponibles y realizar pedidos digitalmente."
+            }
+          }
+        }
+      }
     }
   },
   "Shell": {
