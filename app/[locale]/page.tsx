@@ -7,7 +7,9 @@ import { CinematicPreload } from "@/components/cinematic/cinematic-preload";
 import { BuiltAroundBusiness } from "@/components/sections/built-around-business";
 import { FeaturedWork } from "@/components/sections/featured-work";
 import { Hero } from "@/components/sections/hero";
+import { HowWeWork } from "@/components/sections/how-we-work";
 import { WhatWeCanBuild } from "@/components/sections/what-we-can-build";
+import { BookingShell } from "@/components/shared/booking-shell";
 import { routing, type AppLocale } from "@/i18n/routing";
 
 type HomePageProps = {
@@ -28,12 +30,15 @@ export default async function HomePage({ params }: HomePageProps) {
     <>
       <CinematicPreload locale={locale} />
       <CinematicIntro locale={locale} />
-      <main id="main-content" tabIndex={-1}>
-        <Hero />
-        <BuiltAroundBusiness />
-        <FeaturedWork />
-        <WhatWeCanBuild />
-      </main>
+      <BookingShell>
+        <main id="main-content" tabIndex={-1}>
+          <Hero />
+          <BuiltAroundBusiness />
+          <FeaturedWork />
+          <WhatWeCanBuild />
+          <HowWeWork />
+        </main>
+      </BookingShell>
     </>
   );
 }

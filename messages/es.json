@@ -12,7 +12,8 @@
     "light": "Claro",
     "dark": "Oscuro",
     "system": "Sistema",
-    "skipToContent": "Saltar al contenido"
+    "skipToContent": "Saltar al contenido",
+    "startProject": "Comienza Tu Proyecto"
   },
   "Locale": {
     "en": "Inglés",
@@ -191,6 +192,33 @@
           "number": "05",
           "title": "Crecimiento y Digital",
           "description": "Marketing, contenido, publicidad y estrategia digital que respaldan tu negocio y la tecnología que lo impulsa."
+        }
+      }
+    },
+    "howWeWork": {
+      "eyebrow": "Cómo Trabajamos",
+      "title": "Un proceso sencillo. Diseñado alrededor de tu negocio.",
+      "description": "Pasos claros desde la primera conversación hasta un sistema que puede crecer contigo.",
+      "steps": {
+        "tell": {
+          "number": "01",
+          "title": "Cuéntanos qué quieres resolver",
+          "description": "Cuéntanos qué está frenando tu negocio, qué quieres mejorar o qué quieres construir."
+        },
+        "design": {
+          "number": "02",
+          "title": "Diseñamos la solución",
+          "description": "Definimos el enfoque adecuado, determinamos qué debe construirse y te damos un precio fijo y claro antes de comenzar el desarrollo."
+        },
+        "build": {
+          "number": "03",
+          "title": "Lo construimos",
+          "description": "Diseñamos y desarrollamos el software, la automatización, las integraciones o la plataforma digital según tus necesidades reales."
+        },
+        "launch": {
+          "number": "04",
+          "title": "Lanzas y creces",
+          "description": "Te ayudamos a ponerlo en marcha, perfeccionar el sistema y contar con una tecnología que pueda evolucionar junto con tu negocio."
         }
       }
     }

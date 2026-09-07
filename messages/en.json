@@ -12,7 +12,8 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "startProject": "Start Your Project"
   },
   "Locale": {
     "en": "English",
@@ -191,6 +192,33 @@
           "number": "05",
           "title": "Growth & Digital",
           "description": "Marketing, content, advertising, and digital strategy that support your business and the technology behind it."
+        }
+      }
+    },
+    "howWeWork": {
+      "eyebrow": "How We Work",
+      "title": "A straightforward process. Built around your business.",
+      "description": "Clear steps from the first conversation to a system that can grow with you.",
+      "steps": {
+        "tell": {
+          "number": "01",
+          "title": "Tell us what you're trying to solve",
+          "description": "Tell us what's slowing your business down, what you want to improve, or what you want to build."
+        },
+        "design": {
+          "number": "02",
+          "title": "We design the solution",
+          "description": "We map out the right approach, define what needs to be built, and give you a clear fixed price before development begins."
+        },
+        "build": {
+          "number": "03",
+          "title": "We build it",
+          "description": "We design and develop the software, automation, integrations, or digital platform around your actual requirements."
+        },
+        "launch": {
+          "number": "04",
+          "title": "You launch & grow",
+          "description": "We help bring it to life, refine the system, and give your business technology that can evolve with you."
         }
       }
     }

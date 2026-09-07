@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
+import { StartProjectCta } from "@/components/shared/start-project-cta";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -121,6 +122,16 @@ export function WhatWeCanBuild() {
             ))}
           </motion.ol>
         </div>
+
+        <motion.div
+          className="mt-12 border-t border-border/60 pt-10 sm:mt-14 sm:pt-12"
+          initial={reduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={reduceMotion ? undefined : fadeUp}
+        >
+          <StartProjectCta placement="what-we-can-build" />
+        </motion.div>
       </Container>
     </Section>
   );
