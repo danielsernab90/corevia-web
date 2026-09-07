@@ -6,6 +6,7 @@ import { CinematicIntro } from "@/components/cinematic/cinematic-intro";
 import { BuiltAroundBusiness } from "@/components/sections/built-around-business";
 import { FeaturedWork } from "@/components/sections/featured-work";
 import { Hero } from "@/components/sections/hero";
+import { WhatWeCanBuild } from "@/components/sections/what-we-can-build";
 import { routing, type AppLocale } from "@/i18n/routing";
 
 type HomePageProps = {
@@ -29,6 +30,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <Hero />
         <BuiltAroundBusiness />
         <FeaturedWork />
+        <WhatWeCanBuild />
       </main>
     </>
   );

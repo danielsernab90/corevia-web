@@ -160,6 +160,38 @@
           }
         }
       }
+    },
+    "whatWeCanBuild": {
+      "eyebrow": "Lo Que Podemos Construir",
+      "title": "Un solo socio. Múltiples capacidades.",
+      "description": "Desde software empresarial personalizado hasta automatización, plataformas digitales, sistemas de datos y apoyo al crecimiento, construimos la tecnología que realmente necesita tu negocio.",
+      "capabilities": {
+        "customSoftware": {
+          "number": "01",
+          "title": "Software Personalizado",
+          "description": "Sistemas diseñados alrededor de tus procesos, flujos de trabajo y la forma en que realmente opera tu negocio."
+        },
+        "aiAutomation": {
+          "number": "02",
+          "title": "IA y Automatización",
+          "description": "Elimina tareas repetitivas, optimiza tus operaciones y haz más inteligentes los procesos cotidianos."
+        },
+        "digitalPlatforms": {
+          "number": "03",
+          "title": "Plataformas Digitales",
+          "description": "Experiencias web y móviles creadas para tus clientes, tu equipo y la forma en que haces negocios."
+        },
+        "dataDashboards": {
+          "number": "04",
+          "title": "Datos y Dashboards",
+          "description": "Convierte información dispersa en sistemas claros y útiles que te ayuden a entender lo que está sucediendo en tu negocio."
+        },
+        "growthDigital": {
+          "number": "05",
+          "title": "Crecimiento y Digital",
+          "description": "Marketing, contenido, publicidad y estrategia digital que respaldan tu negocio y la tecnología que lo impulsa."
+        }
+      }
     }
   },
   "Shell": {

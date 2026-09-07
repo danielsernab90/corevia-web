@@ -160,6 +160,38 @@
           }
         }
       }
+    },
+    "whatWeCanBuild": {
+      "eyebrow": "What We Can Build",
+      "title": "One partner. Multiple capabilities.",
+      "description": "From custom business software to automation, digital platforms, data systems, and growth support, we build the technology your business actually needs.",
+      "capabilities": {
+        "customSoftware": {
+          "number": "01",
+          "title": "Custom Software",
+          "description": "Systems designed around your workflows, processes, and the way your business actually operates."
+        },
+        "aiAutomation": {
+          "number": "02",
+          "title": "AI & Automation",
+          "description": "Remove repetitive work, streamline operations, and make everyday processes smarter."
+        },
+        "digitalPlatforms": {
+          "number": "03",
+          "title": "Digital Platforms",
+          "description": "Web and mobile experiences built for your customers, your team, and the way you do business."
+        },
+        "dataDashboards": {
+          "number": "04",
+          "title": "Data & Dashboards",
+          "description": "Turn scattered information into clear, useful systems that help you understand what is happening in your business."
+        },
+        "growthDigital": {
+          "number": "05",
+          "title": "Growth & Digital",
+          "description": "Marketing, content, advertising, and digital strategy that support your business and the technology behind it."
+        }
+      }
     }
   },
   "Shell": {
