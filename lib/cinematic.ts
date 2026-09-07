@@ -32,9 +32,20 @@ export const CINEMATIC_TOUCH_SECONDS_PER_100PX = 0.85;
 /** Clamp a single touchmove sample so one event cannot jump the timeline. */
 export const CINEMATIC_TOUCH_MAX_DELTA_PX = 48;
 
-const INTRO_BY_LOCALE: Partial<Record<AppLocale, string>> = {
-  en: "/cinematic/en/intro.mp4",
-  // Spanish cinematic asset lands later at /cinematic/es/intro.mp4
+/**
+ * Max time to wait for the first painted cinematic frame before falling back
+ * to the normal homepage (avoids permanent black-screen lock on mobile).
+ */
+export const CINEMATIC_INIT_TIMEOUT_MS = 12000;
+
+const INTRO_BY_LOCALE: Partial<
+  Record<AppLocale, { video: string; poster: string }>
+> = {
+  en: {
+    video: "/cinematic/en/intro.mp4",
+    poster: "/cinematic/en/intro-poster.jpg",
+  },
+  // Spanish cinematic asset lands later at /cinematic/es/intro.mp4 (+ matching poster)
 };
 
 /** Whether this locale has a cinematic intro asset ready. */
@@ -44,7 +55,12 @@ export function hasCinematicIntro(locale: AppLocale): boolean {
 
 /** Locale-aware cinematic intro video URL, or null when unavailable. */
 export function getCinematicIntroSrc(locale: AppLocale): string | null {
-  return INTRO_BY_LOCALE[locale] ?? null;
+  return INTRO_BY_LOCALE[locale]?.video ?? null;
+}
+
+/** First-frame poster matching the opening closed-laptop shot. */
+export function getCinematicIntroPoster(locale: AppLocale): string | null {
+  return INTRO_BY_LOCALE[locale]?.poster ?? null;
 }
 
 /** Clamp helper for scrubbing within [min, max]. */

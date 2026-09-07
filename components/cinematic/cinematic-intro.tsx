@@ -8,10 +8,12 @@ import {
   CINEMATIC_AUTOPLAY_END,
   CINEMATIC_END,
   CINEMATIC_FADE_DURATION,
+  CINEMATIC_INIT_TIMEOUT_MS,
   CINEMATIC_SCROLL_SECONDS_PER_100PX,
   CINEMATIC_TOUCH_MAX_DELTA_PX,
   CINEMATIC_TOUCH_SECONDS_PER_100PX,
   clampCinematicTime,
+  getCinematicIntroPoster,
   getCinematicIntroSrc,
   hasCinematicIntro,
 } from "@/lib/cinematic";
@@ -22,10 +24,16 @@ type CinematicIntroProps = {
 };
 
 /**
- * boot → autoplay (first visit) → cinematic (bidirectional scrub)
- * → website (HTML scroll) ↔ cinematic (re-enter by scrolling up at top)
+ * boot → initializing → autoplay → cinematic (bidirectional scrub)
+ * → website ↔ cinematic | skipped (fallback / reduced motion)
  */
-type IntroPhase = "boot" | "autoplay" | "cinematic" | "website" | "skipped";
+type IntroPhase =
+  | "boot"
+  | "initializing"
+  | "autoplay"
+  | "cinematic"
+  | "website"
+  | "skipped";
 
 const TOP_SCROLL_EPSILON_PX = 2;
 const END_EPSILON_SEC = 0.02;
@@ -45,7 +53,6 @@ function lockDocumentScroll() {
   html.style.overscrollBehavior = "none";
   body.style.overflow = "hidden";
   body.style.overscrollBehavior = "none";
-  // iOS Safari ignores overflow:hidden alone — pin the body instead.
   body.style.position = "fixed";
   body.style.top = `-${lockedScrollY}px`;
   body.style.left = "0";
@@ -112,9 +119,36 @@ function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
   video.setAttribute("x5-playsinline", "");
 }
 
+function waitForEvent(
+  target: EventTarget,
+  eventName: string,
+  timeoutMs: number
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const cleanup = () => {
+      target.removeEventListener(eventName, onEvent);
+      window.clearTimeout(timer);
+    };
+    const onEvent = () => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      resolve();
+    };
+    const timer = window.setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      reject(new Error(`timeout:${eventName}`));
+    }, timeoutMs);
+    target.addEventListener(eventName, onEvent);
+  });
+}
+
 /**
  * Full-viewport cinematic overlay for the homepage only.
- * Real HTML (Header + Hero) renders underneath and is revealed via fade.
+ * Poster covers the opening closed-laptop frame until the video paints.
  * Timeline is fully reversible: website ↔ closed laptop via scroll/touch.
  */
 export function CinematicIntro({ locale }: CinematicIntroProps) {
@@ -126,17 +160,25 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   const rafRef = useRef<number | null>(null);
   const scrubRafRef = useRef<number | null>(null);
   const pendingScrubDeltaRef = useRef(0);
-  /** True once autoplay has handed off to cinematic/website (or failed open). */
   const autoplaySettledRef = useRef(false);
+  const frameReadyRef = useRef(false);
   const [phase, setPhase] = useState<IntroPhase>("boot");
   const [mounted, setMounted] = useState(false);
+  const [frameReady, setFrameReady] = useState(false);
 
   const src = getCinematicIntroSrc(locale);
+  const poster = getCinematicIntroPoster(locale);
   const enabled = hasCinematicIntro(locale);
 
   const setIntroPhase = useCallback((next: IntroPhase) => {
     phaseRef.current = next;
     setPhase(next);
+  }, []);
+
+  const markFrameReady = useCallback(() => {
+    if (frameReadyRef.current) return;
+    frameReadyRef.current = true;
+    setFrameReady(true);
   }, []);
 
   const skipIntro = useCallback(() => {
@@ -159,7 +201,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     const opacity = fadeOpacityForTime(time, end);
     overlay.style.opacity = String(opacity);
     overlay.style.pointerEvents =
-      (phaseRef.current === "cinematic" || phaseRef.current === "autoplay") &&
+      (phaseRef.current === "cinematic" ||
+        phaseRef.current === "autoplay" ||
+        phaseRef.current === "initializing") &&
       opacity > 0.001
         ? "auto"
         : "none";
@@ -183,7 +227,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     }
     pendingScrubDeltaRef.current = 0;
     setIntroPhase("website");
-    // Unlock restores prior lock offset; force homepage top for handoff.
     lockedScrollY = 0;
     unlockDocumentScroll();
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
@@ -223,7 +266,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         try {
           video.currentTime = clamped;
         } catch {
-          // Mobile browsers may reject seeks while metadata is thin.
           return;
         }
       }
@@ -253,7 +295,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     (deltaY: number, secondsPer100px: number) => {
       const phaseNow = phaseRef.current;
 
-      // User gesture during autoplay — hand off to scrub immediately.
       if (phaseNow === "autoplay") {
         const video = videoRef.current;
         if (!video) return false;
@@ -320,7 +361,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     }
   }, [mounted, enabled, reduceMotion, skipIntro]);
 
-  // First-load autoplay: 0 → CINEMATIC_AUTOPLAY_END, then cinematic control
+  // Media init → muted autoplay → scrub handoff (with poster + timeout safety)
   useEffect(() => {
     if (!mounted || !enabled || !src || reduceMotion !== false) return;
     if (
@@ -336,8 +377,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     if (!video) return;
 
     let cancelled = false;
-    lockDocumentScroll();
-    setIntroPhase("autoplay");
+    setIntroPhase("initializing");
+    // Do NOT lock until we have a visible frame — keeps page recoverable.
     prepareVideoForMobileAutoplay(video);
 
     const settleIntoCinematic = (atTime: number) => {
@@ -362,7 +403,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     const onAutoplayTick = () => {
       if (cancelled || phaseRef.current !== "autoplay") return;
       if (
-        video.readyState >= 1 &&
+        video.readyState >= 2 &&
         video.currentTime >= CINEMATIC_AUTOPLAY_END - 0.02
       ) {
         settleIntoCinematic(CINEMATIC_AUTOPLAY_END);
@@ -371,73 +412,111 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       rafRef.current = requestAnimationFrame(onAutoplayTick);
     };
 
+    const onPlaying = () => {
+      markFrameReady();
+    };
+
+    const onSeeked = () => {
+      // After a seek paints a frame (common when scrubbing a paused video).
+      if (video.videoWidth > 0) markFrameReady();
+    };
+
+    const initTimeout = window.setTimeout(() => {
+      if (cancelled || autoplaySettledRef.current || frameReadyRef.current) {
+        return;
+      }
+      if (
+        phaseRef.current === "autoplay" ||
+        phaseRef.current === "cinematic" ||
+        phaseRef.current === "website"
+      ) {
+        // Playback started; keep waiting for the first painted frame briefly,
+        // but never leave a locked black overlay if paint never arrives.
+        if (document.documentElement.dataset.cinematicScrollLock === "1") {
+          skipIntro();
+        }
+        return;
+      }
+      // Still initializing with no painted frame — reveal the real homepage.
+      skipIntro();
+    }, CINEMATIC_INIT_TIMEOUT_MS);
+
     const startPlayback = async () => {
       try {
         if (video.readyState < 1) {
-          await new Promise<void>((resolve, reject) => {
-            const onLoaded = () => {
-              cleanup();
-              resolve();
-            };
-            const onError = () => {
-              cleanup();
-              reject(new Error("cinematic-media-error"));
-            };
-            const cleanup = () => {
-              video.removeEventListener("loadedmetadata", onLoaded);
-              video.removeEventListener("error", onError);
-            };
-            video.addEventListener("loadedmetadata", onLoaded);
-            video.addEventListener("error", onError);
-            if (video.readyState >= 1) {
-              cleanup();
-              resolve();
-            }
-          });
+          await waitForEvent(video, "loadedmetadata", CINEMATIC_INIT_TIMEOUT_MS);
         }
         if (cancelled) return;
 
         prepareVideoForMobileAutoplay(video);
-        video.currentTime = 0;
+
+        // Prefer canplay so mobile has enough buffered media before play().
+        if (video.readyState < 3) {
+          try {
+            await waitForEvent(video, "canplay", 8000);
+          } catch {
+            // Continue — play() may still succeed with partial buffer.
+          }
+        }
+        if (cancelled) return;
+
+        // Avoid unnecessary seeks before first paint — they cause black frames
+        // on some iOS versions.
+        if (video.currentTime > 0.05) {
+          video.currentTime = 0;
+        }
+
         const playAttempt = video.play();
         if (playAttempt !== undefined) {
           await playAttempt;
         }
         if (cancelled) return;
+
+        // play() resolved — lock and enter autoplay. Poster remains until
+        // the `playing` event confirms a painted frame.
+        lockDocumentScroll();
+        setIntroPhase("autoplay");
+        syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
         rafRef.current = requestAnimationFrame(onAutoplayTick);
       } catch (error) {
         if (cancelled) return;
-        // Abort from effect cleanup — let the remount retry.
         if (isAbortError(error)) return;
-        // Autoplay blocked or media issue — keep overlay and allow scrub.
+
+        // Autoplay blocked with no painted frame yet → reveal the real site.
+        if (!frameReadyRef.current) {
+          skipIntro();
+          return;
+        }
+
         settleIntoCinematic(video.currentTime || 0);
       }
     };
 
     const onFatalError = () => {
-      if (!cancelled) settleIntoCinematic(video.currentTime || 0);
+      if (!cancelled) skipIntro();
     };
 
     const onPreventFullscreen = (event: Event) => {
       event.preventDefault();
     };
 
+    video.addEventListener("playing", onPlaying);
+    video.addEventListener("seeked", onSeeked);
     video.addEventListener("error", onFatalError);
     video.addEventListener("webkitbeginfullscreen", onPreventFullscreen);
     void startPlayback();
 
     return () => {
       cancelled = true;
+      window.clearTimeout(initTimeout);
+      video.removeEventListener("playing", onPlaying);
+      video.removeEventListener("seeked", onSeeked);
       video.removeEventListener("error", onFatalError);
       video.removeEventListener("webkitbeginfullscreen", onPreventFullscreen);
       video.pause();
       if (rafRef.current != null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
-      }
-      // Strict Mode remount: allow autoplay to start again if we never settled.
-      if (!autoplaySettledRef.current) {
-        // keep phase; remount effect will restart autoplay
       }
     };
   }, [
@@ -447,6 +526,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     reduceMotion,
     setIntroPhase,
     syncOverlayVisuals,
+    markFrameReady,
+    skipIntro,
   ]);
 
   // Wheel + touch for cinematic scrub, autoplay takeover, and website→cinematic reverse
@@ -483,7 +564,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       touchStartYRef.current = y;
       if (Math.abs(deltaY) < 0.5) return;
 
-      // Cap per-event deltas so one noisy touch sample cannot jump the timeline.
       deltaY = Math.max(
         -CINEMATIC_TOUCH_MAX_DELTA_PX,
         Math.min(CINEMATIC_TOUCH_MAX_DELTA_PX, deltaY)
@@ -496,7 +576,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       if (!shouldConsume) return;
 
-      // preventDefault must run synchronously (non-passive listener).
       event.preventDefault();
       queueScrubDelta(deltaY, CINEMATIC_TOUCH_SECONDS_PER_100PX);
     };
@@ -539,21 +618,34 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     return null;
   }
 
-  // Opacity + pointer-events are driven imperatively so React re-renders
-  // (phase changes) never reset the fade mid-scrub.
+  const showPosterCover = Boolean(poster) && !frameReady;
+
   return (
     <div
       ref={overlayRef}
       aria-hidden
       className={cn(
-        "fixed inset-0 z-[80] h-[100dvh] w-full bg-black",
+        "fixed inset-0 z-[80] h-[100dvh] w-full overflow-hidden bg-black",
         phase === "website" ? "pointer-events-none" : "touch-none select-none"
       )}
+      style={
+        poster
+          ? {
+              backgroundImage: `url(${poster})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
+          : undefined
+      }
     >
       <video
         ref={videoRef}
-        className="h-full w-full object-cover object-center"
+        className={cn(
+          "absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-200",
+          frameReady ? "opacity-100" : "opacity-0"
+        )}
         src={src}
+        poster={poster ?? undefined}
         muted
         playsInline
         preload="auto"
@@ -561,6 +653,18 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         disablePictureInPicture
         disableRemotePlayback
       />
+
+      {showPosterCover ? (
+        // Explicit image layer: iOS often paints a black <video> over poster=
+        // until the first decoded frame, which looks like a broken black screen.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={poster ?? undefined}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          draggable={false}
+        />
+      ) : null}
     </div>
   );
 }
