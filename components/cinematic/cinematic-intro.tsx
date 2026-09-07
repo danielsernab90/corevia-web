@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { AppLocale } from "@/i18n/routing";
 import {
+  CINEMATIC_AUTOPLAY_HANDOFF_MIN_DELTA_PX,
   CINEMATIC_END,
   CINEMATIC_FADE_DURATION,
   CINEMATIC_INIT_TIMEOUT_MS,
@@ -27,12 +28,13 @@ type CinematicIntroProps = {
 };
 
 /**
- * State machine (modes never mix):
- * boot → initializing → autoplay → website
- * website ↔ cinematic (bidirectional scrub only; never autoplay again)
- * | skipped (reduced motion / missing asset / hard failure)
+ * State machine (modes never mix timelines):
+ * boot → initializing → autoplay → (optional) cinematic fast-forward → website
+ * website ↔ cinematic (bidirectional scrub after first completion)
+ * | skipped
  *
- * AUTOPLAY: native video.play() only — no currentTime scrubbing.
+ * AUTOPLAY: native video.play() only — no competing currentTime writes.
+ * On meaningful downward scroll/touch: pause, hand off at currentTime, scrub forward.
  * CINEMATIC: scroll/touch drives currentTime via rAF-coalesced seeks.
  */
 type IntroPhase =
@@ -182,10 +184,16 @@ function readViewportClass(): CinematicViewportClass {
   return getCinematicViewportClass(window.innerWidth);
 }
 
+/** Phases where native autoplay may still be starting or running. */
+function isNativeAutoplayPhase(phase: IntroPhase): boolean {
+  return phase === "boot" || phase === "initializing" || phase === "autoplay";
+}
+
 /**
  * Full-viewport cinematic overlay for the homepage only.
  *
- * Mode 1 (first load): muted native autoplay of the full video → fade → HTML.
+ * Mode 1 (first load): muted native autoplay; optional downward scroll/touch
+ * fast-forwards from the live currentTime without fighting play().
  * Mode 2 (afterward): at document top, upward scroll re-enters at duration
  * and scrubs the same MP4 both directions. No second autoplay.
  */
@@ -197,6 +205,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   const touchStartYRef = useRef<number | null>(null);
   const scrubRafRef = useRef<number | null>(null);
   const pendingScrubDeltaRef = useRef(0);
+  const autoplayHandoffAccumRef = useRef(0);
   const introCompletedRef = useRef(false);
   const frameReadyRef = useRef(false);
   const finishingRef = useRef(false);
@@ -228,6 +237,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       scrubRafRef.current = null;
     }
     pendingScrubDeltaRef.current = 0;
+    autoplayHandoffAccumRef.current = 0;
   }, [setIntroPhase]);
 
   const syncOverlayVisuals = useCallback((time: number, end: number) => {
@@ -261,6 +271,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       overlay.style.pointerEvents = "none";
     }
     pendingScrubDeltaRef.current = 0;
+    autoplayHandoffAccumRef.current = 0;
     introCompletedRef.current = true;
     setIntroPhase("website");
     lockedScrollY = 0;
@@ -319,6 +330,77 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     [markFrameReady, setIntroPhase, syncOverlayVisuals]
   );
 
+  /**
+   * Seamless autoplay → interactive fast-forward.
+   * Pauses native playback once, keeps the live currentTime, then scrubs forward.
+   */
+  const handoffAutoplayToScrub = useCallback(
+    (deltaY: number, secondsPer100px: number) => {
+      if (phaseRef.current !== "autoplay") return false;
+      if (finishingRef.current || introCompletedRef.current) return false;
+
+      const video = videoRef.current;
+      if (!video) return false;
+
+      // Only downward intent starts fast-forward during the first intro.
+      if (deltaY <= 0) return false;
+
+      autoplayHandoffAccumRef.current += deltaY;
+      if (
+        autoplayHandoffAccumRef.current < CINEMATIC_AUTOPLAY_HANDOFF_MIN_DELTA_PX
+      ) {
+        return true; // consume upward-jitter filtering; wait for meaningful swipe
+      }
+
+      const handoffDelta = autoplayHandoffAccumRef.current;
+      autoplayHandoffAccumRef.current = 0;
+
+      const liveTime = video.currentTime;
+      const end = resolveVideoEnd(video);
+
+      try {
+        video.pause();
+      } catch {
+        // ignore
+      }
+
+      // Preserve the autoplay clock — never reset / jump backward on handoff.
+      try {
+        if (Math.abs(video.currentTime - liveTime) > 0.001) {
+          video.currentTime = liveTime;
+        }
+      } catch {
+        // ignore
+      }
+
+      markFrameReady();
+      lockDocumentScroll();
+      setIntroPhase("cinematic");
+      syncOverlayVisuals(liveTime, end);
+
+      const seconds = (handoffDelta / 100) * secondsPer100px;
+      const next = clampCinematicTime(liveTime + seconds, 0, end);
+      try {
+        video.currentTime = next;
+      } catch {
+        return true;
+      }
+      syncOverlayVisuals(next, end);
+
+      if (next >= end - END_EPSILON_SEC) {
+        enterWebsiteMode();
+      }
+
+      return true;
+    },
+    [
+      enterWebsiteMode,
+      markFrameReady,
+      setIntroPhase,
+      syncOverlayVisuals,
+    ]
+  );
+
   const applyScrubTime = useCallback(
     (nextTime: number) => {
       if (phaseRef.current !== "cinematic") return;
@@ -327,8 +409,16 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       const end = resolveVideoEnd(video);
       const prev = video.currentTime;
-      const clamped = clampCinematicTime(nextTime, 0, end);
-      const movingForward = nextTime > prev;
+
+      // During the first intro (before website), only allow forward scrubbing.
+      // Reverse remains available after completion via website re-entry.
+      let target = nextTime;
+      if (!introCompletedRef.current && target < prev) {
+        target = prev;
+      }
+
+      const clamped = clampCinematicTime(target, 0, end);
+      const movingForward = clamped > prev;
 
       if (Math.abs(prev - clamped) > 0.001) {
         try {
@@ -340,7 +430,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       syncOverlayVisuals(clamped, end);
 
-      // Fully open + camera end → release into live HTML.
       if (movingForward && clamped >= end - END_EPSILON_SEC) {
         enterWebsiteMode();
       }
@@ -354,19 +443,25 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       const video = videoRef.current;
       if (!video) return;
 
-      const seconds = (deltaY / 100) * secondsPer100px;
+      // First intro: ignore upward deltas so reverse cannot surprise mid-open.
+      const effectiveDelta =
+        !introCompletedRef.current && deltaY < 0 ? 0 : deltaY;
+      if (effectiveDelta === 0) return;
+
+      const seconds = (effectiveDelta / 100) * secondsPer100px;
       applyScrubTime(video.currentTime + seconds);
     },
     [applyScrubTime]
   );
 
-  /**
-   * Scrub intents only after the first autoplay has finished.
-   * Never call this during initializing/autoplay — that freezes mid-shot.
-   */
   const handleScrollIntent = useCallback(
     (deltaY: number, secondsPer100px: number) => {
       const phaseNow = phaseRef.current;
+
+      // Optional fast-forward while native autoplay is running.
+      if (phaseNow === "autoplay") {
+        return handoffAutoplayToScrub(deltaY, secondsPer100px);
+      }
 
       if (phaseNow === "cinematic") {
         advanceByScrollDelta(deltaY, secondsPer100px);
@@ -390,7 +485,11 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       return false;
     },
-    [advanceByScrollDelta, enterCinematicMode]
+    [
+      advanceByScrollDelta,
+      enterCinematicMode,
+      handoffAutoplayToScrub,
+    ]
   );
 
   const queueScrubDelta = useCallback(
@@ -486,6 +585,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
     let cancelled = false;
     finishingRef.current = false;
+    autoplayHandoffAccumRef.current = 0;
     setIntroPhase("initializing");
     prepareVideoForMobileAutoplay(video);
 
@@ -499,30 +599,32 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
     const onEnded = () => {
       if (cancelled) return;
+      // Only natural autoplay completion — scrub mode finishes via currentTime.
       if (phaseRef.current !== "autoplay") return;
       finishAutoplayWithFade();
     };
 
     const onWaiting = () => {
-      // Buffering is OK during native play — never seek or switch to scrub.
       if (phaseRef.current === "autoplay") markFrameReady();
     };
 
     const onStalled = () => {
-      // Do not trap. If the decoder stalls mid-autoplay after a long wait,
-      // the init timeout below will release to the homepage.
+      // Fail-open via init timeout if playback never recovers.
     };
 
     const initTimeout = window.setTimeout(() => {
       if (cancelled || introCompletedRef.current) return;
 
       const phaseNow = phaseRef.current;
-      if (phaseNow === "website" || phaseNow === "skipped" || phaseNow === "cinematic") {
+      if (
+        phaseNow === "website" ||
+        phaseNow === "skipped" ||
+        phaseNow === "cinematic"
+      ) {
         return;
       }
 
       if (phaseNow === "autoplay") {
-        // Healthy long autoplay — only bail if the clock never moved.
         if (video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC) {
           try {
             video.pause();
@@ -534,7 +636,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         return;
       }
 
-      // Still initializing after timeout → fail open to homepage.
       try {
         video.pause();
       } catch {
@@ -560,15 +661,36 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           }
         }
         if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) return;
 
-        // Start from the closed-laptop frame once; never scrub during autoplay.
-        if (video.currentTime > 0.01) {
+        // Browsers may restore a cached playback position for the same URL
+        // (often near the end). Seek to the closed-laptop frame before play.
+        // Only call load() when a seek alone cannot recover — load() restarts
+        // buffering and must not become the happy-path mobile startup cost.
+        const forceStartAtZero = async () => {
           try {
-            video.currentTime = 0;
+            video.pause();
+            if (video.ended || video.currentTime > 0.02) {
+              video.currentTime = 0;
+              await waitForEvent(video, "seeked", 2000).catch(() => undefined);
+            }
+            if (video.ended || video.currentTime > 0.05) {
+              video.load();
+              await waitForEvent(video, "loadedmetadata", 8000).catch(
+                () => undefined
+              );
+              prepareVideoForMobileAutoplay(video);
+              video.currentTime = 0;
+              await waitForEvent(video, "seeked", 2000).catch(() => undefined);
+            }
           } catch {
             // ignore
           }
-        }
+        };
+
+        await forceStartAtZero();
+        if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) return;
 
         const playAttempt = video.play();
         if (playAttempt !== undefined) {
@@ -583,7 +705,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
               }),
             ]);
           } catch {
-            // Autoplay blocked / timed out → homepage, never a frozen scrub.
             if (!cancelled && !introCompletedRef.current) {
               try {
                 video.pause();
@@ -596,12 +717,34 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           }
         }
         if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) {
+          return;
+        }
+
+        // Last guard against cached resume near the end after play().
+        if (video.ended || video.currentTime > 0.35) {
+          await forceStartAtZero();
+          if (cancelled || introCompletedRef.current) return;
+          if (!isNativeAutoplayPhase(phaseRef.current)) return;
+          try {
+            await video.play().catch(() => undefined);
+          } catch {
+            // ignore
+          }
+        }
+        if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) {
+          return;
+        }
 
         const progressed = await waitForPlaybackProgress(
           video,
           CINEMATIC_PLAYBACK_VERIFY_MS
         );
         if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) {
+          return;
+        }
 
         if (!progressed) {
           try {
@@ -613,7 +756,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           return;
         }
 
-        // Native playback is running — lock page scroll but do NOT attach scrubbers.
         markFrameReady();
         lockDocumentScroll();
         setIntroPhase("autoplay");
@@ -662,8 +804,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         // ignore
       }
     };
-    // Intentionally keyed on media URL/poster strings so object identity churn
-    // does not cancel a healthy autoplay mid-flight.
     // eslint-disable-next-line react-hooks/exhaustive-deps -- media object identity
   }, [
     mounted,
@@ -678,18 +818,26 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   ]);
 
   /**
-   * Touch/wheel scrub ONLY in cinematic mode + website reverse re-entry.
-   * Never attached during initializing/autoplay — accidental touches must not
-   * pause/seek the native autoplay (that caused mid-laptop freezes).
+   * Wheel/touch during autoplay (optional fast-forward) + cinematic scrub +
+   * website reverse re-entry. Not attached during initializing.
    */
   useEffect(() => {
-    if (phase !== "cinematic" && phase !== "website") {
+    if (
+      phase !== "autoplay" &&
+      phase !== "cinematic" &&
+      phase !== "website"
+    ) {
       return;
     }
 
     const onWheel = (event: WheelEvent) => {
+      // Normalize high-res trackpad / mouse wheel deltas into pixel-ish units.
+      let deltaY = event.deltaY;
+      if (event.deltaMode === 1) deltaY *= 16;
+      if (event.deltaMode === 2) deltaY *= 800;
+
       const consumed = handleScrollIntent(
-        event.deltaY,
+        deltaY,
         CINEMATIC_SCROLL_SECONDS_PER_100PX
       );
       if (consumed) {
@@ -716,9 +864,11 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         Math.min(CINEMATIC_TOUCH_MAX_DELTA_PX, deltaY)
       );
 
+      const phaseNow = phaseRef.current;
       const shouldConsume =
-        phaseRef.current === "cinematic" ||
-        (phaseRef.current === "website" &&
+        phaseNow === "cinematic" ||
+        (phaseNow === "autoplay" && deltaY > 0) ||
+        (phaseNow === "website" &&
           introCompletedRef.current &&
           deltaY < 0 &&
           isPageAtTop());

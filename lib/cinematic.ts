@@ -31,6 +31,12 @@ export const CINEMATIC_TOUCH_SECONDS_PER_100PX = 0.85;
 export const CINEMATIC_TOUCH_MAX_DELTA_PX = 48;
 
 /**
+ * Minimum accumulated downward scroll/touch delta (px) before autoplay hands
+ * off to interactive fast-forward. Filters trackpad jitter / accidental taps.
+ */
+export const CINEMATIC_AUTOPLAY_HANDOFF_MIN_DELTA_PX = 22;
+
+/**
  * Max time to wait for the first painted cinematic frame before falling back
  * to the normal homepage (avoids permanent black-screen lock on mobile).
  */
