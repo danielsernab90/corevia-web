@@ -14,18 +14,17 @@ import { cn } from "@/lib/utils";
 const PRINCIPLE_KEYS = ["understand", "build", "grow"] as const;
 
 const BUILT_AROUND_VISUAL: Record<AppLocale, string> = {
-  en: "/images/home/built-around-business-en.png",
-  es: "/images/home/built-around-business-es.png",
+  en: "/images/home/built-around-business-en.jpg",
+  es: "/images/home/built-around-business-es.jpg",
 };
 
-/** Intrinsic size of the approved workflow visuals (do not crop/distort). */
+/** Intrinsic size of the approved cropped workflow visuals (do not crop/distort). */
 const VISUAL_WIDTH = 1024;
-const VISUAL_HEIGHT = 576;
+const VISUAL_HEIGHT = 866;
 
 /**
- * Homepage philosophy section — localized full-width visual + principles.
- * HTML title/description stay in the DOM (sr-only) so they remain available
- * for accessibility and future use without duplicating the graphic's copy.
+ * Homepage philosophy section — HTML copy beside the approved graphic,
+ * then Understand / Build / Grow principles.
  */
 export function BuiltAroundBusiness() {
   const t = useTranslations("Home.builtAround");
@@ -42,30 +41,41 @@ export function BuiltAroundBusiness() {
     >
       <Container size="lg">
         <motion.div
-          className="flex flex-col"
+          className="grid items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16"
           initial={reduceMotion ? false : "hidden"}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          <motion.p
-            variants={reduceMotion ? undefined : staggerItem}
-            className="text-center text-label font-semibold tracking-[0.14em] text-primary uppercase"
-          >
-            {t("eyebrow")}
-          </motion.p>
+          <div className="min-w-0">
+            <motion.p
+              variants={reduceMotion ? undefined : staggerItem}
+              className="text-label font-semibold tracking-[0.14em] text-primary uppercase"
+            >
+              {t("eyebrow")}
+            </motion.p>
 
-          {/* Kept for semantics / future use — graphic already carries this copy. */}
-          <div className="sr-only">
-            <Heading id="built-around-heading" size="h2">
-              {t("title")}
-            </Heading>
-            <p>{t("description")}</p>
+            <motion.div variants={reduceMotion ? undefined : staggerItem}>
+              <Heading
+                id="built-around-heading"
+                size="h2"
+                className="mt-5 max-w-[18ch] tracking-tight text-balance sm:max-w-[22ch]"
+              >
+                {t("title")}
+              </Heading>
+            </motion.div>
+
+            <motion.p
+              variants={reduceMotion ? undefined : staggerItem}
+              className="mt-6 max-w-md font-sans text-body-lg leading-relaxed text-muted-foreground"
+            >
+              {t("description")}
+            </motion.p>
           </div>
 
           <motion.div
             variants={reduceMotion ? undefined : staggerItem}
-            className="mt-8 w-full min-w-0 sm:mt-10"
+            className="w-full min-w-0"
           >
             <Image
               src={visualSrc}
@@ -73,7 +83,7 @@ export function BuiltAroundBusiness() {
               width={VISUAL_WIDTH}
               height={VISUAL_HEIGHT}
               className="h-auto w-full max-w-full object-contain"
-              sizes="(max-width: 1023px) 100vw, min(100vw, 72rem)"
+              sizes="(max-width: 1023px) 100vw, (max-width: 1280px) 46vw, min(36rem, 46vw)"
               priority={false}
             />
           </motion.div>
