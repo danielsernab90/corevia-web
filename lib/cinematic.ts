@@ -38,6 +38,15 @@ export const CINEMATIC_TOUCH_MAX_DELTA_PX = 48;
  */
 export const CINEMATIC_INIT_TIMEOUT_MS = 12000;
 
+/**
+ * After play() resolves, require currentTime to advance within this window.
+ * iOS Safari can resolve play() while the timeline stays frozen.
+ */
+export const CINEMATIC_PLAYBACK_VERIFY_MS = 2500;
+
+/** Minimum currentTime delta that counts as real playback progress. */
+export const CINEMATIC_PLAYBACK_MIN_DELTA_SEC = 0.05;
+
 const INTRO_BY_LOCALE: Partial<
   Record<AppLocale, { video: string; poster: string }>
 > = {
