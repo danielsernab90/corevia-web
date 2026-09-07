@@ -28,6 +28,21 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   allowedDevOrigins: lanAndTailscaleDevOrigins(),
   serverExternalPackages: ["better-sqlite3"],
+  async headers() {
+    return [
+      {
+        // Cinematic MP4/poster are the LCP interaction for first visits.
+        // Long cache cuts cold-start stalls from repeated full revalidation.
+        source: "/cinematic/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, stale-while-revalidate=86400",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

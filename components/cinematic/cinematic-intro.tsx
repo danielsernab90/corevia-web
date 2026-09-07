@@ -1,7 +1,13 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
 import type { AppLocale } from "@/i18n/routing";
 import {
@@ -508,7 +514,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     [handleScrollIntent]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    // Resolve viewport + mount before paint so the <video> can start loading
+    // immediately instead of waiting for a post-paint useEffect tick.
     setMounted(true);
     const applyViewport = (next: CinematicViewportClass) => {
       setViewportClass(next);
@@ -536,7 +544,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   }, [locale]);
 
   // Refresh media on rotate only before intro completes — avoid mid-play swaps.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!mounted || viewportClass == null) return;
     if (introCompletedRef.current) return;
     if (
@@ -560,7 +568,26 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     });
   }, [mounted, viewportClass, locale]);
 
-  // Reduced motion / missing asset → skip
+  // Kick the browser to fetch only the active locale+viewport asset ASAP.
+  useLayoutEffect(() => {
+    if (!media?.video) return;
+    const href = media.video;
+    if (document.querySelector(`link[data-cinematic-preload="${href}"]`)) {
+      return;
+    }
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "video";
+    link.href = href;
+    link.type = "video/mp4";
+    link.setAttribute("data-cinematic-preload", href);
+    document.head.appendChild(link);
+    return () => {
+      link.remove();
+    };
+  }, [media?.video]);
+
+  // Reduced motion / missing asset → skip (null = unknown; allow start).
   useEffect(() => {
     if (!mounted || viewportClass == null) return;
     if (reduceMotion === true || media == null) {
@@ -568,9 +595,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     }
   }, [mounted, viewportClass, media, reduceMotion, skipIntro]);
 
-  // Media init → full muted native autoplay → fade into live HTML
+  // Media init → muted native autoplay ASAP → fade into live HTML
   useEffect(() => {
-    if (!mounted || !media || reduceMotion !== false) return;
+    if (!mounted || !media || reduceMotion === true) return;
     if (
       introCompletedRef.current ||
       phaseRef.current === "skipped" ||
@@ -588,6 +615,12 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     autoplayHandoffAccumRef.current = 0;
     setIntroPhase("initializing");
     prepareVideoForMobileAutoplay(video);
+    // src + preload="auto" already kick the network — do not call load() here
+    // (it aborts and restarts the fetch).
+
+    const onLoadedData = () => {
+      if (video.videoWidth > 0) markFrameReady();
+    };
 
     const onPlaying = () => {
       markFrameReady();
@@ -644,53 +677,81 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       skipIntro();
     }, CINEMATIC_INIT_TIMEOUT_MS);
 
+    const ensureStartAtZero = async () => {
+      // Only correct a restored near-end position. Do NOT rewind a healthy
+      // autoplay that has already advanced a few hundred ms.
+      if (!video.ended && video.currentTime <= 0.35) return;
+
+      try {
+        video.pause();
+        video.currentTime = 0;
+        await waitForEvent(video, "seeked", 1200).catch(() => undefined);
+      } catch {
+        // ignore
+      }
+
+      // Only reload when a seek alone cannot recover a cached near-end position.
+      if (video.ended || video.currentTime > 0.05) {
+        try {
+          video.load();
+          await waitForEvent(video, "loadedmetadata", 4000).catch(
+            () => undefined
+          );
+          prepareVideoForMobileAutoplay(video);
+          video.currentTime = 0;
+          await waitForEvent(video, "seeked", 1200).catch(() => undefined);
+        } catch {
+          // ignore
+        }
+      }
+    };
+
     const startPlayback = async () => {
       try {
+        // Metadata is enough to seek/play — do NOT wait for canplay/canplaythrough.
         if (video.readyState < 1) {
-          await waitForEvent(video, "loadedmetadata", CINEMATIC_INIT_TIMEOUT_MS);
+          await Promise.race([
+            waitForEvent(video, "loadedmetadata", 8000),
+            waitForEvent(video, "loadeddata", 8000),
+          ]).catch(() => undefined);
         }
         if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) return;
 
         prepareVideoForMobileAutoplay(video);
+        await ensureStartAtZero();
+        if (cancelled || introCompletedRef.current) return;
+        if (!isNativeAutoplayPhase(phaseRef.current)) return;
 
-        if (video.readyState < 3) {
-          try {
-            await waitForEvent(video, "canplay", 6000);
-          } catch {
-            // Continue — play() may still succeed with a partial buffer.
-          }
+        // Reveal the first decoded frame as soon as it exists (poster match).
+        if (video.readyState >= 2 && video.videoWidth > 0) {
+          markFrameReady();
         }
-        if (cancelled || introCompletedRef.current) return;
-        if (!isNativeAutoplayPhase(phaseRef.current)) return;
 
-        // Browsers may restore a cached playback position for the same URL
-        // (often near the end). Seek to the closed-laptop frame before play.
-        // Only call load() when a seek alone cannot recover — load() restarts
-        // buffering and must not become the happy-path mobile startup cost.
-        const forceStartAtZero = async () => {
-          try {
-            video.pause();
-            if (video.ended || video.currentTime > 0.02) {
-              video.currentTime = 0;
-              await waitForEvent(video, "seeked", 2000).catch(() => undefined);
+        lockDocumentScroll();
+
+        // Native autoPlay may already be running — do not pause/restart it.
+        if (!video.paused && !video.ended && video.currentTime <= 0.35) {
+          markFrameReady();
+          setIntroPhase("autoplay");
+          syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
+
+          const progressedEarly = await waitForPlaybackProgress(
+            video,
+            CINEMATIC_PLAYBACK_VERIFY_MS
+          );
+          if (cancelled || introCompletedRef.current) return;
+          if (phaseRef.current !== "autoplay") return;
+          if (!progressedEarly) {
+            try {
+              video.pause();
+            } catch {
+              // ignore
             }
-            if (video.ended || video.currentTime > 0.05) {
-              video.load();
-              await waitForEvent(video, "loadedmetadata", 8000).catch(
-                () => undefined
-              );
-              prepareVideoForMobileAutoplay(video);
-              video.currentTime = 0;
-              await waitForEvent(video, "seeked", 2000).catch(() => undefined);
-            }
-          } catch {
-            // ignore
+            skipIntro();
           }
-        };
-
-        await forceStartAtZero();
-        if (cancelled || introCompletedRef.current) return;
-        if (!isNativeAutoplayPhase(phaseRef.current)) return;
+          return;
+        }
 
         const playAttempt = video.play();
         if (playAttempt !== undefined) {
@@ -721,9 +782,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           return;
         }
 
-        // Last guard against cached resume near the end after play().
+        // Guard against browsers that resume near the end after play().
         if (video.ended || video.currentTime > 0.35) {
-          await forceStartAtZero();
+          await ensureStartAtZero();
           if (cancelled || introCompletedRef.current) return;
           if (!isNativeAutoplayPhase(phaseRef.current)) return;
           try {
@@ -737,14 +798,17 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           return;
         }
 
+        // Enter autoplay immediately so motion is not gated on verification.
+        markFrameReady();
+        setIntroPhase("autoplay");
+        syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
+
         const progressed = await waitForPlaybackProgress(
           video,
           CINEMATIC_PLAYBACK_VERIFY_MS
         );
         if (cancelled || introCompletedRef.current) return;
-        if (!isNativeAutoplayPhase(phaseRef.current)) {
-          return;
-        }
+        if (phaseRef.current !== "autoplay") return;
 
         if (!progressed) {
           try {
@@ -753,13 +817,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
             // ignore
           }
           skipIntro();
-          return;
         }
-
-        markFrameReady();
-        lockDocumentScroll();
-        setIntroPhase("autoplay");
-        syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
       } catch {
         if (cancelled || introCompletedRef.current) return;
         try {
@@ -779,6 +837,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       event.preventDefault();
     };
 
+    video.addEventListener("loadeddata", onLoadedData);
     video.addEventListener("playing", onPlaying);
     video.addEventListener("seeked", onSeeked);
     video.addEventListener("ended", onEnded);
@@ -791,6 +850,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     return () => {
       cancelled = true;
       window.clearTimeout(initTimeout);
+      video.removeEventListener("loadeddata", onLoadedData);
       video.removeEventListener("playing", onPlaying);
       video.removeEventListener("seeked", onSeeked);
       video.removeEventListener("ended", onEnded);
@@ -909,11 +969,13 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
   }, []);
 
-  if (!mounted || reduceMotion == null || viewportClass == null) {
+  if (!mounted || viewportClass == null) {
     return null;
   }
 
-  if (reduceMotion || phase === "skipped" || !media) {
+  // Unknown reduced-motion preference: still mount so media can start.
+  // Confirmed reduced motion / missing asset / skipped → no overlay.
+  if (reduceMotion === true || phase === "skipped" || !media) {
     return null;
   }
 
@@ -952,6 +1014,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         poster={poster ?? undefined}
         muted
         playsInline
+        autoPlay
         preload="auto"
         controls={false}
         disablePictureInPicture

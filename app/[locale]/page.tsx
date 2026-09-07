@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { CinematicIntro } from "@/components/cinematic/cinematic-intro";
+import { CinematicPreload } from "@/components/cinematic/cinematic-preload";
 import { BuiltAroundBusiness } from "@/components/sections/built-around-business";
 import { FeaturedWork } from "@/components/sections/featured-work";
 import { Hero } from "@/components/sections/hero";
@@ -25,6 +26,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
+      <CinematicPreload locale={locale} />
       <CinematicIntro locale={locale} />
       <main id="main-content" tabIndex={-1}>
         <Hero />
