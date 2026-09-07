@@ -23,8 +23,9 @@ const VISUAL_WIDTH = 1024;
 const VISUAL_HEIGHT = 576;
 
 /**
- * Homepage philosophy section — editorial copy + localized visual + principles.
- * Sits directly below the hero value strip. Does not alter Hero.
+ * Homepage philosophy section — localized full-width visual + principles.
+ * HTML title/description stay in the DOM (sr-only) so they remain available
+ * for accessibility and future use without duplicating the graphic's copy.
  */
 export function BuiltAroundBusiness() {
   const t = useTranslations("Home.builtAround");
@@ -40,49 +41,31 @@ export function BuiltAroundBusiness() {
       className="border-t border-border/60"
     >
       <Container size="lg">
-        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
-          <motion.div
-            className="min-w-0 lg:col-span-5"
-            initial={reduceMotion ? false : "hidden"}
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={reduceMotion ? undefined : staggerContainer}
+        <motion.div
+          className="flex flex-col"
+          initial={reduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={reduceMotion ? undefined : staggerContainer}
+        >
+          <motion.p
+            variants={reduceMotion ? undefined : staggerItem}
+            className="text-center text-label font-semibold tracking-[0.14em] text-primary uppercase"
           >
-            <motion.p
-              variants={reduceMotion ? undefined : staggerItem}
-              className="text-label font-semibold tracking-[0.14em] text-primary uppercase"
-            >
-              {t("eyebrow")}
-            </motion.p>
+            {t("eyebrow")}
+          </motion.p>
 
-            <motion.div variants={reduceMotion ? undefined : staggerItem}>
-              <Heading
-                id="built-around-heading"
-                size="h2"
-                className="mt-5 max-w-[18ch] tracking-tight text-balance sm:max-w-[22ch]"
-              >
-                {t("title")}
-              </Heading>
-            </motion.div>
-
-            <motion.p
-              variants={reduceMotion ? undefined : staggerItem}
-              className="mt-6 max-w-2xl font-sans text-body-lg leading-relaxed text-muted-foreground lg:max-w-none"
-            >
-              {t("description")}
-            </motion.p>
-          </motion.div>
+          {/* Kept for semantics / future use — graphic already carries this copy. */}
+          <div className="sr-only">
+            <Heading id="built-around-heading" size="h2">
+              {t("title")}
+            </Heading>
+            <p>{t("description")}</p>
+          </div>
 
           <motion.div
-            className="min-w-0 lg:col-span-7"
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={
-              reduceMotion
-                ? undefined
-                : { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.06 }
-            }
+            variants={reduceMotion ? undefined : staggerItem}
+            className="mt-8 w-full min-w-0 sm:mt-10"
           >
             <Image
               src={visualSrc}
@@ -90,16 +73,16 @@ export function BuiltAroundBusiness() {
               width={VISUAL_WIDTH}
               height={VISUAL_HEIGHT}
               className="h-auto w-full max-w-full object-contain"
-              sizes="(max-width: 1023px) 100vw, min(60vw, 720px)"
+              sizes="(max-width: 1023px) 100vw, min(100vw, 72rem)"
               priority={false}
             />
           </motion.div>
-        </div>
+        </motion.div>
 
         <motion.ol
           className={cn(
-            "mt-12 grid list-none grid-cols-1 gap-0 md:mt-16",
-            "md:grid-cols-3 md:gap-0 lg:mt-20"
+            "mt-10 grid list-none grid-cols-1 gap-0 sm:mt-12",
+            "md:mt-14 md:grid-cols-3 md:gap-0 lg:mt-16"
           )}
           initial={reduceMotion ? false : "hidden"}
           whileInView="visible"
