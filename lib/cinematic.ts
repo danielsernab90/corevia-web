@@ -23,6 +23,15 @@ export const CINEMATIC_FADE_DURATION = 0.4;
  */
 export const CINEMATIC_SCROLL_SECONDS_PER_100PX = 0.55;
 
+/**
+ * Touch scrub sensitivity (mobile). Slightly higher than wheel so a normal
+ * swipe can finish the remaining timeline without extreme finger travel.
+ */
+export const CINEMATIC_TOUCH_SECONDS_PER_100PX = 0.85;
+
+/** Clamp a single touchmove sample so one event cannot jump the timeline. */
+export const CINEMATIC_TOUCH_MAX_DELTA_PX = 48;
+
 const INTRO_BY_LOCALE: Partial<Record<AppLocale, string>> = {
   en: "/cinematic/en/intro.mp4",
   // Spanish cinematic asset lands later at /cinematic/es/intro.mp4

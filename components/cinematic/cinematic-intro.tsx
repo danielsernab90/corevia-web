@@ -9,6 +9,8 @@ import {
   CINEMATIC_END,
   CINEMATIC_FADE_DURATION,
   CINEMATIC_SCROLL_SECONDS_PER_100PX,
+  CINEMATIC_TOUCH_MAX_DELTA_PX,
+  CINEMATIC_TOUCH_SECONDS_PER_100PX,
   clampCinematicTime,
   getCinematicIntroSrc,
   hasCinematicIntro,
@@ -28,24 +30,46 @@ type IntroPhase = "boot" | "autoplay" | "cinematic" | "website" | "skipped";
 const TOP_SCROLL_EPSILON_PX = 2;
 const END_EPSILON_SEC = 0.02;
 
+/** Saved window.scrollY while body is position:fixed (iOS-safe lock). */
+let lockedScrollY = 0;
+
 function lockDocumentScroll() {
   const html = document.documentElement;
   const body = document.body;
+  if (html.dataset.cinematicScrollLock === "1") return;
+
+  lockedScrollY = window.scrollY || html.scrollTop || 0;
   html.dataset.cinematicScrollLock = "1";
   body.dataset.cinematicScrollLock = "1";
   html.style.overflow = "hidden";
+  html.style.overscrollBehavior = "none";
   body.style.overflow = "hidden";
   body.style.overscrollBehavior = "none";
+  // iOS Safari ignores overflow:hidden alone — pin the body instead.
+  body.style.position = "fixed";
+  body.style.top = `-${lockedScrollY}px`;
+  body.style.left = "0";
+  body.style.right = "0";
+  body.style.width = "100%";
 }
 
 function unlockDocumentScroll() {
   const html = document.documentElement;
   const body = document.body;
+  if (html.dataset.cinematicScrollLock !== "1") return;
+
   delete html.dataset.cinematicScrollLock;
   delete body.dataset.cinematicScrollLock;
   html.style.overflow = "";
+  html.style.overscrollBehavior = "";
   body.style.overflow = "";
   body.style.overscrollBehavior = "";
+  body.style.position = "";
+  body.style.top = "";
+  body.style.left = "";
+  body.style.right = "";
+  body.style.width = "";
+  window.scrollTo(0, lockedScrollY);
 }
 
 function fadeOpacityForTime(time: number, end: number): number {
@@ -72,13 +96,26 @@ function resolveVideoEnd(video: HTMLVideoElement): number {
 }
 
 function isPageAtTop(): boolean {
-  return (window.scrollY || document.documentElement.scrollTop || 0) <= TOP_SCROLL_EPSILON_PX;
+  return (
+    (window.scrollY || document.documentElement.scrollTop || 0) <=
+    TOP_SCROLL_EPSILON_PX
+  );
+}
+
+function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
+  video.setAttribute("x5-playsinline", "");
 }
 
 /**
  * Full-viewport cinematic overlay for the homepage only.
  * Real HTML (Header + Hero) renders underneath and is revealed via fade.
- * Timeline is fully reversible: website ↔ closed laptop via scroll.
+ * Timeline is fully reversible: website ↔ closed laptop via scroll/touch.
  */
 export function CinematicIntro({ locale }: CinematicIntroProps) {
   const reduceMotion = useReducedMotion();
@@ -87,7 +124,10 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   const phaseRef = useRef<IntroPhase>("boot");
   const touchStartYRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
-  const hasAutoplayedRef = useRef(false);
+  const scrubRafRef = useRef<number | null>(null);
+  const pendingScrubDeltaRef = useRef(0);
+  /** True once autoplay has handed off to cinematic/website (or failed open). */
+  const autoplaySettledRef = useRef(false);
   const [phase, setPhase] = useState<IntroPhase>("boot");
   const [mounted, setMounted] = useState(false);
 
@@ -106,6 +146,11 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     }
+    if (scrubRafRef.current != null) {
+      cancelAnimationFrame(scrubRafRef.current);
+      scrubRafRef.current = null;
+    }
+    pendingScrubDeltaRef.current = 0;
   }, [setIntroPhase]);
 
   const syncOverlayVisuals = useCallback((time: number, end: number) => {
@@ -114,7 +159,10 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     const opacity = fadeOpacityForTime(time, end);
     overlay.style.opacity = String(opacity);
     overlay.style.pointerEvents =
-      phaseRef.current === "cinematic" && opacity > 0.001 ? "auto" : "none";
+      (phaseRef.current === "cinematic" || phaseRef.current === "autoplay") &&
+      opacity > 0.001
+        ? "auto"
+        : "none";
   }, []);
 
   const enterWebsiteMode = useCallback(() => {
@@ -133,7 +181,10 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       overlay.style.opacity = "0";
       overlay.style.pointerEvents = "none";
     }
+    pendingScrubDeltaRef.current = 0;
     setIntroPhase("website");
+    // Unlock restores prior lock offset; force homepage top for handoff.
+    lockedScrollY = 0;
     unlockDocumentScroll();
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
   }, [setIntroPhase]);
@@ -143,11 +194,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       const video = videoRef.current;
       if (!video) return;
       const end = resolveVideoEnd(video);
-      const next = clampCinematicTime(
-        atTime ?? video.currentTime,
-        0,
-        end
-      );
+      const next = clampCinematicTime(atTime ?? video.currentTime, 0, end);
       try {
         video.pause();
         video.currentTime = next;
@@ -169,17 +216,20 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       const end = resolveVideoEnd(video);
       const prev = video.currentTime;
-      // Full timeline: closed laptop (0) ↔ live HTML (end)
       const clamped = clampCinematicTime(nextTime, 0, end);
       const movingForward = nextTime > prev;
 
       if (Math.abs(prev - clamped) > 0.001) {
-        video.currentTime = clamped;
+        try {
+          video.currentTime = clamped;
+        } catch {
+          // Mobile browsers may reject seeks while metadata is thin.
+          return;
+        }
       }
 
       syncOverlayVisuals(clamped, end);
 
-      // Only hand off to HTML when scrubbing forward into the end — never on reverse re-entry.
       if (movingForward && clamped >= end - END_EPSILON_SEC) {
         enterWebsiteMode();
       }
@@ -188,23 +238,43 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   );
 
   const advanceByScrollDelta = useCallback(
-    (deltaY: number) => {
+    (deltaY: number, secondsPer100px: number) => {
       if (phaseRef.current !== "cinematic") return;
       const video = videoRef.current;
       if (!video) return;
 
-      const seconds = (deltaY / 100) * CINEMATIC_SCROLL_SECONDS_PER_100PX;
+      const seconds = (deltaY / 100) * secondsPer100px;
       applyScrubTime(video.currentTime + seconds);
     },
     [applyScrubTime]
   );
 
   const handleScrollIntent = useCallback(
-    (deltaY: number) => {
+    (deltaY: number, secondsPer100px: number) => {
       const phaseNow = phaseRef.current;
 
+      // User gesture during autoplay — hand off to scrub immediately.
+      if (phaseNow === "autoplay") {
+        const video = videoRef.current;
+        if (!video) return false;
+        if (rafRef.current != null) {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = null;
+        }
+        try {
+          video.pause();
+        } catch {
+          // ignore
+        }
+        autoplaySettledRef.current = true;
+        setIntroPhase("cinematic");
+        syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
+        advanceByScrollDelta(deltaY, secondsPer100px);
+        return true;
+      }
+
       if (phaseNow === "cinematic") {
-        advanceByScrollDelta(deltaY);
+        advanceByScrollDelta(deltaY, secondsPer100px);
         return true;
       }
 
@@ -212,15 +282,30 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         const video = videoRef.current;
         if (!video) return false;
         const end = resolveVideoEnd(video);
-        // Resume from the true end; reverse scrub drives the fade back in.
         enterCinematicMode(end);
-        advanceByScrollDelta(deltaY);
+        advanceByScrollDelta(deltaY, secondsPer100px);
         return true;
       }
 
       return false;
     },
-    [advanceByScrollDelta, enterCinematicMode]
+    [advanceByScrollDelta, enterCinematicMode, setIntroPhase, syncOverlayVisuals]
+  );
+
+  const queueScrubDelta = useCallback(
+    (deltaY: number, secondsPer100px: number) => {
+      pendingScrubDeltaRef.current += deltaY;
+      if (scrubRafRef.current != null) return;
+
+      scrubRafRef.current = requestAnimationFrame(() => {
+        scrubRafRef.current = null;
+        const batched = pendingScrubDeltaRef.current;
+        pendingScrubDeltaRef.current = 0;
+        if (batched === 0) return;
+        handleScrollIntent(batched, secondsPer100px);
+      });
+    },
+    [handleScrollIntent]
   );
 
   useEffect(() => {
@@ -238,28 +323,38 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   // First-load autoplay: 0 → CINEMATIC_AUTOPLAY_END, then cinematic control
   useEffect(() => {
     if (!mounted || !enabled || !src || reduceMotion !== false) return;
-    if (hasAutoplayedRef.current) return;
-    if (phaseRef.current === "skipped" || phaseRef.current === "website") return;
+    if (
+      autoplaySettledRef.current ||
+      phaseRef.current === "skipped" ||
+      phaseRef.current === "website" ||
+      phaseRef.current === "cinematic"
+    ) {
+      return;
+    }
 
     const video = videoRef.current;
     if (!video) return;
 
     let cancelled = false;
-    hasAutoplayedRef.current = true;
     lockDocumentScroll();
     setIntroPhase("autoplay");
+    prepareVideoForMobileAutoplay(video);
 
-    const enterCinematicAfterAutoplay = () => {
+    const settleIntoCinematic = (atTime: number) => {
       if (cancelled) return;
-      if (phaseRef.current !== "autoplay") return;
+      if (phaseRef.current === "skipped" || phaseRef.current === "website") {
+        return;
+      }
       const end = resolveVideoEnd(video);
-      const pauseAt = Math.min(CINEMATIC_AUTOPLAY_END, end);
-      video.pause();
+      const pauseAt = clampCinematicTime(atTime, 0, end);
       try {
+        video.pause();
         video.currentTime = pauseAt;
       } catch {
         // ignore
       }
+      autoplaySettledRef.current = true;
+      lockDocumentScroll();
       setIntroPhase("cinematic");
       syncOverlayVisuals(pauseAt, end);
     };
@@ -270,7 +365,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         video.readyState >= 1 &&
         video.currentTime >= CINEMATIC_AUTOPLAY_END - 0.02
       ) {
-        enterCinematicAfterAutoplay();
+        settleIntoCinematic(CINEMATIC_AUTOPLAY_END);
         return;
       }
       rafRef.current = requestAnimationFrame(onAutoplayTick);
@@ -302,30 +397,47 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         }
         if (cancelled) return;
 
+        prepareVideoForMobileAutoplay(video);
         video.currentTime = 0;
-        await video.play();
+        const playAttempt = video.play();
+        if (playAttempt !== undefined) {
+          await playAttempt;
+        }
         if (cancelled) return;
         rafRef.current = requestAnimationFrame(onAutoplayTick);
       } catch (error) {
-        if (cancelled || isAbortError(error)) return;
-        skipIntro();
+        if (cancelled) return;
+        // Abort from effect cleanup — let the remount retry.
+        if (isAbortError(error)) return;
+        // Autoplay blocked or media issue — keep overlay and allow scrub.
+        settleIntoCinematic(video.currentTime || 0);
       }
     };
 
     const onFatalError = () => {
-      if (!cancelled) skipIntro();
+      if (!cancelled) settleIntoCinematic(video.currentTime || 0);
+    };
+
+    const onPreventFullscreen = (event: Event) => {
+      event.preventDefault();
     };
 
     video.addEventListener("error", onFatalError);
+    video.addEventListener("webkitbeginfullscreen", onPreventFullscreen);
     void startPlayback();
 
     return () => {
       cancelled = true;
       video.removeEventListener("error", onFatalError);
+      video.removeEventListener("webkitbeginfullscreen", onPreventFullscreen);
       video.pause();
       if (rafRef.current != null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
+      }
+      // Strict Mode remount: allow autoplay to start again if we never settled.
+      if (!autoplaySettledRef.current) {
+        // keep phase; remount effect will restart autoplay
       }
     };
   }, [
@@ -334,16 +446,24 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     src,
     reduceMotion,
     setIntroPhase,
-    skipIntro,
     syncOverlayVisuals,
   ]);
 
-  // Unified wheel + touch for cinematic scrub and website→cinematic reverse
+  // Wheel + touch for cinematic scrub, autoplay takeover, and website→cinematic reverse
   useEffect(() => {
-    if (phase !== "cinematic" && phase !== "website") return;
+    if (
+      phase !== "cinematic" &&
+      phase !== "website" &&
+      phase !== "autoplay"
+    ) {
+      return;
+    }
 
     const onWheel = (event: WheelEvent) => {
-      const consumed = handleScrollIntent(event.deltaY);
+      const consumed = handleScrollIntent(
+        event.deltaY,
+        CINEMATIC_SCROLL_SECONDS_PER_100PX
+      );
       if (consumed) {
         event.preventDefault();
       }
@@ -358,14 +478,27 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       if (touchStartYRef.current == null || event.touches.length !== 1) return;
       const y = event.touches[0]?.clientY;
       if (y == null) return;
-      const deltaY = touchStartYRef.current - y;
+
+      let deltaY = touchStartYRef.current - y;
       touchStartYRef.current = y;
       if (Math.abs(deltaY) < 0.5) return;
 
-      const consumed = handleScrollIntent(deltaY);
-      if (consumed) {
-        event.preventDefault();
-      }
+      // Cap per-event deltas so one noisy touch sample cannot jump the timeline.
+      deltaY = Math.max(
+        -CINEMATIC_TOUCH_MAX_DELTA_PX,
+        Math.min(CINEMATIC_TOUCH_MAX_DELTA_PX, deltaY)
+      );
+
+      const shouldConsume =
+        phaseRef.current === "cinematic" ||
+        phaseRef.current === "autoplay" ||
+        (phaseRef.current === "website" && deltaY < 0 && isPageAtTop());
+
+      if (!shouldConsume) return;
+
+      // preventDefault must run synchronously (non-passive listener).
+      event.preventDefault();
+      queueScrubDelta(deltaY, CINEMATIC_TOUCH_SECONDS_PER_100PX);
     };
 
     const onTouchEnd = () => {
@@ -384,8 +517,13 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("touchcancel", onTouchEnd);
+      if (scrubRafRef.current != null) {
+        cancelAnimationFrame(scrubRafRef.current);
+        scrubRafRef.current = null;
+      }
+      pendingScrubDeltaRef.current = 0;
     };
-  }, [phase, handleScrollIntent]);
+  }, [phase, handleScrollIntent, queueScrubDelta]);
 
   useEffect(() => {
     return () => {
@@ -408,7 +546,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       ref={overlayRef}
       aria-hidden
       className={cn(
-        "fixed inset-0 z-[80] bg-black",
+        "fixed inset-0 z-[80] h-[100dvh] w-full bg-black",
         phase === "website" ? "pointer-events-none" : "touch-none select-none"
       )}
     >
@@ -421,6 +559,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         preload="auto"
         controls={false}
         disablePictureInPicture
+        disableRemotePlayback
       />
     </div>
   );
