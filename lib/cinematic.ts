@@ -71,9 +71,9 @@ type LocaleCinematicAssets = {
  * Locale → viewport media map.
  *
  * EN: landscape intro ready; dedicated phone asset can land at
- *     /cinematic/en/intro-mobile.mp4 later.
- * ES: phone portrait ready; landscape /cinematic/es/intro.mp4 lands later
- *     (larger /es viewports skip cinematic until then).
+ *     /cinematic/en/intro-mobile.mp4 later (phones currently fall back to landscape).
+ * ES: portrait intro-mobile ready; landscape /cinematic/es/intro.mp4 can land later.
+ *     Until then, larger /es viewports fall back to the portrait asset — never skip.
  */
 const INTRO_BY_LOCALE: Partial<Record<AppLocale, LocaleCinematicAssets>> = {
   en: {
@@ -101,7 +101,11 @@ export function getCinematicViewportClass(
 
 /**
  * Resolve the cinematic media for a locale + viewport.
- * Returns null when this combination should skip the cinematic entirely.
+ * Returns null only when this locale has no cinematic asset at all.
+ *
+ * Fallback rules (asymmetric by design until both orientations ship):
+ * - mobile viewport → preferred mobile asset, else desktop
+ * - desktop viewport → preferred desktop asset, else mobile
  */
 export function resolveCinematicMedia(
   locale: AppLocale,
@@ -138,7 +142,16 @@ export function resolveCinematicMedia(
     };
   }
 
-  // e.g. Spanish tablet/desktop until landscape intro.mp4 ships
+  // Spanish (and similar): show the available portrait cinematic rather than
+  // skipping the entire intro on tablet/desktop until landscape ships.
+  if (assets.mobile) {
+    return {
+      video: assets.mobile.video,
+      poster: assets.mobile.poster ?? null,
+      orientation: "portrait",
+    };
+  }
+
   return null;
 }
 

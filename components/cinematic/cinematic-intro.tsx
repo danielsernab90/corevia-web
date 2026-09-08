@@ -666,6 +666,32 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
 
     const startPlayback = async () => {
+      const enterAutoplay = () => {
+        markFrameReady();
+        lockDocumentScroll();
+        setIntroPhase("autoplay");
+        syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
+      };
+
+      /** Keep the cinematic visible and retry muted play — never instant homepage skip. */
+      const retryMutedPlay = async (attempts = 4) => {
+        prepareVideoForMobileAutoplay(video);
+        for (let i = 0; i < attempts; i++) {
+          if (cancelled || introCompletedRef.current) return false;
+          if (!isNativeAutoplayPhase(phaseRef.current) && phaseRef.current !== "initializing") {
+            return false;
+          }
+          try {
+            await video.play();
+            if (!video.paused) return true;
+          } catch {
+            // Autoplay may be briefly blocked; retry after a short delay.
+          }
+          await new Promise<void>((r) => window.setTimeout(r, 350 + i * 250));
+        }
+        return !video.paused;
+      };
+
       try {
         // Metadata is enough to seek/play — do NOT wait for canplay/canplaythrough.
         if (video.readyState < 1) {
@@ -691,9 +717,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
         // Native autoPlay may already be running — do not pause/restart it.
         if (!video.paused && !video.ended && video.currentTime <= 0.35) {
-          markFrameReady();
-          setIntroPhase("autoplay");
-          syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
+          enterAutoplay();
 
           const progressedEarly = await waitForPlaybackProgress(
             video,
@@ -702,12 +726,10 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           if (cancelled || introCompletedRef.current) return;
           if (phaseRef.current !== "autoplay") return;
           if (!progressedEarly) {
-            try {
-              video.pause();
-            } catch {
-              // ignore
+            const recovered = await retryMutedPlay();
+            if (!recovered && video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC) {
+              // Leave overlay up; initTimeout remains the last-resort fail-open.
             }
-            skipIntro();
           }
           return;
         }
@@ -725,14 +747,10 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
               }),
             ]);
           } catch {
-            if (!cancelled && !introCompletedRef.current) {
-              try {
-                video.pause();
-              } catch {
-                // ignore
-              }
-              skipIntro();
-            }
+            if (cancelled || introCompletedRef.current) return;
+            // Stay on the cinematic (poster/frame) and retry — do not skip to homepage.
+            enterAutoplay();
+            await retryMutedPlay();
             return;
           }
         }
@@ -758,9 +776,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         }
 
         // Enter autoplay immediately so motion is not gated on verification.
-        markFrameReady();
-        setIntroPhase("autoplay");
-        syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
+        enterAutoplay();
 
         const progressed = await waitForPlaybackProgress(
           video,
@@ -770,21 +786,17 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         if (phaseRef.current !== "autoplay") return;
 
         if (!progressed) {
-          try {
-            video.pause();
-          } catch {
-            // ignore
-          }
-          skipIntro();
+          await retryMutedPlay();
         }
       } catch {
         if (cancelled || introCompletedRef.current) return;
+        // Keep cinematic mounted; retry rather than jumping to the homepage.
         try {
-          video.pause();
+          enterAutoplay();
+          await retryMutedPlay();
         } catch {
-          // ignore
+          // ignore — initTimeout handles permanent failure
         }
-        skipIntro();
       }
     };
 

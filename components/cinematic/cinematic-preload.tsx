@@ -2,10 +2,12 @@ import type { AppLocale } from "@/i18n/routing";
 
 /**
  * Early head preload for the cinematic required by this locale.
- * Uses CSS media so phones do not fetch desktop assets (and vice versa).
+ * Loads only the active locale's asset(s).
  */
 export function CinematicPreload({ locale }: { locale: AppLocale }) {
   if (locale === "es") {
+    // Spanish currently ships one portrait asset used for all viewports
+    // (desktop/tablet fall back to it until a landscape intro exists).
     return (
       <>
         <link
@@ -13,13 +15,11 @@ export function CinematicPreload({ locale }: { locale: AppLocale }) {
           as="video"
           href="/cinematic/es/intro-mobile.mp4"
           type="video/mp4"
-          media="(max-width: 767px)"
         />
         <link
           rel="preload"
           as="image"
           href="/cinematic/es/intro-mobile-poster.jpg"
-          media="(max-width: 767px)"
         />
       </>
     );
