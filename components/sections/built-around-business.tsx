@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 const PRINCIPLE_KEYS = ["understand", "build", "grow"] as const;
 
 const BUILT_AROUND_VISUAL: Record<AppLocale, string> = {
-  en: "/images/home/built-around-business-en.jpg",
-  es: "/images/home/built-around-business-es.jpg",
+  en: "/images/home/built-around-business-en-transparent.png",
+  es: "/images/home/built-around-business-es-transparent.png",
 };
 
 /** Intrinsic size of the approved workflow visuals (do not crop/distort). */
