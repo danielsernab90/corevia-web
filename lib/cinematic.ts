@@ -5,7 +5,7 @@ import type { AppLocale } from "@/i18n/routing";
  * Adjust these constants without touching the overlay component.
  */
 
-/** Nominal total intro duration (runtime prefers the media element's real duration). */
+/** Nominal total intro duration fallback when media duration is not yet known. */
 export const CINEMATIC_END = 10.0;
 
 /**

@@ -39,8 +39,9 @@ type CinematicIntroProps = {
  * website ↔ cinematic (bidirectional scrub after first completion)
  * | skipped
  *
- * AUTOPLAY: native video.play() only — no competing currentTime writes.
- * On meaningful downward scroll/touch: pause, hand off at currentTime, scrub forward.
+ * AUTOPLAY: native video.play() continuously from 0 → video.duration.
+ * No hardcoded midpoint pause (legacy 5s handoff removed).
+ * On meaningful downward scroll/touch: hand off at currentTime, scrub forward.
  * CINEMATIC: scroll/touch drives currentTime via rAF-coalesced seeks.
  */
 type IntroPhase =
@@ -338,7 +339,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
   /**
    * Seamless autoplay → interactive fast-forward.
-   * Pauses native playback once, keeps the live currentTime, then scrubs forward.
+   * Leaves native playback once, keeps the live currentTime, then scrubs forward.
+   * Phase flips to cinematic BEFORE pause so autoplay keep-alive cannot resume.
    */
   const handoffAutoplayToScrub = useCallback(
     (deltaY: number, secondsPer100px: number) => {
@@ -355,7 +357,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       if (
         autoplayHandoffAccumRef.current < CINEMATIC_AUTOPLAY_HANDOFF_MIN_DELTA_PX
       ) {
-        return true; // consume upward-jitter filtering; wait for meaningful swipe
+        return true; // consume trackpad jitter; wait for meaningful swipe
       }
 
       const handoffDelta = autoplayHandoffAccumRef.current;
@@ -363,6 +365,11 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
       const liveTime = video.currentTime;
       const end = resolveVideoEnd(video);
+
+      markFrameReady();
+      lockDocumentScroll();
+      // Take scroll control before pausing so autoplay resume cannot fight scrub.
+      setIntroPhase("cinematic");
 
       try {
         video.pause();
@@ -379,9 +386,6 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         // ignore
       }
 
-      markFrameReady();
-      lockDocumentScroll();
-      setIntroPhase("cinematic");
       syncOverlayVisuals(liveTime, end);
 
       const seconds = (handoffDelta / 100) * secondsPer100px;
@@ -595,9 +599,12 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     }
   }, [mounted, viewportClass, media, reduceMotion, skipIntro]);
 
-  // Media init → muted native autoplay ASAP → fade into live HTML
+  // Prefer a boolean dep so null → false does not tear down a healthy autoplay.
+  const preferReducedMotion = reduceMotion === true;
+
+  // Media init → muted native autoplay through FULL duration → fade into live HTML
   useEffect(() => {
-    if (!mounted || !media || reduceMotion === true) return;
+    if (!mounted || !media || preferReducedMotion) return;
     if (
       introCompletedRef.current ||
       phaseRef.current === "skipped" ||
@@ -630,11 +637,50 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       if (video.videoWidth > 0) markFrameReady();
     };
 
+    const maybeFinishAutoplay = () => {
+      if (cancelled) return;
+      if (phaseRef.current !== "autoplay") return;
+      if (finishingRef.current || introCompletedRef.current) return;
+      const end = resolveVideoEnd(video);
+      // Always end on the real media duration — never a hardcoded midpoint.
+      if (end > 0 && video.currentTime >= end - END_EPSILON_SEC) {
+        finishAutoplayWithFade();
+      }
+    };
+
     const onEnded = () => {
       if (cancelled) return;
       // Only natural autoplay completion — scrub mode finishes via currentTime.
       if (phaseRef.current !== "autoplay") return;
       finishAutoplayWithFade();
+    };
+
+    const onTimeUpdate = () => {
+      if (cancelled || phaseRef.current !== "autoplay") return;
+      if (finishingRef.current || introCompletedRef.current) return;
+      const end = resolveVideoEnd(video);
+      syncOverlayVisuals(video.currentTime, end);
+      maybeFinishAutoplay();
+    };
+
+    const onPause = () => {
+      // Keep native autoplay alive until scroll takes control or the video ends.
+      // Defer one frame so intentional pause→phase changes (handoff / finish / skip)
+      // settle before we decide whether to resume.
+      window.requestAnimationFrame(() => {
+        if (cancelled) return;
+        if (phaseRef.current !== "autoplay") return;
+        if (finishingRef.current || introCompletedRef.current) return;
+        if (video.ended) return;
+        const end = resolveVideoEnd(video);
+        // Near the real duration, finish — do not call play() again.
+        if (end > 0 && video.currentTime >= end - END_EPSILON_SEC) {
+          finishAutoplayWithFade();
+          return;
+        }
+        prepareVideoForMobileAutoplay(video);
+        void video.play().catch(() => undefined);
+      });
     };
 
     const onWaiting = () => {
@@ -666,6 +712,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
           }
           skipIntro();
         }
+        // Healthy long autoplay — never abort mid-flight at an arbitrary second.
         return;
       }
 
@@ -841,6 +888,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     video.addEventListener("playing", onPlaying);
     video.addEventListener("seeked", onSeeked);
     video.addEventListener("ended", onEnded);
+    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("pause", onPause);
     video.addEventListener("waiting", onWaiting);
     video.addEventListener("stalled", onStalled);
     video.addEventListener("error", onFatalError);
@@ -854,6 +903,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       video.removeEventListener("playing", onPlaying);
       video.removeEventListener("seeked", onSeeked);
       video.removeEventListener("ended", onEnded);
+      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("pause", onPause);
       video.removeEventListener("waiting", onWaiting);
       video.removeEventListener("stalled", onStalled);
       video.removeEventListener("error", onFatalError);
@@ -864,12 +915,12 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
         // ignore
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- media object identity
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- media object identity; preferReducedMotion avoids null→false remount
   }, [
     mounted,
     media?.video,
     media?.poster,
-    reduceMotion,
+    preferReducedMotion,
     setIntroPhase,
     syncOverlayVisuals,
     markFrameReady,
