@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Heading } from "@/components/shared/heading";
+import { StartProjectCta } from "@/components/shared/start-project-cta";
 import { Link } from "@/i18n/navigation";
 import {
   featuredProjects,
@@ -182,43 +183,136 @@ function DualMediaStack({
   );
 }
 
+function ProductScreenshot({
+  media,
+  alt,
+  priority = false,
+  className,
+  sizes,
+}: {
+  media: FeaturedMedia;
+  alt: string;
+  priority?: boolean;
+  className?: string;
+  sizes: string;
+}) {
+  const width = media.width ?? 533;
+  const height = media.height ?? 1024;
+
+  return (
+    <div
+      className={cn(
+        "overflow-hidden rounded-xl border border-border/80 bg-card transition-opacity duration-300 motion-safe:hover:opacity-[0.97]",
+        className
+      )}
+    >
+      <Image
+        src={media.src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="h-auto w-full"
+        sizes={sizes}
+        priority={priority}
+      />
+    </div>
+  );
+}
+
+/**
+ * Product evidence showcase — primary screenshot as anchor,
+ * two supporting stages alongside (desktop) or stacked (mobile).
+ */
+function AutomationScreenshotShowcase({
+  exampleId,
+  screenshots,
+  priority = false,
+}: {
+  exampleId: "scheduling" | "ordering";
+  screenshots: readonly FeaturedMedia[];
+  priority?: boolean;
+}) {
+  const t = useTranslations("Home.featuredWork");
+  const [primary, secondary, tertiary] = screenshots;
+  if (!primary || !secondary || !tertiary) return null;
+
+  const altPrimary = t(
+    `projects.automation.examples.${exampleId}.screenshots.0`
+  );
+  const altSecondary = t(
+    `projects.automation.examples.${exampleId}.screenshots.1`
+  );
+  const altTertiary = t(
+    `projects.automation.examples.${exampleId}.screenshots.2`
+  );
+
+  return (
+    <div className="grid min-w-0 gap-5 sm:gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-8 xl:gap-10">
+      <div className="mx-auto w-full max-w-sm lg:mx-0 lg:max-w-[420px] lg:justify-self-end">
+        <ProductScreenshot
+          media={primary}
+          alt={altPrimary}
+          priority={priority}
+          sizes="(max-width: 1023px) 92vw, 420px"
+        />
+      </div>
+      <div className="mx-auto grid w-full max-w-sm gap-5 sm:max-w-md lg:mx-0 lg:max-w-[340px] lg:gap-6 xl:gap-7">
+        <ProductScreenshot
+          media={secondary}
+          alt={altSecondary}
+          sizes="(max-width: 1023px) 92vw, 340px"
+        />
+        <ProductScreenshot
+          media={tertiary}
+          alt={altTertiary}
+          sizes="(max-width: 1023px) 92vw, 340px"
+        />
+      </div>
+    </div>
+  );
+}
+
 function AutomationExamples() {
   const t = useTranslations("Home.featuredWork");
   const project = featuredProjects.find((item) => item.id === "automation");
   if (!project?.examples) return null;
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-      {project.examples.map((example) => {
-        const label = t(
-          `projects.automation.examples.${example.id}.label`
-        );
-        const title = t(
-          `projects.automation.examples.${example.id}.title`
-        );
+    <div className="space-y-14 md:space-y-16">
+      {project.examples.map((example, exampleIndex) => {
+        const label = t(`projects.automation.examples.${example.id}.label`);
+        const title = t(`projects.automation.examples.${example.id}.title`);
         const description = t(
           `projects.automation.examples.${example.id}.description`
         );
+        const hasScreenshots =
+          example.screenshots != null && example.screenshots.length >= 3;
 
         return (
-          <div key={example.id} className="min-w-0">
-            {example.media ? (
-              <ProjectMediaFrame
-                media={example.media}
-                alt={title}
+          <div key={example.id} className="min-w-0 space-y-8 md:space-y-10">
+            {hasScreenshots ? (
+              <AutomationScreenshotShowcase
+                exampleId={example.id}
+                screenshots={example.screenshots!}
+                priority={exampleIndex === 0}
               />
+            ) : example.media ? (
+              <ProjectMediaFrame media={example.media} alt={title} />
             ) : (
               <MediaPlaceholder label={t("mediaPlaceholder")} />
             )}
-            <p className="mt-5 text-caption font-semibold tracking-[0.12em] text-primary uppercase">
-              {label}
-            </p>
-            <h4 className="mt-2 font-sans text-lg font-semibold tracking-tight text-foreground">
-              {title}
-            </h4>
-            <p className="mt-3 font-sans text-sm leading-relaxed text-muted-foreground md:text-body">
-              {description}
-            </p>
+
+            <div className="min-w-0">
+              <p className="text-caption font-semibold tracking-[0.12em] text-primary uppercase">
+                {label}
+              </p>
+              <h4 className="mt-2 font-sans text-lg font-semibold tracking-tight text-foreground">
+                {title}
+              </h4>
+              <p className="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-muted-foreground md:text-body">
+                {description}
+              </p>
+            </div>
           </div>
         );
       })}
@@ -283,13 +377,16 @@ export function FeaturedWork() {
                   key={project.id}
                   initial={reduceMotion ? false : "hidden"}
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.15 }}
+                  viewport={{ once: true, amount: 0.12 }}
                   variants={reduceMotion ? undefined : fadeUp}
                   className="border-t border-border/70 pt-12 md:pt-16"
                 >
                   <ProjectCopy project={project} />
                   <div className="mt-10 md:mt-12">
                     <AutomationExamples />
+                  </div>
+                  <div className="mt-10 border-t border-border/60 pt-8 sm:mt-12 sm:pt-10">
+                    <StartProjectCta placement="featured-work-automation" />
                   </div>
                 </motion.article>
               );

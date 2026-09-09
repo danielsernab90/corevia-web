@@ -152,12 +152,22 @@
             "scheduling": {
               "label": "A — Automated Scheduling",
               "title": "Massage Therapist — Automated Scheduling",
-              "description": "An automated scheduling experience designed for a massage therapist, allowing customers to view available services and schedule appointments through a digital experience."
+              "description": "An automated scheduling experience designed for a massage therapist, allowing customers to view available services and schedule appointments through a digital experience.",
+              "screenshots": {
+                "0": "Mobile massage booking interface for choosing a wellness service with photos, duration, and pricing",
+                "1": "Mobile appointment scheduling screen for selecting a date and available time slot",
+                "2": "Mobile booking confirmation screen summarizing the reserved massage service, date, and time"
+              }
             },
             "ordering": {
               "label": "B — Automated Ordering",
               "title": "Restaurant — Automated Food Ordering",
-              "description": "A customer-facing ordering experience that allows restaurant customers to browse food options and place an order digitally."
+              "description": "A customer-facing ordering experience that allows restaurant customers to browse food options and place an order digitally.",
+              "screenshots": {
+                "0": "Mobile restaurant ordering interface showing the gourmet menu, category filters, and featured menu items",
+                "1": "Mobile order customization flow for bread type, size, and protein selections with live pricing",
+                "2": "Mobile cart and checkout screen with customized order items, delivery details, and payment actions"
+              }
             }
           }
         }

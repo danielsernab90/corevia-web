@@ -7,12 +7,20 @@ export type FeaturedMedia = {
   src: string;
   /** Translation key under the project: e.g. mediaAlts.0 */
   altKey: string;
+  width?: number;
+  height?: number;
 };
 
 export type FeaturedExample = {
   id: "scheduling" | "ordering";
-  /** Null until real product screenshots are added. */
+  /** Single preview when available; null shows text-only for that example. */
   media: FeaturedMedia | null;
+  /**
+   * Multi-screenshot product evidence (journey stages).
+   * Scheduling: services → booking → confirmation.
+   * Ordering: menu → customize → cart/checkout.
+   */
+  screenshots?: readonly FeaturedMedia[];
 };
 
 export type FeaturedProject = {
@@ -71,13 +79,51 @@ export const featuredProjects: readonly FeaturedProject[] = [
     examples: [
       {
         id: "scheduling",
-        // No massage-scheduling screenshot in the repo yet.
         media: null,
+        screenshots: [
+          {
+            src: "/images/home/massage-automation-services.jpg",
+            altKey: "screenshots.0",
+            width: 554,
+            height: 1024,
+          },
+          {
+            src: "/images/home/massage-automation-scheduling.jpg",
+            altKey: "screenshots.1",
+            width: 534,
+            height: 1024,
+          },
+          {
+            src: "/images/home/massage-automation-confirmation.jpg",
+            altKey: "screenshots.2",
+            width: 556,
+            height: 1024,
+          },
+        ],
       },
       {
         id: "ordering",
-        // No restaurant-ordering screenshot in the repo yet.
         media: null,
+        screenshots: [
+          {
+            src: "/images/home/automated-ordering-main.jpg",
+            altKey: "screenshots.0",
+            width: 533,
+            height: 1024,
+          },
+          {
+            src: "/images/home/automated-ordering-customize.jpg",
+            altKey: "screenshots.1",
+            width: 552,
+            height: 1024,
+          },
+          {
+            src: "/images/home/automated-ordering-cart.jpg",
+            altKey: "screenshots.2",
+            width: 571,
+            height: 1024,
+          },
+        ],
       },
     ],
   },

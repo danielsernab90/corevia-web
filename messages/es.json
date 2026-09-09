@@ -152,12 +152,22 @@
             "scheduling": {
               "label": "A — Agendamiento Automatizado",
               "title": "Terapeuta de Masajes — Agendamiento Automatizado",
-              "description": "Una experiencia de agendamiento automatizada diseñada para una terapeuta de masajes, permitiendo a los clientes consultar los servicios disponibles y programar citas mediante una experiencia digital."
+              "description": "Una experiencia de agendamiento automatizada diseñada para una terapeuta de masajes, permitiendo a los clientes consultar los servicios disponibles y programar citas mediante una experiencia digital.",
+              "screenshots": {
+                "0": "Interfaz móvil de reserva de masajes para elegir un servicio de bienestar con fotos, duración y precio",
+                "1": "Pantalla móvil de agendamiento para seleccionar fecha y horario disponible",
+                "2": "Pantalla móvil de confirmación de reserva con el servicio, la fecha y la hora agendados"
+              }
             },
             "ordering": {
               "label": "B — Pedidos Automatizados",
               "title": "Restaurante — Pedidos Automatizados de Comida",
-              "description": "Una experiencia de pedidos orientada al cliente que permite a los clientes de un restaurante consultar las opciones disponibles y realizar pedidos digitalmente."
+              "description": "Una experiencia de pedidos orientada al cliente que permite a los clientes de un restaurante consultar las opciones disponibles y realizar pedidos digitalmente.",
+              "screenshots": {
+                "0": "Interfaz móvil de pedidos de restaurante con el menú gourmet, filtros de categoría e ítems destacados",
+                "1": "Flujo móvil de personalización del pedido con tipo de pan, tamaño, proteína y precio en vivo",
+                "2": "Pantalla móvil del carrito y pago con ítems personalizados, detalles de entrega y acciones de pago"
+              }
             }
           }
         }
