@@ -31,18 +31,16 @@ npm run dev:local
 
 Open [http://localhost:3002](http://localhost:3002).
 
-### Remote over Tailscale
+### LAN remote development (optional)
 
 ```bash
 npm run dev:remote
 # or: ./scripts/dev-remote.sh
 ```
 
-Then from another device on your Tailscale network open:
+Then from another device on the same LAN open `http://<this-machine-lan-ip>:3002`.
 
-`http://$(tailscale ip -4):3002`
-
-(Run `tailscale ip -4` on the machine hosting the dev server.)
+> **Historical:** Remote access previously used Tailscale mesh / MagicDNS. Tailscale is decommissioned on this MacBook.
 
 Middleware redirects to `/en` or `/es` based on browser language (or the saved `NEXT_LOCALE` cookie).
 
@@ -62,31 +60,28 @@ Shared backend API docs: [`server/README.md`](server/README.md).
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` / `dev:remote` | Turbopack on `0.0.0.0:3002` (Tailscale-ready) |
+| `npm run dev` / `dev:remote` | Turbopack on `0.0.0.0:3002` (LAN-ready) |
 | `npm run dev:local` | Turbopack on `127.0.0.1:3002` only |
 | `npm run build` | Production build |
 | `npm run start` | Serve production build on `0.0.0.0:3002` |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | TypeScript (`tsc --noEmit`) |
 
-## Remote development architecture (Tailscale)
+## Remote development architecture (LAN)
 
 ```text
-Client (browser on any Tailscale device)
+Client (browser on LAN)
         │
-        │  http://<host-tailscale-ip>:3002
-        ▼
-   Tailscale mesh
-        │
+        │  http://<host-lan-ip>:3002
         ▼
 Dev host  next dev --hostname 0.0.0.0 --port 3002
 ```
 
-- **Why `0.0.0.0`:** Binding only to `localhost` accepts loopback traffic. Remote devices need the process listening on all interfaces (including the Tailscale `utun` address).
-- **Why `allowedDevOrigins`:** Next.js 15+ guards `/_next/*` in development. This repo auto-allowlists detected LAN/Tailscale IPv4 addresses (override with `ALLOWED_DEV_ORIGINS=host1,host2`).
-- **API CORS:** `corevia-api` auto-allowlists localhost plus this machine’s LAN/Tailscale IPv4 origins on ports 3000/3002. Add extras with `ALLOWED_ORIGINS=http://host:port,...` (see [`server/README.md`](server/README.md)).
+- **Why `0.0.0.0`:** Binding only to `localhost` accepts loopback traffic. Remote devices need the process listening on all interfaces.
+- **Why `allowedDevOrigins`:** Next.js 15+ guards `/_next/*` in development. This repo auto-allowlists detected LAN IPv4 addresses (override with `ALLOWED_DEV_ORIGINS=host1,host2`).
+- **API CORS:** `corevia-api` auto-allowlists localhost plus this machine’s LAN IPv4 origins on ports 3000/3002. Add extras with `ALLOWED_ORIGINS=http://host:port,...` (see [`server/README.md`](server/README.md)).
 - **Avoid port conflicts:** Keep Corevia on **3002** and Daniel Command Station on **3000**. Check with `lsof -nP -iTCP:3000,3002 -sTCP:LISTEN`.
-- **Best practices:** Use `dev:remote` for Tailscale work; use `dev:local` when you only need this machine; prefer MagicDNS (`http://<your-machine-name>:3002`) if Tailscale DNS is enabled; never commit secrets in `.env.local`.
+- **Best practices:** Use `dev:local` for day-to-day work; use `dev:remote` when another LAN device must hit this machine; never commit secrets in `.env.local`.
 
 ## Project structure
 

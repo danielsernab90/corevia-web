@@ -49,7 +49,7 @@ Optional env:
 | `PORT` | HTTP port (default `4000`) |
 | `COREVIA_API_DB_PATH` | Absolute path to SQLite file (default `server/data/corevia-api.sqlite`) |
 | `SWAGGER_ENABLED` | `true` / `false` — force Swagger UI on/off. Default: on unless `NODE_ENV=production` |
-| `ALLOWED_ORIGINS` | Extra CORS origins (comma-separated full origins). Localhost plus this machine’s LAN/Tailscale IPv4 addresses on ports 3000/3002 are always included. Example: `http://192.168.1.10:3002,https://corevia.com` |
+| `ALLOWED_ORIGINS` | Extra CORS origins (comma-separated full origins). Localhost plus this machine’s LAN IPv4 addresses on ports 3000/3002 are always included. Example: `http://192.168.1.10:3002,https://corevia.com` |
 
 ## Swagger / OpenAPI
 

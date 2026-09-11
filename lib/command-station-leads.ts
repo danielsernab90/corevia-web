@@ -1,6 +1,6 @@
 /**
  * Best-effort forward of website inquiries → Command Station
- * POST /api/leads/capture (Tailscale Funnel).
+ * POST /api/leads/capture.
  *
  * Never throws to callers of the fire-and-forget wrapper. Failures must not
  * block the visitor-facing inquiry success path.

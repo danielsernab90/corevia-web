@@ -5,10 +5,10 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 /**
- * Allow Tailscale / LAN hosts to request /_next/* during `next dev`.
+ * Allow LAN hosts to request /_next/* during `next dev`.
  * Next.js 15 warns; Next.js 16+ blocks without this allowlist.
  */
-function lanAndTailscaleDevOrigins(): string[] {
+function lanDevOrigins(): string[] {
   const origins = new Set<string>();
   for (const entries of Object.values(os.networkInterfaces())) {
     for (const entry of entries ?? []) {
@@ -26,7 +26,7 @@ function lanAndTailscaleDevOrigins(): string[] {
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  allowedDevOrigins: lanAndTailscaleDevOrigins(),
+  allowedDevOrigins: lanDevOrigins(),
   serverExternalPackages: ["better-sqlite3"],
   async headers() {
     return [

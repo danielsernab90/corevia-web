@@ -14,9 +14,9 @@ import {
 const LOCAL_CLIENT_PORTS = [3000, 3002] as const;
 
 /**
- * CORS allowlist for website (3002), Command Center (3000), and Tailscale/LAN.
+ * CORS allowlist for website (3002), Command Center (3000), and LAN peers.
  * - Always includes localhost / 127.0.0.1
- * - Auto-detects this machine's non-loopback IPv4 addresses (Tailscale + LAN)
+ * - Auto-detects this machine's non-loopback IPv4 addresses
  * - Extra origins via ALLOWED_ORIGINS (comma-separated full origins)
  */
 function resolveCorsOrigins(): string[] {
