@@ -5,10 +5,10 @@
  */
 
 export const brandColors = {
-  primary: "#1652F0",
-  primarySoft: "#E6F1FB",
-  secondary: "#0B2F91",
-  accent: "#1652F0",
+  primary: "#007CFD",
+  primarySoft: "#E8F4FF",
+  secondary: "#0047C7",
+  accent: "#007CFD",
   background: "#FFFFFF",
   surface: "#F5F7FB",
   border: "#E4E8F1",

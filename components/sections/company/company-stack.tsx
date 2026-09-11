@@ -48,7 +48,7 @@ export function CompanyStack() {
                 style={{
                   backgroundColor: brandColors.primarySoft,
                   color: brandColors.primary,
-                  boxShadow: "0 0 16px rgba(22, 82, 240, 0.2)",
+                  boxShadow: "0 0 16px rgba(0, 124, 253, 0.2)",
                 }}
               >
                 {t(`items.${key}`)}

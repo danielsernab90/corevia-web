@@ -237,7 +237,7 @@ function renderHtml(
       }
 
       return `<div style="margin:0 0 24px;">
-        <h2 style="margin:0 0 10px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1652f0;font-weight:700;">${escapeHtml(section.heading)}</h2>
+        <h2 style="margin:0 0 10px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#007cfd;font-weight:700;">${escapeHtml(section.heading)}</h2>
         ${inner}
       </div>`;
     })

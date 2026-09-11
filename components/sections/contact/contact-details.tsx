@@ -48,7 +48,7 @@ function infoBadgeStyle() {
   return {
     backgroundColor: brandColors.primarySoft,
     color: brandColors.primary,
-    // Brand blue #1652F0 — same family as glow-brand-soft / hero glows
+    // Brand blue #007CFD — same family as glow-brand-soft / hero glows
     boxShadow: badgeGlow(brandColors.primary),
   } as const;
 }

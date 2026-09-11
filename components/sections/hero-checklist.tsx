@@ -41,7 +41,7 @@ export function HeroChecklist({ items }: HeroChecklistProps) {
     return (
       <div
         className="relative z-10 w-full overflow-x-auto bg-primary"
-        style={{ boxShadow: "0 0 40px rgba(22, 82, 240, 0.4)" }}
+        style={{ boxShadow: "0 0 40px rgba(0, 124, 253, 0.4)" }}
       >
         <ul className="flex w-max items-center gap-10 px-6 py-8 md:gap-12 md:px-10 md:py-10">
           {track.map((item) => (
@@ -55,7 +55,7 @@ export function HeroChecklist({ items }: HeroChecklistProps) {
   return (
     <div
       className="hero-checklist-marquee relative z-10 w-full overflow-hidden bg-primary"
-      style={{ boxShadow: "0 0 40px rgba(22, 82, 240, 0.4)" }}
+      style={{ boxShadow: "0 0 40px rgba(0, 124, 253, 0.4)" }}
       role="region"
       aria-label="Corevia benefits"
     >

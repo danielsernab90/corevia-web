@@ -247,25 +247,24 @@ function AutomationScreenshotShowcase({
   );
 
   return (
-    <div className="grid min-w-0 gap-5 sm:gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end lg:gap-8 xl:gap-10">
-      <div className="mx-auto w-full max-w-sm lg:mx-0 lg:max-w-[420px] lg:justify-self-end">
-        <ProductScreenshot
-          media={primary}
-          alt={altPrimary}
-          priority={priority}
-          sizes="(max-width: 1023px) 92vw, 420px"
-        />
-      </div>
-      <div className="mx-auto grid w-full max-w-sm gap-5 sm:max-w-md lg:mx-0 lg:max-w-[340px] lg:gap-6 xl:gap-7">
+    <div className="grid min-w-0 grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-4 xl:gap-5">
+      <ProductScreenshot
+        media={primary}
+        alt={altPrimary}
+        priority={priority}
+        className="mx-auto w-full max-w-[280px] sm:max-w-[300px] lg:mx-0 lg:max-w-none"
+        sizes="(max-width: 1023px) 300px, 280px"
+      />
+      <div className="mx-auto grid w-full max-w-[280px] gap-3 sm:max-w-[300px] sm:gap-4 lg:mx-0 lg:max-w-none">
         <ProductScreenshot
           media={secondary}
           alt={altSecondary}
-          sizes="(max-width: 1023px) 92vw, 340px"
+          sizes="(max-width: 1023px) 300px, 220px"
         />
         <ProductScreenshot
           media={tertiary}
           alt={altTertiary}
-          sizes="(max-width: 1023px) 92vw, 340px"
+          sizes="(max-width: 1023px) 300px, 220px"
         />
       </div>
     </div>
@@ -278,7 +277,7 @@ function AutomationExamples() {
   if (!project?.examples) return null;
 
   return (
-    <div className="space-y-14 md:space-y-16">
+    <div className="space-y-12 md:space-y-16">
       {project.examples.map((example, exampleIndex) => {
         const label = t(`projects.automation.examples.${example.id}.label`);
         const title = t(`projects.automation.examples.${example.id}.title`);
@@ -289,29 +288,34 @@ function AutomationExamples() {
           example.screenshots != null && example.screenshots.length >= 3;
 
         return (
-          <div key={example.id} className="min-w-0 space-y-8 md:space-y-10">
-            {hasScreenshots ? (
-              <AutomationScreenshotShowcase
-                exampleId={example.id}
-                screenshots={example.screenshots!}
-                priority={exampleIndex === 0}
-              />
-            ) : example.media ? (
-              <ProjectMediaFrame media={example.media} alt={title} />
-            ) : (
-              <MediaPlaceholder label={t("mediaPlaceholder")} />
-            )}
-
-            <div className="min-w-0">
+          <div
+            key={example.id}
+            className="grid min-w-0 items-start gap-8 border-t border-border/50 pt-10 first:border-t-0 first:pt-0 md:gap-10 md:pt-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12 xl:gap-14"
+          >
+            <div className="min-w-0 lg:sticky lg:top-28">
               <p className="text-caption font-semibold tracking-[0.12em] text-primary uppercase">
                 {label}
               </p>
-              <h4 className="mt-2 font-sans text-lg font-semibold tracking-tight text-foreground">
+              <h4 className="mt-2 font-sans text-lg font-semibold tracking-tight text-balance text-foreground md:text-xl">
                 {title}
               </h4>
-              <p className="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-muted-foreground md:text-body">
+              <p className="mt-3 max-w-xl font-sans text-sm leading-relaxed text-muted-foreground md:text-body">
                 {description}
               </p>
+            </div>
+
+            <div className="min-w-0">
+              {hasScreenshots ? (
+                <AutomationScreenshotShowcase
+                  exampleId={example.id}
+                  screenshots={example.screenshots!}
+                  priority={exampleIndex === 0}
+                />
+              ) : example.media ? (
+                <ProjectMediaFrame media={example.media} alt={title} />
+              ) : (
+                <MediaPlaceholder label={t("mediaPlaceholder")} />
+              )}
             </div>
           </div>
         );

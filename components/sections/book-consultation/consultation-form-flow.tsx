@@ -331,7 +331,7 @@ export function ConsultationFormFlow({
         variant === "inline"
           ? {
               boxShadow:
-                "0 1px 2px rgb(11 15 25 / 0.04), 0 0 24px rgba(22, 82, 240, 0.25)",
+                "0 1px 2px rgb(11 15 25 / 0.04), 0 0 24px rgba(0, 124, 253, 0.25)",
             }
           : undefined
       }
