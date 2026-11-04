@@ -386,23 +386,10 @@
   },
   "BookConsultation": {
     "meta": {
-      "title": "Book a Free Consultation",
-      "description": "Meet one-on-one with a Corevia consultant to discover how AI, automation, and custom software can help your business grow."
+      "title": "Free Consultation",
+      "description": "Free CoreVia consultation — talk about your business and explore how custom software, automation, or a digital platform could help."
     },
     "hero": {
-      "title": "Book Your Free AI & Software Strategy Session",
-      "description": "Meet one-on-one with a Corevia consultant to discover how AI, automation, and custom software can help your business become more efficient, reduce manual work, and scale with confidence.",
-      "primaryCta": "Book My Free Consultation",
-      "secondaryCta": "Explore Our Services",
-      "whatsappCta": "Chat on WhatsApp",
-      "highlights": {
-        "free": "Free Consultation",
-        "duration": "10–15 Minute Strategy Session",
-        "personalized": "Personalized Recommendations",
-        "noObligation": "No Obligation",
-        "assessment": "AI & Business Assessment",
-        "actionable": "Actionable Next Steps"
-      },
       "visualLabel": "Premium illustration of a Corevia strategy consultation",
       "visual": {
         "badge": "Free",
@@ -418,6 +405,18 @@
           "title": "Personalized Solution Plan",
           "description": "Receive tailored recommendations and practical next steps."
         }
+      },
+      "eyebrow": "Free Consultation",
+      "title": "Let's Talk About Your Business.",
+      "description": "Tell us what you're trying to improve. We'll explore how custom software, automation, or a digital platform could help.",
+      "primaryCta": "Schedule a Free Consultation",
+      "secondaryCta": "Tell Us About Your Project",
+      "whatsappCta": "Chat on WhatsApp",
+      "highlights": {
+        "free": "Free consultation",
+        "duration": "10–15 minute strategy session",
+        "personalized": "Personalized recommendations",
+        "noObligation": "No obligation"
       }
     },
     "expect": {
@@ -531,9 +530,9 @@
       }
     },
     "cta": {
-      "title": "Ready to Get Started?",
-      "description": "Book your free strategy session and take the first step toward clearer technology decisions for your business.",
-      "button": "Book My Free Consultation",
+      "title": "Ready to talk about your business?",
+      "description": "Schedule a free consultation or tell us about your project — we’ll help you explore what’s possible.",
+      "button": "Schedule a Free Consultation",
       "whatsappLabel": "WhatsApp"
     },
     "modal": {
@@ -684,17 +683,6 @@
     }
   },
   "Services": {
-    "meta": {
-      "title": "Services",
-      "description": "Custom software, AI, automation, and digital platforms — reach out, get a fixed-price quote tailored to your needs, and we build it."
-    },
-    "hero": {
-      "title": "Build Software That Moves Your Business Forward.",
-      "description": "Automate busywork, organize operations, and launch custom platforms built around how you work — not generic off-the-shelf tools.",
-      "pricingNote": "Tell us what you need. We’ll review your goals and send a clear fixed-price quote — no public pricing tiers, no surprises.",
-      "primaryCta": "Start Your Inquiry",
-      "whatsappCta": "Chat on WhatsApp"
-    },
     "categories": {
       "title": "What We Build",
       "description": "From custom platforms to AI automation — choose the capability that fits, or combine several into one system.",
@@ -741,28 +729,117 @@
         }
       }
     },
-    "process": {
-      "title": "How It Works",
-      "description": "A simple path from first message to delivered software.",
-      "stepLabel": "Step {number}",
-      "steps": {
-        "reachOut": {
-          "title": "Reach out",
-          "description": "Tell us about your business and what you need help with."
+    "meta": {
+      "title": "Services",
+      "description": "Custom software, AI automation, dashboards, premium websites, integrations, and digital growth services from CoreVia — with clear next steps and a free consultation."
+    },
+    "hero": {
+      "eyebrow": "Services · What CoreVia Builds",
+      "title": "Technology shaped around<br></br><accent>how your business works.</accent>",
+      "description": "From custom software and automation to websites, dashboards, and digital growth — we build systems that fit your operations, not generic templates.",
+      "pricingNote": "Tell us what you need. We’ll review your goals and send a clear fixed-price quote — no public pricing tiers, no surprises.",
+      "primaryCta": "Tell Us About Your Project",
+      "secondaryCta": "See Our Work",
+      "whatsappCta": "Chat on WhatsApp"
+    },
+    "groups": {
+      "eyebrow": "Capabilities",
+      "title": "Six ways we help businesses move forward.",
+      "description": "Each offering is practical and scoped to your needs. Explore what we build, who it helps, and real portfolio examples.",
+      "cta": "Discuss This Capability",
+      "labels": {
+        "problems": "Problems it solves",
+        "who": "Who benefits",
+        "build": "What we can build",
+        "examples": "Portfolio examples"
+      },
+      "examples": {
+        "summit": "Summit & Stone — Construction OS",
+        "summitAi": "Summit & Stone — AI receptionist demo",
+        "summitOs": "Summit & Stone — management system",
+        "summitWeb": "Summit & Stone — business website",
+        "cotingaOps": "Cotinga — hotel operations preview",
+        "cotingaWeb": "Cotinga Hotel & Spa — guest website",
+        "perritosOps": "Perritos Gourmet — order operations",
+        "dixie": "Dixie Remodeling — service website",
+        "dixieStory": "Dixie Remodeling — brand storytelling",
+        "gallinita": "La Gallinita — retail & wholesale demo",
+        "gallinitaFlow": "La Gallinita — store to operations flow"
+      },
+      "items": {
+        "customSoftware": {
+          "title": "Custom Software & Business Applications",
+          "summary": "Purpose-built systems that match how your team sells, delivers, and reports — instead of forcing your process into disconnected tools.",
+          "problems": "Scattered spreadsheets, manual handoffs, and software that doesn’t match the way you actually work.",
+          "who": "Growing businesses that need a system tailored to their workflows — construction, retail, hospitality, and professional services alike.",
+          "build": "End-to-end business applications, internal tools, customer portals, and operational platforms designed around your requirements."
         },
-        "fixedPrice": {
-          "title": "Get a fixed price",
-          "description": "We review your needs and send a clear quote — no surprises."
+        "aiAutomation": {
+          "title": "AI & Intelligent Automation",
+          "summary": "Reduce repetitive coordination with automation and AI assistants that support real business conversations and tasks.",
+          "problems": "Missed inquiries, repetitive follow-ups, and time lost to work that software could handle more consistently.",
+          "who": "Teams that want faster response times and cleaner operations without adding headcount for every busy season.",
+          "build": "Intelligent assistants, intake automation, workflow triggers, and AI-supported experiences — clearly labeled when they are demonstrations."
+        },
+        "dashboards": {
+          "title": "CRM, Dashboards & Management Systems",
+          "summary": "Bring leads, projects, schedules, and reporting into systems you can see and manage in one place.",
+          "problems": "Lost leads, unclear project status, and decisions made from incomplete or outdated information.",
+          "who": "Owners and managers who need operational visibility across sales, delivery, and customer communication.",
+          "build": "CRM and lead tracking, project management views, scheduling boards, reporting dashboards, and team coordination tools."
+        },
+        "websites": {
+          "title": "Premium Websites & Digital Platforms",
+          "summary": "Elegant digital experiences that present your brand clearly and guide customers toward the next step.",
+          "problems": "Outdated websites, weak storytelling, and digital experiences that don’t convert interest into inquiries.",
+          "who": "Service businesses and hospitality brands that want a premium web presence with bilingual or multi-market reach.",
+          "build": "Marketing websites, booking interfaces, galleries, estimate requests, and customer-facing platforms connected to your operations."
+        },
+        "integrations": {
+          "title": "Integrations & Workflow Optimization",
+          "summary": "Connect the tools you already use so information flows without copy-paste and duplicate entry.",
+          "problems": "Disconnected systems, repeated data entry, and processes that break whenever a handoff is missed.",
+          "who": "Teams juggling storefronts, inventory, delivery, payments, or internal tools that should talk to each other.",
+          "build": "Workflow connections between ordering, inventory, operations dashboards, and the systems your business already depends on."
+        },
+        "digitalGrowth": {
+          "title": "Digital Growth & Creative Services",
+          "summary": "Marketing, content, and creative support that help your business show up clearly — delivered by the same team that builds your software.",
+          "problems": "Inconsistent brand presence, weak campaign creative, and growth efforts that feel disconnected from your product experience.",
+          "who": "Businesses that want cohesive storytelling across their website, ads, and content without managing a separate agency stack.",
+          "build": "Video editing, content creation, marketing strategy support, and campaign creative aligned with your brand and platforms."
+        }
+      }
+    },
+    "process": {
+      "eyebrow": "How Engagement Works",
+      "title": "A clear path from conversation to delivery.",
+      "description": "Straightforward steps, direct communication, and a fixed-price quote before development begins.",
+      "steps": {
+        "discover": {
+          "title": "Discover",
+          "description": "We learn how your business works and what you want to improve."
+        },
+        "design": {
+          "title": "Design",
+          "description": "We map the right approach and define scope before building starts."
         },
         "build": {
-          "title": "We build it",
-          "description": "Your custom platform, built and delivered to move your business forward."
+          "title": "Build",
+          "description": "We develop the software, automation, or digital platform around your requirements."
+        },
+        "launch": {
+          "title": "Launch & Improve",
+          "description": "We help you go live, refine the experience, and keep a clear path for next improvements."
         }
       }
     },
     "inquiry": {
-      "title": "Tell Us What You Need",
-      "description": "Share a few details and we’ll follow up with next steps and a fixed-price quote tailored to your project."
+      "eyebrow": "Next Step",
+      "title": "Tell us what you’re trying to improve.",
+      "description": "Share a few details and we’ll follow up with clear next steps — including a free consultation when that’s the right starting point.",
+      "scheduleCta": "Schedule a Free Consultation",
+      "projectCta": "Continue With This Form"
     }
   },
   "Work": {
@@ -901,11 +978,15 @@
   "Contact": {
     "meta": {
       "title": "Contact",
-      "description": "Get in touch with Corevia — talk directly with the person building your software. Based in Colombia, serving businesses across Colombia and the US."
+      "description": "Contact CoreVia — talk directly with the team building your software. Based in Colombia, serving businesses across Colombia and the US."
     },
     "hero": {
-      "title": "Contact Corevia",
-      "description": "Reach out through the form — we’ll follow up with clear next steps."
+      "eyebrow": "Contact CoreVia",
+      "title": "Let's start a clear conversation.",
+      "description": "Reach out through the form, schedule a free consultation, or message us on WhatsApp — you’ll talk with the people building your software.",
+      "consultationCta": "Schedule a Free Consultation",
+      "formCta": "Send a Project Inquiry",
+      "whatsappCta": "Chat on WhatsApp"
     },
     "details": {
       "eyebrow": "Contact",
@@ -934,6 +1015,16 @@
           "label": "Facebook"
         }
       }
+    },
+    "form": {
+      "eyebrow": "Project Inquiry",
+      "title": "Tell us about your project",
+      "description": "Share a few details. We only show a success message after your inquiry is actually received."
+    },
+    "trust": {
+      "title": "Clear expectations",
+      "body": "You’ll work directly with the team guiding your project. Explore verified portfolio demonstrations to see the quality of our design and development work.",
+      "cta": "Explore Our Work"
     }
   },
   "Referral": {

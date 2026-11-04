@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import { staggerContainer, staggerItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -16,6 +17,7 @@ export function ServicesHero() {
   const t = useTranslations("Services.hero");
   const locale = useLocale() as AppLocale;
   const whatsappHref = buildWhatsAppLink(locale);
+  const reduceMotion = useReducedMotion();
 
   const scrollToInquiry = () => {
     document
@@ -25,77 +27,92 @@ export function ServicesHero() {
 
   return (
     <Section
-      tone="hero"
+      tone="dark"
       spacing="none"
       aria-labelledby="services-hero-heading"
       className="relative overflow-hidden"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-hero-glow"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_10%,#13334a_0%,transparent_40%),linear-gradient(145deg,#07121e,#10283b)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute top-[8%] right-[-12%] -z-10 h-[65%] w-[65%] max-w-[48rem] rounded-full bg-[radial-gradient(ellipse_at_center,var(--surface)_0%,transparent_70%)] opacity-90 blur-3xl"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_55%)]"
       />
 
       <Container
         size="xl"
-        className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center py-12 md:py-16 lg:py-20"
+        className="relative flex min-h-[min(72dvh,38rem)] flex-col justify-center py-16 md:py-20"
       >
         <motion.div
-          className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center text-center"
-          initial="hidden"
+          className="relative z-10 max-w-3xl"
+          initial={reduceMotion ? "visible" : "hidden"}
           animate="visible"
           variants={staggerContainer}
         >
+          <motion.p
+            variants={staggerItem}
+            className="text-caption font-semibold tracking-[0.16em] text-primary uppercase"
+          >
+            {t("eyebrow")}
+          </motion.p>
           <motion.h1
             id="services-hero-heading"
             variants={staggerItem}
-            className="w-full font-sans text-hero font-semibold tracking-tight text-foreground glow-text-brand-soft"
+            className="mt-5 font-display text-hero tracking-tight text-secondary-foreground glow-text-white-soft"
           >
-            {t("title")}
+            {t.rich("title", {
+              accent: (chunks) => (
+                <span className="text-primary">{chunks}</span>
+              ),
+              br: () => <br />,
+            })}
           </motion.h1>
-
           <motion.p
             variants={staggerItem}
-            className="mt-5 w-full max-w-2xl font-sans text-body-lg text-muted-foreground"
+            className="mt-6 max-w-xl font-sans text-body-lg text-[#b3c7d5]"
           >
             {t("description")}
           </motion.p>
-
           <motion.p
             variants={staggerItem}
-            className="mt-4 w-full max-w-xl font-sans text-sm leading-relaxed text-muted-foreground"
+            className="mt-4 max-w-lg font-sans text-sm leading-relaxed text-[#8ea8b9]"
           >
             {t("pricingNote")}
           </motion.p>
-
           <motion.div
             variants={staggerItem}
-            className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
           >
             <Button
               type="button"
               size="cta"
-              className="w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+              className="w-full sm:w-auto"
               onClick={scrollToInquiry}
             >
               {t("primaryCta")}
             </Button>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/work"
               className={cn(
                 buttonVariants({ variant: "outline", size: "cta" }),
-                "w-full whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
+                "w-full border-white/25 bg-transparent text-secondary-foreground hover:bg-white/10 hover:text-secondary-foreground sm:w-auto"
               )}
             >
-              <WhatsAppIcon className="size-5" />
-              {t("whatsappCta")}
-            </a>
+              {t("secondaryCta")}
+            </Link>
           </motion.div>
+          <motion.a
+            variants={staggerItem}
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 text-sm text-[#8ea8b9] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          >
+            <WhatsAppIcon className="size-4 text-[#25D366]" />
+            {t("whatsappCta")}
+          </motion.a>
         </motion.div>
       </Container>
     </Section>

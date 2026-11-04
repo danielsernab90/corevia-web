@@ -386,23 +386,10 @@
   },
   "BookConsultation": {
     "meta": {
-      "title": "Agenda una Consulta Gratis",
-      "description": "Reúnete uno a uno con un consultor de Corevia para descubrir cómo la IA, la automatización y el software a medida pueden impulsar tu negocio."
+      "title": "Consulta Gratuita",
+      "description": "Consulta gratuita de CoreVia — habla de tu negocio y explora cómo el software a medida, la automatización o una plataforma digital pueden ayudarte."
     },
     "hero": {
-      "title": "Agenda tu Sesión Gratis de Estrategia en IA y Software",
-      "description": "Reúnete uno a uno con un consultor de Corevia para descubrir cómo la IA, la automatización y el software a medida pueden hacer tu negocio más eficiente, reducir el trabajo manual y escalar con confianza.",
-      "primaryCta": "Agendar Mi Consulta Gratis",
-      "secondaryCta": "Explorar Nuestros Servicios",
-      "whatsappCta": "Chatear por WhatsApp",
-      "highlights": {
-        "free": "Consulta Gratis",
-        "duration": "Sesión Estratégica de 10–15 Minutos",
-        "personalized": "Recomendaciones Personalizadas",
-        "noObligation": "Sin Compromiso",
-        "assessment": "Evaluación de IA y Negocio",
-        "actionable": "Próximos Pasos Accionables"
-      },
       "visualLabel": "Ilustración premium de una consulta estratégica con Corevia",
       "visual": {
         "badge": "Gratis",
@@ -418,6 +405,18 @@
           "title": "Plan de Solución Personalizado",
           "description": "Recibe recomendaciones a medida y próximos pasos prácticos."
         }
+      },
+      "eyebrow": "Consulta Gratuita",
+      "title": "Hablemos de Tu Negocio.",
+      "description": "Cuéntanos qué quieres mejorar. Exploraremos cómo el software a medida, la automatización o una plataforma digital pueden ayudarte.",
+      "primaryCta": "Agendar Consulta Gratuita",
+      "secondaryCta": "Cuéntanos Tu Proyecto",
+      "whatsappCta": "Chatear por WhatsApp",
+      "highlights": {
+        "free": "Consulta gratuita",
+        "duration": "Sesión estratégica de 10–15 minutos",
+        "personalized": "Recomendaciones personalizadas",
+        "noObligation": "Sin obligación"
       }
     },
     "expect": {
@@ -531,9 +530,9 @@
       }
     },
     "cta": {
-      "title": "¿Listo para Empezar?",
-      "description": "Agenda tu sesión estratégica gratis y da el primer paso hacia decisiones tecnológicas más claras para tu negocio.",
-      "button": "Agendar Mi Consulta Gratis",
+      "title": "¿Listo para hablar de tu negocio?",
+      "description": "Agenda una consulta gratuita o cuéntanos tu proyecto — te ayudamos a explorar qué es posible.",
+      "button": "Agendar Consulta Gratuita",
       "whatsappLabel": "WhatsApp"
     },
     "modal": {
@@ -684,17 +683,6 @@
     }
   },
   "Services": {
-    "meta": {
-      "title": "Servicios",
-      "description": "Software a medida, IA, automatización y plataformas digitales — contáctanos, recibe una cotización a precio fijo según tus necesidades y lo construimos."
-    },
-    "hero": {
-      "title": "Construye Software Que Impulse Tu Negocio.",
-      "description": "Automatiza el trabajo repetitivo, organiza operaciones y lanza plataformas a medida alrededor de cómo trabajas — no herramientas genéricas de estantería.",
-      "pricingNote": "Cuéntanos qué necesitas. Revisamos tus objetivos y te enviamos una cotización clara a precio fijo — sin tarifas públicas genéricas ni sorpresas.",
-      "primaryCta": "Iniciar Tu Consulta",
-      "whatsappCta": "Chatear por WhatsApp"
-    },
     "categories": {
       "title": "Qué Construimos",
       "description": "Desde plataformas a medida hasta automatización con IA — elige la capacidad que encaje, o combina varias en un solo sistema.",
@@ -741,28 +729,117 @@
         }
       }
     },
-    "process": {
-      "title": "Cómo Funciona",
-      "description": "Un camino simple del primer mensaje al software entregado.",
-      "stepLabel": "Paso {number}",
-      "steps": {
-        "reachOut": {
-          "title": "Contáctanos",
-          "description": "Cuéntanos sobre tu negocio y en qué necesitas ayuda."
+    "meta": {
+      "title": "Servicios",
+      "description": "Software a medida, automatización con IA, dashboards, sitios web premium, integraciones y crecimiento digital de CoreVia — con pasos claros y una consulta gratuita."
+    },
+    "hero": {
+      "eyebrow": "Servicios · Lo Que Construye CoreVia",
+      "title": "Tecnología diseñada alrededor de<br></br><accent>cómo funciona tu negocio.</accent>",
+      "description": "Desde software a medida y automatización hasta sitios web, dashboards y crecimiento digital — construimos sistemas que encajan con tus operaciones, no plantillas genéricas.",
+      "pricingNote": "Cuéntanos qué necesitas. Revisamos tus objetivos y enviamos una cotización a precio fijo — sin tarifas públicas ni sorpresas.",
+      "primaryCta": "Cuéntanos Tu Proyecto",
+      "secondaryCta": "Ver Nuestro Trabajo",
+      "whatsappCta": "Chatear por WhatsApp"
+    },
+    "groups": {
+      "eyebrow": "Capacidades",
+      "title": "Seis formas de ayudar a tu negocio a avanzar.",
+      "description": "Cada oferta es práctica y se adapta a tus necesidades. Explora qué construimos, a quién ayuda y ejemplos reales del portafolio.",
+      "cta": "Hablar de Esta Capacidad",
+      "labels": {
+        "problems": "Problemas que resuelve",
+        "who": "Quién se beneficia",
+        "build": "Qué podemos construir",
+        "examples": "Ejemplos del portafolio"
+      },
+      "examples": {
+        "summit": "Summit & Stone — Construction OS",
+        "summitAi": "Summit & Stone — demo de recepcionista con IA",
+        "summitOs": "Summit & Stone — sistema de gestión",
+        "summitWeb": "Summit & Stone — sitio del negocio",
+        "cotingaOps": "Cotinga — vista previa de operaciones hoteleras",
+        "cotingaWeb": "Cotinga Hotel & Spa — sitio para huéspedes",
+        "perritosOps": "Perritos Gourmet — operaciones de pedidos",
+        "dixie": "Dixie Remodeling — sitio de servicios",
+        "dixieStory": "Dixie Remodeling — narrativa de marca",
+        "gallinita": "La Gallinita — demo retail y mayoreo",
+        "gallinitaFlow": "La Gallinita — flujo de tienda a operaciones"
+      },
+      "items": {
+        "customSoftware": {
+          "title": "Software a Medida y Aplicaciones Empresariales",
+          "summary": "Sistemas hechos a la medida de cómo tu equipo vende, entrega y reporta — en lugar de forzar tu proceso en herramientas desconectadas.",
+          "problems": "Hojas de cálculo dispersas, traspasos manuales y software que no encaja con la forma en que realmente trabajas.",
+          "who": "Negocios en crecimiento que necesitan un sistema adaptado a sus flujos — construcción, retail, hospitalidad y servicios profesionales.",
+          "build": "Aplicaciones empresariales de extremo a extremo, herramientas internas, portales de clientes y plataformas operativas diseñadas según tus requisitos."
         },
-        "fixedPrice": {
-          "title": "Recibe un precio fijo",
-          "description": "Revisamos tus necesidades y enviamos una cotización clara — sin sorpresas."
+        "aiAutomation": {
+          "title": "IA y Automatización Inteligente",
+          "summary": "Reduce la coordinación repetitiva con automatización y asistentes de IA que apoyan conversaciones y tareas reales del negocio.",
+          "problems": "Consultas perdidas, seguimientos repetitivos y tiempo perdido en trabajo que el software puede manejar con más consistencia.",
+          "who": "Equipos que quieren responder más rápido y operar con más claridad sin sumar personal en cada temporada alta.",
+          "build": "Asistentes inteligentes, automatización de captación, disparadores de flujo de trabajo y experiencias con IA — claramente etiquetadas cuando son demostraciones."
+        },
+        "dashboards": {
+          "title": "CRM, Dashboards y Sistemas de Gestión",
+          "summary": "Reúne prospectos, proyectos, agendas e informes en sistemas que puedes ver y gestionar en un solo lugar.",
+          "problems": "Prospectos perdidos, estado de proyectos poco claro y decisiones tomadas con información incompleta o desactualizada.",
+          "who": "Dueños y gerentes que necesitan visibilidad operativa en ventas, entrega y comunicación con clientes.",
+          "build": "CRM y seguimiento de prospectos, vistas de gestión de proyectos, tableros de programación, dashboards de reportes y herramientas de coordinación de equipos."
+        },
+        "websites": {
+          "title": "Sitios Web Premium y Plataformas Digitales",
+          "summary": "Experiencias digitales elegantes que presentan tu marca con claridad y guían a los clientes hacia el siguiente paso.",
+          "problems": "Sitios desactualizados, narrativa débil y experiencias digitales que no convierten el interés en consultas.",
+          "who": "Negocios de servicios y marcas de hospitalidad que quieren una presencia web premium, incluso bilingüe o multi-mercado.",
+          "build": "Sitios de marketing, interfaces de reserva, galerías, solicitudes de estimado y plataformas orientadas al cliente conectadas a tus operaciones."
+        },
+        "integrations": {
+          "title": "Integraciones y Optimización de Flujos",
+          "summary": "Conecta las herramientas que ya usas para que la información fluya sin copiar y pegar ni duplicar datos.",
+          "problems": "Sistemas desconectados, captura repetida de datos y procesos que se rompen cuando falta un traspaso.",
+          "who": "Equipos que combinan tienda, inventario, entregas, pagos o herramientas internas que deberían comunicarse entre sí.",
+          "build": "Conexiones de flujo entre pedidos, inventario, dashboards operativos y los sistemas de los que ya depende tu negocio."
+        },
+        "digitalGrowth": {
+          "title": "Crecimiento Digital y Servicios Creativos",
+          "summary": "Marketing, contenido y apoyo creativo para que tu negocio se presente con claridad — del mismo equipo que construye tu software.",
+          "problems": "Presencia de marca inconsistente, creatividades débiles y esfuerzos de crecimiento desconectados de tu experiencia de producto.",
+          "who": "Negocios que quieren una narrativa cohesiva en sitio, anuncios y contenido sin gestionar otra agencia por separado.",
+          "build": "Edición de video, creación de contenido, apoyo de estrategia de marketing y creatividades de campaña alineadas con tu marca y plataformas."
+        }
+      }
+    },
+    "process": {
+      "eyebrow": "Cómo Funciona el Engagement",
+      "title": "Un camino claro de la conversación a la entrega.",
+      "description": "Pasos sencillos, comunicación directa y una cotización a precio fijo antes de comenzar el desarrollo.",
+      "steps": {
+        "discover": {
+          "title": "Descubrir",
+          "description": "Aprendemos cómo funciona tu negocio y qué quieres mejorar."
+        },
+        "design": {
+          "title": "Diseñar",
+          "description": "Definimos el enfoque correcto y el alcance antes de construir."
         },
         "build": {
-          "title": "Lo construimos",
-          "description": "Tu plataforma a medida, construida y entregada para impulsar tu negocio."
+          "title": "Construir",
+          "description": "Desarrollamos el software, la automatización o la plataforma digital según tus requisitos."
+        },
+        "launch": {
+          "title": "Lanzar y Mejorar",
+          "description": "Te ayudamos a salir en vivo, perfeccionar la experiencia y mantener un camino claro para las siguientes mejoras."
         }
       }
     },
     "inquiry": {
-      "title": "Cuéntanos Qué Necesitas",
-      "description": "Comparte algunos detalles y te contactaremos con los siguientes pasos y una cotización a precio fijo para tu proyecto."
+      "eyebrow": "Siguiente Paso",
+      "title": "Cuéntanos qué quieres mejorar.",
+      "description": "Comparte algunos detalles y te responderemos con pasos claros — incluida una consulta gratuita cuando sea el mejor punto de partida.",
+      "scheduleCta": "Agendar Consulta Gratuita",
+      "projectCta": "Continuar Con Este Formulario"
     }
   },
   "Work": {
@@ -901,11 +978,15 @@
   "Contact": {
     "meta": {
       "title": "Contacto",
-      "description": "Ponte en contacto con Corevia — habla directamente con la persona que construye tu software. Con base en Colombia, atendemos negocios en Colombia y EE. UU."
+      "description": "Contacta a CoreVia — habla directamente con el equipo que construye tu software. Con base en Colombia, atendemos negocios en Colombia y Estados Unidos."
     },
     "hero": {
-      "title": "Contacta a Corevia",
-      "description": "Escríbenos por el formulario — te responderemos con pasos claros."
+      "eyebrow": "Contactar a CoreVia",
+      "title": "Empecemos una conversación clara.",
+      "description": "Escríbenos con el formulario, agenda una consulta gratuita o mándanos un WhatsApp — hablarás con quienes construyen tu software.",
+      "consultationCta": "Agendar Consulta Gratuita",
+      "formCta": "Enviar Consulta de Proyecto",
+      "whatsappCta": "Chatear por WhatsApp"
     },
     "details": {
       "eyebrow": "Contacto",
@@ -934,6 +1015,16 @@
           "label": "Facebook"
         }
       }
+    },
+    "form": {
+      "eyebrow": "Consulta de Proyecto",
+      "title": "Cuéntanos sobre tu proyecto",
+      "description": "Comparte algunos detalles. Solo mostramos un mensaje de éxito después de recibir realmente tu consulta."
+    },
+    "trust": {
+      "title": "Expectativas claras",
+      "body": "Trabajarás directamente con el equipo que guía tu proyecto. Explora demostraciones verificadas del portafolio para ver la calidad de nuestro diseño y desarrollo.",
+      "cta": "Explorar Nuestro Trabajo"
     }
   },
   "Referral": {

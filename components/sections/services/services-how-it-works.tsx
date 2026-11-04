@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Container } from "@/components/layout/container";
@@ -18,47 +17,42 @@ export function ServicesHowItWorks() {
 
   return (
     <Section
-      tone="white"
-      spacing="tight"
+      tone="muted"
+      spacing="md"
       aria-labelledby="services-process-heading"
     >
-      <Container size="md">
-        <SectionReveal className="mx-auto w-full max-w-2xl text-center">
+      <Container size="xl">
+        <SectionReveal className="mx-auto max-w-2xl text-center">
+          <p className="text-caption font-semibold tracking-[0.14em] text-primary uppercase">
+            {t("eyebrow")}
+          </p>
           <Heading
             id="services-process-heading"
             size="h2"
             align="center"
-            className="tracking-tight glow-text-brand-soft"
+            className="mt-3 font-display tracking-tight"
           >
             {t("title")}
           </Heading>
-          <p className="mt-4 text-center text-muted-foreground">
+          <p className="mt-4 font-sans text-body-lg text-muted-foreground">
             {t("description")}
           </p>
         </SectionReveal>
 
-        <Stagger className="mx-auto mt-10 max-w-lg">
+        <Stagger className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {serviceProcessKeys.map((key, index) => (
             <StaggerItem key={key}>
-              <div className="flex flex-col items-center">
-                <div className="w-full rounded-2xl border border-border bg-card p-5 text-center shadow-[0_0_24px_rgb(22_82_240/0.4),0_0_48px_rgb(22_82_240/0.22)] sm:p-6">
-                  <p className="text-caption font-semibold tracking-[0.12em] text-primary uppercase">
-                    {t("stepLabel", { number: index + 1 })}
-                  </p>
-                  <p className="mt-2 font-sans text-lg font-semibold text-foreground">
-                    {t(`steps.${key}.title`)}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {t(`steps.${key}.description`)}
-                  </p>
+              <article>
+                <div className="flex size-10 items-center justify-center rounded-full border border-primary/30 bg-card font-display text-sm text-primary">
+                  {String(index + 1).padStart(2, "0")}
                 </div>
-                {index < serviceProcessKeys.length - 1 ? (
-                  <ArrowDown
-                    aria-hidden
-                    className="my-3 size-5 text-muted-foreground"
-                  />
-                ) : null}
-              </div>
+                <h3 className="mt-5 font-display text-h3 tracking-tight text-foreground">
+                  {t(`steps.${key}.title`)}
+                </h3>
+                <p className="mt-3 font-sans text-sm leading-relaxed text-muted-foreground">
+                  {t(`steps.${key}.description`)}
+                </p>
+              </article>
             </StaggerItem>
           ))}
         </Stagger>

@@ -390,6 +390,7 @@ export function ConsultationFormFlow({
           onSubmit={onSubmit}
           className="flex min-h-0 flex-1 flex-col"
           noValidate
+          aria-busy={isSubmitting}
         >
           <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6">
             {step === 0 ? (
@@ -587,11 +588,13 @@ export function ConsultationFormFlow({
               </div>
             ) : null}
 
-            {submitError ? (
-              <p className="mt-4 text-sm text-error" role="alert">
-                {submitError}
-              </p>
-            ) : null}
+            <div aria-live="assertive" aria-atomic="true">
+              {submitError ? (
+                <p className="mt-4 text-sm text-error" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
+            </div>
           </div>
 
           <div
