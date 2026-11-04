@@ -768,11 +768,14 @@
   "Work": {
     "meta": {
       "title": "Nuestro Trabajo",
-      "description": "Software real construido para negocios reales — plataformas de finanzas, operaciones y portafolios diseñadas alrededor de cómo trabajan los equipos."
+      "description": "Explora cinco demostraciones de diseño y software de CoreVia en construcción, hospitalidad, servicios para el hogar, restaurantes y retail — con capturas reales e interfaces en vivo."
     },
     "hero": {
-      "title": "Software Real. Negocios Reales.",
-      "description": "Mira lo que hemos construido para negocios como el tuyo."
+      "eyebrow": "Nuestro Trabajo · El Portafolio CoreVia",
+      "title": "Ideas reales.<br></br><accent>Experiencias digitales distintivas.</accent>",
+      "description": "Explora cinco proyectos de diseño y software en construcción, hospitalidad, servicios para el hogar, restaurantes y retail. Cada proyecto incluye capturas reales de interfaz y una demo directa.",
+      "primaryCta": "Ver Proyectos",
+      "secondaryCta": "Volver al Inicio"
     },
     "cases": {
       "title": "Trabajo Destacado",
@@ -855,10 +858,44 @@
       }
     },
     "cta": {
-      "title": "¿Quieres algo construido para tu negocio?",
-      "description": "Cuéntanos qué necesitas — revisamos tus objetivos y enviamos una cotización clara a precio fijo.",
-      "button": "Iniciar Tu Consulta",
-      "textNote": "¿Prefieres escribir? Lo entendemos — WhatsApp también sirve."
+      "eyebrow": "Siguiente Proyecto",
+      "title": "¿Qué podemos construir para ti?",
+      "description": "Un buen punto de partida es una conversación sobre cómo funciona tu negocio.",
+      "button": "Comienza Tu Proyecto",
+      "textNote": "¿Prefieres escribir? WhatsApp también sirve."
+    },
+    "projectMeta": {
+      "title": "{name} — Nuestro Trabajo",
+      "fallbackTitle": "Proyecto — Nuestro Trabajo",
+      "fallbackDescription": "Explora demostraciones del portafolio de CoreVia con capturas reales e interfaces en vivo."
+    },
+    "portfolio": {
+      "eyebrow": "Biblioteca de Proyectos",
+      "title": "Proyectos seleccionados.",
+      "description": "Filtra por capacidad, explora capturas individuales y abre cada demostración en vivo.",
+      "filtersLabel": "Filtrar proyectos por categoría",
+      "empty": "Ningún proyecto coincide con este filtro. Prueba otra categoría.",
+      "exploreCta": "Explorar Pantallas",
+      "demoCta": "Probar Demo en Vivo",
+      "openCaseCta": "Abrir Caso de Estudio",
+      "similarCta": "Hablar de un Proyecto Similar",
+      "caseEyebrow": "Vista previa del caso · {project}",
+      "groupsLabel": "Experiencias del proyecto",
+      "thumbsLabel": "Vistas previas de capturas",
+      "thumbAria": "Ver captura {index}",
+      "expandImage": "Abrir captura a pantalla completa",
+      "expandHint": "Clic para ampliar",
+      "screenshotCounter": "Captura {current} / {total}",
+      "galleryHelp": "Explora la interfaz del producto tal como se capturó en las capturas originales. Amplía cualquier imagen para verla de cerca, o muévete entre vistas abajo.",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "statusLabel": "Estado de la demostración:",
+      "backToLibrary": "Volver a la biblioteca de proyectos",
+      "lightboxDialog": "Visor de capturas",
+      "lightboxClose": "Cerrar visor de imágenes",
+      "lightboxPrevious": "Captura anterior",
+      "lightboxNext": "Captura siguiente",
+      "lightboxCounter": "Captura {current} de {total}"
     }
   },
   "Contact": {

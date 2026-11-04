@@ -104,7 +104,7 @@ export function HomeFlagship() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
-                href={`/work#${project.prototypeId}`}
+                href={`/work/${project.prototypeId}`}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "cta" }),
                   "border-white/25 bg-transparent text-secondary-foreground hover:bg-white/10 hover:text-secondary-foreground"

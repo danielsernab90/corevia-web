@@ -112,7 +112,7 @@ export function HomeProjectGrid() {
                     </p>
                     <div className="mt-5 flex flex-wrap gap-2">
                       <Link
-                        href={`/work#${project.prototypeId}`}
+                        href={`/work/${project.prototypeId}`}
                         className={cn(
                           buttonVariants({ variant: "outline", size: "sm" })
                         )}

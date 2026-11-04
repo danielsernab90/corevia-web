@@ -768,11 +768,14 @@
   "Work": {
     "meta": {
       "title": "Our Work",
-      "description": "Real software built for real businesses — finance, operations, and portfolio platforms designed around how teams actually work."
+      "description": "Explore five CoreVia design and software demonstrations across construction, hospitality, home services, restaurants, and retail — with real interface screenshots and live demos."
     },
     "hero": {
-      "title": "Real Software. Real Businesses.",
-      "description": "See what we've built for businesses like yours."
+      "eyebrow": "Our Work · The CoreVia Portfolio",
+      "title": "Real ideas.<br></br><accent>Distinctive digital experiences.</accent>",
+      "description": "Explore five design and software projects across construction, hospitality, home services, restaurants, and retail. Each project includes real interface screenshots and a direct demo.",
+      "primaryCta": "Browse Projects",
+      "secondaryCta": "Back to Home"
     },
     "cases": {
       "title": "Selected Work",
@@ -855,10 +858,44 @@
       }
     },
     "cta": {
-      "title": "Want something built for your business?",
-      "description": "Tell us what you need — we’ll review your goals and send a clear fixed-price quote.",
-      "button": "Start Your Inquiry",
-      "textNote": "Prefer to text? We get it — WhatsApp works too."
+      "eyebrow": "Next Project",
+      "title": "What can we build for you?",
+      "description": "A great starting point is a conversation about how your business works.",
+      "button": "Start Your Project",
+      "textNote": "Prefer to text? WhatsApp works too."
+    },
+    "projectMeta": {
+      "title": "{name} — Our Work",
+      "fallbackTitle": "Project — Our Work",
+      "fallbackDescription": "Explore CoreVia portfolio demonstrations with real interface screenshots and live demos."
+    },
+    "portfolio": {
+      "eyebrow": "Project Library",
+      "title": "Selected projects.",
+      "description": "Filter by capability, explore individual screenshots, and open each live demonstration.",
+      "filtersLabel": "Filter projects by category",
+      "empty": "No projects match this filter. Try another category.",
+      "exploreCta": "Explore Screens",
+      "demoCta": "Try Live Demo",
+      "openCaseCta": "Open Case Study",
+      "similarCta": "Discuss a Similar Project",
+      "caseEyebrow": "Case study preview · {project}",
+      "groupsLabel": "Project experiences",
+      "thumbsLabel": "Screenshot previews",
+      "thumbAria": "View screenshot {index}",
+      "expandImage": "Open screenshot full screen",
+      "expandHint": "Click to expand",
+      "screenshotCounter": "Screenshot {current} / {total}",
+      "galleryHelp": "Explore the product interface as captured in the original screenshots. Expand any image for a closer look, or move between views below.",
+      "previous": "Previous",
+      "next": "Next",
+      "statusLabel": "Demonstration status:",
+      "backToLibrary": "Back to project library",
+      "lightboxDialog": "Screenshot viewer",
+      "lightboxClose": "Close image viewer",
+      "lightboxPrevious": "Previous screenshot",
+      "lightboxNext": "Next screenshot",
+      "lightboxCounter": "Screenshot {current} of {total}"
     }
   },
   "Contact": {

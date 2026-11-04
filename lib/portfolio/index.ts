@@ -13,3 +13,5 @@ export {
   portfolioProjects,
   portfolioRegistry,
 } from "./registry";
+
+export { getShotCaption, SHOT_CAPTIONS } from "./shot-captions";

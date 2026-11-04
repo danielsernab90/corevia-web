@@ -5,25 +5,29 @@
     {
       "id": "all",
       "label": {
-        "en": "All Projects"
+        "en": "All Projects",
+        "es": "Todos los proyectos"
       }
     },
     {
       "id": "websites",
       "label": {
-        "en": "Websites"
+        "en": "Websites",
+        "es": "Sitios web"
       }
     },
     {
       "id": "software",
       "label": {
-        "en": "Business Software"
+        "en": "Business Software",
+        "es": "Software empresarial"
       }
     },
     {
       "id": "commerce",
       "label": {
-        "en": "Ordering & Commerce"
+        "en": "Ordering & Commerce",
+        "es": "Pedidos y comercio"
       }
     }
   ],
@@ -37,19 +41,24 @@
         "es": "Summit & Stone"
       },
       "industry": {
-        "en": "Construction & residential building"
+        "en": "Construction & residential building",
+        "es": "Construcción y edificación residencial"
       },
       "eyebrow": {
-        "en": "FLAGSHIP · CONSTRUCTION SOFTWARE"
+        "en": "FLAGSHIP · CONSTRUCTION SOFTWARE",
+        "es": "DESTACADO · SOFTWARE PARA CONSTRUCCIÓN"
       },
       "shortDescription": {
-        "en": "Construction OS"
+        "en": "Construction OS",
+        "es": "Construction OS"
       },
       "detailedDescription": {
-        "en": "A premium construction website and end-to-end business software demonstration, connecting inquiries, CRM, proposals, projects, scheduling, teams, reports and the customer portal."
+        "en": "A premium construction website and end-to-end business software demonstration, connecting inquiries, CRM, proposals, projects, scheduling, teams, reports and the customer portal.",
+        "es": "Una demostración premium de sitio web para construcción y software empresarial de extremo a extremo, que conecta consultas, CRM, propuestas, proyectos, programación, equipos, reportes y el portal del cliente."
       },
       "caseStudySummary": {
-        "en": "A complete construction business demonstration — from customer inquiry through estimates, CRM, project management, scheduling and client visibility."
+        "en": "A complete construction business demonstration — from customer inquiry through estimates, CRM, project management, scheduling and client visibility.",
+        "es": "Una demostración completa de negocio de construcción — desde la consulta del cliente hasta estimados, CRM, gestión de proyectos, programación y visibilidad para el cliente."
       },
       "categoryTags": [
         "software",
@@ -57,19 +66,24 @@
       ],
       "featureHighlights": [
         {
-          "en": "Business website"
+          "en": "Business website",
+          "es": "Sitio web del negocio"
         },
         {
-          "en": "Construction OS"
+          "en": "Construction OS",
+          "es": "Construction OS"
         },
         {
-          "en": "Customer portal"
+          "en": "Customer portal",
+          "es": "Portal del cliente"
         },
         {
-          "en": "Inquiries & CRM"
+          "en": "Inquiries & CRM",
+          "es": "Consultas y CRM"
         },
         {
-          "en": "Proposals & scheduling"
+          "en": "Proposals & scheduling",
+          "es": "Propuestas y programación"
         }
       ],
       "accentColor": "#B9A075",
@@ -79,7 +93,8 @@
         {
           "id": "business-website",
           "label": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "screenshotAssetIds": [
             "3.00.30",
@@ -94,7 +109,8 @@
         {
           "id": "construction-os",
           "label": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "screenshotAssetIds": [
             "3.01.58",
@@ -110,7 +126,8 @@
         {
           "id": "customer-portal",
           "label": {
-            "en": "Customer Portal"
+            "en": "Customer Portal",
+            "es": "Portal del cliente"
           },
           "screenshotAssetIds": [
             "3.03.09"
@@ -123,10 +140,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.30 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.00.30.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.00.30.jpg"
         },
@@ -135,10 +154,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.38 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.00.38.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.00.38.jpg"
         },
@@ -147,10 +168,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.45 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.00.45.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.00.45.jpg"
         },
@@ -159,10 +182,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.49 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.00.49.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.00.49.jpg"
         },
@@ -171,10 +196,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.57 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.00.57.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.00.57.jpg"
         },
@@ -183,10 +210,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.01.02 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.01.02.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.01.02.jpg"
         },
@@ -195,10 +224,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.01.14 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.01.14.jpg",
           "groupLabel": {
-            "en": "Business Website"
+            "en": "Business Website",
+            "es": "Sitio web del negocio"
           },
           "alt": {
-            "en": "Summit & Stone — Business Website screenshot"
+            "en": "Summit & Stone — Business Website screenshot",
+            "es": "Summit & Stone — captura de Sitio web del negocio"
           },
           "optimizedBasename": "image-3.01.14.jpg"
         },
@@ -207,10 +238,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.01.58 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.01.58.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.01.58.jpg"
         },
@@ -219,10 +252,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.07 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.07.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.07.jpg"
         },
@@ -231,10 +266,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.13 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.13.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.13.jpg"
         },
@@ -243,10 +280,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.21 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.21.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.21.jpg"
         },
@@ -255,10 +294,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.27 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.27.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.27.jpg"
         },
@@ -267,10 +308,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.34 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.34.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.34.jpg"
         },
@@ -279,10 +322,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.42 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.42.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.42.jpg"
         },
@@ -291,10 +336,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.53 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.02.53.jpg",
           "groupLabel": {
-            "en": "Construction OS"
+            "en": "Construction OS",
+            "es": "Construction OS"
           },
           "alt": {
-            "en": "Summit & Stone — Construction OS screenshot"
+            "en": "Summit & Stone — Construction OS screenshot",
+            "es": "Summit & Stone — captura de Construction OS"
           },
           "optimizedBasename": "image-3.02.53.jpg"
         },
@@ -303,10 +350,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.03.09 PM.png",
           "src": "/images/portfolio/summit-and-stone/image-3.03.09.jpg",
           "groupLabel": {
-            "en": "Customer Portal"
+            "en": "Customer Portal",
+            "es": "Portal del cliente"
           },
           "alt": {
-            "en": "Summit & Stone — Customer Portal screenshot"
+            "en": "Summit & Stone — Customer Portal screenshot",
+            "es": "Summit & Stone — captura de Portal del cliente"
           },
           "optimizedBasename": "image-3.03.09.jpg"
         }
@@ -334,19 +383,24 @@
         "es": "Cotinga Hotel & Spa"
       },
       "industry": {
-        "en": "Hospitality & hotel management"
+        "en": "Hospitality & hotel management",
+        "es": "Hospitalidad y gestión hotelera"
       },
       "eyebrow": {
-        "en": "HOSPITALITY · SOFTWARE + WEB"
+        "en": "HOSPITALITY · SOFTWARE + WEB",
+        "es": "HOSPITALIDAD · SOFTWARE + WEB"
       },
       "shortDescription": {
-        "en": "Hospitality & hotel management"
+        "en": "Hospitality & hotel management",
+        "es": "Hospitalidad y gestión hotelera"
       },
       "detailedDescription": {
-        "en": "An immersive hospitality website paired with a private hotel operations preview, including room discovery, spa experiences, booking interfaces, reception and management tools."
+        "en": "An immersive hospitality website paired with a private hotel operations preview, including room discovery, spa experiences, booking interfaces, reception and management tools.",
+        "es": "Un sitio de hospitalidad inmersivo junto con una vista previa privada de operaciones hoteleras, incluyendo descubrimiento de habitaciones, experiencias de spa, interfaces de reserva, recepción y herramientas de gestión."
       },
       "caseStudySummary": {
-        "en": "Guest-facing hospitality storytelling paired with a private hotel operations preview for rooms, spa, reception and day-to-day management tools."
+        "en": "Guest-facing hospitality storytelling paired with a private hotel operations preview for rooms, spa, reception and day-to-day management tools.",
+        "es": "Sitio para huéspedes y herramientas de operaciones hoteleras en una sola demostración de hospitalidad."
       },
       "categoryTags": [
         "software",
@@ -354,19 +408,24 @@
       ],
       "featureHighlights": [
         {
-          "en": "Guest website"
+          "en": "Guest website",
+          "es": "Sitio para huéspedes"
         },
         {
-          "en": "Hotel dashboard"
+          "en": "Hotel dashboard",
+          "es": "Dashboard del hotel"
         },
         {
-          "en": "Room discovery"
+          "en": "Room discovery",
+          "es": "Descubrimiento de habitaciones"
         },
         {
-          "en": "Spa experiences"
+          "en": "Spa experiences",
+          "es": "Experiencias de spa"
         },
         {
-          "en": "Booking interfaces"
+          "en": "Booking interfaces",
+          "es": "Interfaces de reserva"
         }
       ],
       "accentColor": "#6CA691",
@@ -376,7 +435,8 @@
         {
           "id": "guest-website",
           "label": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "screenshotAssetIds": [
             "2.46.27",
@@ -394,7 +454,8 @@
         {
           "id": "hotel-dashboard",
           "label": {
-            "en": "Hotel Dashboard"
+            "en": "Hotel Dashboard",
+            "es": "Dashboard del hotel"
           },
           "screenshotAssetIds": [
             "2.50.52",
@@ -410,10 +471,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.27 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.27.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.46.27.jpg"
         },
@@ -422,10 +485,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.36 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.36.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.46.36.jpg"
         },
@@ -434,10 +499,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.46 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.46.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.46.46.jpg"
         },
@@ -446,10 +513,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.53 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.53.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.46.53.jpg"
         },
@@ -458,10 +527,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.05 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.05.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.47.05.jpg"
         },
@@ -470,10 +541,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.11 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.11.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.47.11.jpg"
         },
@@ -482,10 +555,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.20 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.20.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.47.20.jpg"
         },
@@ -494,10 +569,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.35 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.35.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.47.35.jpg"
         },
@@ -506,10 +583,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.43 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.43.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.47.43.jpg"
         },
@@ -518,10 +597,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.54 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.54.jpg",
           "groupLabel": {
-            "en": "Guest Website"
+            "en": "Guest Website",
+            "es": "Sitio para huéspedes"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Sitio para huéspedes"
           },
           "optimizedBasename": "image-2.47.54.jpg"
         },
@@ -530,10 +611,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.50.52 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.50.52.jpg",
           "groupLabel": {
-            "en": "Hotel Dashboard"
+            "en": "Hotel Dashboard",
+            "es": "Dashboard del hotel"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Dashboard del hotel"
           },
           "optimizedBasename": "image-2.50.52.jpg"
         },
@@ -542,10 +625,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.50.59 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.50.59.jpg",
           "groupLabel": {
-            "en": "Hotel Dashboard"
+            "en": "Hotel Dashboard",
+            "es": "Dashboard del hotel"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Dashboard del hotel"
           },
           "optimizedBasename": "image-2.50.59.jpg"
         },
@@ -554,10 +639,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.51.07 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.51.07.jpg",
           "groupLabel": {
-            "en": "Hotel Dashboard"
+            "en": "Hotel Dashboard",
+            "es": "Dashboard del hotel"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Dashboard del hotel"
           },
           "optimizedBasename": "image-2.51.07.jpg"
         },
@@ -566,10 +653,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 2.51.16 PM.png",
           "src": "/images/portfolio/cotinga-hotel-spa/image-2.51.16.jpg",
           "groupLabel": {
-            "en": "Hotel Dashboard"
+            "en": "Hotel Dashboard",
+            "es": "Dashboard del hotel"
           },
           "alt": {
-            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot",
+            "es": "Cotinga Hotel & Spa — captura de Dashboard del hotel"
           },
           "optimizedBasename": "image-2.51.16.jpg"
         }
@@ -597,19 +686,24 @@
         "es": "Perritos Gourmet"
       },
       "industry": {
-        "en": "Food service & restaurant ordering"
+        "en": "Food service & restaurant ordering",
+        "es": "Servicio de comida y pedidos de restaurante"
       },
       "eyebrow": {
-        "en": "FOOD SERVICE · ORDERING"
+        "en": "FOOD SERVICE · ORDERING",
+        "es": "SERVICIO DE COMIDA · PEDIDOS"
       },
       "shortDescription": {
-        "en": "Restaurant ordering & operations"
+        "en": "Restaurant ordering & operations",
+        "es": "Pedidos y operaciones de restaurante"
       },
       "detailedDescription": {
-        "en": "A customizable customer ordering journey, from menu selection to checkout, paired with a restaurant order-management demonstration."
+        "en": "A customizable customer ordering journey, from menu selection to checkout, paired with a restaurant order-management demonstration.",
+        "es": "Un recorrido personalizable de pedidos para el cliente, desde la selección del menú hasta el pago, junto con una demostración de gestión de pedidos para el restaurante."
       },
       "caseStudySummary": {
-        "en": "Customer menu selection through checkout, alongside a restaurant order-management demonstration."
+        "en": "Customer menu selection through checkout, alongside a restaurant order-management demonstration.",
+        "es": "Pedidos simulados desde el menú hasta la confirmación, con un dashboard operativo de demostración."
       },
       "categoryTags": [
         "software",
@@ -618,16 +712,20 @@
       ],
       "featureHighlights": [
         {
-          "en": "Customer ordering"
+          "en": "Customer ordering",
+          "es": "Pedidos del cliente"
         },
         {
-          "en": "Menu customization"
+          "en": "Menu customization",
+          "es": "Personalización del menú"
         },
         {
-          "en": "Checkout flow"
+          "en": "Checkout flow",
+          "es": "Flujo de pago"
         },
         {
-          "en": "Restaurant dashboard"
+          "en": "Restaurant dashboard",
+          "es": "Dashboard del restaurante"
         }
       ],
       "accentColor": "#E96F4A",
@@ -637,7 +735,8 @@
         {
           "id": "customer-ordering",
           "label": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "screenshotAssetIds": [
             "3.19.52",
@@ -651,7 +750,8 @@
         {
           "id": "restaurant-dashboard",
           "label": {
-            "en": "Restaurant Dashboard"
+            "en": "Restaurant Dashboard",
+            "es": "Dashboard del restaurante"
           },
           "screenshotAssetIds": [
             "3.21.11",
@@ -665,10 +765,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.19.52 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.19.52.jpg",
           "groupLabel": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "alt": {
-            "en": "Perritos Gourmet — Customer Ordering screenshot"
+            "en": "Perritos Gourmet — Customer Ordering screenshot",
+            "es": "Perritos Gourmet — captura de Pedidos del cliente"
           },
           "optimizedBasename": "image-3.19.52.jpg"
         },
@@ -677,10 +779,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.19.59 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.19.59.jpg",
           "groupLabel": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "alt": {
-            "en": "Perritos Gourmet — Customer Ordering screenshot"
+            "en": "Perritos Gourmet — Customer Ordering screenshot",
+            "es": "Perritos Gourmet — captura de Pedidos del cliente"
           },
           "optimizedBasename": "image-3.19.59.jpg"
         },
@@ -689,10 +793,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.10 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.20.10.jpg",
           "groupLabel": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "alt": {
-            "en": "Perritos Gourmet — Customer Ordering screenshot"
+            "en": "Perritos Gourmet — Customer Ordering screenshot",
+            "es": "Perritos Gourmet — captura de Pedidos del cliente"
           },
           "optimizedBasename": "image-3.20.10.jpg"
         },
@@ -701,10 +807,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.28 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.20.28.jpg",
           "groupLabel": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "alt": {
-            "en": "Perritos Gourmet — Customer Ordering screenshot"
+            "en": "Perritos Gourmet — Customer Ordering screenshot",
+            "es": "Perritos Gourmet — captura de Pedidos del cliente"
           },
           "optimizedBasename": "image-3.20.28.jpg"
         },
@@ -713,10 +821,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.41 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.20.41.jpg",
           "groupLabel": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "alt": {
-            "en": "Perritos Gourmet — Customer Ordering screenshot"
+            "en": "Perritos Gourmet — Customer Ordering screenshot",
+            "es": "Perritos Gourmet — captura de Pedidos del cliente"
           },
           "optimizedBasename": "image-3.20.41.jpg"
         },
@@ -725,10 +835,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.56 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.20.56.jpg",
           "groupLabel": {
-            "en": "Customer Ordering"
+            "en": "Customer Ordering",
+            "es": "Pedidos del cliente"
           },
           "alt": {
-            "en": "Perritos Gourmet — Customer Ordering screenshot"
+            "en": "Perritos Gourmet — Customer Ordering screenshot",
+            "es": "Perritos Gourmet — captura de Pedidos del cliente"
           },
           "optimizedBasename": "image-3.20.56.jpg"
         },
@@ -737,10 +849,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.21.11 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.21.11.jpg",
           "groupLabel": {
-            "en": "Restaurant Dashboard"
+            "en": "Restaurant Dashboard",
+            "es": "Dashboard del restaurante"
           },
           "alt": {
-            "en": "Perritos Gourmet — Restaurant Dashboard screenshot"
+            "en": "Perritos Gourmet — Restaurant Dashboard screenshot",
+            "es": "Perritos Gourmet — captura de Dashboard del restaurante"
           },
           "optimizedBasename": "image-3.21.11.jpg"
         },
@@ -749,10 +863,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.21.16 PM.png",
           "src": "/images/portfolio/perritos-gourmet/image-3.21.16.jpg",
           "groupLabel": {
-            "en": "Restaurant Dashboard"
+            "en": "Restaurant Dashboard",
+            "es": "Dashboard del restaurante"
           },
           "alt": {
-            "en": "Perritos Gourmet — Restaurant Dashboard screenshot"
+            "en": "Perritos Gourmet — Restaurant Dashboard screenshot",
+            "es": "Perritos Gourmet — captura de Dashboard del restaurante"
           },
           "optimizedBasename": "image-3.21.16.jpg"
         }
@@ -780,35 +896,44 @@
         "es": "Dixie Remodeling"
       },
       "industry": {
-        "en": "Home remodeling & outdoor living"
+        "en": "Home remodeling & outdoor living",
+        "es": "Remodelación del hogar y espacios exteriores"
       },
       "eyebrow": {
-        "en": "HOME SERVICES · WEB DESIGN"
+        "en": "HOME SERVICES · WEB DESIGN",
+        "es": "SERVICIOS PARA EL HOGAR · DISEÑO WEB"
       },
       "shortDescription": {
-        "en": "Premium service-business website"
+        "en": "Premium service-business website",
+        "es": "Sitio web premium para negocios de servicios"
       },
       "detailedDescription": {
-        "en": "A bilingual remodeling website concept with a cinematic hero, project photography, service galleries, category filters and estimate request experience."
+        "en": "A bilingual remodeling website concept with a cinematic hero, project photography, service galleries, category filters and estimate request experience.",
+        "es": "Un concepto bilingüe de sitio web de remodelación con héroe cinematográfico, fotografía de proyectos, galerías de servicios, filtros por categoría y experiencia de solicitud de estimado."
       },
       "caseStudySummary": {
-        "en": "Bilingual remodeling marketing site with project photography, service galleries, category filters and estimate request experience."
+        "en": "Bilingual remodeling marketing site with project photography, service galleries, category filters and estimate request experience.",
+        "es": "Un sitio bilingüe de servicios premium con narrativa cinematográfica, galerías y solicitud de estimado."
       },
       "categoryTags": [
         "websites"
       ],
       "featureHighlights": [
         {
-          "en": "Bilingual website"
+          "en": "Bilingual website",
+          "es": "Sitio bilingüe"
         },
         {
-          "en": "Project photography galleries"
+          "en": "Project photography galleries",
+          "es": "Galerías fotográficas de proyectos"
         },
         {
-          "en": "Service category filters"
+          "en": "Service category filters",
+          "es": "Filtros por categoría de servicio"
         },
         {
-          "en": "Estimate request experience"
+          "en": "Estimate request experience",
+          "es": "Solicitud de estimado"
         }
       ],
       "accentColor": "#D3B076",
@@ -818,7 +943,8 @@
         {
           "id": "website-experience",
           "label": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "screenshotAssetIds": [
             "1.56.26",
@@ -840,10 +966,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.56.26 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.56.26.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.56.26.jpg"
         },
@@ -852,10 +980,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.56.41 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.56.41.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.56.41.jpg"
         },
@@ -864,10 +994,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.56.48 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.56.48.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.56.48.jpg"
         },
@@ -876,10 +1008,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.05 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.05.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.05.jpg"
         },
@@ -888,10 +1022,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.15 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.15.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.15.jpg"
         },
@@ -900,10 +1036,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.22 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.22.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.22.jpg"
         },
@@ -912,10 +1050,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.30 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.30.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.30.jpg"
         },
@@ -924,10 +1064,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.37 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.37.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.37.jpg"
         },
@@ -936,10 +1078,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.46 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.46.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.46.jpg"
         },
@@ -948,10 +1092,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.59 PM.png",
           "src": "/images/portfolio/dixie-remodeling/image-1.57.59.jpg",
           "groupLabel": {
-            "en": "Website Experience"
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
           },
           "alt": {
-            "en": "Dixie Remodeling — Website Experience screenshot"
+            "en": "Dixie Remodeling — Website Experience screenshot",
+            "es": "Dixie Remodeling — captura de Experiencia del sitio"
           },
           "optimizedBasename": "image-1.57.59.jpg"
         }
@@ -979,19 +1125,24 @@
         "es": "La Gallinita"
       },
       "industry": {
-        "en": "Retail, wholesale & distribution"
+        "en": "Retail, wholesale & distribution",
+        "es": "Retail, mayoreo y distribución"
       },
       "eyebrow": {
-        "en": "RETAIL · B2B COMMERCE"
+        "en": "RETAIL · B2B COMMERCE",
+        "es": "RETAIL · COMERCIO B2B"
       },
       "shortDescription": {
-        "en": "Retail, wholesale & operations"
+        "en": "Retail, wholesale & operations",
+        "es": "Retail, mayoreo y operaciones"
       },
       "detailedDescription": {
-        "en": "An unofficial demonstration of retail and wholesale shopping, bulk quantities, point of sale, centralized inventory and delivery operations."
+        "en": "An unofficial demonstration of retail and wholesale shopping, bulk quantities, point of sale, centralized inventory and delivery operations.",
+        "es": "Una demostración no oficial de compras minoristas y mayoristas, cantidades a granel, punto de venta, inventario centralizado y operaciones de entrega."
       },
       "caseStudySummary": {
-        "en": "Retail and wholesale shopping flows with bulk quantities, plus inventory and delivery operations surfaces in an unofficial demonstration."
+        "en": "Retail and wholesale shopping flows with bulk quantities, plus inventory and delivery operations surfaces in an unofficial demonstration.",
+        "es": "Demo no oficial de comercio minorista y mayorista con inventario, POS y entregas — pagos simulados."
       },
       "categoryTags": [
         "software",
@@ -1000,16 +1151,20 @@
       ],
       "featureHighlights": [
         {
-          "en": "Online store"
+          "en": "Online store",
+          "es": "Tienda en línea"
         },
         {
-          "en": "Wholesale ordering"
+          "en": "Wholesale ordering",
+          "es": "Pedidos mayoristas"
         },
         {
-          "en": "Bulk quantities"
+          "en": "Bulk quantities",
+          "es": "Cantidades a granel"
         },
         {
-          "en": "Inventory & delivery operations"
+          "en": "Inventory & delivery operations",
+          "es": "Inventario y entregas"
         }
       ],
       "accentColor": "#E8C83B",
@@ -1019,7 +1174,8 @@
         {
           "id": "online-store",
           "label": {
-            "en": "Online Store"
+            "en": "Online Store",
+            "es": "Tienda en línea"
           },
           "screenshotAssetIds": [
             "3.44.04",
@@ -1031,7 +1187,8 @@
         {
           "id": "wholesale",
           "label": {
-            "en": "Wholesale"
+            "en": "Wholesale",
+            "es": "Mayoreo"
           },
           "screenshotAssetIds": [
             "3.44.40",
@@ -1041,7 +1198,8 @@
         {
           "id": "operations",
           "label": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "screenshotAssetIds": [
             "3.45.16",
@@ -1059,10 +1217,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.04 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.44.04.jpg",
           "groupLabel": {
-            "en": "Online Store"
+            "en": "Online Store",
+            "es": "Tienda en línea"
           },
           "alt": {
-            "en": "La Gallinita — Online Store screenshot"
+            "en": "La Gallinita — Online Store screenshot",
+            "es": "La Gallinita — captura de Tienda en línea"
           },
           "optimizedBasename": "image-3.44.04.jpg"
         },
@@ -1071,10 +1231,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.11 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.44.11.jpg",
           "groupLabel": {
-            "en": "Online Store"
+            "en": "Online Store",
+            "es": "Tienda en línea"
           },
           "alt": {
-            "en": "La Gallinita — Online Store screenshot"
+            "en": "La Gallinita — Online Store screenshot",
+            "es": "La Gallinita — captura de Tienda en línea"
           },
           "optimizedBasename": "image-3.44.11.jpg"
         },
@@ -1083,10 +1245,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.18 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.44.18.jpg",
           "groupLabel": {
-            "en": "Online Store"
+            "en": "Online Store",
+            "es": "Tienda en línea"
           },
           "alt": {
-            "en": "La Gallinita — Online Store screenshot"
+            "en": "La Gallinita — Online Store screenshot",
+            "es": "La Gallinita — captura de Tienda en línea"
           },
           "optimizedBasename": "image-3.44.18.jpg"
         },
@@ -1095,10 +1259,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.54 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.44.54.jpg",
           "groupLabel": {
-            "en": "Online Store"
+            "en": "Online Store",
+            "es": "Tienda en línea"
           },
           "alt": {
-            "en": "La Gallinita — Online Store screenshot"
+            "en": "La Gallinita — Online Store screenshot",
+            "es": "La Gallinita — captura de Tienda en línea"
           },
           "optimizedBasename": "image-3.44.54.jpg"
         },
@@ -1107,10 +1273,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.40 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.44.40.jpg",
           "groupLabel": {
-            "en": "Wholesale"
+            "en": "Wholesale",
+            "es": "Mayoreo"
           },
           "alt": {
-            "en": "La Gallinita — Wholesale screenshot"
+            "en": "La Gallinita — Wholesale screenshot",
+            "es": "La Gallinita — captura de Mayoreo"
           },
           "optimizedBasename": "image-3.44.40.jpg"
         },
@@ -1119,10 +1287,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.47 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.44.47.jpg",
           "groupLabel": {
-            "en": "Wholesale"
+            "en": "Wholesale",
+            "es": "Mayoreo"
           },
           "alt": {
-            "en": "La Gallinita — Wholesale screenshot"
+            "en": "La Gallinita — Wholesale screenshot",
+            "es": "La Gallinita — captura de Mayoreo"
           },
           "optimizedBasename": "image-3.44.47.jpg"
         },
@@ -1131,10 +1301,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.16 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.45.16.jpg",
           "groupLabel": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "alt": {
-            "en": "La Gallinita — Operations screenshot"
+            "en": "La Gallinita — Operations screenshot",
+            "es": "La Gallinita — captura de Operaciones"
           },
           "optimizedBasename": "image-3.45.16.jpg"
         },
@@ -1143,10 +1315,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.22 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.45.22.jpg",
           "groupLabel": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "alt": {
-            "en": "La Gallinita — Operations screenshot"
+            "en": "La Gallinita — Operations screenshot",
+            "es": "La Gallinita — captura de Operaciones"
           },
           "optimizedBasename": "image-3.45.22.jpg"
         },
@@ -1155,10 +1329,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.31 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.45.31.jpg",
           "groupLabel": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "alt": {
-            "en": "La Gallinita — Operations screenshot"
+            "en": "La Gallinita — Operations screenshot",
+            "es": "La Gallinita — captura de Operaciones"
           },
           "optimizedBasename": "image-3.45.31.jpg"
         },
@@ -1167,10 +1343,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.39 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.45.39.jpg",
           "groupLabel": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "alt": {
-            "en": "La Gallinita — Operations screenshot"
+            "en": "La Gallinita — Operations screenshot",
+            "es": "La Gallinita — captura de Operaciones"
           },
           "optimizedBasename": "image-3.45.39.jpg"
         },
@@ -1179,10 +1357,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.46 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.45.46.jpg",
           "groupLabel": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "alt": {
-            "en": "La Gallinita — Operations screenshot"
+            "en": "La Gallinita — Operations screenshot",
+            "es": "La Gallinita — captura de Operaciones"
           },
           "optimizedBasename": "image-3.45.46.jpg"
         },
@@ -1191,10 +1371,12 @@
           "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.57 PM.png",
           "src": "/images/portfolio/la-gallinita/image-3.45.57.jpg",
           "groupLabel": {
-            "en": "Operations"
+            "en": "Operations",
+            "es": "Operaciones"
           },
           "alt": {
-            "en": "La Gallinita — Operations screenshot"
+            "en": "La Gallinita — Operations screenshot",
+            "es": "La Gallinita — captura de Operaciones"
           },
           "optimizedBasename": "image-3.45.57.jpg"
         }
