@@ -33,7 +33,8 @@
       "prototypeId": "summit",
       "displayOrder": 1,
       "name": {
-        "en": "Summit & Stone"
+        "en": "Summit & Stone",
+        "es": "Summit & Stone"
       },
       "industry": {
         "en": "Construction & residential building"
@@ -314,10 +315,12 @@
         "url": "https://construction-os-eta.vercel.app/",
         "status": "interactive-fictional-demo",
         "statusLabel": {
-          "en": "Interactive fictional demo"
+          "en": "Interactive fictional demo",
+          "es": "Demo interactiva ficticia"
         },
         "disclaimer": {
-          "en": "Fictional demonstration data · No claim of production deployment"
+          "en": "Fictional demonstration data · No claim of production deployment",
+          "es": "Datos de demostración ficticios · No se reclama despliegue en producción"
         }
       },
       "verifiedSecondaryUrls": []
@@ -327,7 +330,8 @@
       "prototypeId": "cotinga",
       "displayOrder": 2,
       "name": {
-        "en": "Cotinga Hotel & Spa"
+        "en": "Cotinga Hotel & Spa",
+        "es": "Cotinga Hotel & Spa"
       },
       "industry": {
         "en": "Hospitality & hotel management"
@@ -574,10 +578,12 @@
         "url": "https://cotinga.vercel.app/",
         "status": "website-operations-preview",
         "statusLabel": {
-          "en": "Website + operations preview"
+          "en": "Website + operations preview",
+          "es": "Sitio web + vista previa de operaciones"
         },
         "disclaimer": {
-          "en": "Preview surfaces · Not a claim of live hotel operations integration"
+          "en": "Preview surfaces · Not a claim of live hotel operations integration",
+          "es": "Demostración de sitio y operaciones · No se reclama despliegue en producción"
         }
       },
       "verifiedSecondaryUrls": []
@@ -587,7 +593,8 @@
       "prototypeId": "perritos",
       "displayOrder": 3,
       "name": {
-        "en": "Perritos Gourmet"
+        "en": "Perritos Gourmet",
+        "es": "Perritos Gourmet"
       },
       "industry": {
         "en": "Food service & restaurant ordering"
@@ -754,10 +761,12 @@
         "url": "https://perritos-gourmet-demo-q5qw.vercel.app/",
         "status": "simulated-ordering-demo",
         "statusLabel": {
-          "en": "Simulated ordering / demo backend"
+          "en": "Simulated ordering / demo backend",
+          "es": "Pedidos simulados / backend de demo"
         },
         "disclaimer": {
-          "en": "Simulated ordering journey · Demo backend only"
+          "en": "Simulated ordering journey · Demo backend only",
+          "es": "Pedidos simulados · No se procesan pagos reales"
         }
       },
       "verifiedSecondaryUrls": []
@@ -767,7 +776,8 @@
       "prototypeId": "dixie",
       "displayOrder": 4,
       "name": {
-        "en": "Dixie Remodeling"
+        "en": "Dixie Remodeling",
+        "es": "Dixie Remodeling"
       },
       "industry": {
         "en": "Home remodeling & outdoor living"
@@ -950,10 +960,12 @@
         "url": "https://dixie-remodeling.vercel.app/en",
         "status": "website-demo",
         "statusLabel": {
-          "en": "Website demo"
+          "en": "Website demo",
+          "es": "Demo de sitio web"
         },
         "disclaimer": {
-          "en": "Website demonstration"
+          "en": "Website demonstration",
+          "es": "Demostración de sitio web · Concepto de experiencia"
         }
       },
       "verifiedSecondaryUrls": []
@@ -963,7 +975,8 @@
       "prototypeId": "gallinita",
       "displayOrder": 5,
       "name": {
-        "en": "La Gallinita"
+        "en": "La Gallinita",
+        "es": "La Gallinita"
       },
       "industry": {
         "en": "Retail, wholesale & distribution"
@@ -1190,10 +1203,12 @@
         "url": "https://la-gallinita.vercel.app/",
         "status": "unofficial-simulated-payments-demo",
         "statusLabel": {
-          "en": "Unofficial demo · simulated payments"
+          "en": "Unofficial demo · simulated payments",
+          "es": "Demo no oficial · pagos simulados"
         },
         "disclaimer": {
-          "en": "Unofficial demonstration · Simulated payments"
+          "en": "Unofficial demonstration · Simulated payments",
+          "es": "Demo no oficial · Pagos simulados · No se reclama despliegue oficial"
         }
       },
       "verifiedSecondaryUrls": []

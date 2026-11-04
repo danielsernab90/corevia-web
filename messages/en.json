@@ -233,6 +233,146 @@
           "description": "We help bring it to life, refine the system, and give your business technology that can evolve with you."
         }
       }
+    },
+    "hero": {
+      "eyebrow": "CoreVia · Custom Software, AI & Digital Experiences",
+      "title": "Your Business Isn't a Template.<br></br><accent>Your Technology Shouldn't Be Either.</accent>",
+      "description": "We build custom software, AI-powered tools, and intelligent automations designed around how your business actually works.",
+      "primaryCta": "Start Your Project",
+      "secondaryCta": "Explore Our Work",
+      "whatsappCta": "Chat on WhatsApp"
+    },
+    "outcomes": {
+      "eyebrow": "Business Outcomes",
+      "title": "Technology that makes the work easier.",
+      "description": "We focus on practical results — less busywork, clearer operations, and systems that grow with you.",
+      "items": {
+        "saveTime": {
+          "title": "Save time",
+          "description": "Replace repetitive coordination with software and automation that handle the busywork — so your team can focus on the work that matters."
+        },
+        "gainControl": {
+          "title": "Gain control",
+          "description": "Bring leads, projects, schedules, and reporting into systems you can actually see and manage — instead of scattered tools and spreadsheets."
+        },
+        "growSmarter": {
+          "title": "Grow smarter",
+          "description": "Build on foundations that fit how you sell and operate today, and stay ready to evolve as your business changes."
+        }
+      }
+    },
+    "flagship": {
+      "eyebrow": "Selected Work / 01",
+      "title": "Software that <br></br>speaks for itself.",
+      "description": "Explore the digital products, websites, and business applications behind our work. Every experience is different because every business is different.",
+      "metaFlagship": "Flagship Project",
+      "metaOs": "Construction OS",
+      "summary": "A premium construction management software demonstration — from customer inquiry through estimates, CRM, project management, scheduling, and client visibility.",
+      "highlights": {
+        "crm": "CRM and lead tracking",
+        "estimates": "Estimates and proposals",
+        "projects": "Project management",
+        "scheduling": "Scheduling",
+        "workforce": "Workforce coordination",
+        "reporting": "Reporting",
+        "portal": "Customer portal",
+        "aiReception": "AI receptionist demonstration"
+      },
+      "exploreCta": "Explore Project",
+      "demoCta": "Try Live Demo",
+      "browserLabel": "Construction OS / interactive demo",
+      "thumbsLabel": "Construction OS screenshot previews",
+      "thumbAria": "View screenshot {index}"
+    },
+    "projects": {
+      "eyebrow": "More from the studio",
+      "title": "Five businesses. <br></br>Five different solutions.",
+      "description": "From hospitality and construction to online ordering and retail operations — discover what tailored technology can look like.",
+      "viewCta": "View Project",
+      "demoCta": "Live Demo",
+      "allCta": "Explore All Projects",
+      "categories": {
+        "cotinga-hotel-spa": "Hospitality · Software + Web",
+        "dixie-remodeling": "Home Services · Web Design",
+        "perritos-gourmet": "Food Service · Ordering",
+        "la-gallinita": "Retail · B2B Commerce"
+      },
+      "blurbs": {
+        "cotinga-hotel-spa": "An immersive hospitality website paired with hotel operations tools — rooms, spa experiences, booking, and management.",
+        "dixie-remodeling": "A bilingual remodeling website with cinematic storytelling, project galleries, and estimate requests.",
+        "perritos-gourmet": "A customer ordering journey from menu to checkout, with restaurant order-management tools.",
+        "la-gallinita": "Retail and wholesale shopping with inventory, point of sale, and delivery operations in one demonstration."
+      }
+    },
+    "solutions": {
+      "eyebrow": "Solutions",
+      "title": "One partner. Multiple capabilities.",
+      "description": "From custom business software to automation, dashboards, digital platforms, integrations, and growth support — we build what your business actually needs.",
+      "cta": "Explore Services",
+      "items": {
+        "customSoftware": {
+          "title": "Custom Software",
+          "description": "Systems designed around your workflows, processes, and the way your business actually operates."
+        },
+        "aiAutomation": {
+          "title": "AI & Automation",
+          "description": "Remove repetitive work, streamline operations, and make everyday processes smarter."
+        },
+        "dashboards": {
+          "title": "Business Dashboards & Management Systems",
+          "description": "Turn scattered information into clear systems that help you understand and run your business."
+        },
+        "websites": {
+          "title": "Websites & Digital Platforms",
+          "description": "Web experiences built for your customers, your team, and the way you do business."
+        },
+        "integrations": {
+          "title": "Integrations",
+          "description": "Connect the tools you already use so information flows without manual copy-paste."
+        },
+        "digitalGrowth": {
+          "title": "Digital Growth & Creative Services",
+          "description": "Marketing, content, advertising, and creative support that help your business show up clearly online."
+        }
+      }
+    },
+    "process": {
+      "eyebrow": "How We Work",
+      "title": "A straightforward process.",
+      "description": "Clear steps from the first conversation to a system that can grow with you.",
+      "steps": {
+        "discover": {
+          "title": "Discover",
+          "description": "We learn how your business works, what is slowing you down, and what success should look like."
+        },
+        "design": {
+          "title": "Design",
+          "description": "We map the right approach, define what needs to be built, and give you a clear plan before development begins."
+        },
+        "build": {
+          "title": "Build",
+          "description": "We design and develop the software, automation, integrations, or digital platform around your requirements."
+        },
+        "launch": {
+          "title": "Launch & Improve",
+          "description": "We help bring it to life, refine the system, and leave you with technology that can evolve with your business."
+        }
+      }
+    },
+    "credibility": {
+      "eyebrow": "The Human Approach",
+      "title": "Software built by a team that talks to you.",
+      "description": "When you reach out, you work directly with the person guiding your project — the same team building it.",
+      "body": "No ticket queues. No account managers in between. Founder-led delivery with clarity from first conversation through launch.",
+      "cta": "About CoreVia",
+      "asideTitle": "Direct accountability",
+      "asideBody": "Every project gets focused attention from start to finish. You stay in touch with the people building your software — the same commitment from first conversation through delivery."
+    },
+    "finalCta": {
+      "title": "Let's Build Something That Works for Your Business.",
+      "description": "Tell us what you're trying to solve — we'll help you explore what's possible for your operations, customers, and growth.",
+      "primaryCta": "Start Your Project",
+      "secondaryCta": "Contact CoreVia"
     }
   },
   "Shell": {

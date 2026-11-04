@@ -83,6 +83,20 @@ export function getFlagshipProject(): PortfolioProject {
   return flagship;
 }
 
+/** All approved portfolio projects in display order. */
+export function getHomepageProjects(): readonly PortfolioProject[] {
+  return [...portfolioProjects].sort(
+    (a, b) => a.displayOrder - b.displayOrder
+  );
+}
+
+/** Non-flagship projects for the homepage editorial grid. */
+export function getHomepageSecondaryProjects(): readonly PortfolioProject[] {
+  return getHomepageProjects().filter(
+    (project) => project.displayOrder !== 1
+  );
+}
+
 export function assertPortfolioIntegrity(): {
   projectCount: number;
   screenshotCount: number;

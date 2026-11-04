@@ -2,6 +2,8 @@ export {
   assertPortfolioIntegrity,
   getCoverScreenshot,
   getFlagshipProject,
+  getHomepageProjects,
+  getHomepageSecondaryProjects,
   getPortfolioProject,
   getPortfolioProjectByPrototypeId,
   getPortfolioProjectsByCategory,

@@ -233,6 +233,146 @@
           "description": "Te ayudamos a ponerlo en marcha, perfeccionar el sistema y contar con una tecnología que pueda evolucionar junto con tu negocio."
         }
       }
+    },
+    "hero": {
+      "eyebrow": "CoreVia · Software a Medida, IA y Experiencias Digitales",
+      "title": "Tu negocio no es una plantilla.<br></br><accent>Tu tecnología tampoco debería serlo.</accent>",
+      "description": "Construimos software a medida, herramientas impulsadas por IA y automatizaciones inteligentes diseñadas alrededor de cómo realmente funciona tu negocio.",
+      "primaryCta": "Comienza Tu Proyecto",
+      "secondaryCta": "Explorar Nuestro Trabajo",
+      "whatsappCta": "Chatear por WhatsApp"
+    },
+    "outcomes": {
+      "eyebrow": "Resultados de Negocio",
+      "title": "Tecnología que hace el trabajo más fácil.",
+      "description": "Nos enfocamos en resultados prácticos: menos trabajo repetitivo, operaciones más claras y sistemas que crecen contigo.",
+      "items": {
+        "saveTime": {
+          "title": "Ahorra tiempo",
+          "description": "Reemplaza la coordinación repetitiva con software y automatización que se encargan del trabajo rutinario — para que tu equipo se concentre en lo que importa."
+        },
+        "gainControl": {
+          "title": "Gana control",
+          "description": "Reúne prospectos, proyectos, agendas e informes en sistemas que puedes ver y gestionar — en lugar de herramientas y hojas de cálculo dispersas."
+        },
+        "growSmarter": {
+          "title": "Crece con inteligencia",
+          "description": "Construye sobre bases que encajan con cómo vendes y operas hoy, y que puedan evolucionar a medida que cambia tu negocio."
+        }
+      }
+    },
+    "flagship": {
+      "eyebrow": "Trabajo Seleccionado / 01",
+      "title": "Software que <br></br>habla por sí solo.",
+      "description": "Explora los productos digitales, sitios web y aplicaciones empresariales detrás de nuestro trabajo. Cada experiencia es distinta porque cada negocio es distinto.",
+      "metaFlagship": "Proyecto Destacado",
+      "metaOs": "Construction OS",
+      "summary": "Una demostración premium de software de gestión para construcción — desde la consulta del cliente hasta estimados, CRM, gestión de proyectos, programación y visibilidad para el cliente.",
+      "highlights": {
+        "crm": "CRM y seguimiento de prospectos",
+        "estimates": "Estimados y propuestas",
+        "projects": "Gestión de proyectos",
+        "scheduling": "Programación",
+        "workforce": "Coordinación de equipos",
+        "reporting": "Reportes",
+        "portal": "Portal del cliente",
+        "aiReception": "Demostración de recepcionista con IA"
+      },
+      "exploreCta": "Explorar Proyecto",
+      "demoCta": "Probar Demo en Vivo",
+      "browserLabel": "Construction OS / demo interactiva",
+      "thumbsLabel": "Vistas previas de Construction OS",
+      "thumbAria": "Ver captura {index}"
+    },
+    "projects": {
+      "eyebrow": "Más del estudio",
+      "title": "Cinco negocios. <br></br>Cinco soluciones distintas.",
+      "description": "Desde hospitalidad y construcción hasta pedidos en línea y operaciones minoristas — descubre cómo puede verse la tecnología a medida.",
+      "viewCta": "Ver Proyecto",
+      "demoCta": "Demo en Vivo",
+      "allCta": "Explorar Todos los Proyectos",
+      "categories": {
+        "cotinga-hotel-spa": "Hospitalidad · Software + Web",
+        "dixie-remodeling": "Servicios para el Hogar · Diseño Web",
+        "perritos-gourmet": "Servicio de Comida · Pedidos",
+        "la-gallinita": "Retail · Comercio B2B"
+      },
+      "blurbs": {
+        "cotinga-hotel-spa": "Un sitio de hospitalidad inmersivo junto con herramientas de operaciones hoteleras — habitaciones, spa, reservas y gestión.",
+        "dixie-remodeling": "Un sitio bilingüe de remodelación con narrativa cinematográfica, galerías de proyectos y solicitudes de estimado.",
+        "perritos-gourmet": "Un recorrido de pedidos del menú al pago, con herramientas de gestión de pedidos para el restaurante.",
+        "la-gallinita": "Compras minoristas y mayoristas con inventario, punto de venta y operaciones de entrega en una sola demostración."
+      }
+    },
+    "solutions": {
+      "eyebrow": "Soluciones",
+      "title": "Un solo socio. Múltiples capacidades.",
+      "description": "Desde software empresarial a medida hasta automatización, paneles, plataformas digitales, integraciones y apoyo al crecimiento — construimos lo que tu negocio realmente necesita.",
+      "cta": "Explorar Servicios",
+      "items": {
+        "customSoftware": {
+          "title": "Software a Medida",
+          "description": "Sistemas diseñados alrededor de tus flujos de trabajo, procesos y la forma en que realmente opera tu negocio."
+        },
+        "aiAutomation": {
+          "title": "IA y Automatización",
+          "description": "Elimina trabajo repetitivo, agiliza operaciones y hace más inteligentes los procesos cotidianos."
+        },
+        "dashboards": {
+          "title": "Dashboards y Sistemas de Gestión",
+          "description": "Convierte información dispersa en sistemas claros que te ayudan a entender y dirigir tu negocio."
+        },
+        "websites": {
+          "title": "Sitios Web y Plataformas Digitales",
+          "description": "Experiencias web creadas para tus clientes, tu equipo y la forma en que haces negocios."
+        },
+        "integrations": {
+          "title": "Integraciones",
+          "description": "Conecta las herramientas que ya usas para que la información fluya sin copiar y pegar manualmente."
+        },
+        "digitalGrowth": {
+          "title": "Crecimiento Digital y Servicios Creativos",
+          "description": "Marketing, contenido, publicidad y apoyo creativo para que tu negocio se presente con claridad en línea."
+        }
+      }
+    },
+    "process": {
+      "eyebrow": "Cómo Trabajamos",
+      "title": "Un proceso sencillo.",
+      "description": "Pasos claros desde la primera conversación hasta un sistema que puede crecer contigo.",
+      "steps": {
+        "discover": {
+          "title": "Descubrir",
+          "description": "Aprendemos cómo funciona tu negocio, qué lo está frenando y cómo debería verse el éxito."
+        },
+        "design": {
+          "title": "Diseñar",
+          "description": "Definimos el enfoque correcto, qué hay que construir y un plan claro antes de comenzar el desarrollo."
+        },
+        "build": {
+          "title": "Construir",
+          "description": "Diseñamos y desarrollamos el software, la automatización, las integraciones o la plataforma digital según tus requisitos."
+        },
+        "launch": {
+          "title": "Lanzar y Mejorar",
+          "description": "Te ayudamos a ponerlo en marcha, perfeccionar el sistema y contar con tecnología que pueda evolucionar con tu negocio."
+        }
+      }
+    },
+    "credibility": {
+      "eyebrow": "El Enfoque Humano",
+      "title": "Software construido por un equipo que habla contigo.",
+      "description": "Cuando nos contactas, trabajas directamente con la persona que guía tu proyecto — el mismo equipo que lo construye.",
+      "body": "Sin colas de tickets. Sin gerentes de cuenta en el medio. Entrega liderada por el fundador, con claridad desde la primera conversación hasta el lanzamiento.",
+      "cta": "Sobre CoreVia",
+      "asideTitle": "Responsabilidad directa",
+      "asideBody": "Cada proyecto recibe atención enfocada de principio a fin. Te mantienes en contacto con quienes construyen tu software — el mismo compromiso desde la primera conversación hasta la entrega."
+    },
+    "finalCta": {
+      "title": "Construyamos algo que funcione para tu negocio.",
+      "description": "Cuéntanos qué quieres resolver — te ayudamos a explorar qué es posible para tus operaciones, clientes y crecimiento.",
+      "primaryCta": "Comienza Tu Proyecto",
+      "secondaryCta": "Contactar a CoreVia"
     }
   },
   "Shell": {
