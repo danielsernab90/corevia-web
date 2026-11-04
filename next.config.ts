@@ -28,6 +28,16 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   allowedDevOrigins: lanDevOrigins(),
   serverExternalPackages: ["better-sqlite3"],
+  async redirects() {
+    return [
+      {
+        // Company content merged into About (Phase 2).
+        source: "/:locale(en|es)/company",
+        destination: "/:locale/about",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -145,7 +145,7 @@ export function MobileMenu({ open, onClose, brandLabel }: MobileMenuProps) {
             transition={{ duration, ease: "easeInOut" }}
           >
             <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border px-5 pt-[max(1rem,env(safe-area-inset-top))] pb-4">
-              <Logo label={brandLabel} />
+              <Logo label={brandLabel} surface="onLight" />
               <Button
                 ref={closeButtonRef}
                 type="button"

@@ -19,37 +19,59 @@ type LogoProps = {
   showMark?: boolean;
   /** Prefer true only for the primary header instance (LCP). */
   priority?: boolean;
+  /**
+   * `auto` follows theme (default).
+   * `onDark` forces the white lockup (cinematic header / dark bands).
+   * `onLight` forces the dark lockup.
+   */
+  surface?: "auto" | "onDark" | "onLight";
   className?: string;
 } & Omit<ComponentPropsWithoutRef<"a">, "href" | "children">;
 
 function BrandLockup({
   priority = false,
+  surface = "auto",
 }: {
   priority?: boolean;
+  surface?: LogoProps["surface"];
 }) {
+  const lightImg = (
+    <Image
+      src="/logos/corevia-nav-logo-light.png"
+      alt=""
+      width={LOGO_WIDTH}
+      height={LOGO_HEIGHT}
+      priority={priority}
+      className={cn(
+        "h-full w-auto object-contain",
+        surface === "auto" && "dark:hidden",
+        surface === "onDark" && "hidden"
+      )}
+    />
+  );
+
+  const darkImg = (
+    <Image
+      src="/logos/corevia-nav-logo-dark.png"
+      alt=""
+      width={LOGO_WIDTH}
+      height={LOGO_HEIGHT}
+      priority={priority}
+      className={cn(
+        "h-full w-auto object-contain",
+        surface === "auto" && "hidden dark:block",
+        surface === "onLight" && "hidden"
+      )}
+    />
+  );
+
   return (
     <span
       className="relative inline-flex shrink-0 items-center"
       style={{ height: LOGO_HEIGHT, width: LOGO_WIDTH }}
     >
-      {/* Light mode: black "CORE" */}
-      <Image
-        src="/logos/corevia-nav-logo-light.png"
-        alt=""
-        width={LOGO_WIDTH}
-        height={LOGO_HEIGHT}
-        priority={priority}
-        className="h-full w-auto object-contain dark:hidden"
-      />
-      {/* Dark mode: white "CORE" — CSS swap follows next-themes `class` strategy */}
-      <Image
-        src="/logos/corevia-nav-logo-dark.png"
-        alt=""
-        width={LOGO_WIDTH}
-        height={LOGO_HEIGHT}
-        priority={priority}
-        className="hidden h-full w-auto object-contain dark:block"
-      />
+      {lightImg}
+      {darkImg}
     </span>
   );
 }
@@ -59,6 +81,7 @@ export function Logo({
   href = "/",
   showMark = true,
   priority = false,
+  surface = "auto",
   className,
   ...props
 }: LogoProps) {
@@ -73,7 +96,7 @@ export function Logo({
       {...props}
     >
       {showMark ? (
-        <BrandLockup priority={priority} />
+        <BrandLockup priority={priority} surface={surface} />
       ) : (
         <span className="font-sans text-sm font-semibold tracking-[0.18em] text-foreground uppercase">
           {label}

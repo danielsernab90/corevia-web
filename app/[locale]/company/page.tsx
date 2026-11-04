@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
-import { CompanyExperience } from "@/components/sections/company/company-experience";
 import { routing } from "@/i18n/routing";
 import { getSiteUrl, ogImage } from "@/lib/site";
 
@@ -11,6 +10,10 @@ type CompanyPageProps = {
   params: Promise<{ locale: string }>;
 };
 
+/**
+ * Legacy Company URL — permanently redirected to the merged About page.
+ * Metadata retained for crawlers that still resolve the path before redirect.
+ */
 export async function generateMetadata({
   params,
 }: CompanyPageProps): Promise<Metadata> {
@@ -20,7 +23,7 @@ export async function generateMetadata({
     : routing.defaultLocale;
   const t = await getTranslations({
     locale,
-    namespace: "Company.meta",
+    namespace: "About.meta",
   });
 
   const title = t("title");
@@ -33,22 +36,24 @@ export async function generateMetadata({
       title,
       description,
       images: [ogImage],
-      url: getSiteUrl(`/${locale}/company`),
+      url: getSiteUrl(`/${locale}/about`),
     },
     alternates: {
-      canonical: getSiteUrl(`/${locale}/company`),
+      canonical: getSiteUrl(`/${locale}/about`),
+    },
+    robots: {
+      index: false,
+      follow: true,
     },
   };
 }
 
 export default async function CompanyPage({ params }: CompanyPageProps) {
   const { locale: rawLocale } = await params;
+  const locale = hasLocale(routing.locales, rawLocale)
+    ? rawLocale
+    : routing.defaultLocale;
 
-  if (!hasLocale(routing.locales, rawLocale)) {
-    notFound();
-  }
-
-  setRequestLocale(rawLocale);
-
-  return <CompanyExperience />;
+  setRequestLocale(locale);
+  permanentRedirect(`/${locale}/about`);
 }

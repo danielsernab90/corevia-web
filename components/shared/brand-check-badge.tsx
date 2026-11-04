@@ -11,7 +11,7 @@ type BrandCheckBadgeProps = {
 };
 
 /**
- * Shared checkmark badge — light brand-blue tint (#E8F4FF) + solid #007CFD check.
+ * Shared checkmark badge — light brand-blue tint (#E6F7FD) + solid #00AEEF check.
  * Colors use inline styles so they cannot regress to success/green utilities.
  */
 export function BrandCheckBadge({

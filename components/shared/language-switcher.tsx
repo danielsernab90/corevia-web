@@ -13,17 +13,22 @@ const localeShortKey = {
 
 type LanguageSwitcherProps = {
   className?: string;
+  surface?: "default" | "onDark";
 };
 
 /**
  * Pill language switcher. Preference is persisted by next-intl (`NEXT_LOCALE` cookie).
  */
-export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  className,
+  surface = "default",
+}: LanguageSwitcherProps) {
   const t = useTranslations("Common");
   const tLocale = useTranslations("Locale");
   const locale = useLocale() as AppLocale;
   const router = useRouter();
   const pathname = usePathname();
+  const onDark = surface === "onDark";
 
   function onLocaleChange(nextLocale: AppLocale) {
     if (nextLocale === locale) return;
@@ -35,7 +40,10 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       role="radiogroup"
       aria-label={t("language")}
       className={cn(
-        "inline-flex items-center rounded-pill border border-border bg-muted/60 p-0.5",
+        "inline-flex items-center rounded-pill border p-0.5",
+        onDark
+          ? "border-white/15 bg-white/5"
+          : "border-border bg-muted/60",
         className
       )}
     >
@@ -69,9 +77,13 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             className={cn(
               "inline-flex min-h-9 min-w-9 items-center justify-center rounded-pill px-3 py-2 text-caption font-semibold tracking-wide uppercase transition-colors",
               "focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
-              selected
-                ? "bg-background text-foreground shadow-sm"
-                : "text-muted-foreground hover:text-foreground"
+              onDark
+                ? selected
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-[#b4c8d5] hover:text-white"
+                : selected
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
             )}
           >
             {tLocale(localeShortKey[code])}

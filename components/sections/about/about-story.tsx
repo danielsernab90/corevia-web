@@ -15,11 +15,22 @@ export function AboutStory() {
 
   return (
     <Section
-      tone="surface"
+      tone="white"
       spacing="tight"
-      aria-labelledby="about-intro-heading"
+      aria-labelledby="about-story-heading"
     >
       <Container size="md">
+        <SectionReveal className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
+          <Heading
+            id="about-story-heading"
+            size="h2"
+            align="center"
+            className="tracking-tight glow-text-brand-soft"
+          >
+            {t("intro.title")}
+          </Heading>
+        </SectionReveal>
+
         <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12 lg:gap-14">
           <FadeUp className="mx-auto w-full max-w-sm md:mx-0 md:max-w-none">
             <div className="overflow-hidden rounded-2xl glow-consultation-visual">
@@ -28,7 +39,6 @@ export function AboutStory() {
                 alt={t("intro.imageAlt")}
                 width={1600}
                 height={1035}
-                priority
                 sizes="(max-width: 768px) 90vw, 360px"
                 className="h-auto w-full object-cover object-[center_20%]"
               />
@@ -36,9 +46,6 @@ export function AboutStory() {
           </FadeUp>
 
           <SectionReveal>
-            <h2 id="about-intro-heading" className="sr-only">
-              {t("meta.title")}
-            </h2>
             <p className="font-sans text-body-lg text-muted-foreground">
               {t("intro.body")}
             </p>
@@ -48,10 +55,7 @@ export function AboutStory() {
         <div className="mt-14 space-y-12 md:mt-16 md:space-y-14">
           {CHAPTER_KEYS.map((key) => (
             <SectionReveal key={key} className="mx-auto max-w-2xl">
-              <Heading
-                size="h3"
-                className="tracking-tight glow-text-brand-soft"
-              >
+              <Heading size="h3" className="tracking-tight glow-text-brand-soft">
                 {t(`chapters.${key}.title`)}
               </Heading>
               <p className="mt-4 font-sans text-body text-muted-foreground">

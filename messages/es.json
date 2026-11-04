@@ -6,7 +6,7 @@
     "keywords": "CoreVia, software a medida, IA, automatización, plataformas web, productos digitales, herramientas empresariales"
   },
   "Common": {
-    "brand": "Corevia",
+    "brand": "CoreVia",
     "language": "Idioma",
     "theme": "Tema",
     "light": "Claro",
@@ -26,8 +26,7 @@
     "home": "Inicio",
     "services": "Servicios",
     "work": "Nuestro Trabajo",
-    "company": "Compañía",
-    "about": "Nuestra Historia",
+    "about": "Nosotros",
     "contact": "Contacto",
     "primaryCta": "Comienza Tu Proyecto",
     "openMenu": "Abrir menú",
@@ -35,25 +34,28 @@
     "mobileNav": "Navegación móvil"
   },
   "Footer": {
-    "tagline": "Productos digitales y sistemas tecnológicos diseñados para claridad, velocidad y calidad duradera.",
-    "company": "Compañía",
+    "tagline": "Software a medida, plataformas digitales y herramientas con IA, diseñados para cómo opera realmente tu negocio.",
+    "explore": "Explorar",
+    "company": "Empresa",
     "services": "Servicios",
     "resources": "Recursos",
     "contact": "Contacto",
     "socials": "Redes",
     "home": "Inicio",
-    "about": "Nuestra Historia",
-    "servicesOverview": "Resumen",
+    "about": "Nosotros",
+    "work": "Nuestro Trabajo",
+    "servicesOverview": "Servicios",
+    "serviceArea": "Con base en Colombia, atendemos negocios en Colombia y Estados Unidos.",
     "productEngineering": "Ingeniería de producto",
     "designSystems": "Sistemas de diseño",
     "privacy": "Política de privacidad",
     "terms": "Términos",
-    "copyright": "© {year} Corevia. Todos los derechos reservados."
+    "copyright": "© {year} CoreVia. Todos los derechos reservados."
   },
   "Social": {
-    "linkedin": "Corevia en LinkedIn",
-    "x": "Corevia en X",
-    "github": "Corevia en GitHub"
+    "instagram": "CoreVia en Instagram",
+    "facebook": "CoreVia en Facebook",
+    "whatsapp": "CoreVia en WhatsApp"
   },
   "Hero": {
     "badge": "SOFTWARE A MEDIDA • IA • AUTOMATIZACIÓN",
@@ -875,13 +877,31 @@
   },
   "About": {
     "meta": {
-      "title": "Nuestra Historia",
-      "description": "La historia detrás de CoreVia — cómo el servicio militar, el cine y los bienes raíces formaron la manera en que construimos software para negocios."
+      "title": "Sobre CoreVia",
+      "description": "CoreVia es software dirigido por su fundador — misión, historia y cómo construimos plataformas a medida con el mismo equipo con el que hablas desde el primer día."
     },
     "hero": {
-      "title": "No Fue Mi Primer Camino<break></break>Pero Todo Me Trajo Aquí"
+      "eyebrow": "Sobre CoreVia",
+      "title": "Software construido por un equipo que te habla.",
+      "description": "Cuando escribes, trabajas directamente con quien guía tu proyecto — el mismo equipo que lo construye. Sin colas de tickets. Sin gerentes de cuenta en el medio.",
+      "whatsappCta": "Chatear por WhatsApp"
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "body": "Diseñar y construir software a medida, plataformas web y herramientas empresariales con IA, adaptadas a cómo opera realmente tu empresa — con claridad, oficio y responsabilidad directa desde la primera conversación hasta el lanzamiento."
+    },
+    "whatWeDo": {
+      "headline": "Lo Que Construimos",
+      "body1": "Diseñamos y desarrollamos plataformas web y herramientas para tu negocio adaptadas a la forma en que tu empresa realmente opera — no plantillas genéricas.",
+      "body2": "Desde la primera conversación hasta el lanzamiento, trabajas con un equipo dedicado y enfocado en hacer las cosas bien.",
+      "body3": "Además del software, también nos encargamos del marketing y contenido que le da vida a tu negocio — desde edición de video hasta campañas publicitarias, hecho por el mismo equipo que construye tus sistemas."
+    },
+    "philosophy": {
+      "title": "Filosofía de Negocio",
+      "body": "Tu negocio no es una plantilla. La tecnología debe encajar con cómo vendes, operas y creces — con sistemas claros, confiables y listos para evolucionar."
     },
     "intro": {
+      "title": "Historia del Fundador",
       "body": "CoreVia no fue un camino en línea recta. Antes de escribir una sola línea de código para un cliente, pasé años construyendo cosas en mundos muy distintos — y cada uno de ellos formó la manera en que hoy construyo software.",
       "imageAlt": "Daniel Serna, fundador de CoreVia"
     },
@@ -899,9 +919,38 @@
         "body": "En 2026, volví a la tecnología — esta vez para construir CoreVia. Todo lo anterior no fue un desvío. Fue preparación: la disciplina para hacer que los sistemas funcionen, el ojo para que se vean bien, y el entendimiento de lo que los dueños de negocio realmente necesitan para crecer."
       }
     },
+    "howWeWork": {
+      "title": "Cómo Trabajamos Con Clientes",
+      "description": "Cada proyecto recibe atención directa de principio a fin. Sin traspasos. Sin capa de gestión de cuentas. Te mantienes en contacto con quien construye tu software — el mismo compromiso desde la primera conversación hasta la entrega."
+    },
+    "differentiate": {
+      "title": "Qué Diferencia a CoreVia",
+      "body": "Entrega liderada por el fundador, oficio de producto en software y contenido, y herramientas elegidas por velocidad, confiabilidad y espacio para escalar — sin ahogarte en procesos."
+    },
+    "stack": {
+      "title": "Con Qué Construimos",
+      "builds": "Plataformas web y aplicaciones hechas a la medida de cada negocio.",
+      "benefit": "Este stack ofrece rendimiento rápido, infraestructura confiable y espacio para escalar a medida que crece tu negocio.",
+      "items": {
+        "nextjs": "Next.js",
+        "supabase": "Supabase",
+        "vercel": "Vercel",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "premiere": "Adobe Premiere Pro",
+        "metaBusiness": "Meta Business Suite",
+        "googleAds": "Google Ads"
+      }
+    },
     "closing": {
       "label": "Cierre",
       "body": "CoreVia es lo que pasa cuando todo eso se une — software construido específicamente para tu negocio, por alguien que pasó años aprendiendo lo que realmente significa que algo funcione."
+    },
+    "cta": {
+      "title": "¿Listo para hablar de tu negocio?",
+      "description": "Cuéntanos qué necesitas — revisamos tus objetivos y te respondemos con pasos claros.",
+      "button": "Comienza Tu Proyecto",
+      "textNote": "¿Prefieres escribir? Lo entendemos — WhatsApp también sirve."
     }
   },
   "Privacy": {

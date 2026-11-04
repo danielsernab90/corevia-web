@@ -1,5 +1,6 @@
 /**
- * Company page content keys — labels live in next-intl (`Company.*`).
+ * Shared stack keys for About (merged Company content).
+ * Labels live in next-intl (`About.stack.items.*`).
  */
 
 export const companyStackKeys = [

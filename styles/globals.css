@@ -58,6 +58,7 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: Georgia, "Times New Roman", ui-serif, serif;
 
   /* Fluid type — scales with viewport + zoom; no breakpoint jumps */
   --text-hero: clamp(2rem, 1rem + 5vw, 4rem);
@@ -159,19 +160,19 @@
   --popover: #ffffff;
   --popover-foreground: #0b0f19;
 
-  --primary: #007cfd;
-  --primary-foreground: #ffffff;
+  --primary: #00aeef;
+  --primary-foreground: #06131e;
   /* Opaque soft tint — prefer over primary/10 (OKLCH alpha can read lavender) */
-  --primary-soft: #e8f4ff;
+  --primary-soft: #e6f7fd;
 
-  --secondary: #0047c7;
-  --secondary-foreground: #ffffff;
+  --secondary: #07121e;
+  --secondary-foreground: #f5f7fb;
 
   --muted: #f5f7fb;
   --muted-foreground: #4b5163;
 
-  --accent: #007cfd;
-  --accent-foreground: #ffffff;
+  --accent: #00aeef;
+  --accent-foreground: #06131e;
 
   --success: #22c55e;
   --success-foreground: #ffffff;
@@ -183,12 +184,12 @@
 
   --border: #e4e8f1;
   --input: #e4e8f1;
-  --ring: #007cfd;
+  --ring: #00aeef;
 
-  --hero-glow: rgb(0 124 253 / 0.12);
+  --hero-glow: rgb(0 174 239 / 0.12);
 
-  --chart-1: #007cfd;
-  --chart-2: #0047c7;
+  --chart-1: #00aeef;
+  --chart-2: #07121e;
   --chart-3: #0b0f19;
   --chart-4: #22c55e;
   --chart-5: #4b5163;
@@ -200,22 +201,22 @@
   --elevation-lg: 0 12px 40px rgb(11 15 25 / 0.08);
   --elevation-hover: 0 10px 28px rgb(11 15 25 / 0.1);
 
-  --gradient-primary: linear-gradient(135deg, #007cfd 0%, #0047c7 100%);
+  --gradient-primary: linear-gradient(135deg, #00aeef 0%, #0a6f9a 100%);
   --gradient-surface: linear-gradient(180deg, #ffffff 0%, #f5f7fb 100%);
   --gradient-hero-glow: radial-gradient(
     ellipse 70% 55% at 50% 0%,
-    rgb(0 124 253 / 0.12),
+    rgb(0 174 239 / 0.12),
     transparent 70%
   );
 
   --sidebar: #f5f7fb;
   --sidebar-foreground: #0b0f19;
-  --sidebar-primary: #007cfd;
+  --sidebar-primary: #00aeef;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #ffffff;
   --sidebar-accent-foreground: #0b0f19;
   --sidebar-border: #e4e8f1;
-  --sidebar-ring: #007cfd;
+  --sidebar-ring: #00aeef;
 }
 
 /* ── Dark theme (optional; site defaults to light) ──────── */
@@ -229,18 +230,18 @@
   --popover: #121826;
   --popover-foreground: #f5f7fb;
 
-  --primary: #007cfd;
-  --primary-foreground: #ffffff;
-  --primary-soft: color-mix(in srgb, #007cfd 22%, #121826);
+  --primary: #00aeef;
+  --primary-foreground: #06131e;
+  --primary-soft: color-mix(in srgb, #00aeef 22%, #121826);
 
-  --secondary: #0047c7;
-  --secondary-foreground: #ffffff;
+  --secondary: #0d1c2b;
+  --secondary-foreground: #f5f7fb;
 
   --muted: #121826;
   --muted-foreground: #a0a6b5;
 
-  --accent: #007cfd;
-  --accent-foreground: #ffffff;
+  --accent: #00aeef;
+  --accent-foreground: #06131e;
 
   --success: #22c55e;
   --success-foreground: #052e16;
@@ -252,11 +253,11 @@
 
   --border: rgb(228 232 241 / 14%);
   --input: rgb(228 232 241 / 16%);
-  --ring: #007cfd;
+  --ring: #00aeef;
 
-  --hero-glow: rgb(0 124 253 / 0.2);
+  --hero-glow: rgb(0 174 239 / 0.2);
 
-  --chart-1: #007cfd;
+  --chart-1: #00aeef;
   --chart-2: #4b7fff;
   --chart-3: #a0a6b5;
   --chart-4: #22c55e;
@@ -267,22 +268,22 @@
   --elevation-lg: 0 12px 40px rgb(0 0 0 / 0.45);
   --elevation-hover: 0 10px 28px rgb(0 0 0 / 0.5);
 
-  --gradient-primary: linear-gradient(135deg, #007cfd 0%, #0047c7 100%);
+  --gradient-primary: linear-gradient(135deg, #00aeef 0%, #0a6f9a 100%);
   --gradient-surface: linear-gradient(180deg, #0b0f19 0%, #121826 100%);
   --gradient-hero-glow: radial-gradient(
     ellipse 70% 55% at 50% 0%,
-    rgb(0 124 253 / 0.2),
+    rgb(0 174 239 / 0.2),
     transparent 70%
   );
 
   --sidebar: #121826;
   --sidebar-foreground: #f5f7fb;
-  --sidebar-primary: #007cfd;
+  --sidebar-primary: #00aeef;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #1a2233;
   --sidebar-accent-foreground: #f5f7fb;
   --sidebar-border: rgb(228 232 241 / 14%);
-  --sidebar-ring: #007cfd;
+  --sidebar-ring: #00aeef;
 }
 
 /* ── Reusable brand utilities ───────────────────────────── */
@@ -321,21 +322,21 @@
   box-shadow: var(--elevation-hover);
 }
 
-/* Soft ambient brand-blue glow — pills, cards, soft emphasis (#007CFD) */
+/* Soft ambient brand-blue glow — pills, cards, soft emphasis (#00AEEF) */
 @utility glow-brand-soft {
-  box-shadow: 0 0 20px rgb(0 124 253 / 0.35);
+  box-shadow: 0 0 20px rgb(0 174 239 / 0.35);
 }
 
 @utility glow-brand-soft-strong {
-  box-shadow: 0 0 24px rgb(0 124 253 / 0.42);
+  box-shadow: 0 0 24px rgb(0 174 239 / 0.42);
 }
 
 /* Layered brand-blue glow for media/mockups — stronger ambient halo, no hard edge */
 @utility glow-brand-media {
   box-shadow:
-    0 0 28px rgb(0 124 253 / 0.55),
-    0 0 56px rgb(0 124 253 / 0.38),
-    0 0 96px rgb(0 124 253 / 0.22);
+    0 0 28px rgb(0 174 239 / 0.55),
+    0 0 56px rgb(0 174 239 / 0.38),
+    0 0 96px rgb(0 174 239 / 0.22);
 }
 
 /* Our Work case studies — deep navy #132A82 (reads on light surface) */
@@ -347,12 +348,12 @@
 
 /*
  * Heading text glow — do NOT name this text-* (tailwind-merge strips text-h2).
- * Exact brand blue #007CFD.
+ * Exact brand blue #00AEEF.
  */
 @utility glow-text-brand-soft {
   text-shadow:
-    0 0 24px rgb(0 124 253 / 0.35),
-    0 0 48px rgb(0 124 253 / 0.2);
+    0 0 24px rgb(0 174 239 / 0.35),
+    0 0 48px rgb(0 174 239 / 0.2);
 }
 
 /* Book-consultation H1 only — deep navy #132A82 on the light hero surface (softened) */
@@ -376,7 +377,7 @@
     0 0 44px rgb(19 42 130 / 0.14);
 }
 
-/* Soft white heading glow for dark (#0047C7) section backgrounds */
+/* Soft white heading glow for dark (cinematic navy) section backgrounds */
 @utility glow-text-white-soft {
   text-shadow:
     0 0 20px rgb(255 255 255 / 0.4),
@@ -387,22 +388,22 @@
 @keyframes hero-badge-glow {
   0%,
   100% {
-    box-shadow: 0 0 14px rgb(0 124 253 / 0.28);
+    box-shadow: 0 0 14px rgb(0 174 239 / 0.28);
   }
   50% {
-    box-shadow: 0 0 24px rgb(0 124 253 / 0.45);
+    box-shadow: 0 0 24px rgb(0 174 239 / 0.45);
   }
 }
 
 @utility animate-hero-badge-glow {
-  box-shadow: 0 0 14px rgb(0 124 253 / 0.28);
+  box-shadow: 0 0 14px rgb(0 174 239 / 0.28);
   animation: hero-badge-glow 3.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-badge-glow {
     animation: none;
-    box-shadow: 0 0 14px rgb(0 124 253 / 0.28);
+    box-shadow: 0 0 14px rgb(0 174 239 / 0.28);
   }
 }
 
@@ -470,4 +471,12 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+
+/* Display / hero serif — matches approved V2 prototype without new font files */
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }

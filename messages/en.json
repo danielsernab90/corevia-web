@@ -6,7 +6,7 @@
     "keywords": "CoreVia, custom software, AI, automation, web platforms, digital products, business tools"
   },
   "Common": {
-    "brand": "Corevia",
+    "brand": "CoreVia",
     "language": "Language",
     "theme": "Theme",
     "light": "Light",
@@ -26,8 +26,7 @@
     "home": "Home",
     "services": "Services",
     "work": "Our Work",
-    "company": "Company",
-    "about": "About Us",
+    "about": "About",
     "contact": "Contact",
     "primaryCta": "Start Your Project",
     "openMenu": "Open menu",
@@ -35,25 +34,28 @@
     "mobileNav": "Mobile navigation"
   },
   "Footer": {
-    "tagline": "Digital products and technology systems built for clarity, speed, and lasting quality.",
+    "tagline": "Custom software, digital platforms, and AI-powered tools built for how your business actually works.",
+    "explore": "Explore",
     "company": "Company",
     "services": "Services",
     "resources": "Resources",
     "contact": "Contact",
     "socials": "Social",
     "home": "Home",
-    "about": "About Us",
-    "servicesOverview": "Overview",
+    "about": "About",
+    "work": "Our Work",
+    "servicesOverview": "Services",
+    "serviceArea": "Based in Colombia, serving businesses across Colombia and the US.",
     "productEngineering": "Product engineering",
     "designSystems": "Design systems",
     "privacy": "Privacy Policy",
     "terms": "Terms",
-    "copyright": "© {year} Corevia. All rights reserved."
+    "copyright": "© {year} CoreVia. All rights reserved."
   },
   "Social": {
-    "linkedin": "Corevia on LinkedIn",
-    "x": "Corevia on X",
-    "github": "Corevia on GitHub"
+    "instagram": "CoreVia on Instagram",
+    "facebook": "CoreVia on Facebook",
+    "whatsapp": "CoreVia on WhatsApp"
   },
   "Hero": {
     "badge": "CUSTOM SOFTWARE • AI • AUTOMATION",
@@ -875,13 +877,31 @@
   },
   "About": {
     "meta": {
-      "title": "About Us",
-      "description": "The story behind CoreVia — how military service, filmmaking, and real estate shaped the way we build software for businesses."
+      "title": "About CoreVia",
+      "description": "CoreVia is founder-led software — mission, story, and how we build custom platforms with the same team you talk to from day one."
     },
     "hero": {
-      "title": "Not Our First Path<break></break>But Everything Led Here"
+      "eyebrow": "About CoreVia",
+      "title": "Software built by a team that talks to you.",
+      "description": "When you reach out, you work directly with the person guiding your project — the same team building it. No ticket queues. No account managers in between.",
+      "whatsappCta": "Chat on WhatsApp"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "body": "Design and build custom software, web platforms, and AI-powered business tools tailored to how your company actually operates — with clarity, craft, and direct accountability from first conversation through launch."
+    },
+    "whatWeDo": {
+      "headline": "What We Build",
+      "body1": "We design and build web platforms and business tools tailored to how your company actually operates — not generic templates.",
+      "body2": "From first conversation to launch, you're working with a dedicated team focused on getting it right.",
+      "body3": "Beyond software, we also handle the marketing and content that brings your business to life — from video editing to ad campaigns, built by the same team that builds your systems."
+    },
+    "philosophy": {
+      "title": "Business Philosophy",
+      "body": "Your business isn't a template. Technology should fit the way you sell, operate, and grow — with systems that stay clear, reliable, and ready to evolve."
     },
     "intro": {
+      "title": "Founder Story",
       "body": "CoreVia wasn't a straight line. Before writing a single line of code for a client, I spent years building things in very different worlds — and every one of them shaped how I build software today.",
       "imageAlt": "Daniel Serna, founder of CoreVia"
     },
@@ -899,9 +919,38 @@
         "body": "In 2026, I came back to technology — this time to build CoreVia. Everything before it wasn't a detour. It was preparation: the discipline to make systems work, the eye to make them look right, and the understanding of what business owners actually need to grow."
       }
     },
+    "howWeWork": {
+      "title": "How We Work With Clients",
+      "description": "Every project gets direct attention from start to finish. No handoffs. No account management layer. You stay in touch with the person building your software — the same commitment from first conversation through delivery."
+    },
+    "differentiate": {
+      "title": "What Sets CoreVia Apart",
+      "body": "Founder-led delivery, product craft across software and content, and tools chosen for speed, reliability, and room to scale — without burying you under process."
+    },
+    "stack": {
+      "title": "What We Build With",
+      "builds": "Web platforms and applications tailored to each business.",
+      "benefit": "This stack delivers fast performance, reliable infrastructure, and room to scale as your business grows.",
+      "items": {
+        "nextjs": "Next.js",
+        "supabase": "Supabase",
+        "vercel": "Vercel",
+        "typescript": "TypeScript",
+        "tailwind": "Tailwind CSS",
+        "premiere": "Adobe Premiere Pro",
+        "metaBusiness": "Meta Business Suite",
+        "googleAds": "Google Ads"
+      }
+    },
     "closing": {
       "label": "Closing",
       "body": "CoreVia is what happens when all of that comes together — software built specifically for your business, by someone who's spent years learning what 'actually works' really means."
+    },
+    "cta": {
+      "title": "Ready to talk about your business?",
+      "description": "Tell us what you need — we'll review your goals and follow up with clear next steps.",
+      "button": "Start Your Project",
+      "textNote": "Prefer to text? We get it — WhatsApp works too."
     }
   },
   "Privacy": {

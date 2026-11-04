@@ -1,14 +1,16 @@
 /**
- * Corevia design-token reference for TypeScript consumers.
+ * CoreVia design-token reference for TypeScript consumers.
  * Prefer Tailwind token classes in components (`bg-primary`, `text-hero`, `elevation-md`).
  * CSS remains the runtime source of truth — see `styles/globals.css`.
  */
 
 export const brandColors = {
-  primary: "#007CFD",
-  primarySoft: "#E8F4FF",
-  secondary: "#0047C7",
-  accent: "#007CFD",
+  /** Approved primary accent */
+  primary: "#00AEEF",
+  primarySoft: "#E6F7FD",
+  /** Cinematic navy used for dark sections / header */
+  secondary: "#07121E",
+  accent: "#00AEEF",
   background: "#FFFFFF",
   surface: "#F5F7FB",
   border: "#E4E8F1",

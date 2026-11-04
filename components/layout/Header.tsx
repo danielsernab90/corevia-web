@@ -55,10 +55,10 @@ export function Header() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 w-full border-b border-border pt-[env(safe-area-inset-top)] transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-[var(--ease-out-soft)]",
+          "sticky top-0 z-40 w-full border-b border-white/10 pt-[env(safe-area-inset-top)] text-secondary-foreground transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-[var(--ease-out-soft)]",
           scrolled
-            ? "bg-background/75 shadow-sm backdrop-blur-xl"
-            : "bg-background"
+            ? "bg-[#07121e]/90 shadow-[0_8px_32px_rgb(7_18_30/0.35)] backdrop-blur-xl"
+            : "bg-[#07121e]/95 backdrop-blur-xl"
         )}
       >
         <Container
@@ -66,19 +66,20 @@ export function Header() {
           className="grid h-16 min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:gap-4 min-[1200px]:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]"
         >
           <div className="min-w-0 justify-self-start">
-            <Logo label={tCommon("brand")} priority />
+            <Logo label={tCommon("brand")} priority surface="onDark" />
           </div>
 
-          <Navigation className="hidden justify-self-center min-[1200px]:block" />
+          <Navigation
+            surface="onDark"
+            className="hidden justify-self-center min-[1200px]:block"
+          />
 
-          <div className="flex min-w-0 items-center justify-end gap-2 justify-self-end">
-            <div className="hidden items-center gap-2 min-[1200px]:flex">
-              <LanguageSwitcher />
-              <ThemeToggle />
+          <div className="flex min-w-0 items-center justify-end gap-1.5 justify-self-end sm:gap-2">
+            <div className="hidden items-center gap-1.5 min-[1200px]:flex">
+              <LanguageSwitcher surface="onDark" />
+              <ThemeToggle className="border-white/20 bg-transparent text-secondary-foreground hover:bg-white/10 hover:text-secondary-foreground" />
             </div>
 
-            {/* CTA only with full desktop nav — avoids crowding beside hamburger.
-                On /book-consultation, open the shared booking modal instead of re-navigating. */}
             {onBookConsultationPage ? (
               <Button
                 type="button"
@@ -104,7 +105,7 @@ export function Header() {
               type="button"
               variant="outline"
               size="icon"
-              className="min-[1200px]:hidden"
+              className="border-white/20 bg-transparent text-secondary-foreground hover:bg-white/10 hover:text-secondary-foreground min-[1200px]:hidden"
               aria-label={t("openMenu")}
               aria-expanded={menuOpen}
               aria-controls={menuId}
