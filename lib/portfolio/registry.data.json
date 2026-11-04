@@ -1,0 +1,1202 @@
+{
+  "version": 1,
+  "brandBlueApproved": "#00AEEF",
+  "categories": [
+    {
+      "id": "all",
+      "label": {
+        "en": "All Projects"
+      }
+    },
+    {
+      "id": "websites",
+      "label": {
+        "en": "Websites"
+      }
+    },
+    {
+      "id": "software",
+      "label": {
+        "en": "Business Software"
+      }
+    },
+    {
+      "id": "commerce",
+      "label": {
+        "en": "Ordering & Commerce"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "summit-and-stone",
+      "prototypeId": "summit",
+      "displayOrder": 1,
+      "name": {
+        "en": "Summit & Stone"
+      },
+      "industry": {
+        "en": "Construction & residential building"
+      },
+      "eyebrow": {
+        "en": "FLAGSHIP · CONSTRUCTION SOFTWARE"
+      },
+      "shortDescription": {
+        "en": "Construction OS"
+      },
+      "detailedDescription": {
+        "en": "A premium construction website and end-to-end business software demonstration, connecting inquiries, CRM, proposals, projects, scheduling, teams, reports and the customer portal."
+      },
+      "caseStudySummary": {
+        "en": "A complete construction business demonstration — from customer inquiry through estimates, CRM, project management, scheduling and client visibility."
+      },
+      "categoryTags": [
+        "software",
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Business website"
+        },
+        {
+          "en": "Construction OS"
+        },
+        {
+          "en": "Customer portal"
+        },
+        {
+          "en": "Inquiries & CRM"
+        },
+        {
+          "en": "Proposals & scheduling"
+        }
+      ],
+      "accentColor": "#B9A075",
+      "coverAssetId": "3.01.58",
+      "coverImage": "/images/portfolio/summit-and-stone/image-3.01.58.jpg",
+      "screenshotGroups": [
+        {
+          "id": "business-website",
+          "label": {
+            "en": "Business Website"
+          },
+          "screenshotAssetIds": [
+            "3.00.30",
+            "3.00.38",
+            "3.00.45",
+            "3.00.49",
+            "3.00.57",
+            "3.01.02",
+            "3.01.14"
+          ]
+        },
+        {
+          "id": "construction-os",
+          "label": {
+            "en": "Construction OS"
+          },
+          "screenshotAssetIds": [
+            "3.01.58",
+            "3.02.07",
+            "3.02.13",
+            "3.02.21",
+            "3.02.27",
+            "3.02.34",
+            "3.02.42",
+            "3.02.53"
+          ]
+        },
+        {
+          "id": "customer-portal",
+          "label": {
+            "en": "Customer Portal"
+          },
+          "screenshotAssetIds": [
+            "3.03.09"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "3.00.30",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.30 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.00.30.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.00.30.jpg"
+        },
+        {
+          "assetId": "3.00.38",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.38 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.00.38.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.00.38.jpg"
+        },
+        {
+          "assetId": "3.00.45",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.45 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.00.45.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.00.45.jpg"
+        },
+        {
+          "assetId": "3.00.49",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.49 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.00.49.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.00.49.jpg"
+        },
+        {
+          "assetId": "3.00.57",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.00.57 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.00.57.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.00.57.jpg"
+        },
+        {
+          "assetId": "3.01.02",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.01.02 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.01.02.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.01.02.jpg"
+        },
+        {
+          "assetId": "3.01.14",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.01.14 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.01.14.jpg",
+          "groupLabel": {
+            "en": "Business Website"
+          },
+          "alt": {
+            "en": "Summit & Stone — Business Website screenshot"
+          },
+          "optimizedBasename": "image-3.01.14.jpg"
+        },
+        {
+          "assetId": "3.01.58",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.01.58 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.01.58.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.01.58.jpg"
+        },
+        {
+          "assetId": "3.02.07",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.07 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.07.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.07.jpg"
+        },
+        {
+          "assetId": "3.02.13",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.13 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.13.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.13.jpg"
+        },
+        {
+          "assetId": "3.02.21",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.21 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.21.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.21.jpg"
+        },
+        {
+          "assetId": "3.02.27",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.27 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.27.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.27.jpg"
+        },
+        {
+          "assetId": "3.02.34",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.34 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.34.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.34.jpg"
+        },
+        {
+          "assetId": "3.02.42",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.42 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.42.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.42.jpg"
+        },
+        {
+          "assetId": "3.02.53",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.02.53 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.02.53.jpg",
+          "groupLabel": {
+            "en": "Construction OS"
+          },
+          "alt": {
+            "en": "Summit & Stone — Construction OS screenshot"
+          },
+          "optimizedBasename": "image-3.02.53.jpg"
+        },
+        {
+          "assetId": "3.03.09",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.03.09 PM.png",
+          "src": "/images/portfolio/summit-and-stone/image-3.03.09.jpg",
+          "groupLabel": {
+            "en": "Customer Portal"
+          },
+          "alt": {
+            "en": "Summit & Stone — Customer Portal screenshot"
+          },
+          "optimizedBasename": "image-3.03.09.jpg"
+        }
+      ],
+      "demo": {
+        "url": "https://construction-os-eta.vercel.app/",
+        "status": "interactive-fictional-demo",
+        "statusLabel": {
+          "en": "Interactive fictional demo"
+        },
+        "disclaimer": {
+          "en": "Fictional demonstration data · No claim of production deployment"
+        }
+      },
+      "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "cotinga-hotel-spa",
+      "prototypeId": "cotinga",
+      "displayOrder": 2,
+      "name": {
+        "en": "Cotinga Hotel & Spa"
+      },
+      "industry": {
+        "en": "Hospitality & hotel management"
+      },
+      "eyebrow": {
+        "en": "HOSPITALITY · SOFTWARE + WEB"
+      },
+      "shortDescription": {
+        "en": "Hospitality & hotel management"
+      },
+      "detailedDescription": {
+        "en": "An immersive hospitality website paired with a private hotel operations preview, including room discovery, spa experiences, booking interfaces, reception and management tools."
+      },
+      "caseStudySummary": {
+        "en": "Guest-facing hospitality storytelling paired with a private hotel operations preview for rooms, spa, reception and day-to-day management tools."
+      },
+      "categoryTags": [
+        "software",
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Guest website"
+        },
+        {
+          "en": "Hotel dashboard"
+        },
+        {
+          "en": "Room discovery"
+        },
+        {
+          "en": "Spa experiences"
+        },
+        {
+          "en": "Booking interfaces"
+        }
+      ],
+      "accentColor": "#6CA691",
+      "coverAssetId": "2.46.27",
+      "coverImage": "/images/portfolio/cotinga-hotel-spa/image-2.46.27.jpg",
+      "screenshotGroups": [
+        {
+          "id": "guest-website",
+          "label": {
+            "en": "Guest Website"
+          },
+          "screenshotAssetIds": [
+            "2.46.27",
+            "2.46.36",
+            "2.46.46",
+            "2.46.53",
+            "2.47.05",
+            "2.47.11",
+            "2.47.20",
+            "2.47.35",
+            "2.47.43",
+            "2.47.54"
+          ]
+        },
+        {
+          "id": "hotel-dashboard",
+          "label": {
+            "en": "Hotel Dashboard"
+          },
+          "screenshotAssetIds": [
+            "2.50.52",
+            "2.50.59",
+            "2.51.07",
+            "2.51.16"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "2.46.27",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.27 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.27.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.46.27.jpg"
+        },
+        {
+          "assetId": "2.46.36",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.36 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.36.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.46.36.jpg"
+        },
+        {
+          "assetId": "2.46.46",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.46 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.46.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.46.46.jpg"
+        },
+        {
+          "assetId": "2.46.53",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.46.53 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.46.53.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.46.53.jpg"
+        },
+        {
+          "assetId": "2.47.05",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.05 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.05.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.47.05.jpg"
+        },
+        {
+          "assetId": "2.47.11",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.11 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.11.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.47.11.jpg"
+        },
+        {
+          "assetId": "2.47.20",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.20 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.20.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.47.20.jpg"
+        },
+        {
+          "assetId": "2.47.35",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.35 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.35.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.47.35.jpg"
+        },
+        {
+          "assetId": "2.47.43",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.43 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.43.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.47.43.jpg"
+        },
+        {
+          "assetId": "2.47.54",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.47.54 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.47.54.jpg",
+          "groupLabel": {
+            "en": "Guest Website"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Guest Website screenshot"
+          },
+          "optimizedBasename": "image-2.47.54.jpg"
+        },
+        {
+          "assetId": "2.50.52",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.50.52 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.50.52.jpg",
+          "groupLabel": {
+            "en": "Hotel Dashboard"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+          },
+          "optimizedBasename": "image-2.50.52.jpg"
+        },
+        {
+          "assetId": "2.50.59",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.50.59 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.50.59.jpg",
+          "groupLabel": {
+            "en": "Hotel Dashboard"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+          },
+          "optimizedBasename": "image-2.50.59.jpg"
+        },
+        {
+          "assetId": "2.51.07",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.51.07 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.51.07.jpg",
+          "groupLabel": {
+            "en": "Hotel Dashboard"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+          },
+          "optimizedBasename": "image-2.51.07.jpg"
+        },
+        {
+          "assetId": "2.51.16",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 2.51.16 PM.png",
+          "src": "/images/portfolio/cotinga-hotel-spa/image-2.51.16.jpg",
+          "groupLabel": {
+            "en": "Hotel Dashboard"
+          },
+          "alt": {
+            "en": "Cotinga Hotel & Spa — Hotel Dashboard screenshot"
+          },
+          "optimizedBasename": "image-2.51.16.jpg"
+        }
+      ],
+      "demo": {
+        "url": "https://cotinga.vercel.app/",
+        "status": "website-operations-preview",
+        "statusLabel": {
+          "en": "Website + operations preview"
+        },
+        "disclaimer": {
+          "en": "Preview surfaces · Not a claim of live hotel operations integration"
+        }
+      },
+      "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "perritos-gourmet",
+      "prototypeId": "perritos",
+      "displayOrder": 3,
+      "name": {
+        "en": "Perritos Gourmet"
+      },
+      "industry": {
+        "en": "Food service & restaurant ordering"
+      },
+      "eyebrow": {
+        "en": "FOOD SERVICE · ORDERING"
+      },
+      "shortDescription": {
+        "en": "Restaurant ordering & operations"
+      },
+      "detailedDescription": {
+        "en": "A customizable customer ordering journey, from menu selection to checkout, paired with a restaurant order-management demonstration."
+      },
+      "caseStudySummary": {
+        "en": "Customer menu selection through checkout, alongside a restaurant order-management demonstration."
+      },
+      "categoryTags": [
+        "software",
+        "commerce",
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Customer ordering"
+        },
+        {
+          "en": "Menu customization"
+        },
+        {
+          "en": "Checkout flow"
+        },
+        {
+          "en": "Restaurant dashboard"
+        }
+      ],
+      "accentColor": "#E96F4A",
+      "coverAssetId": "3.19.52",
+      "coverImage": "/images/portfolio/perritos-gourmet/image-3.19.52.jpg",
+      "screenshotGroups": [
+        {
+          "id": "customer-ordering",
+          "label": {
+            "en": "Customer Ordering"
+          },
+          "screenshotAssetIds": [
+            "3.19.52",
+            "3.19.59",
+            "3.20.10",
+            "3.20.28",
+            "3.20.41",
+            "3.20.56"
+          ]
+        },
+        {
+          "id": "restaurant-dashboard",
+          "label": {
+            "en": "Restaurant Dashboard"
+          },
+          "screenshotAssetIds": [
+            "3.21.11",
+            "3.21.16"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "3.19.52",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.19.52 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.19.52.jpg",
+          "groupLabel": {
+            "en": "Customer Ordering"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Customer Ordering screenshot"
+          },
+          "optimizedBasename": "image-3.19.52.jpg"
+        },
+        {
+          "assetId": "3.19.59",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.19.59 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.19.59.jpg",
+          "groupLabel": {
+            "en": "Customer Ordering"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Customer Ordering screenshot"
+          },
+          "optimizedBasename": "image-3.19.59.jpg"
+        },
+        {
+          "assetId": "3.20.10",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.10 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.20.10.jpg",
+          "groupLabel": {
+            "en": "Customer Ordering"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Customer Ordering screenshot"
+          },
+          "optimizedBasename": "image-3.20.10.jpg"
+        },
+        {
+          "assetId": "3.20.28",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.28 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.20.28.jpg",
+          "groupLabel": {
+            "en": "Customer Ordering"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Customer Ordering screenshot"
+          },
+          "optimizedBasename": "image-3.20.28.jpg"
+        },
+        {
+          "assetId": "3.20.41",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.41 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.20.41.jpg",
+          "groupLabel": {
+            "en": "Customer Ordering"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Customer Ordering screenshot"
+          },
+          "optimizedBasename": "image-3.20.41.jpg"
+        },
+        {
+          "assetId": "3.20.56",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.20.56 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.20.56.jpg",
+          "groupLabel": {
+            "en": "Customer Ordering"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Customer Ordering screenshot"
+          },
+          "optimizedBasename": "image-3.20.56.jpg"
+        },
+        {
+          "assetId": "3.21.11",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.21.11 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.21.11.jpg",
+          "groupLabel": {
+            "en": "Restaurant Dashboard"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Restaurant Dashboard screenshot"
+          },
+          "optimizedBasename": "image-3.21.11.jpg"
+        },
+        {
+          "assetId": "3.21.16",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.21.16 PM.png",
+          "src": "/images/portfolio/perritos-gourmet/image-3.21.16.jpg",
+          "groupLabel": {
+            "en": "Restaurant Dashboard"
+          },
+          "alt": {
+            "en": "Perritos Gourmet — Restaurant Dashboard screenshot"
+          },
+          "optimizedBasename": "image-3.21.16.jpg"
+        }
+      ],
+      "demo": {
+        "url": "https://perritos-gourmet-demo-q5qw.vercel.app/",
+        "status": "simulated-ordering-demo",
+        "statusLabel": {
+          "en": "Simulated ordering / demo backend"
+        },
+        "disclaimer": {
+          "en": "Simulated ordering journey · Demo backend only"
+        }
+      },
+      "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "dixie-remodeling",
+      "prototypeId": "dixie",
+      "displayOrder": 4,
+      "name": {
+        "en": "Dixie Remodeling"
+      },
+      "industry": {
+        "en": "Home remodeling & outdoor living"
+      },
+      "eyebrow": {
+        "en": "HOME SERVICES · WEB DESIGN"
+      },
+      "shortDescription": {
+        "en": "Premium service-business website"
+      },
+      "detailedDescription": {
+        "en": "A bilingual remodeling website concept with a cinematic hero, project photography, service galleries, category filters and estimate request experience."
+      },
+      "caseStudySummary": {
+        "en": "Bilingual remodeling marketing site with project photography, service galleries, category filters and estimate request experience."
+      },
+      "categoryTags": [
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Bilingual website"
+        },
+        {
+          "en": "Project photography galleries"
+        },
+        {
+          "en": "Service category filters"
+        },
+        {
+          "en": "Estimate request experience"
+        }
+      ],
+      "accentColor": "#D3B076",
+      "coverAssetId": "1.56.26",
+      "coverImage": "/images/portfolio/dixie-remodeling/image-1.56.26.jpg",
+      "screenshotGroups": [
+        {
+          "id": "website-experience",
+          "label": {
+            "en": "Website Experience"
+          },
+          "screenshotAssetIds": [
+            "1.56.26",
+            "1.56.41",
+            "1.56.48",
+            "1.57.05",
+            "1.57.15",
+            "1.57.22",
+            "1.57.30",
+            "1.57.37",
+            "1.57.46",
+            "1.57.59"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "1.56.26",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.56.26 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.56.26.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.56.26.jpg"
+        },
+        {
+          "assetId": "1.56.41",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.56.41 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.56.41.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.56.41.jpg"
+        },
+        {
+          "assetId": "1.56.48",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.56.48 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.56.48.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.56.48.jpg"
+        },
+        {
+          "assetId": "1.57.05",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.05 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.05.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.05.jpg"
+        },
+        {
+          "assetId": "1.57.15",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.15 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.15.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.15.jpg"
+        },
+        {
+          "assetId": "1.57.22",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.22 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.22.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.22.jpg"
+        },
+        {
+          "assetId": "1.57.30",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.30 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.30.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.30.jpg"
+        },
+        {
+          "assetId": "1.57.37",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.37 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.37.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.37.jpg"
+        },
+        {
+          "assetId": "1.57.46",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.46 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.46.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.46.jpg"
+        },
+        {
+          "assetId": "1.57.59",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 1.57.59 PM.png",
+          "src": "/images/portfolio/dixie-remodeling/image-1.57.59.jpg",
+          "groupLabel": {
+            "en": "Website Experience"
+          },
+          "alt": {
+            "en": "Dixie Remodeling — Website Experience screenshot"
+          },
+          "optimizedBasename": "image-1.57.59.jpg"
+        }
+      ],
+      "demo": {
+        "url": "https://dixie-remodeling.vercel.app/en",
+        "status": "website-demo",
+        "statusLabel": {
+          "en": "Website demo"
+        },
+        "disclaimer": {
+          "en": "Website demonstration"
+        }
+      },
+      "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "la-gallinita",
+      "prototypeId": "gallinita",
+      "displayOrder": 5,
+      "name": {
+        "en": "La Gallinita"
+      },
+      "industry": {
+        "en": "Retail, wholesale & distribution"
+      },
+      "eyebrow": {
+        "en": "RETAIL · B2B COMMERCE"
+      },
+      "shortDescription": {
+        "en": "Retail, wholesale & operations"
+      },
+      "detailedDescription": {
+        "en": "An unofficial demonstration of retail and wholesale shopping, bulk quantities, point of sale, centralized inventory and delivery operations."
+      },
+      "caseStudySummary": {
+        "en": "Retail and wholesale shopping flows with bulk quantities, plus inventory and delivery operations surfaces in an unofficial demonstration."
+      },
+      "categoryTags": [
+        "software",
+        "commerce",
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Online store"
+        },
+        {
+          "en": "Wholesale ordering"
+        },
+        {
+          "en": "Bulk quantities"
+        },
+        {
+          "en": "Inventory & delivery operations"
+        }
+      ],
+      "accentColor": "#E8C83B",
+      "coverAssetId": "3.44.04",
+      "coverImage": "/images/portfolio/la-gallinita/image-3.44.04.jpg",
+      "screenshotGroups": [
+        {
+          "id": "online-store",
+          "label": {
+            "en": "Online Store"
+          },
+          "screenshotAssetIds": [
+            "3.44.04",
+            "3.44.11",
+            "3.44.18",
+            "3.44.54"
+          ]
+        },
+        {
+          "id": "wholesale",
+          "label": {
+            "en": "Wholesale"
+          },
+          "screenshotAssetIds": [
+            "3.44.40",
+            "3.44.47"
+          ]
+        },
+        {
+          "id": "operations",
+          "label": {
+            "en": "Operations"
+          },
+          "screenshotAssetIds": [
+            "3.45.16",
+            "3.45.22",
+            "3.45.31",
+            "3.45.39",
+            "3.45.46",
+            "3.45.57"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "3.44.04",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.04 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.44.04.jpg",
+          "groupLabel": {
+            "en": "Online Store"
+          },
+          "alt": {
+            "en": "La Gallinita — Online Store screenshot"
+          },
+          "optimizedBasename": "image-3.44.04.jpg"
+        },
+        {
+          "assetId": "3.44.11",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.11 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.44.11.jpg",
+          "groupLabel": {
+            "en": "Online Store"
+          },
+          "alt": {
+            "en": "La Gallinita — Online Store screenshot"
+          },
+          "optimizedBasename": "image-3.44.11.jpg"
+        },
+        {
+          "assetId": "3.44.18",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.18 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.44.18.jpg",
+          "groupLabel": {
+            "en": "Online Store"
+          },
+          "alt": {
+            "en": "La Gallinita — Online Store screenshot"
+          },
+          "optimizedBasename": "image-3.44.18.jpg"
+        },
+        {
+          "assetId": "3.44.54",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.54 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.44.54.jpg",
+          "groupLabel": {
+            "en": "Online Store"
+          },
+          "alt": {
+            "en": "La Gallinita — Online Store screenshot"
+          },
+          "optimizedBasename": "image-3.44.54.jpg"
+        },
+        {
+          "assetId": "3.44.40",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.40 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.44.40.jpg",
+          "groupLabel": {
+            "en": "Wholesale"
+          },
+          "alt": {
+            "en": "La Gallinita — Wholesale screenshot"
+          },
+          "optimizedBasename": "image-3.44.40.jpg"
+        },
+        {
+          "assetId": "3.44.47",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.44.47 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.44.47.jpg",
+          "groupLabel": {
+            "en": "Wholesale"
+          },
+          "alt": {
+            "en": "La Gallinita — Wholesale screenshot"
+          },
+          "optimizedBasename": "image-3.44.47.jpg"
+        },
+        {
+          "assetId": "3.45.16",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.16 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.45.16.jpg",
+          "groupLabel": {
+            "en": "Operations"
+          },
+          "alt": {
+            "en": "La Gallinita — Operations screenshot"
+          },
+          "optimizedBasename": "image-3.45.16.jpg"
+        },
+        {
+          "assetId": "3.45.22",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.22 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.45.22.jpg",
+          "groupLabel": {
+            "en": "Operations"
+          },
+          "alt": {
+            "en": "La Gallinita — Operations screenshot"
+          },
+          "optimizedBasename": "image-3.45.22.jpg"
+        },
+        {
+          "assetId": "3.45.31",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.31 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.45.31.jpg",
+          "groupLabel": {
+            "en": "Operations"
+          },
+          "alt": {
+            "en": "La Gallinita — Operations screenshot"
+          },
+          "optimizedBasename": "image-3.45.31.jpg"
+        },
+        {
+          "assetId": "3.45.39",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.39 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.45.39.jpg",
+          "groupLabel": {
+            "en": "Operations"
+          },
+          "alt": {
+            "en": "La Gallinita — Operations screenshot"
+          },
+          "optimizedBasename": "image-3.45.39.jpg"
+        },
+        {
+          "assetId": "3.45.46",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.46 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.45.46.jpg",
+          "groupLabel": {
+            "en": "Operations"
+          },
+          "alt": {
+            "en": "La Gallinita — Operations screenshot"
+          },
+          "optimizedBasename": "image-3.45.46.jpg"
+        },
+        {
+          "assetId": "3.45.57",
+          "exactOriginalFilename": "Screenshot 2026-11-04 at 3.45.57 PM.png",
+          "src": "/images/portfolio/la-gallinita/image-3.45.57.jpg",
+          "groupLabel": {
+            "en": "Operations"
+          },
+          "alt": {
+            "en": "La Gallinita — Operations screenshot"
+          },
+          "optimizedBasename": "image-3.45.57.jpg"
+        }
+      ],
+      "demo": {
+        "url": "https://la-gallinita.vercel.app/",
+        "status": "unofficial-simulated-payments-demo",
+        "statusLabel": {
+          "en": "Unofficial demo · simulated payments"
+        },
+        "disclaimer": {
+          "en": "Unofficial demonstration · Simulated payments"
+        }
+      },
+      "verifiedSecondaryUrls": []
+    }
+  ]
+}
