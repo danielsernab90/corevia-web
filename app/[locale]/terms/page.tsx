@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { LegalDocument } from "@/components/sections/legal/legal-document";
 import { routing } from "@/i18n/routing";
 import { termsSectionKeys } from "@/lib/legal";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 
 type TermsPageProps = {
   params: Promise<{ locale: string }>;
@@ -33,9 +33,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/terms`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/terms`),
-    },
+    alternates: getLocaleAlternates(locale, "/terms"),
   };
 }
 

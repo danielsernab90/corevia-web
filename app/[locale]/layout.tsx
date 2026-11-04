@@ -11,8 +11,9 @@ import {
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { OrganizationJsonLd } from "@/components/seo/organization-json-ld";
 import { routing, type AppLocale } from "@/i18n/routing";
-import { getSiteUrl, ogImage, siteConfig } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage, siteConfig } from "@/lib/site";
 
 import "@/styles/globals.css";
 
@@ -76,12 +77,7 @@ export async function generateMetadata({
       description,
       images: [ogImage.url],
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}`),
-      languages: Object.fromEntries(
-        routing.locales.map((code) => [code, getSiteUrl(`/${code}`)])
-      ),
-    },
+    alternates: getLocaleAlternates(locale),
     robots: {
       index: true,
       follow: true,
@@ -115,6 +111,7 @@ export default async function LocaleLayout({
         className="min-h-dvh font-sans antialiased"
         suppressHydrationWarning
       >
+        <OrganizationJsonLd />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

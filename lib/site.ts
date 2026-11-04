@@ -1,6 +1,7 @@
 /**
  * Site-wide constants used for SEO and absolute URLs.
- * Set NEXT_PUBLIC_SITE_URL in Vercel (e.g. https://corevia.com).
+ * Set NEXT_PUBLIC_SITE_URL in Vercel when a custom domain is approved.
+ * Until then, keep the live Vercel production host as canonical.
  */
 export const siteConfig = {
   name: "CoreVia",
@@ -26,4 +27,36 @@ export function getSiteUrl(path = "") {
   const base = siteConfig.url.replace(/\/$/, "");
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   return `${base}${normalizedPath === "/" ? "" : normalizedPath}`;
+}
+
+/**
+ * Locale-prefixed path without a leading locale segment.
+ * Pass "" for homepage, "/services" for Services, etc.
+ */
+export function getLocalizedPath(locale: string, path = "") {
+  const normalized =
+    !path || path === "/"
+      ? ""
+      : path.startsWith("/")
+        ? path
+        : `/${path}`;
+  return `/${locale}${normalized}`;
+}
+
+/** Canonical + hreflang alternates for a locale-scoped page path. */
+export function getLocaleAlternates(locale: string, path = "") {
+  const languages = Object.fromEntries(
+    siteConfig.locales.map((code) => [
+      code,
+      getSiteUrl(getLocalizedPath(code, path)),
+    ])
+  );
+
+  return {
+    canonical: getSiteUrl(getLocalizedPath(locale, path)),
+    languages: {
+      ...languages,
+      "x-default": getSiteUrl(getLocalizedPath(siteConfig.localeDefault, path)),
+    },
+  };
 }

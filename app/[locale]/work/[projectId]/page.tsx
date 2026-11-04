@@ -10,7 +10,7 @@ import {
   portfolioProjects,
 } from "@/lib/portfolio/registry";
 import { localizeText } from "@/lib/portfolio/localize";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 import type { AppLocale } from "@/i18n/routing";
 
 type WorkProjectPageProps = {
@@ -56,9 +56,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/work/${project.prototypeId}`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/work/${project.prototypeId}`),
-    },
+    alternates: getLocaleAlternates(locale, `/work/${project.prototypeId}`),
   };
 }
 

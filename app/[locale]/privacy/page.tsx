@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { LegalDocument } from "@/components/sections/legal/legal-document";
 import { routing } from "@/i18n/routing";
 import { privacySectionKeys } from "@/lib/legal";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 
 type PrivacyPageProps = {
   params: Promise<{ locale: string }>;
@@ -33,9 +33,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/privacy`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/privacy`),
-    },
+    alternates: getLocaleAlternates(locale, "/privacy"),
   };
 }
 

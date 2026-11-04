@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { EmpezarExperience } from "@/components/sections/empezar/empezar-experience";
 import { routing } from "@/i18n/routing";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 
 type EmpezarPageProps = {
   params: Promise<{ locale: string }>;
@@ -35,9 +35,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/empezar`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/empezar`),
-    },
+    alternates: getLocaleAlternates(locale, "/empezar"),
   };
 }
 

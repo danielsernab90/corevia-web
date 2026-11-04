@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { BookConsultationExperience } from "@/components/sections/book-consultation/book-consultation-experience";
 import { routing } from "@/i18n/routing";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 
 type BookConsultationPageProps = {
   params: Promise<{ locale: string }>;
@@ -35,9 +35,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/book-consultation`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/book-consultation`),
-    },
+    alternates: getLocaleAlternates(locale, "/book-consultation"),
   };
 }
 

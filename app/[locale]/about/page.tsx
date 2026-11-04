@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { AboutExperience } from "@/components/sections/about/about-experience";
 import { routing } from "@/i18n/routing";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 
 type AboutPageProps = {
   params: Promise<{ locale: string }>;
@@ -35,9 +35,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/about`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/about`),
-    },
+    alternates: getLocaleAlternates(locale, "/about"),
   };
 }
 

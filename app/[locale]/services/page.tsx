@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { ServicesExperience } from "@/components/sections/services/services-experience";
 import { routing } from "@/i18n/routing";
-import { getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
 
 type ServicesPageProps = {
   params: Promise<{ locale: string }>;
@@ -35,9 +35,7 @@ export async function generateMetadata({
       images: [ogImage],
       url: getSiteUrl(`/${locale}/services`),
     },
-    alternates: {
-      canonical: getSiteUrl(`/${locale}/services`),
-    },
+    alternates: getLocaleAlternates(locale, "/services"),
   };
 }
 

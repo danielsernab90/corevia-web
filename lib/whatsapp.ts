@@ -4,8 +4,10 @@ import type { AppLocale } from "@/i18n/routing";
 
 export const WHATSAPP_DISPLAY_NUMBER = "+57 324 313-5964";
 
-/** Digits-only phone for wa.me (no spaces, plus, or dashes). */
-const WHATSAPP_PHONE = "573243135964";
+/** Digits-only phone for wa.me / schema.org (no spaces, plus, or dashes). */
+export const WHATSAPP_E164_DIGITS = "573243135964";
+/** @deprecated Prefer WHATSAPP_E164_DIGITS */
+const WHATSAPP_PHONE = WHATSAPP_E164_DIGITS;
 
 type WhatsAppIntent = "default" | "referral" | "card";
 
