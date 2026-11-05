@@ -128,6 +128,7 @@ function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
   video.setAttribute("webkit-playsinline", "");
   video.setAttribute("x5-playsinline", "");
   try {
+    video.defaultPlaybackRate = CINEMATIC_PLAYBACK_RATE;
     video.playbackRate = CINEMATIC_PLAYBACK_RATE;
   } catch {
     // Some browsers reject non-1 rates briefly; retry on play.

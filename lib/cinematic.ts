@@ -10,9 +10,9 @@ export const CINEMATIC_END = 10.0;
 
 /**
  * HTML video playbackRate for the first-session intro autoplay.
- * 1.3 = 30% faster than the authored timeline (asset unchanged).
+ * 1.6 = 60% faster than the authored timeline (asset unchanged).
  */
-export const CINEMATIC_PLAYBACK_RATE = 1.3;
+export const CINEMATIC_PLAYBACK_RATE = 1.6;
 
 /**
  * sessionStorage key: intro already started (or completed) in this browser tab session.
@@ -23,7 +23,7 @@ export const CINEMATIC_INTRO_SEEN_KEY = "corevia_intro_seen_v1";
 /**
  * Opacity fade when leaving the cinematic into live HTML.
  * Base handoff was ~0.4s; scaled by 1 / PLAYBACK_RATE so the CSS transition
- * matches the 30% faster intro pacing.
+ * matches the faster intro pacing.
  */
 export const CINEMATIC_FADE_DURATION = 0.4 / CINEMATIC_PLAYBACK_RATE;
 
