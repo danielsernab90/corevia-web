@@ -9,11 +9,23 @@ import type { AppLocale } from "@/i18n/routing";
 export const CINEMATIC_END = 10.0;
 
 /**
- * Opacity fade when leaving the cinematic into live HTML
- * (~0.4s ≈ 10 frames @ 24fps). Applied near the end of the timeline
- * and during the autoplay → website handoff.
+ * HTML video playbackRate for the first-session intro autoplay.
+ * 1.3 = 30% faster than the authored timeline (asset unchanged).
  */
-export const CINEMATIC_FADE_DURATION = 0.4;
+export const CINEMATIC_PLAYBACK_RATE = 1.3;
+
+/**
+ * sessionStorage key: intro already started (or completed) in this browser tab session.
+ * Shared across locales so EN ↔ ES does not replay the opening.
+ */
+export const CINEMATIC_INTRO_SEEN_KEY = "corevia_intro_seen_v1";
+
+/**
+ * Opacity fade when leaving the cinematic into live HTML.
+ * Base handoff was ~0.4s; scaled by 1 / PLAYBACK_RATE so the CSS transition
+ * matches the 30% faster intro pacing.
+ */
+export const CINEMATIC_FADE_DURATION = 0.4 / CINEMATIC_PLAYBACK_RATE;
 
 /**
  * Scroll sensitivity: how many seconds of video progress per 100px of scroll delta.
@@ -186,4 +198,28 @@ export function clampCinematicTime(
   max = CINEMATIC_END
 ): number {
   return Math.min(max, Math.max(min, time));
+}
+
+/** True when this browser session has already started the homepage intro. */
+export function hasCinematicIntroBeenSeen(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.sessionStorage.getItem(CINEMATIC_INTRO_SEEN_KEY) === "1";
+  } catch {
+    // Private mode / blocked storage — treat as unseen and fail open.
+    return false;
+  }
+}
+
+/**
+ * Persist that the intro has begun for this session.
+ * Called when autoplay starts so mid-intro navigation does not replay it.
+ */
+export function markCinematicIntroSeen(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(CINEMATIC_INTRO_SEEN_KEY, "1");
+  } catch {
+    // Ignore quota / privacy errors — intro still plays this visit.
+  }
 }

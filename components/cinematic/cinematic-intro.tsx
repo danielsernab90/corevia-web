@@ -16,12 +16,15 @@ import {
   CINEMATIC_INIT_TIMEOUT_MS,
   CINEMATIC_MOBILE_MAX_WIDTH,
   CINEMATIC_PLAYBACK_MIN_DELTA_SEC,
+  CINEMATIC_PLAYBACK_RATE,
   CINEMATIC_PLAYBACK_VERIFY_MS,
   CINEMATIC_SCROLL_SECONDS_PER_100PX,
   CINEMATIC_TOUCH_MAX_DELTA_PX,
   CINEMATIC_TOUCH_SECONDS_PER_100PX,
   clampCinematicTime,
   getCinematicViewportClass,
+  hasCinematicIntroBeenSeen,
+  markCinematicIntroSeen,
   resolveCinematicMedia,
   type CinematicMedia,
   type CinematicViewportClass,
@@ -124,6 +127,11 @@ function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
   video.setAttribute("x5-playsinline", "");
+  try {
+    video.playbackRate = CINEMATIC_PLAYBACK_RATE;
+  } catch {
+    // Some browsers reject non-1 rates briefly; retry on play.
+  }
 }
 
 function waitForEvent(
@@ -434,6 +442,21 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
   useLayoutEffect(() => {
     // Resolve viewport + mount before paint so the <video> can start loading
     // immediately instead of waiting for a post-paint useEffect tick.
+    //
+    // Session / reduced-motion gates run in the same layout pass so returning
+    // visitors never briefly paint the black cinematic overlay.
+    const alreadySeen = hasCinematicIntroBeenSeen();
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (alreadySeen || prefersReduced) {
+      setIntroPhase("skipped");
+      setMounted(true);
+      unlockDocumentScroll();
+      return;
+    }
+
     setMounted(true);
     const applyViewport = (next: CinematicViewportClass) => {
       setViewportClass(next);
@@ -458,7 +481,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [locale]);
+  }, [locale, setIntroPhase]);
 
   // Refresh media on rotate only before intro completes — avoid mid-play swaps.
   useLayoutEffect(() => {
@@ -532,6 +555,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
     let cancelled = false;
     finishingRef.current = false;
+    // Persist before play() so leaving during load still counts as "seen".
+    markCinematicIntroSeen();
     setIntroPhase("initializing");
     prepareVideoForMobileAutoplay(video);
     // src + preload="auto" already kick the network — do not call load() here
@@ -667,6 +692,9 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
 
     const startPlayback = async () => {
       const enterAutoplay = () => {
+        // Mark as soon as the opening begins so mid-intro navigation does not replay.
+        markCinematicIntroSeen();
+        prepareVideoForMobileAutoplay(video);
         markFrameReady();
         lockDocumentScroll();
         setIntroPhase("autoplay");
@@ -948,13 +976,18 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
   }, []);
 
+  // Session-skip / reduced-motion: never paint the overlay (avoids black flash).
+  if (phase === "skipped" || reduceMotion === true) {
+    return null;
+  }
+
   if (!mounted || viewportClass == null) {
     return null;
   }
 
   // Unknown reduced-motion preference: still mount so media can start.
-  // Confirmed reduced motion / missing asset / skipped → no overlay.
-  if (reduceMotion === true || phase === "skipped" || !media) {
+  // Missing asset → no overlay.
+  if (!media) {
     return null;
   }
 
