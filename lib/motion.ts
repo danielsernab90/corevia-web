@@ -78,10 +78,15 @@ export const scaleIn: Variants = {
   },
 };
 
+/**
+ * Parent stagger wrappers must NOT use opacity:0.
+ * Tall lists (e.g. Services capability cards) can exceed the viewport, so a
+ * whileInView amount threshold on an opacity-0 parent never resolves on mobile
+ * and leaves a huge blank scroll region. Children keep their own enter variants.
+ */
 export const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.08,
       delayChildren: 0.04,
@@ -91,9 +96,8 @@ export const staggerContainer: Variants = {
 
 /** Denser stagger for feature / logo grids. */
 export const staggerGrid: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.06,
       delayChildren: 0.08,

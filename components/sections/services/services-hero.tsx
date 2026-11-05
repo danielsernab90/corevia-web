@@ -43,7 +43,7 @@ export function ServicesHero() {
 
       <Container
         size="xl"
-        className="relative flex min-h-[min(72dvh,38rem)] flex-col justify-center py-16 md:py-20"
+        className="relative flex min-h-0 flex-col justify-center py-14 sm:min-h-[min(56dvh,32rem)] sm:py-16 md:min-h-[min(72dvh,38rem)] md:py-20"
       >
         <motion.div
           className="relative z-10 max-w-3xl"

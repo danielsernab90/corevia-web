@@ -32,7 +32,9 @@ function withViewport(delay = 0, once = true) {
   return {
     initial: "hidden" as const,
     whileInView: "visible" as const,
-    viewport: { once, amount: 0.2 },
+    // "some" = any pixel visible. A fractional amount (e.g. 0.2) fails on tall
+    // mobile lists whose height exceeds the viewport, leaving children opacity:0.
+    viewport: { once, amount: "some" as const },
     transition: delay ? { delay } : undefined,
   };
 }
