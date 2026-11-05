@@ -1,11 +1,16 @@
 import type { AppLocale } from "@/i18n/routing";
 
-/** Shared Corevia WhatsApp Business contact details. */
+import {
+  COLOMBIA_WHATSAPP_DISPLAY,
+  COLOMBIA_WHATSAPP_E164_DIGITS,
+} from "@/lib/contact";
 
-export const WHATSAPP_DISPLAY_NUMBER = "+57 324 313-5964";
+/** Shared Corevia WhatsApp Business contact details (Colombia line). */
+
+export const WHATSAPP_DISPLAY_NUMBER = COLOMBIA_WHATSAPP_DISPLAY;
 
 /** Digits-only phone for wa.me / schema.org (no spaces, plus, or dashes). */
-export const WHATSAPP_E164_DIGITS = "573243135964";
+export const WHATSAPP_E164_DIGITS = COLOMBIA_WHATSAPP_E164_DIGITS;
 /** @deprecated Prefer WHATSAPP_E164_DIGITS */
 const WHATSAPP_PHONE = WHATSAPP_E164_DIGITS;
 

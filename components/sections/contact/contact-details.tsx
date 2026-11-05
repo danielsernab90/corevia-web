@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock3, MapPin, MessageSquare } from "lucide-react";
+import { Clock3, MapPin, MessageSquare, Phone } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { FacebookIcon } from "@/components/icons/facebook-icon";
@@ -8,6 +8,10 @@ import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Heading } from "@/components/shared/heading";
 import type { AppLocale } from "@/i18n/routing";
+import {
+  US_PHONE_DISPLAY,
+  buildUsTelLink,
+} from "@/lib/contact";
 import { brandColors } from "@/lib/design-tokens";
 import { coreviaIconProps } from "@/lib/icons";
 import { cn } from "@/lib/utils";
@@ -155,6 +159,23 @@ export function ContactDetails({
               className={linkClassName}
             >
               {WHATSAPP_DISPLAY_NUMBER}
+            </a>
+          </div>
+        </li>
+
+        <li className="flex gap-3">
+          <span
+            className="mt-0.5 inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
+            style={infoBadgeStyle()}
+          >
+            <Phone className="size-5" {...coreviaIconProps} />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-foreground">
+              {t("details.items.usPhone.label")}
+            </p>
+            <a href={buildUsTelLink()} className={linkClassName}>
+              {US_PHONE_DISPLAY}
             </a>
           </div>
         </li>

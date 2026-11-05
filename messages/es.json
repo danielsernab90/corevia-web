@@ -50,7 +50,9 @@
     "designSystems": "Sistemas de diseño",
     "privacy": "Política de privacidad",
     "terms": "Términos",
-    "copyright": "© {year} CoreVia. Todos los derechos reservados."
+    "copyright": "© {year} CoreVia. Todos los derechos reservados.",
+    "whatsappLabel": "WhatsApp (Colombia)",
+    "usPhoneLabel": "Estados Unidos"
   },
   "Social": {
     "instagram": "CoreVia en Instagram",
@@ -266,8 +268,8 @@
       "title": "Software que <br></br>habla por sí solo.",
       "description": "Explora los productos digitales, sitios web y aplicaciones empresariales detrás de nuestro trabajo. Cada experiencia es distinta porque cada negocio es distinto.",
       "metaFlagship": "Proyecto Destacado",
-      "metaOs": "Construction OS",
-      "summary": "Una demostración premium de software de gestión para construcción — desde la consulta del cliente hasta estimados, CRM, gestión de proyectos, programación y visibilidad para el cliente.",
+      "metaOs": "Sitio web + Construction OS",
+      "summary": "Una demostración premium de sitio web y software para construcción — desde la presencia pública hasta CRM, estimados, proyectos, programación y visibilidad para el cliente.",
       "highlights": {
         "crm": "CRM y seguimiento de prospectos",
         "estimates": "Estimados y propuestas",
@@ -280,9 +282,12 @@
       },
       "exploreCta": "Explorar Proyecto",
       "demoCta": "Probar Demo en Vivo",
-      "browserLabel": "Construction OS / demo interactiva",
-      "thumbsLabel": "Vistas previas de Construction OS",
-      "thumbAria": "Ver captura {index}"
+      "browserLabel": "Flujo Summit & Stone",
+      "thumbsLabel": "Capturas del flujo Summit & Stone",
+      "thumbAria": "Ver captura {index}",
+      "stepLabel": "Captura {current} de {total}",
+      "previous": "Captura anterior",
+      "next": "Captura siguiente"
     },
     "projects": {
       "eyebrow": "Más del estudio",
@@ -1006,13 +1011,16 @@
           "value": "Lunes a viernes, 9:00 a. m. – 6:00 p. m. (hora de Colombia)."
         },
         "whatsapp": {
-          "label": "WhatsApp"
+          "label": "WhatsApp (Colombia)"
         },
         "instagram": {
           "label": "Instagram"
         },
         "facebook": {
           "label": "Facebook"
+        },
+        "usPhone": {
+          "label": "Estados Unidos"
         }
       }
     },
@@ -1219,6 +1227,25 @@
       "description": "Cuéntanos qué necesitas — revisamos tus objetivos y te respondemos con pasos claros.",
       "button": "Comienza Tu Proyecto",
       "textNote": "¿Prefieres escribir? Lo entendemos — WhatsApp también sirve."
+    },
+    "team": {
+      "eyebrow": "El Equipo",
+      "title": "Las personas detrás de CoreVia.",
+      "description": "Un equipo pequeño enfocado en comunicación clara y entrega cuidadosa — desde la primera conversación hasta el lanzamiento.",
+      "members": {
+        "daniel": {
+          "name": "Daniel Serna",
+          "role": "Fundador",
+          "bio": "Lidera el producto, el diseño y la entrega a clientes en CoreVia. Trabajas directamente con quien guía tu proyecto.",
+          "imageAlt": "Daniel Serna, fundador de CoreVia"
+        },
+        "sofia": {
+          "name": "Sofia Villa",
+          "role": "Estudiante de marketing • Pereira, Colombia",
+          "bio": "Sofia Villa es estudiante de marketing de Pereira, Colombia, con pasión por ayudar a los negocios a comunicarse con claridad y crecer con intención. Apoya a empresas en Colombia y Estados Unidos con esfuerzos de marketing enfocados en visibilidad, posicionamiento y conexión con la audiencia correcta. Su perspectiva aporta creatividad, adaptabilidad y una sólida comprensión de la comunicación digital moderna al equipo de CoreVia.",
+          "imageAlt": "Sofia Villa, miembro del equipo de CoreVia"
+        }
+      }
     }
   },
   "Privacy": {

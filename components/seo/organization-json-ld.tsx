@@ -1,5 +1,8 @@
+import {
+  COLOMBIA_WHATSAPP_E164_DIGITS,
+  US_PHONE_E164_DIGITS,
+} from "@/lib/contact";
 import { getSiteUrl, ogImage, siteConfig } from "@/lib/site";
-import { WHATSAPP_E164_DIGITS } from "@/lib/whatsapp";
 
 /**
  * Organization structured data from verified public brand facts only.
@@ -22,8 +25,15 @@ export function OrganizationJsonLd() {
         "@type": "ContactPoint",
         contactType: "sales",
         availableLanguage: ["English", "Spanish"],
-        telephone: `+${WHATSAPP_E164_DIGITS}`,
+        telephone: `+${COLOMBIA_WHATSAPP_E164_DIGITS}`,
         areaServed: ["CO", "US"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        availableLanguage: ["English", "Spanish"],
+        telephone: `+${US_PHONE_E164_DIGITS}`,
+        areaServed: ["US", "CO"],
       },
     ],
     description:

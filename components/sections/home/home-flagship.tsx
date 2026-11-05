@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -10,7 +10,7 @@ import { SectionReveal } from "@/components/shared/motion";
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
-import { FLAGSHIP_PREVIEW_ASSET_IDS } from "@/lib/portfolio/home-flagship";
+import { getFlagshipNarrativeScreenshots } from "@/lib/portfolio/home-flagship";
 import { localizeText } from "@/lib/portfolio/localize";
 import { getFlagshipProject } from "@/lib/portfolio/registry";
 import { cn } from "@/lib/utils";
@@ -30,15 +30,19 @@ export function HomeFlagship() {
   const t = useTranslations("Home.flagship");
   const locale = useLocale() as AppLocale;
   const project = getFlagshipProject();
-  const previews = FLAGSHIP_PREVIEW_ASSET_IDS.map((assetId) => {
-    const shot = project.screenshots.find((item) => item.assetId === assetId);
-    if (!shot) {
-      throw new Error(`Missing flagship preview asset ${assetId}`);
-    }
-    return shot;
-  });
+  const previews = useMemo(() => getFlagshipNarrativeScreenshots(), []);
   const [active, setActive] = useState(0);
   const current = previews[active] ?? previews[0];
+  const groupLabel = localizeText(current.groupLabel, locale);
+
+  const go = (delta: number) => {
+    setActive((prev) => {
+      const next = prev + delta;
+      if (next < 0) return previews.length - 1;
+      if (next >= previews.length) return 0;
+      return next;
+    });
+  };
 
   return (
     <Section
@@ -131,20 +135,47 @@ export function HomeFlagship() {
               <span className="size-1.5 rounded-full bg-[#66869b]" />
               <span className="size-1.5 rounded-full bg-[#66869b]" />
               <span className="size-1.5 rounded-full bg-[#66869b]" />
-              <span className="ml-3 text-[10px] text-[#93aab9]">
-                {t("browserLabel")}
+              <span className="ml-3 truncate text-[10px] text-[#93aab9]">
+                {groupLabel}
               </span>
             </div>
-            <div className="relative mt-1 overflow-hidden rounded-[9px] bg-[#152b3b]">
+            <div className="relative mt-1 overflow-hidden rounded-[9px] bg-[#0b1a24]">
               <Image
                 src={current.src}
                 alt={localizeText(current.alt, locale)}
                 width={1600}
                 height={900}
-                priority
+                priority={active === 0}
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="aspect-[1.98] w-full object-cover object-top transition-[opacity] duration-300"
+                className="aspect-[1.98] w-full object-contain object-top"
               />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#07131de6] to-transparent px-3 pb-2.5 pt-8">
+                <p className="pointer-events-none text-[11px] text-[#d7e4ec]">
+                  {t("stepLabel", {
+                    current: active + 1,
+                    total: previews.length,
+                  })}
+                  <span className="text-[#93aab9]"> · {groupLabel}</span>
+                </p>
+              </div>
+              <div className="absolute top-1/2 right-2 left-2 flex -translate-y-1/2 justify-between">
+                <button
+                  type="button"
+                  aria-label={t("previous")}
+                  onClick={() => go(-1)}
+                  className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-[#132633cc] text-lg text-white transition-colors hover:bg-[#1c3647] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  aria-label={t("next")}
+                  onClick={() => go(1)}
+                  className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-[#132633cc] text-lg text-white transition-colors hover:bg-[#1c3647] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                >
+                  ›
+                </button>
+              </div>
             </div>
             <div
               role="tablist"
@@ -162,7 +193,7 @@ export function HomeFlagship() {
                     aria-label={t("thumbAria", { index: index + 1 })}
                     onClick={() => setActive(index)}
                     className={cn(
-                      "min-w-[105px] max-w-[115px] shrink-0 rounded-[9px] border-2 bg-[#223746] p-0.5 opacity-70 transition-[opacity,border-color]",
+                      "min-w-[88px] max-w-[100px] shrink-0 rounded-[9px] border-2 bg-[#223746] p-0.5 opacity-70 transition-[opacity,border-color]",
                       "focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
                       selected && "border-primary opacity-100",
                       !selected && "border-transparent hover:opacity-90"
@@ -171,9 +202,10 @@ export function HomeFlagship() {
                     <Image
                       src={shot.src}
                       alt=""
-                      width={230}
-                      height={118}
-                      sizes="115px"
+                      width={200}
+                      height={102}
+                      sizes="100px"
+                      loading="lazy"
                       className="aspect-[1.95] w-full rounded-[5px] object-cover object-top"
                     />
                   </button>

@@ -10,6 +10,10 @@ import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
+import {
+  US_PHONE_DISPLAY,
+  buildUsTelLink,
+} from "@/lib/contact";
 import { footerNav, verifiedSocialLinks } from "@/lib/navigation";
 import {
   WHATSAPP_DISPLAY_NUMBER,
@@ -71,7 +75,17 @@ export async function Footer() {
                 className="inline-flex items-center gap-2 text-[#94aab8] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               >
                 <WhatsAppIcon className="size-4 text-[#25D366]" />
-                <span>{WHATSAPP_DISPLAY_NUMBER}</span>
+                <span>
+                  {t("whatsappLabel")}: {WHATSAPP_DISPLAY_NUMBER}
+                </span>
+              </a>
+              <a
+                href={buildUsTelLink()}
+                className="inline-flex items-center gap-2 text-[#94aab8] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                <span>
+                  {t("usPhoneLabel")}: {US_PHONE_DISPLAY}
+                </span>
               </a>
             </div>
             <ul className="flex flex-wrap gap-2 pt-1">
