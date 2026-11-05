@@ -10,6 +10,10 @@ import { FadeUp, SectionReveal } from "@/components/shared/motion";
 
 const CHAPTER_KEYS = ["military", "filmmaking", "return"] as const;
 
+/**
+ * Founder story narrative + portrait. Kept for future reuse; not mounted on
+ * the live About page so the team section remains the sole founder photo.
+ */
 export function AboutStory() {
   const t = useTranslations("About");
 

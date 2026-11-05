@@ -81,7 +81,7 @@ export function AboutTeam() {
                   <h3 className="mt-2 font-display text-h2 tracking-tight text-foreground">
                     {t(`members.${member.nameKey}.name`)}
                   </h3>
-                  <p className="mt-3 font-sans text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-3 font-sans text-body leading-relaxed text-muted-foreground">
                     {t(`members.${member.nameKey}.bio`)}
                   </p>
                 </div>

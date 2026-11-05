@@ -1230,20 +1230,20 @@
     },
     "team": {
       "eyebrow": "The Team",
-      "title": "The people behind CoreVia.",
+      "title": "Meet the Team",
       "description": "A small team focused on clear communication and careful delivery — from first conversation through launch.",
       "members": {
         "daniel": {
           "name": "Daniel Serna",
           "role": "Software Developer & Video Editor",
-          "bio": "Leads CoreVia's software development, digital experiences, and creative production. Combines technical expertise with visual storytelling to deliver tailored solutions for businesses.",
+          "bio": "Daniel Serna combines a background in military leadership, film production, and technology to create practical, innovative digital solutions. With a passion for software development, visual storytelling, and problem-solving, he helps businesses transform ideas into professional websites, intelligent systems, and meaningful digital experiences.",
           "imageAlt": "Daniel Serna, founder of CoreVia"
         },
         "sofia": {
-          "name": "Sofia Villa",
-          "role": "Marketing Professional • Pereira, Colombia",
-          "bio": "Sofia Villa is a marketing professional from Pereira, Colombia, passionate about helping businesses strengthen their brands, communicate effectively, and grow with purpose. She supports companies across Colombia and the United States through marketing strategies focused on brand visibility, positioning, and connecting with the right audiences. At CoreVia, she brings creativity, strategic thinking, and a people-centered approach to digital communication and business growth.",
-          "imageAlt": "Sofia Villa, CoreVia team member"
+          "name": "Sophia Villa",
+          "role": "Marketing Professional · Pereira, Colombia",
+          "bio": "Originally from Pereira, Colombia, Sophia Villa helps businesses across Colombia and the United States strengthen their brands and connect with their audiences. She brings creativity, strategic thinking, and a people-centered approach to marketing, brand positioning, and digital communication.",
+          "imageAlt": "Sophia Villa, CoreVia team member"
         }
       }
     }

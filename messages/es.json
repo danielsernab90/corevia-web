@@ -1230,20 +1230,20 @@
     },
     "team": {
       "eyebrow": "El Equipo",
-      "title": "Las personas detrás de CoreVia.",
+      "title": "Conoce al Equipo",
       "description": "Un equipo pequeño enfocado en comunicación clara y entrega cuidadosa — desde la primera conversación hasta el lanzamiento.",
       "members": {
         "daniel": {
           "name": "Daniel Serna",
           "role": "Desarrollador de Software y Editor de Video",
-          "bio": "Lidera el desarrollo de software, las experiencias digitales y la producción creativa de CoreVia. Combina conocimientos técnicos con narrativa visual para crear soluciones a la medida de cada negocio.",
+          "bio": "Daniel Serna combina su experiencia en liderazgo militar, producción audiovisual y tecnología para crear soluciones digitales prácticas e innovadoras. Apasionado por el desarrollo de software, la narrativa visual y la resolución de problemas, ayuda a las empresas a transformar sus ideas en sitios web profesionales, sistemas inteligentes y experiencias digitales de valor.",
           "imageAlt": "Daniel Serna, fundador de CoreVia"
         },
         "sofia": {
-          "name": "Sofia Villa",
-          "role": "Profesional de Marketing • Pereira, Colombia",
-          "bio": "Sofia Villa es una profesional de marketing originaria de Pereira, Colombia, apasionada por ayudar a las empresas a fortalecer sus marcas, comunicarse de manera efectiva y crecer con propósito. Apoya a empresas en Colombia y Estados Unidos mediante estrategias de marketing enfocadas en la visibilidad de marca, el posicionamiento y la conexión con sus públicos ideales. En CoreVia, aporta creatividad, pensamiento estratégico y un enfoque humano a la comunicación digital y al crecimiento empresarial.",
-          "imageAlt": "Sofia Villa, miembro del equipo de CoreVia"
+          "name": "Sophia Villa",
+          "role": "Profesional de Marketing · Pereira, Colombia",
+          "bio": "Originaria de Pereira, Colombia, Sophia Villa ayuda a empresas en Colombia y Estados Unidos a fortalecer sus marcas y conectar con sus audiencias. Aporta creatividad, pensamiento estratégico y un enfoque humano al marketing, el posicionamiento de marca y la comunicación digital.",
+          "imageAlt": "Sophia Villa, miembro del equipo de CoreVia"
         }
       }
     }
