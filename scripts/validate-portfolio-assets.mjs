@@ -26,14 +26,15 @@ const expectedCounts = {
   "perritos-gourmet": 8,
   "la-gallinita": 12,
   "montana-inmobiliaria": 8,
+  "odontologia-miguel-maya": 7,
 };
 
 const errors = [];
 const seenAssetIds = new Set();
 const seenOriginals = new Set();
 
-if (registry.projects.length !== 6) {
-  errors.push(`Expected 6 projects, got ${registry.projects.length}`);
+if (registry.projects.length !== 7) {
+  errors.push(`Expected 7 projects, got ${registry.projects.length}`);
 }
 
 if (manifest.length !== 60) {
@@ -89,8 +90,8 @@ for (const project of registry.projects) {
   }
 }
 
-if (screenshotTotal !== 68) {
-  errors.push(`Expected 68 registry screenshots, got ${screenshotTotal}`);
+if (screenshotTotal !== 75) {
+  errors.push(`Expected 75 registry screenshots, got ${screenshotTotal}`);
 }
 
 if (errors.length) {

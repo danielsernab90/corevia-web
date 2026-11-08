@@ -291,8 +291,8 @@
     },
     "projects": {
       "eyebrow": "More from the studio",
-      "title": "Six businesses. <br></br>Six different solutions.",
-      "description": "From hospitality and construction to online ordering, retail operations, and real estate — discover what tailored technology can look like.",
+      "title": "Seven businesses. <br></br>Seven different solutions.",
+      "description": "From hospitality and construction to online ordering, retail, real estate, and healthcare — discover what tailored technology can look like.",
       "viewCta": "View Project",
       "demoCta": "Live Demo",
       "allCta": "Explore All Projects",
@@ -301,14 +301,16 @@
         "dixie-remodeling": "Home Services · Web Design",
         "perritos-gourmet": "Food Service · Ordering",
         "la-gallinita": "Retail · B2B Commerce",
-        "montana-inmobiliaria": "Real Estate · Web Design"
+        "montana-inmobiliaria": "Real Estate · Web Design",
+        "odontologia-miguel-maya": "Healthcare · Dental · Web"
       },
       "blurbs": {
         "cotinga-hotel-spa": "An immersive hospitality website paired with hotel operations tools — rooms, spa experiences, booking, and management.",
         "dixie-remodeling": "A bilingual remodeling website with cinematic storytelling, project galleries, and estimate requests.",
         "perritos-gourmet": "A customer ordering journey from menu to checkout, with restaurant order-management tools.",
         "la-gallinita": "Retail and wholesale shopping with inventory, point of sale, and delivery operations in one demonstration.",
-        "montana-inmobiliaria": "A premium real estate website featuring an interactive property catalog, advanced search filters, elegant property galleries, and direct WhatsApp inquiries. Designed to help buyers and renters explore properties across Amagá and Southwestern Antioquia."
+        "montana-inmobiliaria": "A premium real estate website featuring an interactive property catalog, advanced search filters, elegant property galleries, and direct WhatsApp inquiries. Designed to help buyers and renters explore properties across Amagá and Southwestern Antioquia.",
+        "odontologia-miguel-maya": "A sophisticated dental website concept designed to bring together premium visual design, treatment information, before-and-after galleries, patient reviews, and seamless WhatsApp inquiries. Built to deliver a professional, intuitive experience across desktop and mobile devices."
       }
     },
     "solutions": {

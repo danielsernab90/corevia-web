@@ -1613,6 +1613,218 @@
         }
       },
       "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "odontologia-miguel-maya",
+      "prototypeId": "odontologia-miguel-maya",
+      "displayOrder": 7,
+      "name": {
+        "en": "Odontología Miguel Maya — Premium Dental Website",
+        "es": "Odontología Miguel Maya — Sitio Web Odontológico Premium"
+      },
+      "industry": {
+        "en": "Healthcare / Dental",
+        "es": "Salud / Odontología"
+      },
+      "eyebrow": {
+        "en": "HEALTHCARE · DENTAL WEBSITE DEVELOPMENT",
+        "es": "SALUD · DESARROLLO WEB ODONTOLÓGICO"
+      },
+      "shortDescription": {
+        "en": "A sophisticated dental website concept designed to bring together premium visual design, treatment information, before-and-after galleries, patient reviews, and seamless WhatsApp inquiries. Built to deliver a professional, intuitive experience across desktop and mobile devices.",
+        "es": "Una experiencia web de alta estética dental que combina diseño elegante, presentación de tratamientos, galerías de resultados, reseñas de pacientes y contacto directo por WhatsApp. Desarrollada para ofrecer una navegación profesional, intuitiva y adaptable a cualquier dispositivo."
+      },
+      "detailedDescription": {
+        "en": "CoreVia designed and developed a premium dental website demonstration for Odontología Miguel Maya, a dental aesthetics practice in Laureles, Medellín. The project combines an elegant black, cream, and champagne-gold visual identity with intuitive navigation, dental treatment presentations, interactive image galleries, professional profile information, and direct WhatsApp communication. The website demonstrates how thoughtful design and practical functionality can create a polished digital experience for a healthcare practice.",
+        "es": "CoreVia diseñó y desarrolló una demostración funcional de sitio web premium para Odontología Miguel Maya, un consultorio de estética dental ubicado en Laureles, Medellín. El proyecto combina una identidad visual elegante en negro, crema y dorado champaña con navegación intuitiva, presentación de tratamientos odontológicos, galerías interactivas, información profesional y comunicación directa por WhatsApp. Esta experiencia demuestra cómo el diseño y la funcionalidad pueden integrarse para crear una presencia digital moderna y profesional para el sector salud."
+      },
+      "caseStudySummary": {
+        "en": "Concept project — functional Spanish-language dental website demonstration for a prospective client in Laureles, Medellín.",
+        "es": "Proyecto conceptual — demostración funcional de sitio web odontológico en español para un cliente prospectivo en Laureles, Medellín."
+      },
+      "categoryTags": [
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Premium Dental Website Design",
+          "es": "Diseño web odontológico premium"
+        },
+        {
+          "en": "Responsive Desktop and Mobile Layouts",
+          "es": "Diseños adaptables para escritorio y móvil"
+        },
+        {
+          "en": "Dental Treatment Showcase",
+          "es": "Presentación de tratamientos odontológicos"
+        },
+        {
+          "en": "Interactive Before-and-After Gallery",
+          "es": "Galería interactiva de antes y después"
+        },
+        {
+          "en": "Doctor Profile",
+          "es": "Perfil del doctor"
+        },
+        {
+          "en": "Patient Review Presentation",
+          "es": "Presentación de reseñas de pacientes"
+        },
+        {
+          "en": "WhatsApp Inquiry Integration",
+          "es": "Integración de consultas por WhatsApp"
+        },
+        {
+          "en": "Contact and Location Information",
+          "es": "Información de contacto y ubicación"
+        },
+        {
+          "en": "Subtle Cinematic Animations",
+          "es": "Animaciones cinematográficas sutiles"
+        },
+        {
+          "en": "Accessibility and Performance Considerations",
+          "es": "Consideraciones de accesibilidad y rendimiento"
+        }
+      ],
+      "accentColor": "#C5A572",
+      "coverAssetId": "1.17.44",
+      "coverImage": "/images/portfolio/odontologia-miguel-maya/image-1.17.44.png",
+      "screenshotGroups": [
+        {
+          "id": "website-experience",
+          "label": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "screenshotAssetIds": [
+            "1.17.44",
+            "1.17.55",
+            "1.18.01",
+            "1.18.08",
+            "1.18.14",
+            "1.18.21",
+            "1.18.28"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "1.17.44",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.17.44\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.17.44.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — homepage hero with before-and-after smile photography",
+            "es": "Odontología Miguel Maya — héroe de inicio con fotografía de sonrisa antes y después"
+          },
+          "optimizedBasename": "image-1.17.44.png"
+        },
+        {
+          "assetId": "1.17.55",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.17.55\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.17.55.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — dental treatments section",
+            "es": "Odontología Miguel Maya — sección de tratamientos odontológicos"
+          },
+          "optimizedBasename": "image-1.17.55.png"
+        },
+        {
+          "assetId": "1.18.01",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.18.01\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.18.01.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — before-and-after results gallery",
+            "es": "Odontología Miguel Maya — galería de resultados antes y después"
+          },
+          "optimizedBasename": "image-1.18.01.png"
+        },
+        {
+          "assetId": "1.18.08",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.18.08\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.18.08.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — doctor profile",
+            "es": "Odontología Miguel Maya — perfil del doctor"
+          },
+          "optimizedBasename": "image-1.18.08.png"
+        },
+        {
+          "assetId": "1.18.14",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.18.14\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.18.14.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — patient reviews",
+            "es": "Odontología Miguel Maya — reseñas de pacientes"
+          },
+          "optimizedBasename": "image-1.18.14.png"
+        },
+        {
+          "assetId": "1.18.21",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.18.21\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.18.21.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — contact and WhatsApp inquiry form",
+            "es": "Odontología Miguel Maya — contacto y formulario de consulta por WhatsApp"
+          },
+          "optimizedBasename": "image-1.18.21.png"
+        },
+        {
+          "assetId": "1.18.28",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.18.28\u202fPM.png",
+          "src": "/images/portfolio/odontologia-miguel-maya/image-1.18.28.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Odontología Miguel Maya — location, business hours, and Google Maps",
+            "es": "Odontología Miguel Maya — ubicación, horario y Google Maps"
+          },
+          "optimizedBasename": "image-1.18.28.png"
+        }
+      ],
+      "demo": {
+        "url": "https://odontologia-miguel-maya.vercel.app",
+        "status": "website-demo",
+        "statusLabel": {
+          "en": "Concept Project",
+          "es": "Proyecto Conceptual"
+        },
+        "disclaimer": {
+          "en": "Functional demonstration · Personalized sales concept for a prospective dental client · Laureles, Medellín, Colombia · Next.js, React, TypeScript, CSS animations, WhatsApp integration, Vercel · Not an official clinic production website",
+          "es": "Demostración funcional · Concepto de venta personalizado para un cliente odontológico prospectivo · Laureles, Medellín, Colombia · Next.js, React, TypeScript, animaciones CSS, integración WhatsApp, Vercel · No es el sitio de producción oficial del consultorio"
+        },
+        "ctaLabel": {
+          "en": "View Live Website",
+          "es": "Ver Sitio Web"
+        }
+      },
+      "verifiedSecondaryUrls": []
     }
   ]
 }

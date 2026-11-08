@@ -94,6 +94,29 @@ export const SHOT_CAPTIONS: Readonly<Record<string, LocalizedText>> = {
     es: "Catálogo de propiedades y filtros",
   },
   "1.09.05": { en: "Contact & footer", es: "Contacto y pie de página" },
+  // Odontología Miguel Maya — website walkthrough (timestamp order)
+  "1.17.44": {
+    en: "Homepage hero",
+    es: "Héroe de la página de inicio",
+  },
+  "1.17.55": {
+    en: "Dental treatments",
+    es: "Tratamientos odontológicos",
+  },
+  "1.18.01": {
+    en: "Before-and-after results",
+    es: "Resultados antes y después",
+  },
+  "1.18.08": { en: "Doctor profile", es: "Perfil del doctor" },
+  "1.18.14": { en: "Patient reviews", es: "Reseñas de pacientes" },
+  "1.18.21": {
+    en: "Contact & WhatsApp inquiry",
+    es: "Contacto y consulta por WhatsApp",
+  },
+  "1.18.28": {
+    en: "Location & Google Maps",
+    es: "Ubicación y Google Maps",
+  },
 };
 
 export function getShotCaption(assetId: string): LocalizedText | undefined {
