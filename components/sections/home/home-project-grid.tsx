@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -115,9 +116,7 @@ export function HomeProjectGrid() {
                     <div className="mt-5 flex flex-wrap gap-2">
                       <Link
                         href={`/work/${project.prototypeId}`}
-                        className={cn(
-                          buttonVariants({ variant: "outline", size: "sm" })
-                        )}
+                        className={cn(buttonVariants({ size: "sm" }))}
                       >
                         {t("viewCta")}
                       </Link>
@@ -125,11 +124,19 @@ export function HomeProjectGrid() {
                         href={project.demo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={cn(buttonVariants({ size: "sm" }))}
+                        aria-label={`${
+                          project.demo.ctaLabel
+                            ? localizeText(project.demo.ctaLabel, locale)
+                            : t("demoCta")
+                        }: ${localizeText(project.name, locale)}`}
+                        className={cn(
+                          buttonVariants({ variant: "outline", size: "sm" })
+                        )}
                       >
                         {project.demo.ctaLabel
                           ? localizeText(project.demo.ctaLabel, locale)
                           : t("demoCta")}
+                        <ExternalLink data-icon="inline-end" aria-hidden />
                       </a>
                     </div>
                   </div>

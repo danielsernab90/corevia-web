@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
@@ -98,11 +99,17 @@ export function WorkProjectDetail({
             href={project.demo.url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${
+              project.demo.ctaLabel
+                ? localizeText(project.demo.ctaLabel, locale)
+                : t("demoCta")
+            }: ${localizeText(project.name, locale)}`}
             className={cn(buttonVariants({ size: "cta" }))}
           >
             {project.demo.ctaLabel
               ? localizeText(project.demo.ctaLabel, locale)
               : t("demoCta")}
+            <ExternalLink data-icon="inline-end" aria-hidden />
           </a>
           {!standalone ? (
             <Link

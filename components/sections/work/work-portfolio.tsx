@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
@@ -238,9 +239,7 @@ export function WorkPortfolio({
                       <button
                         type="button"
                         onClick={() => selectProject(project.prototypeId)}
-                        className={cn(
-                          buttonVariants({ variant: "secondary", size: "sm" })
-                        )}
+                        className={cn(buttonVariants({ size: "sm" }))}
                       >
                         {t("exploreCta")}
                       </button>
@@ -248,11 +247,19 @@ export function WorkPortfolio({
                         href={project.demo.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={cn(buttonVariants({ size: "sm" }))}
+                        aria-label={`${
+                          project.demo.ctaLabel
+                            ? localizeText(project.demo.ctaLabel, locale)
+                            : t("demoCta")
+                        }: ${localizeText(project.name, locale)}`}
+                        className={cn(
+                          buttonVariants({ variant: "outline", size: "sm" })
+                        )}
                       >
                         {project.demo.ctaLabel
                           ? localizeText(project.demo.ctaLabel, locale)
                           : t("demoCta")}
+                        <ExternalLink data-icon="inline-end" aria-hidden />
                       </a>
                     </div>
                     <div className="mt-4 flex flex-wrap gap-1.5">

@@ -1597,7 +1597,7 @@
         }
       ],
       "demo": {
-        "url": "https://montana-inmobiliaria.vercel.app",
+        "url": "https://montana-inmobiliaria.vercel.app/",
         "status": "website-demo",
         "statusLabel": {
           "en": "Functional Demonstration",
@@ -1608,8 +1608,8 @@
           "es": "Demostración funcional de sitio web para una inmobiliaria prospectiva · Amagá, Antioquia, Colombia · Next.js 16, React 19, TypeScript, Tailwind CSS, Vercel"
         },
         "ctaLabel": {
-          "en": "View Live Website",
-          "es": "Ver Sitio Web"
+          "en": "View Live Demo",
+          "es": "Ver Demo en Vivo"
         }
       },
       "verifiedSecondaryUrls": []
@@ -1809,7 +1809,7 @@
         }
       ],
       "demo": {
-        "url": "https://odontologia-miguel-maya.vercel.app",
+        "url": "https://odontologia-miguel-maya.vercel.app/",
         "status": "website-demo",
         "statusLabel": {
           "en": "Concept Project",
@@ -1820,8 +1820,8 @@
           "es": "Demostración funcional · Concepto de venta personalizado para un cliente odontológico prospectivo · Laureles, Medellín, Colombia · Next.js, React, TypeScript, animaciones CSS, integración WhatsApp, Vercel · No es el sitio de producción oficial del consultorio"
         },
         "ctaLabel": {
-          "en": "View Live Website",
-          "es": "Ver Sitio Web"
+          "en": "View Live Demo",
+          "es": "Ver Demo en Vivo"
         }
       },
       "verifiedSecondaryUrls": []
