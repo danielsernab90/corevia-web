@@ -28,14 +28,15 @@ const expectedCounts = {
   "montana-inmobiliaria": 8,
   "odontologia-miguel-maya": 7,
   "dra-lida-uribe-berrio": 6,
+  "as-maderas": 7,
 };
 
 const errors = [];
 const seenAssetIds = new Set();
 const seenOriginals = new Set();
 
-if (registry.projects.length !== 8) {
-  errors.push(`Expected 8 projects, got ${registry.projects.length}`);
+if (registry.projects.length !== 9) {
+  errors.push(`Expected 9 projects, got ${registry.projects.length}`);
 }
 
 if (manifest.length !== 60) {
@@ -91,8 +92,8 @@ for (const project of registry.projects) {
   }
 }
 
-if (screenshotTotal !== 81) {
-  errors.push(`Expected 81 registry screenshots, got ${screenshotTotal}`);
+if (screenshotTotal !== 88) {
+  errors.push(`Expected 88 registry screenshots, got ${screenshotTotal}`);
 }
 
 if (errors.length) {

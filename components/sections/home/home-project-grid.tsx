@@ -30,6 +30,7 @@ const SECONDARY_PROJECT_IDS = [
   "montana-inmobiliaria",
   "odontologia-miguel-maya",
   "dra-lida-uribe-berrio",
+  "as-maderas",
 ] as const;
 
 type SecondaryProjectId = (typeof SECONDARY_PROJECT_IDS)[number];

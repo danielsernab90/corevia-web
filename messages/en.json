@@ -291,8 +291,8 @@
     },
     "projects": {
       "eyebrow": "More from the studio",
-      "title": "Eight businesses. <br></br>Eight different solutions.",
-      "description": "From hospitality and construction to online ordering, retail, real estate, and healthcare — discover what tailored technology can look like.",
+      "title": "Nine businesses. <br></br>Nine different solutions.",
+      "description": "From hospitality and construction to online ordering, retail, real estate, healthcare, and carpentry — discover what tailored technology can look like.",
       "viewCta": "View Project",
       "demoCta": "Live Demo",
       "allCta": "Explore All Projects",
@@ -303,7 +303,8 @@
         "la-gallinita": "Retail · B2B Commerce",
         "montana-inmobiliaria": "Real Estate · Web Design",
         "odontologia-miguel-maya": "Healthcare · Dental · Web",
-        "dra-lida-uribe-berrio": "Healthcare · Women's Health · Web"
+        "dra-lida-uribe-berrio": "Healthcare · Women's Health · Web",
+        "as-maderas": "Business Website · Carpentry"
       },
       "blurbs": {
         "cotinga-hotel-spa": "An immersive hospitality website paired with hotel operations tools — rooms, spa experiences, booking, and management.",
@@ -312,7 +313,8 @@
         "la-gallinita": "Retail and wholesale shopping with inventory, point of sale, and delivery operations in one demonstration.",
         "montana-inmobiliaria": "A premium real estate website featuring an interactive property catalog, advanced search filters, elegant property galleries, and direct WhatsApp inquiries. Designed to help buyers and renters explore properties across Amagá and Southwestern Antioquia.",
         "odontologia-miguel-maya": "A sophisticated dental website concept designed to bring together premium visual design, treatment information, before-and-after galleries, patient reviews, and seamless WhatsApp inquiries. Built to deliver a professional, intuitive experience across desktop and mobile devices.",
-        "dra-lida-uribe-berrio": "A premium, responsive medical website combining elegant visual design, intuitive navigation, professional storytelling, and seamless appointment inquiries."
+        "dra-lida-uribe-berrio": "A premium, responsive medical website combining elegant visual design, intuitive navigation, professional storytelling, and seamless appointment inquiries.",
+        "as-maderas": "An elegant, responsive website for a Medellín carpentry business, featuring custom furniture showcases, an interactive project gallery, and WhatsApp quotation tools."
       }
     },
     "solutions": {

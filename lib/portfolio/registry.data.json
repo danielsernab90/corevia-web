@@ -2014,6 +2014,206 @@
         }
       },
       "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "as-maderas",
+      "prototypeId": "as-maderas",
+      "displayOrder": 9,
+      "name": {
+        "en": "AS MADERAS — Custom Carpentry & Furniture Website",
+        "es": "AS MADERAS — Sitio Web de Carpintería y Muebles a Medida"
+      },
+      "industry": {
+        "en": "Custom Carpentry & Furniture",
+        "es": "Carpintería y Muebles a Medida"
+      },
+      "eyebrow": {
+        "en": "BUSINESS WEBSITE · CARPENTRY",
+        "es": "SITIO WEB EMPRESARIAL · CARPINTERÍA"
+      },
+      "shortDescription": {
+        "en": "An elegant, responsive website for a Medellín carpentry business, featuring custom furniture showcases, an interactive project gallery, and WhatsApp quotation tools.",
+        "es": "Un sitio web elegante y adaptable para una empresa de carpintería en Medellín, con exhibición de muebles a medida, galería interactiva de proyectos y herramientas de cotización por WhatsApp."
+      },
+      "detailedDescription": {
+        "en": "CoreVia designed and developed a modern digital experience for AS MADERAS, a Medellín-based carpentry and custom furniture business. The website combines architectural-inspired design, authentic project photography, interactive galleries, and direct WhatsApp quotation tools to help prospective customers explore services and inquire about their projects.",
+        "es": "CoreVia diseñó y desarrolló una experiencia digital moderna para AS MADERAS, una empresa de carpintería y mobiliario a medida en Medellín. El sitio combina un diseño inspirado en la arquitectura y el interiorismo, fotografías de proyectos reales, galerías interactivas y herramientas de cotización por WhatsApp para facilitar la presentación de servicios y el contacto con clientes potenciales."
+      },
+      "caseStudySummary": {
+        "en": "A premium digital showcase for craftsmanship, custom furniture, and personalized carpentry services in Medellín.",
+        "es": "Una experiencia digital premium para mostrar proyectos de carpintería, muebles personalizados y servicios a medida en Medellín."
+      },
+      "categoryTags": [
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Premium responsive website",
+          "es": "Sitio web premium y adaptable"
+        },
+        {
+          "en": "Interactive project gallery and category filters",
+          "es": "Galería interactiva con filtros por categoría"
+        },
+        {
+          "en": "Custom carpentry and furniture service showcase",
+          "es": "Presentación de servicios de carpintería y mobiliario"
+        },
+        {
+          "en": "WhatsApp quotation form and direct contact",
+          "es": "Formulario de cotización y contacto por WhatsApp"
+        },
+        {
+          "en": "Authentic project photography",
+          "es": "Fotografías de proyectos reales"
+        },
+        {
+          "en": "Branded digital identity",
+          "es": "Identidad visual personalizada"
+        },
+        {
+          "en": "SEO-ready technical structure",
+          "es": "Estructura técnica preparada para SEO"
+        }
+      ],
+      "accentColor": "#8B5E3C",
+      "coverAssetId": "1.32.47",
+      "coverImage": "/images/portfolio/as-maderas/as-maderas-homepage-hero.png",
+      "screenshotGroups": [
+        {
+          "id": "website-experience",
+          "label": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "screenshotAssetIds": [
+            "1.32.47",
+            "1.32.57",
+            "1.33.04",
+            "1.33.15",
+            "1.33.25",
+            "1.33.33",
+            "1.33.40"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "1.32.47",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.32.47 PM.jpg",
+          "src": "/images/portfolio/as-maderas/as-maderas-homepage-hero.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — homepage hero",
+            "es": "AS MADERAS — héroe de la página de inicio"
+          },
+          "optimizedBasename": "as-maderas-homepage-hero.png"
+        },
+        {
+          "assetId": "1.32.57",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.32.57 PM.jpg",
+          "src": "/images/portfolio/as-maderas/as-maderas-about-custom-furniture.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — custom furniture introduction",
+            "es": "AS MADERAS — introducción a muebles a medida"
+          },
+          "optimizedBasename": "as-maderas-about-custom-furniture.png"
+        },
+        {
+          "assetId": "1.33.04",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.04 PM.jpg",
+          "src": "/images/portfolio/as-maderas/as-maderas-services.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — carpentry and furniture services",
+            "es": "AS MADERAS — servicios de carpintería y mobiliario"
+          },
+          "optimizedBasename": "as-maderas-services.png"
+        },
+        {
+          "assetId": "1.33.15",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.15 PM.jpg",
+          "src": "/images/portfolio/as-maderas/as-maderas-project-gallery-filters.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — interactive project gallery and category filters",
+            "es": "AS MADERAS — galería interactiva de proyectos con filtros"
+          },
+          "optimizedBasename": "as-maderas-project-gallery-filters.png"
+        },
+        {
+          "assetId": "1.33.25",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.25 PM.png",
+          "src": "/images/portfolio/as-maderas/as-maderas-project-process.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — project workflow detail",
+            "es": "AS MADERAS — detalle del proceso de trabajo"
+          },
+          "optimizedBasename": "as-maderas-project-process.png"
+        },
+        {
+          "assetId": "1.33.33",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.33 PM.jpg",
+          "src": "/images/portfolio/as-maderas/as-maderas-service-area-workshop.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — service area and workshop",
+            "es": "AS MADERAS — área de servicio y taller"
+          },
+          "optimizedBasename": "as-maderas-service-area-workshop.png"
+        },
+        {
+          "assetId": "1.33.40",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.40 PM.png",
+          "src": "/images/portfolio/as-maderas/as-maderas-whatsapp-quotation-form.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "AS MADERAS — WhatsApp quotation form and contact",
+            "es": "AS MADERAS — formulario de cotización y contacto por WhatsApp"
+          },
+          "optimizedBasename": "as-maderas-whatsapp-quotation-form.png"
+        }
+      ],
+      "demo": {
+        "url": "https://as-maderas-website.vercel.app/",
+        "status": "website-demo",
+        "statusLabel": {
+          "en": "Live Presentation Prototype",
+          "es": "Prototipo de Presentación en Vivo"
+        },
+        "disclaimer": {
+          "en": "Functional presentation prototype for a Medellín carpentry business · Next.js, React, TypeScript, Tailwind CSS, Vercel · Not confirmation of an official commercial launch or endorsement",
+          "es": "Prototipo funcional de presentación para una empresa de carpintería en Medellín · Next.js, React, TypeScript, Tailwind CSS, Vercel · No confirma un lanzamiento comercial oficial ni un respaldo"
+        },
+        "ctaLabel": {
+          "en": "View Live Website",
+          "es": "Ver Sitio Web"
+        }
+      },
+      "verifiedSecondaryUrls": []
     }
   ]
 }

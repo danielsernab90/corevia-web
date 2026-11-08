@@ -1,0 +1,87 @@
+{
+  "projectId": "as-maderas",
+  "coverAssetId": "1.32.47",
+  "coverFilename": "as-maderas-homepage-hero.png",
+  "liveUrl": "https://as-maderas-website.vercel.app/",
+  "note": "Manifest authored from the required gallery sequence because as-maderas-corevia-portfolio-assets.zip / gallery-manifest.json were not present in the supplied package.",
+  "screenshots": [
+    {
+      "order": 1,
+      "assetId": "1.32.47",
+      "filename": "as-maderas-homepage-hero.png",
+      "caption": {
+        "en": "AS MADERAS homepage hero",
+        "es": "Héroe de la página de inicio de AS MADERAS"
+      },
+      "role": "cover",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.32.47 PM.jpg",
+      "src": "/images/portfolio/as-maderas/as-maderas-homepage-hero.png"
+    },
+    {
+      "order": 2,
+      "assetId": "1.32.57",
+      "filename": "as-maderas-about-custom-furniture.png",
+      "caption": {
+        "en": "Custom furniture introduction",
+        "es": "Introducción a muebles a medida"
+      },
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.32.57 PM.jpg",
+      "src": "/images/portfolio/as-maderas/as-maderas-about-custom-furniture.png"
+    },
+    {
+      "order": 3,
+      "assetId": "1.33.04",
+      "filename": "as-maderas-services.png",
+      "caption": {
+        "en": "Carpentry and furniture services",
+        "es": "Servicios de carpintería y mobiliario"
+      },
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.04 PM.jpg",
+      "src": "/images/portfolio/as-maderas/as-maderas-services.png"
+    },
+    {
+      "order": 4,
+      "assetId": "1.33.15",
+      "filename": "as-maderas-project-gallery-filters.png",
+      "caption": {
+        "en": "Interactive project gallery and category filters",
+        "es": "Galería interactiva de proyectos con filtros por categoría"
+      },
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.15 PM.jpg",
+      "src": "/images/portfolio/as-maderas/as-maderas-project-gallery-filters.png"
+    },
+    {
+      "order": 5,
+      "assetId": "1.33.25",
+      "filename": "as-maderas-project-process.png",
+      "caption": {
+        "en": "AS MADERAS project workflow detail",
+        "es": "Detalle del proceso de trabajo de AS MADERAS"
+      },
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.25 PM.png",
+      "src": "/images/portfolio/as-maderas/as-maderas-project-process.png"
+    },
+    {
+      "order": 6,
+      "assetId": "1.33.33",
+      "filename": "as-maderas-service-area-workshop.png",
+      "caption": {
+        "en": "Service area and workshop",
+        "es": "Área de servicio y taller"
+      },
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.33 PM.jpg",
+      "src": "/images/portfolio/as-maderas/as-maderas-service-area-workshop.png"
+    },
+    {
+      "order": 7,
+      "assetId": "1.33.40",
+      "filename": "as-maderas-whatsapp-quotation-form.png",
+      "caption": {
+        "en": "WhatsApp quotation form and contact",
+        "es": "Formulario de cotización y contacto por WhatsApp"
+      },
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.33.40 PM.png",
+      "src": "/images/portfolio/as-maderas/as-maderas-whatsapp-quotation-form.png"
+    }
+  ]
+}

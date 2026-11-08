@@ -142,6 +142,35 @@ export const SHOT_CAPTIONS: Readonly<Record<string, LocalizedText>> = {
     en: "Location and contact",
     es: "Ubicación y contacto",
   },
+  // AS MADERAS — website walkthrough (timestamp order)
+  "1.32.47": {
+    en: "Homepage hero",
+    es: "Héroe de la página de inicio",
+  },
+  "1.32.57": {
+    en: "Custom furniture introduction",
+    es: "Introducción a muebles a medida",
+  },
+  "1.33.04": {
+    en: "Carpentry and furniture services",
+    es: "Servicios de carpintería y mobiliario",
+  },
+  "1.33.15": {
+    en: "Interactive project gallery and category filters",
+    es: "Galería interactiva de proyectos con filtros por categoría",
+  },
+  "1.33.25": {
+    en: "AS MADERAS project workflow detail",
+    es: "Detalle del proceso de trabajo de AS MADERAS",
+  },
+  "1.33.33": {
+    en: "Service area and workshop",
+    es: "Área de servicio y taller",
+  },
+  "1.33.40": {
+    en: "WhatsApp quotation form and contact",
+    es: "Formulario de cotización y contacto por WhatsApp",
+  },
 };
 
 export function getShotCaption(assetId: string): LocalizedText | undefined {
