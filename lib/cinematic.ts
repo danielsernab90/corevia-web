@@ -1,8 +1,6 @@
-import type { AppLocale } from "@/i18n/routing";
-
 /**
  * Homepage cinematic intro — timing, viewport breakpoints, and asset paths.
- * Adjust these constants without touching the overlay component.
+ * Video selection is device-based only (not locale).
  */
 
 /** Nominal total intro duration fallback when media duration is not yet known. */
@@ -10,13 +8,13 @@ export const CINEMATIC_END = 10.0;
 
 /**
  * HTML video playbackRate for the first-session intro autoplay.
- * 1.6 = 60% faster than the authored timeline (asset unchanged).
+ * 1.75 = 1.75× the original authored timeline (source asset unchanged).
  */
-export const CINEMATIC_PLAYBACK_RATE = 1.6;
+export const CINEMATIC_PLAYBACK_RATE = 1.75;
 
 /**
  * sessionStorage key: intro already started (or completed) in this browser tab session.
- * Shared across locales so EN ↔ ES does not replay the opening.
+ * Shared across locales and devices so EN ↔ ES and Home revisits do not replay.
  */
 export const CINEMATIC_INTRO_SEEN_KEY = "corevia_intro_seen_v1";
 
@@ -72,36 +70,18 @@ export type CinematicMedia = {
   orientation: "landscape" | "portrait";
 };
 
-type LocaleCinematicAssets = {
-  /** Landscape cinematic for tablet + desktop (>= 768px). */
-  desktop?: { video: string; poster?: string };
-  /** Portrait cinematic for phones (< 768px). */
-  mobile?: { video: string; poster?: string };
+/** Shared desktop/tablet landscape intro (used for /en and /es). */
+const DESKTOP_INTRO: CinematicMedia = {
+  video: "/cinematic/en/intro.mp4",
+  poster: "/cinematic/en/intro-poster.jpg",
+  orientation: "landscape",
 };
 
-/**
- * Locale → viewport media map.
- *
- * EN: landscape intro ready; dedicated phone asset can land at
- *     /cinematic/en/intro-mobile.mp4 later (phones currently fall back to landscape).
- * ES: portrait intro-mobile ready; landscape /cinematic/es/intro.mp4 can land later.
- *     Until then, larger /es viewports fall back to the portrait asset — never skip.
- */
-const INTRO_BY_LOCALE: Partial<Record<AppLocale, LocaleCinematicAssets>> = {
-  en: {
-    desktop: {
-      video: "/cinematic/en/intro.mp4",
-      poster: "/cinematic/en/intro-poster.jpg",
-    },
-    // mobile: { video: "/cinematic/en/intro-mobile.mp4", poster: "..." },
-  },
-  es: {
-    mobile: {
-      video: "/cinematic/es/intro-mobile.mp4",
-      poster: "/cinematic/es/intro-mobile-poster.jpg",
-    },
-    // desktop: { video: "/cinematic/es/intro.mp4", poster: "..." },
-  },
+/** Shared phone portrait intro (used for /en and /es). */
+const MOBILE_INTRO: CinematicMedia = {
+  video: "/cinematic/es/intro-mobile.mp4",
+  poster: "/cinematic/es/intro-mobile-poster.jpg",
+  orientation: "portrait",
 };
 
 /** Classify a viewport width into phone vs tablet/desktop cinematic buckets. */
@@ -112,83 +92,34 @@ export function getCinematicViewportClass(
 }
 
 /**
- * Resolve the cinematic media for a locale + viewport.
- * Returns null only when this locale has no cinematic asset at all.
- *
- * Fallback rules (asymmetric by design until both orientations ship):
- * - mobile viewport → preferred mobile asset, else desktop
- * - desktop viewport → preferred desktop asset, else mobile
+ * Resolve the cinematic media for the current viewport only.
+ * Language routes share the same assets — never select by locale.
  */
 export function resolveCinematicMedia(
-  locale: AppLocale,
   viewportClass: CinematicViewportClass
-): CinematicMedia | null {
-  const assets = INTRO_BY_LOCALE[locale];
-  if (!assets) return null;
-
-  if (viewportClass === "mobile") {
-    if (assets.mobile) {
-      return {
-        video: assets.mobile.video,
-        poster: assets.mobile.poster ?? null,
-        orientation: "portrait",
-      };
-    }
-    // Temporary EN phone fallback: landscape asset until intro-mobile.mp4 exists.
-    if (assets.desktop) {
-      return {
-        video: assets.desktop.video,
-        poster: assets.desktop.poster ?? null,
-        orientation: "landscape",
-      };
-    }
-    return null;
-  }
-
-  // Tablet / desktop
-  if (assets.desktop) {
-    return {
-      video: assets.desktop.video,
-      poster: assets.desktop.poster ?? null,
-      orientation: "landscape",
-    };
-  }
-
-  // Spanish (and similar): show the available portrait cinematic rather than
-  // skipping the entire intro on tablet/desktop until landscape ships.
-  if (assets.mobile) {
-    return {
-      video: assets.mobile.video,
-      poster: assets.mobile.poster ?? null,
-      orientation: "portrait",
-    };
-  }
-
-  return null;
+): CinematicMedia {
+  return viewportClass === "mobile" ? MOBILE_INTRO : DESKTOP_INTRO;
 }
 
-/** Whether this locale + viewport should attempt a cinematic intro. */
+/** Whether this viewport should attempt a cinematic intro. */
 export function hasCinematicIntro(
-  locale: AppLocale,
   viewportClass: CinematicViewportClass
 ): boolean {
-  return resolveCinematicMedia(locale, viewportClass) != null;
+  return resolveCinematicMedia(viewportClass) != null;
 }
 
 /** @deprecated Prefer resolveCinematicMedia — kept for narrow call sites. */
 export function getCinematicIntroSrc(
-  locale: AppLocale,
   viewportClass: CinematicViewportClass = "desktop"
-): string | null {
-  return resolveCinematicMedia(locale, viewportClass)?.video ?? null;
+): string {
+  return resolveCinematicMedia(viewportClass).video;
 }
 
 /** @deprecated Prefer resolveCinematicMedia */
 export function getCinematicIntroPoster(
-  locale: AppLocale,
   viewportClass: CinematicViewportClass = "desktop"
 ): string | null {
-  return resolveCinematicMedia(locale, viewportClass)?.poster ?? null;
+  return resolveCinematicMedia(viewportClass).poster;
 }
 
 /** Clamp helper for scrubbing within [min, max]. */
@@ -213,7 +144,7 @@ export function hasCinematicIntroBeenSeen(): boolean {
 
 /**
  * Persist that the intro has begun for this session.
- * Called when autoplay starts so mid-intro navigation does not replay it.
+ * Called when autoplay starts so mid-intro navigation / refresh does not replay it.
  */
 export function markCinematicIntroSeen(): void {
   if (typeof window === "undefined") return;

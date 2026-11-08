@@ -1,53 +1,43 @@
-import type { AppLocale } from "@/i18n/routing";
+import { CINEMATIC_MOBILE_MAX_WIDTH } from "@/lib/cinematic";
+
+const DESKTOP_MIN = `(min-width: ${CINEMATIC_MOBILE_MAX_WIDTH}px)`;
+const MOBILE_MAX = `(max-width: ${CINEMATIC_MOBILE_MAX_WIDTH - 1}px)`;
 
 /**
- * Early head preload for the cinematic required by this locale.
- * Loads only the active locale's asset(s).
+ * Early head preload for the cinematic required by the current device class.
+ * Uses media queries so only the matching orientation is requested — not locale.
  */
-export function CinematicPreload({ locale }: { locale: AppLocale }) {
-  if (locale === "es") {
-    // Spanish currently ships one portrait asset used for all viewports
-    // (desktop/tablet fall back to it until a landscape intro exists).
-    return (
-      <>
-        <link
-          rel="preload"
-          as="image"
-          href="/cinematic/es/intro-mobile-poster.jpg"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="video"
-          href="/cinematic/es/intro-mobile.mp4"
-          type="video/mp4"
-        />
-      </>
-    );
-  }
-
-  if (locale === "en") {
-    // Poster first for LCP; video preload kept for desktop/tablet where the
-    // landscape intro is the intended experience. Phones still fall back to
-    // this asset until a dedicated mobile clip ships — do not remove it.
-    return (
-      <>
-        <link
-          rel="preload"
-          as="image"
-          href="/cinematic/en/intro-poster.jpg"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="video"
-          href="/cinematic/en/intro.mp4"
-          type="video/mp4"
-          media="(min-width: 768px)"
-        />
-      </>
-    );
-  }
-
-  return null;
+export function CinematicPreload() {
+  return (
+    <>
+      <link
+        rel="preload"
+        as="image"
+        href="/cinematic/en/intro-poster.jpg"
+        fetchPriority="high"
+        media={DESKTOP_MIN}
+      />
+      <link
+        rel="preload"
+        as="video"
+        href="/cinematic/en/intro.mp4"
+        type="video/mp4"
+        media={DESKTOP_MIN}
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/cinematic/es/intro-mobile-poster.jpg"
+        fetchPriority="high"
+        media={MOBILE_MAX}
+      />
+      <link
+        rel="preload"
+        as="video"
+        href="/cinematic/es/intro-mobile.mp4"
+        type="video/mp4"
+        media={MOBILE_MAX}
+      />
+    </>
+  );
 }

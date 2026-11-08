@@ -30,8 +30,8 @@ export default async function HomePage({ params }: HomePageProps) {
    */
   return (
     <>
-      <CinematicPreload locale={locale} />
-      <CinematicIntro locale={locale} />
+      <CinematicPreload />
+      <CinematicIntro />
       <BookingShell>
         <main id="main-content" tabIndex={-1}>
           <HomeExperience />

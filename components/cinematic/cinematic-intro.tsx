@@ -9,7 +9,6 @@ import {
   useState,
 } from "react";
 
-import type { AppLocale } from "@/i18n/routing";
 import {
   CINEMATIC_END,
   CINEMATIC_FADE_DURATION,
@@ -30,10 +29,6 @@ import {
   type CinematicViewportClass,
 } from "@/lib/cinematic";
 import { cn } from "@/lib/utils";
-
-type CinematicIntroProps = {
-  locale: AppLocale;
-};
 
 /**
  * State machine (modes never mix timelines):
@@ -119,6 +114,19 @@ function isPageAtTop(): boolean {
   );
 }
 
+function applyCinematicPlaybackRate(video: HTMLVideoElement) {
+  try {
+    if (video.defaultPlaybackRate !== CINEMATIC_PLAYBACK_RATE) {
+      video.defaultPlaybackRate = CINEMATIC_PLAYBACK_RATE;
+    }
+    if (video.playbackRate !== CINEMATIC_PLAYBACK_RATE) {
+      video.playbackRate = CINEMATIC_PLAYBACK_RATE;
+    }
+  } catch {
+    // Some browsers reject non-1 rates briefly; callers retry on play/metadata.
+  }
+}
+
 function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
   video.muted = true;
   video.defaultMuted = true;
@@ -127,12 +135,7 @@ function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
   video.setAttribute("x5-playsinline", "");
-  try {
-    video.defaultPlaybackRate = CINEMATIC_PLAYBACK_RATE;
-    video.playbackRate = CINEMATIC_PLAYBACK_RATE;
-  } catch {
-    // Some browsers reject non-1 rates briefly; retry on play.
-  }
+  applyCinematicPlaybackRate(video);
 }
 
 function waitForEvent(
@@ -211,7 +214,7 @@ function isNativeAutoplayPhase(phase: IntroPhase): boolean {
  * Mode 2 (afterward): at document top, upward scroll re-enters at duration
  * and scrubs the same MP4 both directions. No second autoplay / no replay loop.
  */
-export function CinematicIntro({ locale }: CinematicIntroProps) {
+export function CinematicIntro() {
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -461,13 +464,13 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     setMounted(true);
     const applyViewport = (next: CinematicViewportClass) => {
       setViewportClass(next);
-      const resolved = resolveCinematicMedia(locale, next);
+      const resolved = resolveCinematicMedia(next);
       mediaRef.current = resolved;
       setMedia((prev) => {
         if (
-          prev?.video === resolved?.video &&
-          prev?.poster === resolved?.poster &&
-          prev?.orientation === resolved?.orientation
+          prev?.video === resolved.video &&
+          prev?.poster === resolved.poster &&
+          prev?.orientation === resolved.orientation
         ) {
           return prev;
         }
@@ -482,7 +485,7 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [locale, setIntroPhase]);
+  }, [setIntroPhase]);
 
   // Refresh media on rotate only before intro completes — avoid mid-play swaps.
   useLayoutEffect(() => {
@@ -495,21 +498,21 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     ) {
       return;
     }
-    const resolved = resolveCinematicMedia(locale, viewportClass);
+    const resolved = resolveCinematicMedia(viewportClass);
     mediaRef.current = resolved;
     setMedia((prev) => {
       if (
-        prev?.video === resolved?.video &&
-        prev?.poster === resolved?.poster &&
-        prev?.orientation === resolved?.orientation
+        prev?.video === resolved.video &&
+        prev?.poster === resolved.poster &&
+        prev?.orientation === resolved.orientation
       ) {
         return prev;
       }
       return resolved;
     });
-  }, [mounted, viewportClass, locale]);
+  }, [mounted, viewportClass]);
 
-  // Kick the browser to fetch only the active locale+viewport asset ASAP.
+  // Kick the browser to fetch only the active viewport asset ASAP.
   useLayoutEffect(() => {
     if (!media?.video) return;
     const href = media.video;
@@ -528,13 +531,13 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     };
   }, [media?.video]);
 
-  // Reduced motion / missing asset → skip (null = unknown; allow start).
+  // Reduced motion → skip. Media is always resolvable by viewport.
   useEffect(() => {
     if (!mounted || viewportClass == null) return;
-    if (reduceMotion === true || media == null) {
+    if (reduceMotion === true) {
       skipIntro();
     }
-  }, [mounted, viewportClass, media, reduceMotion, skipIntro]);
+  }, [mounted, viewportClass, reduceMotion, skipIntro]);
 
   // Prefer a boolean dep so null → false does not tear down a healthy autoplay.
   const preferReducedMotion = reduceMotion === true;
@@ -563,11 +566,22 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     // src + preload="auto" already kick the network — do not call load() here
     // (it aborts and restarts the fetch).
 
+    const onLoadedMetadata = () => {
+      applyCinematicPlaybackRate(video);
+    };
+
+    const onRateChange = () => {
+      // Prevent accidental resets to 1× after metadata / play / rerenders.
+      applyCinematicPlaybackRate(video);
+    };
+
     const onLoadedData = () => {
+      applyCinematicPlaybackRate(video);
       if (video.videoWidth > 0) markFrameReady();
     };
 
     const onPlaying = () => {
+      applyCinematicPlaybackRate(video);
       markFrameReady();
     };
 
@@ -837,6 +851,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
       event.preventDefault();
     };
 
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    video.addEventListener("ratechange", onRateChange);
     video.addEventListener("loadeddata", onLoadedData);
     video.addEventListener("playing", onPlaying);
     video.addEventListener("seeked", onSeeked);
@@ -852,6 +868,8 @@ export function CinematicIntro({ locale }: CinematicIntroProps) {
     return () => {
       cancelled = true;
       window.clearTimeout(initTimeout);
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("ratechange", onRateChange);
       video.removeEventListener("loadeddata", onLoadedData);
       video.removeEventListener("playing", onPlaying);
       video.removeEventListener("seeked", onSeeked);
