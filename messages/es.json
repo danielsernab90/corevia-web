@@ -291,7 +291,7 @@
     },
     "projects": {
       "eyebrow": "Más del estudio",
-      "title": "Siete negocios. <br></br>Siete soluciones distintas.",
+      "title": "Ocho negocios. <br></br>Ocho soluciones distintas.",
       "description": "Desde hospitalidad y construcción hasta pedidos en línea, retail, inmobiliaria y salud — descubre cómo puede verse la tecnología a medida.",
       "viewCta": "Ver Proyecto",
       "demoCta": "Demo en Vivo",
@@ -302,7 +302,8 @@
         "perritos-gourmet": "Servicio de Comida · Pedidos",
         "la-gallinita": "Retail · Comercio B2B",
         "montana-inmobiliaria": "Inmobiliaria · Diseño Web",
-        "odontologia-miguel-maya": "Salud · Odontología · Web"
+        "odontologia-miguel-maya": "Salud · Odontología · Web",
+        "dra-lida-uribe-berrio": "Salud · Salud Femenina · Web"
       },
       "blurbs": {
         "cotinga-hotel-spa": "Un sitio de hospitalidad inmersivo junto con herramientas de operaciones hoteleras — habitaciones, spa, reservas y gestión.",
@@ -310,7 +311,8 @@
         "perritos-gourmet": "Un recorrido de pedidos del menú al pago, con herramientas de gestión de pedidos para el restaurante.",
         "la-gallinita": "Compras minoristas y mayoristas con inventario, punto de venta y operaciones de entrega en una sola demostración.",
         "montana-inmobiliaria": "Una experiencia inmobiliaria premium con catálogo interactivo de propiedades, filtros de búsqueda, galerías fotográficas y contacto directo por WhatsApp. Diseñada para facilitar la búsqueda de inmuebles en Amagá y el Suroeste Antioqueño.",
-        "odontologia-miguel-maya": "Una experiencia web de alta estética dental que combina diseño elegante, presentación de tratamientos, galerías de resultados, reseñas de pacientes y contacto directo por WhatsApp. Desarrollada para ofrecer una navegación profesional, intuitiva y adaptable a cualquier dispositivo."
+        "odontologia-miguel-maya": "Una experiencia web de alta estética dental que combina diseño elegante, presentación de tratamientos, galerías de resultados, reseñas de pacientes y contacto directo por WhatsApp. Desarrollada para ofrecer una navegación profesional, intuitiva y adaptable a cualquier dispositivo.",
+        "dra-lida-uribe-berrio": "Un sitio web médico premium y adaptable que combina diseño elegante, navegación intuitiva, presentación profesional y contacto directo para solicitar citas."
       }
     },
     "solutions": {

@@ -117,6 +117,31 @@ export const SHOT_CAPTIONS: Readonly<Record<string, LocalizedText>> = {
     en: "Location & Google Maps",
     es: "Ubicación y Google Maps",
   },
+  // Dra. Lida Uribe Berrío — website walkthrough (timestamp order)
+  "1.23.12": {
+    en: "Homepage hero",
+    es: "Héroe de la página de inicio",
+  },
+  "1.24.02": {
+    en: "Patient-centered introduction",
+    es: "Introducción centrada en la paciente",
+  },
+  "1.24.09": {
+    en: "Medical services",
+    es: "Servicios médicos",
+  },
+  "1.24.16": {
+    en: "Doctor profile",
+    es: "Perfil de la doctora",
+  },
+  "1.24.25": {
+    en: "Professional trajectory",
+    es: "Trayectoria profesional",
+  },
+  "1.24.32": {
+    en: "Location and contact",
+    es: "Ubicación y contacto",
+  },
 };
 
 export function getShotCaption(assetId: string): LocalizedText | undefined {

@@ -1,0 +1,80 @@
+{
+  "projectId": "dra-lida-uribe-berrio",
+  "coverAssetId": "1.23.12",
+  "liveUrl": "https://dra-lida-uribe-berrio.vercel.app/",
+  "note": "Manifest authored from the required gallery sequence because dra-lida-gallery-manifest.json was not present in the supplied assets.",
+  "screenshots": [
+    {
+      "order": 1,
+      "assetId": "1.23.12",
+      "section": {
+        "en": "Homepage hero",
+        "es": "Héroe de la página de inicio"
+      },
+      "ext": "png",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.23.12 PM.png",
+      "servedFilename": "image-1.23.12.png",
+      "src": "/images/portfolio/dra-lida-uribe-berrio/image-1.23.12.png"
+    },
+    {
+      "order": 2,
+      "assetId": "1.24.02",
+      "section": {
+        "en": "Patient-centered introduction",
+        "es": "Introducción centrada en la paciente"
+      },
+      "ext": "jpg",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.24.02 PM.jpg",
+      "servedFilename": "image-1.24.02.jpg",
+      "src": "/images/portfolio/dra-lida-uribe-berrio/image-1.24.02.jpg"
+    },
+    {
+      "order": 3,
+      "assetId": "1.24.09",
+      "section": {
+        "en": "Medical services",
+        "es": "Servicios médicos"
+      },
+      "ext": "png",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.24.09 PM.png",
+      "servedFilename": "image-1.24.09.png",
+      "src": "/images/portfolio/dra-lida-uribe-berrio/image-1.24.09.png"
+    },
+    {
+      "order": 4,
+      "assetId": "1.24.16",
+      "section": {
+        "en": "Doctor profile",
+        "es": "Perfil de la doctora"
+      },
+      "ext": "jpg",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.24.16 PM.jpg",
+      "servedFilename": "image-1.24.16.jpg",
+      "src": "/images/portfolio/dra-lida-uribe-berrio/image-1.24.16.jpg"
+    },
+    {
+      "order": 5,
+      "assetId": "1.24.25",
+      "section": {
+        "en": "Professional trajectory",
+        "es": "Trayectoria profesional"
+      },
+      "ext": "jpg",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.24.25 PM.jpg",
+      "servedFilename": "image-1.24.25.jpg",
+      "src": "/images/portfolio/dra-lida-uribe-berrio/image-1.24.25.jpg"
+    },
+    {
+      "order": 6,
+      "assetId": "1.24.32",
+      "section": {
+        "en": "Location and contact",
+        "es": "Ubicación y contacto"
+      },
+      "ext": "png",
+      "exactOriginalFilename": "Screenshot 2026-11-08 at 1.24.32 PM.png",
+      "servedFilename": "image-1.24.32.png",
+      "src": "/images/portfolio/dra-lida-uribe-berrio/image-1.24.32.png"
+    }
+  ]
+}
