@@ -128,13 +128,18 @@ function applyCinematicPlaybackRate(video: HTMLVideoElement) {
 }
 
 function prepareVideoForMobileAutoplay(video: HTMLVideoElement) {
-  video.muted = true;
+  // Order matters for iOS Safari: mute + inline attributes before any play().
   video.defaultMuted = true;
+  video.muted = true;
+  video.volume = 0;
   video.playsInline = true;
   video.setAttribute("muted", "");
-  video.setAttribute("playsinline", "");
-  video.setAttribute("webkit-playsinline", "");
-  video.setAttribute("x5-playsinline", "");
+  video.setAttribute("playsinline", "true");
+  video.setAttribute("webkit-playsinline", "true");
+  video.setAttribute("x5-playsinline", "true");
+  video.setAttribute("x5-video-player-type", "h5");
+  video.setAttribute("x5-video-player-fullscreen", "false");
+  video.disablePictureInPicture = true;
   applyCinematicPlaybackRate(video);
 }
 
@@ -559,15 +564,26 @@ export function CinematicIntro() {
 
     let cancelled = false;
     finishingRef.current = false;
-    // Persist before play() so leaving during load still counts as "seen".
-    markCinematicIntroSeen();
+    // Do not mark sessionStorage until play starts successfully (or we skip).
     setIntroPhase("initializing");
     prepareVideoForMobileAutoplay(video);
     // src + preload="auto" already kick the network — do not call load() here
     // (it aborts and restarts the fetch).
 
+    const dismissAfterAutoplayFailure = () => {
+      if (cancelled || introCompletedRef.current) return;
+      // Persist so a blocked autoplay does not trap the visitor on retries.
+      markCinematicIntroSeen();
+      try {
+        video.pause();
+      } catch {
+        // ignore
+      }
+      skipIntro();
+    };
+
     const onLoadedMetadata = () => {
-      applyCinematicPlaybackRate(video);
+      prepareVideoForMobileAutoplay(video);
     };
 
     const onRateChange = () => {
@@ -657,23 +673,13 @@ export function CinematicIntro() {
 
       if (phaseNow === "autoplay") {
         if (video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC) {
-          try {
-            video.pause();
-          } catch {
-            // ignore
-          }
-          skipIntro();
+          dismissAfterAutoplayFailure();
         }
         // Healthy long autoplay — never abort mid-flight at an arbitrary second.
         return;
       }
 
-      try {
-        video.pause();
-      } catch {
-        // ignore
-      }
-      skipIntro();
+      dismissAfterAutoplayFailure();
     }, CINEMATIC_INIT_TIMEOUT_MS);
 
     const ensureStartAtZero = async () => {
@@ -707,7 +713,7 @@ export function CinematicIntro() {
 
     const startPlayback = async () => {
       const enterAutoplay = () => {
-        // Mark as soon as the opening begins so mid-intro navigation does not replay.
+        // Mark only once muted playback has actually started.
         markCinematicIntroSeen();
         prepareVideoForMobileAutoplay(video);
         markFrameReady();
@@ -716,21 +722,24 @@ export function CinematicIntro() {
         syncOverlayVisuals(video.currentTime, resolveVideoEnd(video));
       };
 
-      /** Keep the cinematic visible and retry muted play — never instant homepage skip. */
-      const retryMutedPlay = async (attempts = 4) => {
-        prepareVideoForMobileAutoplay(video);
+      /** Retry muted inline play; return true only when the timeline is running. */
+      const retryMutedPlay = async (attempts = 3) => {
         for (let i = 0; i < attempts; i++) {
           if (cancelled || introCompletedRef.current) return false;
-          if (!isNativeAutoplayPhase(phaseRef.current) && phaseRef.current !== "initializing") {
+          if (
+            !isNativeAutoplayPhase(phaseRef.current) &&
+            phaseRef.current !== "initializing"
+          ) {
             return false;
           }
+          prepareVideoForMobileAutoplay(video);
           try {
             await video.play();
             if (!video.paused) return true;
           } catch {
-            // Autoplay may be briefly blocked; retry after a short delay.
+            // Autoplay may be briefly blocked; retry, then fail open.
           }
-          await new Promise<void>((r) => window.setTimeout(r, 350 + i * 250));
+          await new Promise<void>((r) => window.setTimeout(r, 200 + i * 200));
         }
         return !video.paused;
       };
@@ -739,8 +748,8 @@ export function CinematicIntro() {
         // Metadata is enough to seek/play — do NOT wait for canplay/canplaythrough.
         if (video.readyState < 1) {
           await Promise.race([
-            waitForEvent(video, "loadedmetadata", 8000),
-            waitForEvent(video, "loadeddata", 8000),
+            waitForEvent(video, "loadedmetadata", 5000),
+            waitForEvent(video, "loadeddata", 5000),
           ]).catch(() => undefined);
         }
         if (cancelled || introCompletedRef.current) return;
@@ -770,13 +779,18 @@ export function CinematicIntro() {
           if (phaseRef.current !== "autoplay") return;
           if (!progressedEarly) {
             const recovered = await retryMutedPlay();
-            if (!recovered && video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC) {
-              // Leave overlay up; initTimeout remains the last-resort fail-open.
+            if (
+              !recovered &&
+              video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC
+            ) {
+              dismissAfterAutoplayFailure();
             }
           }
           return;
         }
 
+        // Explicit muted play() — required when the autoPlay attribute is ignored.
+        prepareVideoForMobileAutoplay(video);
         const playAttempt = video.play();
         if (playAttempt !== undefined) {
           try {
@@ -791,10 +805,11 @@ export function CinematicIntro() {
             ]);
           } catch {
             if (cancelled || introCompletedRef.current) return;
-            // Stay on the cinematic (poster/frame) and retry — do not skip to homepage.
-            enterAutoplay();
-            await retryMutedPlay();
-            return;
+            const recovered = await retryMutedPlay();
+            if (!recovered) {
+              dismissAfterAutoplayFailure();
+              return;
+            }
           }
         }
         if (cancelled || introCompletedRef.current) return;
@@ -807,10 +822,15 @@ export function CinematicIntro() {
           await ensureStartAtZero();
           if (cancelled || introCompletedRef.current) return;
           if (!isNativeAutoplayPhase(phaseRef.current)) return;
+          prepareVideoForMobileAutoplay(video);
           try {
-            await video.play().catch(() => undefined);
+            await video.play();
           } catch {
-            // ignore
+            const recovered = await retryMutedPlay();
+            if (!recovered) {
+              dismissAfterAutoplayFailure();
+              return;
+            }
           }
         }
         if (cancelled || introCompletedRef.current) return;
@@ -818,7 +838,15 @@ export function CinematicIntro() {
           return;
         }
 
-        // Enter autoplay immediately so motion is not gated on verification.
+        if (video.paused) {
+          const recovered = await retryMutedPlay();
+          if (!recovered) {
+            dismissAfterAutoplayFailure();
+            return;
+          }
+        }
+
+        // Enter autoplay only after muted play is running.
         enterAutoplay();
 
         const progressed = await waitForPlaybackProgress(
@@ -829,22 +857,31 @@ export function CinematicIntro() {
         if (phaseRef.current !== "autoplay") return;
 
         if (!progressed) {
-          await retryMutedPlay();
+          const recovered = await retryMutedPlay();
+          if (
+            !recovered &&
+            video.currentTime < CINEMATIC_PLAYBACK_MIN_DELTA_SEC
+          ) {
+            dismissAfterAutoplayFailure();
+          }
         }
       } catch {
         if (cancelled || introCompletedRef.current) return;
-        // Keep cinematic mounted; retry rather than jumping to the homepage.
         try {
-          enterAutoplay();
-          await retryMutedPlay();
+          const recovered = await retryMutedPlay();
+          if (recovered) {
+            enterAutoplay();
+            return;
+          }
         } catch {
-          // ignore — initTimeout handles permanent failure
+          // fall through to dismiss
         }
+        dismissAfterAutoplayFailure();
       }
     };
 
     const onFatalError = () => {
-      if (!cancelled) skipIntro();
+      if (!cancelled) dismissAfterAutoplayFailure();
     };
 
     const onPreventFullscreen = (event: Event) => {
@@ -1035,7 +1072,10 @@ export function CinematicIntro() {
       data-cinematic-phase={phase}
     >
       <video
-        ref={videoRef}
+        ref={(node) => {
+          videoRef.current = node;
+          if (node) prepareVideoForMobileAutoplay(node);
+        }}
         key={media.video}
         className={cn(
           "absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-200",
@@ -1044,12 +1084,19 @@ export function CinematicIntro() {
         src={media.video}
         poster={poster ?? undefined}
         muted
-        playsInline
         autoPlay
+        playsInline
         preload="auto"
         controls={false}
         disablePictureInPicture
         disableRemotePlayback
+        // Legacy iOS / WeChat inline attributes (React does not map these props).
+        {...({
+          "webkit-playsinline": "true",
+          "x5-playsinline": "true",
+          "x5-video-player-type": "h5",
+          "x5-video-player-fullscreen": "false",
+        } as Record<string, string>)}
       />
 
       {showPosterCover ? (

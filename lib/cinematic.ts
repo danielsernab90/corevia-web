@@ -143,8 +143,9 @@ export function hasCinematicIntroBeenSeen(): boolean {
 }
 
 /**
- * Persist that the intro has begun for this session.
- * Called when autoplay starts so mid-intro navigation / refresh does not replay it.
+ * Persist that this session has handled the intro (successful start or graceful skip).
+ * Call only after playback begins successfully, or when autoplay is blocked and the
+ * overlay is dismissed — never before the first play() attempt settles.
  */
 export function markCinematicIntroSeen(): void {
   if (typeof window === "undefined") return;
