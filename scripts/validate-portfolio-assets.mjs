@@ -25,18 +25,19 @@ const expectedCounts = {
   "dixie-remodeling": 10,
   "perritos-gourmet": 8,
   "la-gallinita": 12,
+  "montana-inmobiliaria": 8,
 };
 
 const errors = [];
 const seenAssetIds = new Set();
 const seenOriginals = new Set();
 
-if (registry.projects.length !== 5) {
-  errors.push(`Expected 5 projects, got ${registry.projects.length}`);
+if (registry.projects.length !== 6) {
+  errors.push(`Expected 6 projects, got ${registry.projects.length}`);
 }
 
 if (manifest.length !== 60) {
-  errors.push(`Expected 60 manifest rows, got ${manifest.length}`);
+  errors.push(`Expected 60 redesign-v2 manifest rows, got ${manifest.length}`);
 }
 
 let screenshotTotal = 0;
@@ -88,8 +89,8 @@ for (const project of registry.projects) {
   }
 }
 
-if (screenshotTotal !== 60) {
-  errors.push(`Expected 60 registry screenshots, got ${screenshotTotal}`);
+if (screenshotTotal !== 68) {
+  errors.push(`Expected 68 registry screenshots, got ${screenshotTotal}`);
 }
 
 if (errors.length) {

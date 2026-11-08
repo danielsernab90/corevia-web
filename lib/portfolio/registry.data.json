@@ -1394,6 +1394,225 @@
         }
       },
       "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "montana-inmobiliaria",
+      "prototypeId": "montana-inmobiliaria",
+      "displayOrder": 6,
+      "name": {
+        "en": "Montaña Inmobiliaria — Premium Real Estate Website",
+        "es": "Montaña Inmobiliaria — Sitio Web Inmobiliario Premium"
+      },
+      "industry": {
+        "en": "Real Estate",
+        "es": "Inmobiliaria"
+      },
+      "eyebrow": {
+        "en": "REAL ESTATE · WEBSITE DESIGN & DEVELOPMENT",
+        "es": "INMOBILIARIA · DISEÑO Y DESARROLLO WEB"
+      },
+      "shortDescription": {
+        "en": "A premium real estate website featuring an interactive property catalog, advanced search filters, elegant property galleries, and direct WhatsApp inquiries. Designed to help buyers and renters explore properties across Amagá and Southwestern Antioquia.",
+        "es": "Una experiencia inmobiliaria premium con catálogo interactivo de propiedades, filtros de búsqueda, galerías fotográficas y contacto directo por WhatsApp. Diseñada para facilitar la búsqueda de inmuebles en Amagá y el Suroeste Antioqueño."
+      },
+      "detailedDescription": {
+        "en": "CoreVia designed and developed a modern, fully responsive real estate website concept for Montaña Inmobiliaria, a Colombian agency serving Amagá and the Southwestern Antioquia region. The platform combines sophisticated visual design with practical property-discovery functionality, allowing visitors to browse available listings, filter properties, view detailed information, and connect directly with the agency. The project demonstrates how an elegant digital presence can support real estate discovery and simplify customer inquiries.",
+        "es": "CoreVia diseñó y desarrolló un concepto de sitio web inmobiliario moderno y totalmente adaptable para Montaña Inmobiliaria, una agencia que presta servicios en Amagá y el Suroeste Antioqueño. La plataforma combina una identidad visual elegante con herramientas prácticas para explorar inmuebles, filtrar propiedades, consultar información detallada y contactar directamente a la inmobiliaria. Este proyecto demuestra cómo una experiencia digital profesional puede facilitar la búsqueda de propiedades y la comunicación con clientes potenciales."
+      },
+      "caseStudySummary": {
+        "en": "Functional website demonstration for a prospective real estate client in Amagá, Antioquia — premium property discovery, search filters, galleries, and WhatsApp contact.",
+        "es": "Demostración funcional de sitio web para una inmobiliaria prospectiva en Amagá, Antioquia — descubrimiento de propiedades, filtros, galerías y contacto por WhatsApp."
+      },
+      "categoryTags": [
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Premium Responsive Website",
+          "es": "Sitio web premium adaptable"
+        },
+        {
+          "en": "Interactive Property Catalog",
+          "es": "Catálogo interactivo de propiedades"
+        },
+        {
+          "en": "Advanced Property Search & Filters",
+          "es": "Búsqueda avanzada y filtros de propiedades"
+        },
+        {
+          "en": "Property Detail Pages & Photo Galleries",
+          "es": "Páginas de detalle y galerías fotográficas"
+        },
+        {
+          "en": "WhatsApp Contact Integration",
+          "es": "Integración de contacto por WhatsApp"
+        },
+        {
+          "en": "Mobile-Optimized Experience",
+          "es": "Experiencia optimizada para móviles"
+        },
+        {
+          "en": "Agency Services & Information Pages",
+          "es": "Páginas de servicios e información de la agencia"
+        },
+        {
+          "en": "SEO & Social Sharing Foundations",
+          "es": "Bases de SEO y compartición en redes"
+        }
+      ],
+      "accentColor": "#1F4D3A",
+      "coverAssetId": "1.07.40",
+      "coverImage": "/images/portfolio/montana-inmobiliaria/image-1.07.40.png",
+      "screenshotGroups": [
+        {
+          "id": "website-experience",
+          "label": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "screenshotAssetIds": [
+            "1.07.40",
+            "1.07.55",
+            "1.08.03",
+            "1.08.10",
+            "1.08.17",
+            "1.08.30",
+            "1.08.58",
+            "1.09.05"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "1.07.40",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.07.40\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.07.40.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — homepage hero",
+            "es": "Montaña Inmobiliaria — héroe de la página de inicio"
+          },
+          "optimizedBasename": "image-1.07.40.png"
+        },
+        {
+          "assetId": "1.07.55",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.07.55\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.07.55.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — featured property collection",
+            "es": "Montaña Inmobiliaria — colección de propiedades destacadas"
+          },
+          "optimizedBasename": "image-1.07.55.png"
+        },
+        {
+          "assetId": "1.08.03",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.08.03\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.08.03.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — agency introduction and team",
+            "es": "Montaña Inmobiliaria — introducción de la agencia y el equipo"
+          },
+          "optimizedBasename": "image-1.08.03.png"
+        },
+        {
+          "assetId": "1.08.10",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.08.10\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.08.10.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — services section",
+            "es": "Montaña Inmobiliaria — sección de servicios"
+          },
+          "optimizedBasename": "image-1.08.10.png"
+        },
+        {
+          "assetId": "1.08.17",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.08.17\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.08.17.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — cinematic regional hero",
+            "es": "Montaña Inmobiliaria — héroe cinematográfico regional"
+          },
+          "optimizedBasename": "image-1.08.17.png"
+        },
+        {
+          "assetId": "1.08.30",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.08.30\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.08.30.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — contact call-to-action",
+            "es": "Montaña Inmobiliaria — llamado a la acción de contacto"
+          },
+          "optimizedBasename": "image-1.08.30.png"
+        },
+        {
+          "assetId": "1.08.58",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.08.58\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.08.58.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — property catalog with search filters",
+            "es": "Montaña Inmobiliaria — catálogo de propiedades con filtros de búsqueda"
+          },
+          "optimizedBasename": "image-1.08.58.png"
+        },
+        {
+          "assetId": "1.09.05",
+          "exactOriginalFilename": "Screenshot 2026-11-08 at 1.09.05\u202fPM.png",
+          "src": "/images/portfolio/montana-inmobiliaria/image-1.09.05.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Montaña Inmobiliaria — contact and footer",
+            "es": "Montaña Inmobiliaria — contacto y pie de página"
+          },
+          "optimizedBasename": "image-1.09.05.png"
+        }
+      ],
+      "demo": {
+        "url": "https://montana-inmobiliaria.vercel.app",
+        "status": "website-demo",
+        "statusLabel": {
+          "en": "Functional Demonstration",
+          "es": "Demostración Funcional"
+        },
+        "disclaimer": {
+          "en": "Functional website demonstration for a prospective real estate client · Amagá, Antioquia, Colombia · Next.js 16, React 19, TypeScript, Tailwind CSS, Vercel",
+          "es": "Demostración funcional de sitio web para una inmobiliaria prospectiva · Amagá, Antioquia, Colombia · Next.js 16, React 19, TypeScript, Tailwind CSS, Vercel"
+        },
+        "ctaLabel": {
+          "en": "View Live Website",
+          "es": "Ver Sitio Web"
+        }
+      },
+      "verifiedSecondaryUrls": []
     }
   ]
 }

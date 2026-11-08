@@ -8,7 +8,7 @@ import type {
 import registryData from "./registry.data.json";
 
 /**
- * Central portfolio registry for the approved five-project redesign.
+ * Central portfolio registry for the approved CoreVia case-study set.
  * Sourced from `reference/redesign-v2` prototypes + `asset-manifest.csv`.
  * Does not invent clients, metrics, or unverified dashboard URLs.
  */
@@ -112,18 +112,18 @@ export function assertPortfolioIntegrity(): {
       project.screenshots.some((shot) => shot.assetId === project.coverAssetId)
   ).length;
 
-  if (portfolioProjects.length !== 5) {
+  if (portfolioProjects.length !== 6) {
     throw new Error(
-      `Expected 5 portfolio projects, found ${portfolioProjects.length}`
+      `Expected 6 portfolio projects, found ${portfolioProjects.length}`
     );
   }
-  if (screenshotCount !== 60) {
+  if (screenshotCount !== 68) {
     throw new Error(
-      `Expected 60 portfolio screenshots, found ${screenshotCount}`
+      `Expected 68 portfolio screenshots, found ${screenshotCount}`
     );
   }
-  if (coverCount !== 5) {
-    throw new Error(`Expected 5 cover images, found ${coverCount}`);
+  if (coverCount !== 6) {
+    throw new Error(`Expected 6 cover images, found ${coverCount}`);
   }
 
   return {

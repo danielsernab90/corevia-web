@@ -73,6 +73,27 @@ export const SHOT_CAPTIONS: Readonly<Record<string, LocalizedText>> = {
   "3.45.39": { en: "Operations dashboard", es: "Dashboard de operaciones" },
   "3.45.46": { en: "Order operations", es: "Operaciones de pedidos" },
   "3.45.57": { en: "Business overview", es: "Resumen del negocio" },
+  // Montaña Inmobiliaria — website walkthrough (timestamp order)
+  "1.07.40": { en: "Homepage hero", es: "Héroe de la página de inicio" },
+  "1.07.55": {
+    en: "Featured property collection",
+    es: "Colección de propiedades destacadas",
+  },
+  "1.08.03": {
+    en: "Agency introduction & team",
+    es: "Introducción de la agencia y el equipo",
+  },
+  "1.08.10": { en: "Services section", es: "Sección de servicios" },
+  "1.08.17": {
+    en: "Cinematic regional hero",
+    es: "Héroe cinematográfico regional",
+  },
+  "1.08.30": { en: "Contact call-to-action", es: "Llamado a la acción de contacto" },
+  "1.08.58": {
+    en: "Property catalog & search filters",
+    es: "Catálogo de propiedades y filtros",
+  },
+  "1.09.05": { en: "Contact & footer", es: "Contacto y pie de página" },
 };
 
 export function getShotCaption(assetId: string): LocalizedText | undefined {

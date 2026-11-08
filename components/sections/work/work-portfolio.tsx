@@ -250,7 +250,9 @@ export function WorkPortfolio({
                         rel="noopener noreferrer"
                         className={cn(buttonVariants({ size: "sm" }))}
                       >
-                        {t("demoCta")}
+                        {project.demo.ctaLabel
+                          ? localizeText(project.demo.ctaLabel, locale)
+                          : t("demoCta")}
                       </a>
                     </div>
                     <div className="mt-4 flex flex-wrap gap-1.5">

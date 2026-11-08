@@ -26,6 +26,7 @@ const SECONDARY_PROJECT_IDS = [
   "dixie-remodeling",
   "perritos-gourmet",
   "la-gallinita",
+  "montana-inmobiliaria",
 ] as const;
 
 type SecondaryProjectId = (typeof SECONDARY_PROJECT_IDS)[number];
@@ -125,7 +126,9 @@ export function HomeProjectGrid() {
                         rel="noopener noreferrer"
                         className={cn(buttonVariants({ size: "sm" }))}
                       >
-                        {t("demoCta")}
+                        {project.demo.ctaLabel
+                          ? localizeText(project.demo.ctaLabel, locale)
+                          : t("demoCta")}
                       </a>
                     </div>
                   </div>

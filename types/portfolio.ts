@@ -46,6 +46,8 @@ export type PortfolioDemo = {
   status: DemoStatusKind;
   statusLabel: LocalizedText;
   disclaimer: LocalizedText;
+  /** Optional override for the external demo button label. */
+  ctaLabel?: LocalizedText;
 };
 
 export type PortfolioProject = {

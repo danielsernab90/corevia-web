@@ -291,8 +291,8 @@
     },
     "projects": {
       "eyebrow": "Más del estudio",
-      "title": "Cinco negocios. <br></br>Cinco soluciones distintas.",
-      "description": "Desde hospitalidad y construcción hasta pedidos en línea y operaciones minoristas — descubre cómo puede verse la tecnología a medida.",
+      "title": "Seis negocios. <br></br>Seis soluciones distintas.",
+      "description": "Desde hospitalidad y construcción hasta pedidos en línea, operaciones minoristas e inmobiliaria — descubre cómo puede verse la tecnología a medida.",
       "viewCta": "Ver Proyecto",
       "demoCta": "Demo en Vivo",
       "allCta": "Explorar Todos los Proyectos",
@@ -300,13 +300,15 @@
         "cotinga-hotel-spa": "Hospitalidad · Software + Web",
         "dixie-remodeling": "Servicios para el Hogar · Diseño Web",
         "perritos-gourmet": "Servicio de Comida · Pedidos",
-        "la-gallinita": "Retail · Comercio B2B"
+        "la-gallinita": "Retail · Comercio B2B",
+        "montana-inmobiliaria": "Inmobiliaria · Diseño Web"
       },
       "blurbs": {
         "cotinga-hotel-spa": "Un sitio de hospitalidad inmersivo junto con herramientas de operaciones hoteleras — habitaciones, spa, reservas y gestión.",
         "dixie-remodeling": "Un sitio bilingüe de remodelación con narrativa cinematográfica, galerías de proyectos y solicitudes de estimado.",
         "perritos-gourmet": "Un recorrido de pedidos del menú al pago, con herramientas de gestión de pedidos para el restaurante.",
-        "la-gallinita": "Compras minoristas y mayoristas con inventario, punto de venta y operaciones de entrega en una sola demostración."
+        "la-gallinita": "Compras minoristas y mayoristas con inventario, punto de venta y operaciones de entrega en una sola demostración.",
+        "montana-inmobiliaria": "Una experiencia inmobiliaria premium con catálogo interactivo de propiedades, filtros de búsqueda, galerías fotográficas y contacto directo por WhatsApp. Diseñada para facilitar la búsqueda de inmuebles en Amagá y el Suroeste Antioqueño."
       }
     },
     "solutions": {

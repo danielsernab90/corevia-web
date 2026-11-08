@@ -100,7 +100,9 @@ export function WorkProjectDetail({
             rel="noopener noreferrer"
             className={cn(buttonVariants({ size: "cta" }))}
           >
-            {t("demoCta")}
+            {project.demo.ctaLabel
+              ? localizeText(project.demo.ctaLabel, locale)
+              : t("demoCta")}
           </a>
           {!standalone ? (
             <Link

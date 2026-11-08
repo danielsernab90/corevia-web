@@ -291,8 +291,8 @@
     },
     "projects": {
       "eyebrow": "More from the studio",
-      "title": "Five businesses. <br></br>Five different solutions.",
-      "description": "From hospitality and construction to online ordering and retail operations — discover what tailored technology can look like.",
+      "title": "Six businesses. <br></br>Six different solutions.",
+      "description": "From hospitality and construction to online ordering, retail operations, and real estate — discover what tailored technology can look like.",
       "viewCta": "View Project",
       "demoCta": "Live Demo",
       "allCta": "Explore All Projects",
@@ -300,13 +300,15 @@
         "cotinga-hotel-spa": "Hospitality · Software + Web",
         "dixie-remodeling": "Home Services · Web Design",
         "perritos-gourmet": "Food Service · Ordering",
-        "la-gallinita": "Retail · B2B Commerce"
+        "la-gallinita": "Retail · B2B Commerce",
+        "montana-inmobiliaria": "Real Estate · Web Design"
       },
       "blurbs": {
         "cotinga-hotel-spa": "An immersive hospitality website paired with hotel operations tools — rooms, spa experiences, booking, and management.",
         "dixie-remodeling": "A bilingual remodeling website with cinematic storytelling, project galleries, and estimate requests.",
         "perritos-gourmet": "A customer ordering journey from menu to checkout, with restaurant order-management tools.",
-        "la-gallinita": "Retail and wholesale shopping with inventory, point of sale, and delivery operations in one demonstration."
+        "la-gallinita": "Retail and wholesale shopping with inventory, point of sale, and delivery operations in one demonstration.",
+        "montana-inmobiliaria": "A premium real estate website featuring an interactive property catalog, advanced search filters, elegant property galleries, and direct WhatsApp inquiries. Designed to help buyers and renters explore properties across Amagá and Southwestern Antioquia."
       }
     },
     "solutions": {
