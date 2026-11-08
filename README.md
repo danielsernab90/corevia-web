@@ -108,7 +108,10 @@ utils/            Small pure helpers (as needed)
 ## Deployment (Vercel)
 
 1. Import this repository in Vercel
-2. Set `NEXT_PUBLIC_SITE_URL` to the production domain
+2. Set `NEXT_PUBLIC_SITE_URL` to `https://corevia-software.vercel.app`
 3. Deploy (framework preset: Next.js)
+
+Primary production host: `https://corevia-software.vercel.app`  
+Legacy alias `corevia-web-iota.vercel.app` permanently redirects (308) to the primary host.
 
 No custom `vercel.json` is required for the current setup.

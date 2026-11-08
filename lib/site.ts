@@ -1,11 +1,11 @@
 /**
  * Site-wide constants used for SEO and absolute URLs.
- * Set NEXT_PUBLIC_SITE_URL in Vercel when a custom domain is approved.
- * Until then, keep the live Vercel production host as canonical.
+ * Prefer NEXT_PUBLIC_SITE_URL in Vercel; fallback matches the primary production host.
  */
 export const siteConfig = {
   name: "CoreVia",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://coreviasoftware.vercel.app",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://corevia-software.vercel.app",
   localeDefault: "en",
   locales: ["en", "es"] as const,
 } as const;
