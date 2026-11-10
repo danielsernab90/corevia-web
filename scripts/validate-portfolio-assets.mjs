@@ -29,14 +29,15 @@ const expectedCounts = {
   "odontologia-miguel-maya": 7,
   "dra-lida-uribe-berrio": 6,
   "as-maderas": 7,
+  "glamping-el-paraiso": 4,
 };
 
 const errors = [];
 const seenAssetIds = new Set();
 const seenOriginals = new Set();
 
-if (registry.projects.length !== 9) {
-  errors.push(`Expected 9 projects, got ${registry.projects.length}`);
+if (registry.projects.length !== 10) {
+  errors.push(`Expected 10 projects, got ${registry.projects.length}`);
 }
 
 if (manifest.length !== 60) {
@@ -92,8 +93,8 @@ for (const project of registry.projects) {
   }
 }
 
-if (screenshotTotal !== 88) {
-  errors.push(`Expected 88 registry screenshots, got ${screenshotTotal}`);
+if (screenshotTotal !== 92) {
+  errors.push(`Expected 92 registry screenshots, got ${screenshotTotal}`);
 }
 
 if (errors.length) {

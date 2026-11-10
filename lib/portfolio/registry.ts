@@ -112,18 +112,18 @@ export function assertPortfolioIntegrity(): {
       project.screenshots.some((shot) => shot.assetId === project.coverAssetId)
   ).length;
 
-  if (portfolioProjects.length !== 9) {
+  if (portfolioProjects.length !== 10) {
     throw new Error(
-      `Expected 9 portfolio projects, found ${portfolioProjects.length}`
+      `Expected 10 portfolio projects, found ${portfolioProjects.length}`
     );
   }
-  if (screenshotCount !== 88) {
+  if (screenshotCount !== 92) {
     throw new Error(
-      `Expected 88 portfolio screenshots, found ${screenshotCount}`
+      `Expected 92 portfolio screenshots, found ${screenshotCount}`
     );
   }
-  if (coverCount !== 9) {
-    throw new Error(`Expected 9 cover images, found ${coverCount}`);
+  if (coverCount !== 10) {
+    throw new Error(`Expected 10 cover images, found ${coverCount}`);
   }
 
   return {

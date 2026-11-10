@@ -1,0 +1,38 @@
+{
+  "projectId": "glamping-el-paraiso",
+  "cover": "glamping-el-paraiso-homepage.png",
+  "images": [
+    {
+      "file": "glamping-el-paraiso-homepage.png",
+      "order": 1,
+      "caption": {
+        "en": "Immersive homepage and WhatsApp reservation CTA",
+        "es": "Inicio inmersivo y acceso a consultas por WhatsApp"
+      }
+    },
+    {
+      "file": "glamping-el-paraiso-discover-caramanta.png",
+      "order": 2,
+      "caption": {
+        "en": "Local attractions, image carousels and interactive map",
+        "es": "Atractivos locales, carruseles de imágenes y mapa interactivo"
+      }
+    },
+    {
+      "file": "glamping-el-paraiso-gallery.png",
+      "order": 3,
+      "caption": {
+        "en": "Authentic property photographs and mountain experiences",
+        "es": "Fotografías reales de la propiedad y experiencias de montaña"
+      }
+    },
+    {
+      "file": "glamping-el-paraiso-contact-footer.png",
+      "order": 4,
+      "caption": {
+        "en": "WhatsApp inquiry call to action and branded footer",
+        "es": "Llamado a consultas por WhatsApp y pie de página de marca"
+      }
+    }
+  ]
+}

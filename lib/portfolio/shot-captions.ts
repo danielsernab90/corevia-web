@@ -171,6 +171,24 @@ export const SHOT_CAPTIONS: Readonly<Record<string, LocalizedText>> = {
     en: "WhatsApp quotation form and contact",
     es: "Formulario de cotización y contacto por WhatsApp",
   },
+
+  // Glamping El Paraíso — website walkthrough (timestamp order)
+  "4.50.42": {
+    en: "Immersive homepage and WhatsApp reservation CTA",
+    es: "Inicio inmersivo y acceso a consultas por WhatsApp",
+  },
+  "4.51.04": {
+    en: "Local attractions, image carousels and interactive map",
+    es: "Atractivos locales, carruseles de imágenes y mapa interactivo",
+  },
+  "4.51.13": {
+    en: "Authentic property photographs and mountain experiences",
+    es: "Fotografías reales de la propiedad y experiencias de montaña",
+  },
+  "4.51.19": {
+    en: "WhatsApp inquiry call to action and branded footer",
+    es: "Llamado a consultas por WhatsApp y pie de página de marca",
+  },
 };
 
 export function getShotCaption(assetId: string): LocalizedText | undefined {

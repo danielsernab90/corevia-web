@@ -31,6 +31,7 @@ const SECONDARY_PROJECT_IDS = [
   "odontologia-miguel-maya",
   "dra-lida-uribe-berrio",
   "as-maderas",
+  "glamping-el-paraiso",
 ] as const;
 
 type SecondaryProjectId = (typeof SECONDARY_PROJECT_IDS)[number];

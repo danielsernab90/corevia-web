@@ -2214,6 +2214,161 @@
         }
       },
       "verifiedSecondaryUrls": []
+    },
+    {
+      "id": "glamping-el-paraiso",
+      "prototypeId": "glamping-el-paraiso",
+      "displayOrder": 10,
+      "name": {
+        "en": "Glamping El Paraíso — A Premium Hospitality Website",
+        "es": "Glamping El Paraíso — Una Experiencia Web Premium de Hospitalidad"
+      },
+      "industry": {
+        "en": "Hospitality & Tourism",
+        "es": "Turismo y Hospitalidad"
+      },
+      "eyebrow": {
+        "en": "HOSPITALITY & TOURISM · LIVE WEBSITE",
+        "es": "TURISMO Y HOSPITALIDAD · SITIO WEB PUBLICADO"
+      },
+      "shortDescription": {
+        "en": "A premium bilingual website for a mountain retreat in Caramanta, combining immersive photography, local destination discovery, and direct WhatsApp inquiries.",
+        "es": "Un sitio web premium y bilingüe para un refugio de montaña en Caramanta, que combina fotografía inmersiva, exploración turística y contacto directo por WhatsApp."
+      },
+      "detailedDescription": {
+        "en": "CoreVia developed a bilingual website for Glamping El Paraíso, a nature-focused mountain retreat in Caramanta, Antioquia. The experience introduces the property through authentic photography, elegant branding, and intuitive navigation. The design objective was to communicate the atmosphere of a peaceful mountain retreat while helping visitors explore the property, discover nearby attractions, and contact the business with ease. We created a responsive Spanish-English website featuring an immersive photographic homepage, interactive property gallery, destination discovery content, attraction image carousels, Google Maps integration, and direct WhatsApp inquiry options. Forest-green surfaces, champagne-gold accents, refined typography, and authentic property photography create a cohesive hospitality identity — connecting property discovery with the next step of contacting the retreat.",
+        "es": "CoreVia desarrolló un sitio web bilingüe para Glamping El Paraíso, un refugio de montaña rodeado de naturaleza en Caramanta, Antioquia. La experiencia presenta la propiedad mediante fotografías auténticas, una identidad visual elegante y navegación intuitiva. El objetivo de diseño fue transmitir la tranquilidad y el encanto del entorno natural, facilitando que los visitantes conocieran la propiedad, descubrieran atractivos cercanos y se comunicaran con el negocio de manera sencilla. Creamos un sitio web adaptable en español e inglés, con una página de inicio inmersiva, galería interactiva de la propiedad, contenido turístico de la región, carruseles de imágenes, integración con Google Maps y opciones de contacto directo por WhatsApp. Los tonos verde bosque, los acentos dorado champaña, la tipografía refinada y las fotografías auténticas de la propiedad construyen una identidad visual coherente con el turismo de naturaleza, conectando el descubrimiento del alojamiento con la posibilidad de consultar directamente al establecimiento."
+      },
+      "caseStudySummary": {
+        "en": "A live bilingual hospitality website for a mountain glamping retreat in Caramanta — immersive photography, destination discovery, maps, and WhatsApp inquiries.",
+        "es": "Sitio web bilingüe de hospitalidad para un glamping de montaña en Caramanta — fotografía inmersiva, descubrimiento turístico, mapas y consultas por WhatsApp."
+      },
+      "categoryTags": [
+        "websites"
+      ],
+      "featureHighlights": [
+        {
+          "en": "Custom Website",
+          "es": "Sitio Web Personalizado"
+        },
+        {
+          "en": "Hospitality",
+          "es": "Hospitalidad"
+        },
+        {
+          "en": "Responsive",
+          "es": "Adaptable"
+        },
+        {
+          "en": "Bilingual",
+          "es": "Bilingüe"
+        },
+        {
+          "en": "Interactive Gallery",
+          "es": "Galería Interactiva"
+        },
+        {
+          "en": "Google Maps",
+          "es": "Google Maps"
+        },
+        {
+          "en": "WhatsApp",
+          "es": "WhatsApp"
+        }
+      ],
+      "accentColor": "#00AEEF",
+      "coverAssetId": "4.50.42",
+      "coverImage": "/images/portfolio/glamping-el-paraiso/glamping-el-paraiso-homepage.png",
+      "screenshotGroups": [
+        {
+          "id": "website-experience",
+          "label": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "screenshotAssetIds": [
+            "4.50.42",
+            "4.51.04",
+            "4.51.13",
+            "4.51.19"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "assetId": "4.50.42",
+          "exactOriginalFilename": "Screenshot 2026-11-10 at 4.50.42 PM.jpg",
+          "src": "/images/portfolio/glamping-el-paraiso/glamping-el-paraiso-homepage.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Glamping El Paraíso — immersive homepage and WhatsApp reservation CTA",
+            "es": "Glamping El Paraíso — inicio inmersivo y acceso a consultas por WhatsApp"
+          },
+          "optimizedBasename": "glamping-el-paraiso-homepage.png"
+        },
+        {
+          "assetId": "4.51.04",
+          "exactOriginalFilename": "Screenshot 2026-11-10 at 4.51.04 PM.jpg",
+          "src": "/images/portfolio/glamping-el-paraiso/glamping-el-paraiso-discover-caramanta.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Glamping El Paraíso — local attractions, image carousels and interactive map",
+            "es": "Glamping El Paraíso — atractivos locales, carruseles de imágenes y mapa interactivo"
+          },
+          "optimizedBasename": "glamping-el-paraiso-discover-caramanta.png"
+        },
+        {
+          "assetId": "4.51.13",
+          "exactOriginalFilename": "Screenshot 2026-11-10 at 4.51.13 PM.jpg",
+          "src": "/images/portfolio/glamping-el-paraiso/glamping-el-paraiso-gallery.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Glamping El Paraíso — authentic property photographs and mountain experiences",
+            "es": "Glamping El Paraíso — fotografías reales de la propiedad y experiencias de montaña"
+          },
+          "optimizedBasename": "glamping-el-paraiso-gallery.png"
+        },
+        {
+          "assetId": "4.51.19",
+          "exactOriginalFilename": "Screenshot 2026-11-10 at 4.51.19 PM.png",
+          "src": "/images/portfolio/glamping-el-paraiso/glamping-el-paraiso-contact-footer.png",
+          "groupLabel": {
+            "en": "Website Experience",
+            "es": "Experiencia del sitio"
+          },
+          "alt": {
+            "en": "Glamping El Paraíso — WhatsApp inquiry call to action and branded footer",
+            "es": "Glamping El Paraíso — llamado a consultas por WhatsApp y pie de página de marca"
+          },
+          "optimizedBasename": "glamping-el-paraiso-contact-footer.png"
+        }
+      ],
+      "demo": {
+        "url": "https://glamping-el-paraiso.vercel.app/",
+        "status": "website-demo",
+        "statusLabel": {
+          "en": "Live Website",
+          "es": "Sitio Web Publicado"
+        },
+        "disclaimer": {
+          "en": "Publicly deployed hospitality website · Caramanta, Antioquia, Colombia · Next.js, React, TypeScript, bilingual experience, Google Maps, WhatsApp inquiry integration, Vercel · Portfolio presentation of a live deployment; WhatsApp supports direct inquiries, not automated booking or payments",
+          "es": "Sitio web de hospitalidad desplegado públicamente · Caramanta, Antioquia, Colombia · Next.js, React, TypeScript, experiencia bilingüe, Google Maps, integración de consultas por WhatsApp, Vercel · Presentación en portafolio de un despliegue en vivo; WhatsApp permite consultas directas, no reservas ni pagos automatizados"
+        },
+        "ctaLabel": {
+          "en": "View Live Website",
+          "es": "Ver Sitio Web"
+        }
+      },
+      "verifiedSecondaryUrls": []
     }
   ]
 }
