@@ -1252,6 +1252,12 @@
           "role": "Profesional de Marketing · Pereira, Colombia",
           "bio": "Originaria de Pereira, Colombia, Sophia Villa ayuda a empresas en Colombia y Estados Unidos a fortalecer sus marcas y conectar con sus audiencias. Aporta creatividad, pensamiento estratégico y un enfoque humano al marketing, el posicionamiento de marca y la comunicación digital.",
           "imageAlt": "Sophia Villa, miembro del equipo de CoreVia"
+        },
+        "johana": {
+          "name": "Johana Arcila",
+          "role": "Asesora Comercial y de Atención al Cliente · Medellín, Colombia",
+          "bio": "Johana Arcila forma parte del equipo comercial y de atención al cliente de CoreVia Software. Originaria de Medellín, se especializa en acompañar a clientes de habla hispana, brindando asesoría cercana, comunicación clara y atención personalizada. Su enfoque está en escuchar las necesidades de cada negocio, orientar a los clientes sobre las soluciones digitales disponibles y construir relaciones basadas en la confianza, el compromiso y un servicio de calidad.",
+          "imageAlt": "Johana Arcila, asesora comercial y de atención al cliente de CoreVia"
         }
       }
     }

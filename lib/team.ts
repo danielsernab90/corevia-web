@@ -3,7 +3,7 @@
  * Bios stay modest until the team provides approved copy.
  */
 
-export type TeamMemberId = "daniel" | "sofia";
+export type TeamMemberId = "daniel" | "sofia" | "johana";
 
 export type TeamMember = {
   id: TeamMemberId;
@@ -33,5 +33,12 @@ export const teamMembers: readonly TeamMember[] = [
     imageSrc: "/images/team/sofia-villa.jpg",
     imageObjectPosition: "center 18%",
     initials: "SV",
+  },
+  {
+    id: "johana",
+    nameKey: "johana",
+    imageSrc: "/images/team/johana-arcila.png",
+    imageObjectPosition: "center 18%",
+    initials: "JA",
   },
 ] as const;
