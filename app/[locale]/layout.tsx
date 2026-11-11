@@ -66,7 +66,7 @@ export async function generateMetadata({
       type: "website",
       locale,
       url: getSiteUrl(`/${locale}`),
-      siteName: siteConfig.name,
+      siteName: "CoreVia Software",
       title,
       description,
       images: [ogImage],
@@ -75,7 +75,14 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage.url],
+      images: [
+        {
+          url: ogImage.url,
+          width: ogImage.width,
+          height: ogImage.height,
+          alt: ogImage.alt,
+        },
+      ],
     },
     alternates: getLocaleAlternates(locale),
     robots: {

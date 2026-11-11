@@ -11,16 +11,17 @@ export const siteConfig = {
 } as const;
 
 /**
- * Open Graph / Twitter share image (1200×630).
- * Brand navy canvas with centered 3D wordmark — separate from favicon assets.
+ * Default Open Graph / Twitter share image (1200×630).
+ * Approved Spanish premium banner — separate from logos/favicon assets.
  */
-export const ogImagePath = "/logos/corevia-og-1200x630.png";
+export const ogImagePath = "/images/social/corevia-social-share-es.png";
 
 export const ogImage = {
   url: ogImagePath,
   width: 1200,
   height: 630,
-  alt: "CoreVia — Custom Software for Your Business",
+  type: "image/png",
+  alt: "CoreVia Software — Soluciones Tecnológicas para tu Negocio. Software a medida, inteligencia artificial y automatización.",
 } as const;
 
 export function getSiteUrl(path = "") {
