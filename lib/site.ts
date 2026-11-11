@@ -70,6 +70,22 @@ export function getOgAlternateLocales(locale: string): string[] {
     .map((code) => OG_LOCALES[code]);
 }
 
+
+/** Open Graph fields for locale-aware share image + locale tags. */
+export function getShareOpenGraph(
+  locale: string,
+  fields: { title: string; description: string; url: string }
+) {
+  return {
+    title: fields.title,
+    description: fields.description,
+    url: fields.url,
+    locale: getOgLocale(locale),
+    alternateLocale: getOgAlternateLocales(locale),
+    images: [getOgImage(locale)],
+  };
+}
+
 export function getSiteUrl(path = "") {
   const base = siteConfig.url.replace(/\/$/, "");
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;

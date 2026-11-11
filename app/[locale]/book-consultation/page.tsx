@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { BookConsultationExperience } from "@/components/sections/book-consultation/book-consultation-experience";
 import { routing } from "@/i18n/routing";
-import { getLocaleAlternates, getOgImage, getSiteUrl } from "@/lib/site";
+import { getLocaleAlternates, getShareOpenGraph, getSiteUrl } from "@/lib/site";
 
 type BookConsultationPageProps = {
   params: Promise<{ locale: string }>;
@@ -29,12 +29,11 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: {
+    openGraph: getShareOpenGraph(locale, {
       title,
       description,
-      images: [getOgImage(locale)],
       url: getSiteUrl(`/${locale}/book-consultation`),
-    },
+    }),
     alternates: getLocaleAlternates(locale, "/book-consultation"),
   };
 }

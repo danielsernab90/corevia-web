@@ -10,7 +10,7 @@ import {
   portfolioProjects,
 } from "@/lib/portfolio/registry";
 import { localizeText } from "@/lib/portfolio/localize";
-import { getLocaleAlternates, getOgImage, getSiteUrl } from "@/lib/site";
+import { getLocaleAlternates, getShareOpenGraph, getSiteUrl } from "@/lib/site";
 import type { AppLocale } from "@/i18n/routing";
 
 type WorkProjectPageProps = {
@@ -50,12 +50,11 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: {
+    openGraph: getShareOpenGraph(locale, {
       title,
       description,
-      images: [getOgImage(locale)],
       url: getSiteUrl(`/${locale}/work/${project.prototypeId}`),
-    },
+    }),
     alternates: getLocaleAlternates(locale, `/work/${project.prototypeId}`),
   };
 }

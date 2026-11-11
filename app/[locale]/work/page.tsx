@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { WorkExperience } from "@/components/sections/work/work-experience";
 import { routing } from "@/i18n/routing";
-import { getLocaleAlternates, getOgImage, getSiteUrl } from "@/lib/site";
+import { getLocaleAlternates, getShareOpenGraph, getSiteUrl } from "@/lib/site";
 
 type WorkPageProps = {
   params: Promise<{ locale: string }>;
@@ -29,12 +29,11 @@ export async function generateMetadata({
   return {
     title,
     description,
-    openGraph: {
+    openGraph: getShareOpenGraph(locale, {
       title,
       description,
-      images: [getOgImage(locale)],
       url: getSiteUrl(`/${locale}/work`),
-    },
+    }),
     alternates: getLocaleAlternates(locale, "/work"),
   };
 }
