@@ -13,7 +13,14 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { OrganizationJsonLd } from "@/components/seo/organization-json-ld";
 import { routing, type AppLocale } from "@/i18n/routing";
-import { getLocaleAlternates, getSiteUrl, ogImage, siteConfig } from "@/lib/site";
+import {
+  getLocaleAlternates,
+  getOgAlternateLocales,
+  getOgImage,
+  getOgLocale,
+  getSiteUrl,
+  siteConfig,
+} from "@/lib/site";
 
 import "@/styles/globals.css";
 
@@ -51,6 +58,7 @@ export async function generateMetadata({
   const title = t("title");
   const description = t("description");
   const keywords = t("keywords");
+  const shareImage = getOgImage(locale);
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -64,12 +72,13 @@ export async function generateMetadata({
     creator: siteConfig.name,
     openGraph: {
       type: "website",
-      locale,
+      locale: getOgLocale(locale),
+      alternateLocale: getOgAlternateLocales(locale),
       url: getSiteUrl(`/${locale}`),
       siteName: "CoreVia Software",
       title,
       description,
-      images: [ogImage],
+      images: [shareImage],
     },
     twitter: {
       card: "summary_large_image",
@@ -77,10 +86,10 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: ogImage.url,
-          width: ogImage.width,
-          height: ogImage.height,
-          alt: ogImage.alt,
+          url: shareImage.url,
+          width: shareImage.width,
+          height: shareImage.height,
+          alt: shareImage.alt,
         },
       ],
     },

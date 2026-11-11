@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { permanentRedirect } from "next/navigation";
 
 import { routing } from "@/i18n/routing";
-import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getOgImage, getSiteUrl } from "@/lib/site";
 
 type CompanyPageProps = {
   params: Promise<{ locale: string }>;
@@ -35,7 +35,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [ogImage],
+      images: [getOgImage(locale)],
       url: getSiteUrl(`/${locale}/about`),
     },
     alternates: getLocaleAlternates(locale, "/about"),

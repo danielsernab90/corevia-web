@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { LegalDocument } from "@/components/sections/legal/legal-document";
 import { routing } from "@/i18n/routing";
 import { privacySectionKeys } from "@/lib/legal";
-import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getOgImage, getSiteUrl } from "@/lib/site";
 
 type PrivacyPageProps = {
   params: Promise<{ locale: string }>;
@@ -30,7 +30,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [ogImage],
+      images: [getOgImage(locale)],
       url: getSiteUrl(`/${locale}/privacy`),
     },
     alternates: getLocaleAlternates(locale, "/privacy"),

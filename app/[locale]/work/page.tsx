@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { WorkExperience } from "@/components/sections/work/work-experience";
 import { routing } from "@/i18n/routing";
-import { getLocaleAlternates, getSiteUrl, ogImage } from "@/lib/site";
+import { getLocaleAlternates, getOgImage, getSiteUrl } from "@/lib/site";
 
 type WorkPageProps = {
   params: Promise<{ locale: string }>;
@@ -32,7 +32,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [ogImage],
+      images: [getOgImage(locale)],
       url: getSiteUrl(`/${locale}/work`),
     },
     alternates: getLocaleAlternates(locale, "/work"),
